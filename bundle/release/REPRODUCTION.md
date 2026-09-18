@@ -40,15 +40,33 @@ Python 3.11 is recommended. Exact package versions are pinned in
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r code/requirements.lock.txt
-cd code
-python -m unittest discover -p 'test_*.py'
+(cd code && python -m unittest discover -p 'test_*.py')
 ```
 
 The tests cover field-level leakage rejection, sequence grouping, role
 assignment, metrics, baseline behavior, deterministic reporting, acquisition
 guards, and reconstruction.
 
-## 4. Rebuild the manuscript
+## 4. Regenerate and validate manuscript tables and figures
+
+Use separate environments because the frozen analytics and figure stacks pin
+different NumPy versions:
+
+```bash
+python3 -m venv .venv-fig
+.venv-fig/bin/pip install -r manuscript/requirements-assets.lock.txt
+PY_ANALYTICS="$PWD/.venv/bin/python" \
+PY_FIGURES="$PWD/.venv-fig/bin/python" \
+bash manuscript/code/generate_all.sh
+PY_FIGURES="$PWD/.venv-fig/bin/python" \
+.venv/bin/python manuscript/code/validate_assets.py
+```
+
+This release command rebuilds the reader-facing tables and figures from the
+committed, verified `manuscript/derived/asset_inputs.json`. It does not reopen
+the protected role or refit a model.
+
+## 5. Rebuild the manuscript
 
 With Tectonic and `pdfinfo` installed:
 
@@ -66,6 +84,7 @@ overfull boxes.
 - SciPy 1.13.1
 - scikit-learn 1.5.2
 - XGBoost 2.1.4
+- Matplotlib 3.11.1 (separate figure environment)
 
 The published result files and protected holdout are immutable. Verification
 uses the released frozen outputs; it does not reopen the protected evaluation.

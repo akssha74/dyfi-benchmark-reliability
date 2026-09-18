@@ -41,7 +41,8 @@
     "sequences": {
       "all_eligible": 1885,
       "construction": 1530,
-      "holdout": 354
+      "holdout": 354,
+      "straddle": 1
     },
     "temporal_straddle": {
       "n": 2,
@@ -83,9 +84,9 @@
     "F1_self_reference": {
       "disclosure": "manuscript/disclosures/F1_phase_f_self_reference_disclosure.json",
       "n_expected_stale_self_referential": 3,
-      "n_load_bearing_matched": 83
+      "n_load_bearing_matched": 76
     },
-    "F3_leakage_null_framing": "Leakage-inflation gap is near-null / slightly reversed on this M>=5 one-row-per-event corpus; reported as an honest measured null, not as leakage evidence or a win.",
+    "F3_split_contrast_framing": "The split contrast is small and slightly reversed on this M>=5 one-row-per-event corpus; it is reported descriptively without equivalence, zero-effect, leakage, or winning-method inference.",
     "IPE_excluded": "Atkinson-Wald (2007) DYFI IPE cannot be applied to the SOURCE_ONLY schema + tectonically heterogeneous population without inventing a site-distance covariate, a per-event ACR/SCR regime, and a probability link (see code/ipe_exclusion.json).",
     "W4_equivalence_margin_deviation": {
       "disclosure": "manuscript/disclosures/W4_pairwise_ranking_deviation_disclosure.json",
@@ -101,7 +102,7 @@
   "leakage_inflation_headline": {
     "auroc_inflation_random_minus_seq": -0.012396868243,
     "brier_inflation_seq_minus_random": -0.005878207034,
-    "event_grouped_note": "On a one-row-per-event table event-grouped coincides with the random split; it is reported as the intermediate control between random and sequence grouping.",
+    "event_grouped_note": "With one row per event, event grouping imposes the same grouping constraint as random-event assignment; the deterministic allocations differ and can therefore produce different scores.",
     "honest_estimate_scheme": "sequence_grouped",
     "interpretation": "Random-event splitting lets within-sequence signal leak across folds; the sequence-grouped split is the honest, leakage-hardened estimate. A positive Brier gap (sequence minus random) and positive AUROC gap (random minus sequence) quantify the optimistic inflation of the naive split. This is the resource's headline; no model is claimed to win.",
     "n_folds": 5,
@@ -669,7 +670,7 @@
       "data": "CC0-1.0",
       "source": "USGS public domain"
     },
-    "n_load_bearing_files_matched": 83,
+    "n_load_bearing_files_matched": 76,
     "n_self_referential_stale": 3,
     "predictions_digest": "58519b1ae48c949890ab3cddc3c2fcfdcbc680fc9fc71402b09f324be2d1138a",
     "python": "3.11.15",

@@ -7,7 +7,7 @@
     "resolution_floor_registered": 0.0,
     "seed": 20260901
   },
-  "claim_neutral_interpretation": "Directional Brier stability of every eligible baseline pair on the temporal transport holdout under the registered paired sequence-cluster bootstrap. Each learned baseline resolves better than the B0 no-skill floor; the learned-vs-learned pairs are largely UNRESOLVED (95% CIs include zero), which is consistent with and reinforces the pre-registered no-winning-model conclusion. Because no positive numeric equivalence margin was registered before execution, pairs are classified only as resolved-directional or unresolved; no 'equivalent' verdict is asserted.",
+  "claim_neutral_interpretation": "Directional Brier stability of every eligible baseline pair on the temporal transport holdout under the registered paired sequence-cluster bootstrap. Every learned baseline interval excludes zero relative to the B0 no-skill floor. Two of six learned-vs-learned intervals include zero (B2-B4 and B2-B5); the remaining four exclude zero, with B4-B5 near the boundary. No positive numeric equivalence margin was registered, so intervals that include zero are not labelled equivalent and no winning model is asserted.",
   "eligible_baselines": [
     "B0_no_skill",
     "B1_magnitude_only_logit",

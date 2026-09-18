@@ -9,19 +9,19 @@
   },
   "endpoint_threshold_sensitivity": {
     "caption": "Endpoint threshold sensitivity.",
-    "claim_neutral_interpretation": "Shows the endpoint is not a single-grid artifact; prevalence and probe scores move smoothly across 5.5/6.0/6.5. No model-superiority claim."
+    "claim_neutral_interpretation": "Rescores fixed B2 probabilities at 5.5/6.0/6.5 without alternate refitting or recalibration. It does not test aggregation-grid robustness or model superiority."
   },
   "exclusions_deviations": {
     "caption": "Protocol decisions affecting interpretation.",
-    "claim_neutral_interpretation": "Explains excluded comparators and records, the lack of an equivalence claim, integrity bookkeeping, and interpretation of the near-zero split comparison."
+    "claim_neutral_interpretation": "Discloses omitted comparators, non-operative quarantine, unexecuted geographic and aggregation analyses, missing split uncertainty, and the absence of an equivalence margin."
   },
   "leakage_gap": {
-    "caption": "Leakage-inflation across split schemes.",
-    "claim_neutral_interpretation": "Quantifies naive-vs-grouped split optimism for a fixed diagnostic model. The gap is near zero and slightly reversed, so it is reported as a null result rather than a gain."
+    "caption": "Split-performance contrast across fold-assignment schemes.",
+    "claim_neutral_interpretation": "Reports a point contrast for a fixed diagnostic configuration distinct from B4. The gap is small and reversed, but has no interval and is not an equivalence, zero-effect, leakage, or gain claim."
   },
   "pairwise_matrix": {
     "caption": "Full pairwise ranking-stability matrix.",
-    "claim_neutral_interpretation": "Complete directional stability for every eligible pair. Equivalent class not asserted (no registered margin). Reinforces no-winning-model; overturns no headline."
+    "claim_neutral_interpretation": "Reports whether each finite-bootstrap interval includes zero, with near-boundary results interpreted cautiously. No equivalence class or winning model is asserted."
   },
   "reproducibility_manifest": {
     "caption": "Data and reproducibility manifest.",

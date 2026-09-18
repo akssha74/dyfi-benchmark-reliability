@@ -2,7 +2,7 @@
 \begin{table*}[t]
 \centering
 \small
-\caption{Cross-validated performance of the fixed random-forest diagnostic (B4) under three fold-assignment schemes in the construction sample.}
+\caption{Cross-validated performance of a fixed leakage diagnostic (random forest: 300 trees, unrestricted depth) under three fold-assignment schemes in the construction sample.}
 \label{tab:leakage}
 \begin{tabular}{lrrrr}
 \toprule
@@ -13,5 +13,5 @@ Event-grouped (control) & 0.2009 & 0.7058 & 0.9223 & 5 \\
 Sequence-grouped (primary) & 0.1990 & 0.7076 & 0.9709 & 5 \\
 \bottomrule
 \end{tabular}
-\par\vspace{2pt}\footnotesize\emph{Note.} Using unrounded values, the sequence-grouped minus random-event Brier difference is -0.0059; the random-event minus sequence-grouped AUROC difference is -0.0124. The preregistration required uncertainty but did not define the paired interval estimator; the executed report retained point estimates only. This deviation is disclosed, and no post-hoc interval or equivalence claim is added. Because there is one row per event, event grouping imposes the same grouping constraint as random-event assignment, but its deterministic fold allocation is different and can produce different scores.
+\par\vspace{2pt}\footnotesize\emph{Note.} The diagnostic is distinct from the tuned temporal-holdout baseline B4 (depth 3). Using unrounded values, the sequence-grouped minus random-event Brier difference is -0.0059; the random-event minus sequence-grouped AUROC difference is -0.0124. The preregistration required uncertainty but did not define the paired interval estimator; the executed report retained point estimates only. This deviation is disclosed, and no post-hoc interval or equivalence claim is added. Because there is one row per event, event grouping imposes the same grouping constraint as random-event assignment, but its deterministic fold allocation is different and can produce different scores.
 \end{table*}

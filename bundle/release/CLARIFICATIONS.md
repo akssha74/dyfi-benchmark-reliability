@@ -27,6 +27,13 @@ field does not affect any prediction or metric.
 executed leave-region-out or external geographic evaluation. Version 1 makes no
 geographic-generalization claim.
 
+## Endpoint sensitivity
+
+The threshold analysis relabels and rescores the fixed B2 probabilities; it does
+not refit or recalibrate B2 for the alternate cutoffs. The preregistered
+aggregation-grid sensitivity was not executed. Version 1 therefore makes no
+aggregation-robustness claim.
+
 ## Split-contrast uncertainty
 
 The preregistration required uncertainty for the random-versus-sequence split
@@ -34,3 +41,18 @@ contrast but did not define the paired interval estimator. The executed report
 retained point estimates only. Version 1 discloses this as an unfulfilled
 preregistered element and does not add a post-hoc interval, equivalence claim,
 or inference that the true difference is zero.
+
+## Leakage diagnostic identity
+
+The split comparison uses a fixed random forest with 300 trees and unrestricted
+depth. It is a diagnostic configuration, not the tuned temporal-holdout baseline
+B4, whose maximum depth is 3.
+
+## Quarantine and provenance
+
+The two prelisted quarantine identifiers are absent from the frozen snapshot, so
+the rule excludes no version 1 record. The event table contains the columns
+listed in `DATA_DICTIONARY.md`; source provenance is snapshot-level in the
+activated `source_locator_manifest.json`, not per-event product-version hashes.
+The similarly named file under `code/` is the preserved pre-activation template;
+the activated manifest in this release directory is canonical for version 1.

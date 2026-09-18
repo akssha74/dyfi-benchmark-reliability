@@ -56,7 +56,10 @@ python -m unittest discover -p 'test_*.py'
 
 The frozen source snapshot has SHA-256
 `88722d8aa6d025cfcc3562f29593cc87d84c6a073bf211e8c21d89adddd4d7e9`.
-See `bundle/release/REPRODUCTION.md` for detailed verification instructions.
+The activated source-locator manifest records the same payload hash, access
+instant, payload size, and co-stamped count. See
+`bundle/release/REPRODUCTION.md` for manuscript-asset regeneration and detailed
+verification instructions.
 
 ## Licences and citation
 

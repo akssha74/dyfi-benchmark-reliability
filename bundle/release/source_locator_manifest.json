@@ -1,5 +1,8 @@
 {
-  "access_instant": null,
+  "access_instant": "2026-09-01T06:33:30Z",
+  "count_access_instant": "2026-09-01T06:34:20Z",
+  "costamped_count": 7520,
+  "count_delta": 0,
   "catalog": "USGS_ComCat_FDSNWS_event_v1",
   "count_url_outcome_free": "https://earthquake.usgs.gov/fdsnws/event/1/count?starttime=2015-01-01T00%3A00%3A00Z&endtime=2025-01-01T00%3A00%3A00Z&minmagnitude=5.0&producttype=dyfi&eventtype=earthquake&orderby=time-asc&format=text",
   "drift_receipt": {
@@ -34,8 +37,8 @@
     "starttime": "2015-01-01T00:00:00Z"
   },
   "exact_full_response_required": true,
-  "outcome_fetched": false,
-  "payload_bytes": null,
+  "outcome_fetched": true,
+  "payload_bytes": 5752776,
   "prehash_combined_digest": "f678d2c2cea07a55e8ad37268b833c9e6f8971022cef855a528424ce1b5ee06e",
   "quarantine_rule_ids": [
     "Q1_non_earthquake_event_type",
@@ -61,6 +64,6 @@
       504
     ]
   },
-  "source_payload_sha256": null,
-  "status": "PENDING_ACTIVATION"
+  "source_payload_sha256": "88722d8aa6d025cfcc3562f29593cc87d84c6a073bf211e8c21d89adddd4d7e9",
+  "status": "ACTIVATED_FROZEN"
 }

@@ -104,10 +104,10 @@ def main() -> int:
     lt = tables["leakage_gap.tex"]
     check("leakage_brier_gap_-0.0059_in_table", "-0.0059" in lt, f"{bgap}")
     check("leakage_auroc_gap_-0.0124_in_table", "-0.0124" in lt, f"{agap}")
-    # headline must be framed as a null in prose, never spun as a win
-    check("null_framed_as_null_in_prose",
-          "measured null" in main_tex
-          and ("transparently" in main_tex or "honest" in main_tex)
+    # Headline is descriptive only: no post-hoc equivalence or zero-effect claim.
+    check("split_contrast_framed_descriptively",
+          "report the contrast descriptively" in main_tex
+          and "zero-effect" in main_tex
           and "unfulfilled element as a deviation" in main_tex, "")
     check("no_winning_model_claim_in_prose",
           "no winning model" in main_tex and ai["no_winning_model_claim"] is True, "")
@@ -172,7 +172,8 @@ def main() -> int:
           or "resolution floor" in main_tex, "")
     # Three self-referential bookkeeping records must be explained plainly.
     check("three_self_referential_records_disclosed_in_prose",
-          "Three bookkeeping records are self-referential" in main_tex
+          re.search(r"Three\s+original\s+execution-bookkeeping\s+records\s+are\s+self-referential",
+                    main_tex) is not None
           and "cannot contain their own final fingerprints" in main_tex, "")
     check("held_out_not_untouched",
           "held out from model development" in main_tex

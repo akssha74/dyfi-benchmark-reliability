@@ -111,7 +111,7 @@
       "detail": "-0.012396868243"
     },
     {
-      "check": "null_framed_as_null_in_prose",
+      "check": "split_contrast_framed_descriptively",
       "ok": true,
       "detail": ""
     },

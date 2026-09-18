@@ -6,19 +6,19 @@
 \label{tab:pairwise}
 \begin{tabular}{llccc l}
 \toprule
-Model A & Model B & A $-$ B & 95\% CI & $P$(A better) & Conclusion \\
+Model A & Model B & A $-$ B & 95\% CI & $P$(A better) & CI relation \\
 \midrule
-B0\_no\_skill & B1\_magnitude\_only\_logit & 0.0339 & [0.0171, 0.0511] & 0.000 & resolved \\
-B0\_no\_skill & B2\_source\_only\_logit & 0.0515 & [0.0342, 0.0681] & 0.000 & resolved \\
-B0\_no\_skill & B4\_random\_forest & 0.0455 & [0.0307, 0.0598] & 0.000 & resolved \\
-B0\_no\_skill & B5\_xgboost & 0.0507 & [0.0319, 0.0682] & 0.000 & resolved \\
-B1\_magnitude\_only\_logit & B2\_source\_only\_logit & 0.0176 & [0.0101, 0.0249] & 0.000 & resolved \\
-B1\_magnitude\_only\_logit & B4\_random\_forest & 0.0115 & [0.0023, 0.0205] & 0.009 & resolved \\
-B1\_magnitude\_only\_logit & B5\_xgboost & 0.0168 & [0.0055, 0.0273] & 0.001 & resolved \\
-B2\_source\_only\_logit & B4\_random\_forest & -0.0060 & [-0.0118, 0.0002] & 0.970 & unresolved \\
-B2\_source\_only\_logit & B5\_xgboost & -0.0008 & [-0.0078, 0.0068] & 0.613 & unresolved \\
-B4\_random\_forest & B5\_xgboost & 0.0052 & [0.0003, 0.0099] & 0.017 & resolved \\
+B0\_no\_skill & B1\_magnitude\_only\_logit & 0.0339 & [0.0171, 0.0511] & 0.000 & excludes 0 \\
+B0\_no\_skill & B2\_source\_only\_logit & 0.0515 & [0.0342, 0.0681] & 0.000 & excludes 0 \\
+B0\_no\_skill & B4\_random\_forest & 0.0455 & [0.0307, 0.0598] & 0.000 & excludes 0 \\
+B0\_no\_skill & B5\_xgboost & 0.0507 & [0.0319, 0.0682] & 0.000 & excludes 0 \\
+B1\_magnitude\_only\_logit & B2\_source\_only\_logit & 0.0176 & [0.0101, 0.0249] & 0.000 & excludes 0 \\
+B1\_magnitude\_only\_logit & B4\_random\_forest & 0.0115 & [0.0023, 0.0205] & 0.009 & excludes 0 \\
+B1\_magnitude\_only\_logit & B5\_xgboost & 0.0168 & [0.0055, 0.0273] & 0.001 & excludes 0 \\
+B2\_source\_only\_logit & B4\_random\_forest & -0.0060 & [-0.0118, 0.0002] & 0.970 & includes 0 \\
+B2\_source\_only\_logit & B5\_xgboost & -0.0008 & [-0.0078, 0.0068] & 0.613 & includes 0 \\
+B4\_random\_forest & B5\_xgboost & 0.0052 & [0.0003, 0.0099] & 0.017 & excludes 0 \\
 \bottomrule
 \end{tabular}
-\par\vspace{2pt}\footnotesize\emph{Note.} Lower Brier score is better, so a negative A $-$ B difference favors model A. ``Resolved'' means that the 95\% interval excludes zero; ``unresolved'' means that it includes zero. Because no numerical equivalence margin was specified before analysis, unresolved comparisons are not labelled equivalent. B0 is the no-skill reference; B1 is magnitude-only logistic regression; B2 is source-only logistic regression; B4 is random forest; and B5 is XGBoost.
+\par\vspace{2pt}\footnotesize\emph{Note.} Lower Brier score is better, so a negative A $-$ B difference favors model A. Intervals use 2,000 Monte Carlo bootstrap draws; near-zero endpoints are interpreted cautiously and not as stable ranking guarantees. Because no numerical equivalence margin was specified before analysis, intervals including zero are not labelled equivalent. B0 is the no-skill reference; B1 is magnitude-only logistic regression; B2 is source-only logistic regression; B4 is random forest; and B5 is XGBoost.
 \end{table}

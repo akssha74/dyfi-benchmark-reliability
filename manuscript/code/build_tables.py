@@ -100,7 +100,7 @@ def build() -> Dict[str, object]:
     body.append([r"\quad Development", intc(roles["development"]["n"]), intc(roles["development"]["positive"]), f3(roles["development"]["prevalence"]), "--"])
     body.append([r"\quad Construction (train+dev)", intc(cf["construction_total"]["n"]), intc(cf["construction_total"]["positive"]), f3(cf["construction_total"]["prevalence"]), intc(cf["sequences"]["construction"])])
     body.append([r"\quad External temporal holdout", intc(roles["external_temporal_holdout"]["n"]), intc(roles["external_temporal_holdout"]["positive"]), f3(roles["external_temporal_holdout"]["prevalence"]), intc(cf["sequences"]["holdout"])])
-    body.append([r"Temporal-straddle excluded", intc(cf["temporal_straddle_excluded"]), intc(cf["temporal_straddle"]["positive"]), "--", "--"])
+    body.append([r"Temporal-straddle excluded", intc(cf["temporal_straddle_excluded"]), intc(cf["temporal_straddle"]["positive"]), "--", intc(cf["sequences"]["straddle"])])
     reconciliation = (
         " The eligible severe count reconciles as " + intc(cf["n_eligible_severe"]) + " = "
         + intc(roles["train"]["positive"]) + " (train) $+$ "
@@ -117,7 +117,7 @@ def build() -> Dict[str, object]:
             "tab:cohort", "Cohort accounting and outcome-independent role assignment for the frozen USGS DYFI $M\\geq5$ snapshot.",
             "lrrrr",
             ["Stage", "Events", "Severe", "Severe rate", "Sequences"], body,
-            "Roles were fixed without using outcomes. Two source-verification records were removed before the 2,362-event eligible cohort was constructed and are not included in these rows. Severe $=1$ when an event's maximum community decimal intensity (CDI) is at least 6." + reconciliation))
+            "Roles were fixed without using outcomes. Two event identifiers prelisted for quarantine are absent from the frozen snapshot, so the safeguard removes no version~1 record. Severe $=1$ when an event's maximum community decimal intensity (CDI) is at least 6." + reconciliation))
     shas["cohort_roles.csv"] = _write_csv("cohort_roles.csv", t1_rows_csv[0], t1_rows_csv[1:])
     captions["cohort_roles"] = {
         "caption": "Cohort construction and role assignment.",
@@ -141,11 +141,11 @@ def build() -> Dict[str, object]:
             "Sensitivity to the severe-intensity cutoff on the temporal holdout, evaluated with the source-only logistic regression (B2).",
             "lrrr",
             ["Maximum CDI cutoff", "Severe rate", "Brier score", "AUROC"], body,
-            "$^a$~Prespecified primary cutoff ($\\geq 6$). CDI denotes community decimal intensity. In the construction sample, " + f3(ep["near_threshold_fraction_construction"]) + " of events lie within 0.5 CDI units of the primary cutoff, and the no-skill Brier score is " + f3(ep["no_skill_brier_floor_construction"]) + ". Lower Brier score and higher AUROC indicate better performance."))
+            "$^a$~Prespecified primary cutoff ($\\geq 6$). CDI denotes community decimal intensity. The sensitivity rows relabel and rescore fixed B2 probabilities; B2 is not refit or recalibrated for the alternate cutoffs. In the construction sample, " + f3(ep["near_threshold_fraction_construction"]) + " of events lie within 0.5 CDI units of the primary cutoff, and the no-skill Brier score is " + f3(ep["no_skill_brier_floor_construction"]) + ". Lower Brier score and higher AUROC indicate better performance."))
     shas["endpoint_threshold_sensitivity.csv"] = _write_csv("endpoint_threshold_sensitivity.csv", csv2[0], csv2[1:])
     captions["endpoint_threshold_sensitivity"] = {
         "caption": "Endpoint threshold sensitivity.",
-        "claim_neutral_interpretation": "Shows the endpoint is not a single-grid artifact; prevalence and probe scores move smoothly across 5.5/6.0/6.5. No model-superiority claim.",
+        "claim_neutral_interpretation": "Rescores fixed B2 probabilities at 5.5/6.0/6.5 without alternate refitting or recalibration. It does not test aggregation-grid robustness or model superiority.",
     }
 
     # ---- Table 3: baseline performance + uncertainty + calibration -----
@@ -198,14 +198,14 @@ def build() -> Dict[str, object]:
         os.path.join(TABLES, "leakage_gap.tex"),
         _table_float(
             "tab:leakage",
-            "Cross-validated performance of the fixed random-forest diagnostic (B4) under three fold-assignment schemes in the construction sample.",
+            "Cross-validated performance of a fixed leakage diagnostic (random forest: 300 trees, unrestricted depth) under three fold-assignment schemes in the construction sample.",
             "lrrrr",
             ["Fold assignment", "Brier score", "AUROC", "Log-loss", "Folds"], body,
-            "Using unrounded values, the sequence-grouped minus random-event Brier difference is " + f4(lk["brier_inflation_seq_minus_random"]) + "; the random-event minus sequence-grouped AUROC difference is " + f4(lk["auroc_inflation_random_minus_seq"]) + ". The preregistration required uncertainty but did not define the paired interval estimator; the executed report retained point estimates only. This deviation is disclosed, and no post-hoc interval or equivalence claim is added. Because there is one row per event, event grouping imposes the same grouping constraint as random-event assignment, but its deterministic fold allocation is different and can produce different scores."))
+            "The diagnostic is distinct from the tuned temporal-holdout baseline B4 (depth 3). Using unrounded values, the sequence-grouped minus random-event Brier difference is " + f4(lk["brier_inflation_seq_minus_random"]) + "; the random-event minus sequence-grouped AUROC difference is " + f4(lk["auroc_inflation_random_minus_seq"]) + ". The preregistration required uncertainty but did not define the paired interval estimator; the executed report retained point estimates only. This deviation is disclosed, and no post-hoc interval or equivalence claim is added. Because there is one row per event, event grouping imposes the same grouping constraint as random-event assignment, but its deterministic fold allocation is different and can produce different scores."))
     shas["leakage_gap.csv"] = _write_csv("leakage_gap.csv", csv4[0], csv4[1:])
     captions["leakage_gap"] = {
-        "caption": "Leakage-inflation across split schemes.",
-        "claim_neutral_interpretation": "Quantifies naive-vs-grouped split optimism for a fixed diagnostic model. The gap is near zero and slightly reversed, so it is reported as a null result rather than a gain.",
+        "caption": "Split-performance contrast across fold-assignment schemes.",
+        "claim_neutral_interpretation": "Reports a point contrast for a fixed diagnostic configuration distinct from B4. The gap is small and reversed, but has no interval and is not an equivalence, zero-effect, leakage, or gain claim.",
     }
 
     # ---- Table 5: full pairwise matrix (F2) ----------------------------
@@ -218,7 +218,7 @@ def build() -> Dict[str, object]:
         body.append([
             esc(e["baseline_a"]), esc(e["baseline_b"]), f4(e["point_diff_a_minus_b"]),
             f"[{f4(e['ci'][0])}, {f4(e['ci'][1])}]", f3(e["prob_a_better"]), f3(e["prob_tie"]),
-            ("resolved" if e["resolved"] else "unresolved"),
+            ("excludes 0" if e["resolved"] else "includes 0"),
             (esc(e["directional_better_baseline"]) if e["directional_better_baseline"] else "--"),
         ])
         csv5.append([e["baseline_a"], e["baseline_b"], e["point_diff_a_minus_b"], e["ci"][0], e["ci"][1],
@@ -230,13 +230,13 @@ def build() -> Dict[str, object]:
             "tab:pairwise",
             "Pairwise comparison of baseline Brier scores on the temporal holdout using a paired sequence-cluster bootstrap.",
             "llccc l",
-            ["Model A", "Model B", "A $-$ B", "95\\% CI", "$P$(A better)", "Conclusion"],
+            ["Model A", "Model B", "A $-$ B", "95\\% CI", "$P$(A better)", "CI relation"],
             [[r[0], r[1], r[2], r[3], r[4], r[6]] for r in body],
-            "Lower Brier score is better, so a negative A $-$ B difference favors model A. ``Resolved'' means that the 95\\% interval excludes zero; ``unresolved'' means that it includes zero. Because no numerical equivalence margin was specified before analysis, unresolved comparisons are not labelled equivalent. B0 is the no-skill reference; B1 is magnitude-only logistic regression; B2 is source-only logistic regression; B4 is random forest; and B5 is XGBoost."))
+            "Lower Brier score is better, so a negative A $-$ B difference favors model A. Intervals use 2,000 Monte Carlo bootstrap draws; near-zero endpoints are interpreted cautiously and not as stable ranking guarantees. Because no numerical equivalence margin was specified before analysis, intervals including zero are not labelled equivalent. B0 is the no-skill reference; B1 is magnitude-only logistic regression; B2 is source-only logistic regression; B4 is random forest; and B5 is XGBoost."))
     shas["pairwise_matrix.csv"] = _write_csv("pairwise_matrix.csv", csv5[0], csv5[1:])
     captions["pairwise_matrix"] = {
         "caption": "Full pairwise ranking-stability matrix.",
-        "claim_neutral_interpretation": "Complete directional stability for every eligible pair. Equivalent class not asserted (no registered margin). Reinforces no-winning-model; overturns no headline.",
+        "claim_neutral_interpretation": "Reports whether each finite-bootstrap interval includes zero, with near-boundary results interpreted cautiously. No equivalence class or winning model is asserted.",
     }
 
     # ---- Table 6: temporal / geographic subgroup summaries -------------
@@ -275,11 +275,13 @@ def build() -> Dict[str, object]:
 
     # ---- Table 7: exclusions / deviations ------------------------------
     body = [
-        ["B3 expanded-metadata model", "Omitted from temporal holdout", "It includes event year, which would reveal the evaluation period."],
-        ["Published DYFI intensity equation", "Omitted as a comparator", "It requires unavailable site distance and tectonic-region inputs, plus an unvalidated conversion to event probabilities."],
-        ["Registered geographic transport evaluation", "Not executed", "The released geographic result is a subgroup summary of temporal-holdout predictions, not a leave-region-out evaluation; no geographic generalization claim is made."],
-        ["Split-contrast uncertainty", "Deviation disclosed", "The preregistration required uncertainty but did not define the paired interval estimator; the executed result retained point estimates only, and no post-hoc interval is added."],
-        ["Equivalence interpretation", "Descriptive comparisons only", "No numerical equivalence margin was specified before analysis, so the paper reports resolved or unresolved differences without claiming equivalence."],
+        ["B3 expanded-metadata model", "Omitted from temporal holdout", "Includes event year, which reveals the temporal evaluation period."],
+        ["Published DYFI intensity equation", "Omitted as comparator", "Needs unavailable site distance, tectonic-region inputs, and probability conversion."],
+        ["Two prelisted quarantine IDs", "No effect in version 1", "Both are absent from the frozen snapshot; no released record is excluded."],
+        ["Geographic transport evaluation", "Not executed", "Only temporal-holdout geographic subgroups are reported; no leave-region-out or generalization claim."],
+        ["Aggregation-grid sensitivity", "Not executed", "Required but absent; only threshold sensitivity of fixed predictions is reported."],
+        ["Split-contrast uncertainty", "Deviation disclosed", "Required, but no paired estimator was defined; the result is point-only with no post-hoc interval."],
+        ["Equivalence interpretation", "Descriptive only", "No numerical margin was specified; intervals are reported without equivalence labels."],
     ]
     csv7 = [["item", "disposition", "reason"]]
     for r in body:
@@ -295,7 +297,7 @@ def build() -> Dict[str, object]:
     shas["exclusions_deviations.csv"] = _write_csv("exclusions_deviations.csv", csv7[0], csv7[1:])
     captions["exclusions_deviations"] = {
         "caption": "Protocol decisions affecting interpretation.",
-        "claim_neutral_interpretation": "Explains excluded comparators and records, the lack of an equivalence claim, integrity bookkeeping, and interpretation of the near-zero split comparison.",
+        "claim_neutral_interpretation": "Discloses omitted comparators, non-operative quarantine, unexecuted geographic and aggregation analyses, missing split uncertainty, and the absence of an equivalence margin.",
     }
 
     # ---- Table 8: data / reproducibility manifest ----------------------

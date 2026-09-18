@@ -12,7 +12,7 @@ Following Gebru et al., *Datasheets for Datasets*.
   cross-system transport, causal inference, or claiming a winning model.
 
 > **Post-execution (2026-09-01).** The single authorised one-shot protected run
-> has executed on the pinned snapshot (`sha256 88722d8a…`, 7,520 GeoJSON feature records). The
+> has executed on the pinned snapshot (`sha256 88722d8a…`, 7,520 GeoJSON records). The
 > released `event_level_table.csv` now carries **2,362 eligible instances** across
 > all roles (train 1,573 / development 357 / external_temporal_holdout 430 /
 > temporal_straddle_excluded 2). Severe prevalence: 0.2855 (construction), 0.3512
@@ -26,33 +26,38 @@ Following Gebru et al., *Datasheets for Datasets*.
   pinned instant governs). Eligible after `num_responses>=10` + Q1–Q5: 2,362.
 - **Label.** `severe_label = 1[maxCDI>=6]`; primary threshold 6.0 with sensitivity
   at 5.5/6.5.
-- **Splits.** Sequence-grouped `train` / `development` / `external_temporal_holdout`
-  (primary, cutoff year 2023) + geographic transport secondary; assigned by a
-  pre-hashed, label-independent rule.
+- **Splits.** Sequence-grouped `train` / `development` /
+  `external_temporal_holdout` (cutoff year 2023), assigned by a pre-hashed,
+  label-independent rule. Geographic values are subgroups of temporal-holdout
+  predictions, not a leave-region-out split.
 - **PII.** None redistributed; only event-level metadata, labels, non-predictive
-  eligibility fields, roles, and provenance hashes.
+  eligibility fields, identifiers, and roles.
 
 ## Collection & preprocessing
 - **Source.** USGS DYFI + ComCat via FDSNWS (public domain, DOI 10.5066/F7J101C8).
 - **Eligibility.** `num_responses >= 10` (data-informed, disclosed; eligibility
   only).
 - **Grouping.** Single-link space-time connected components (100 km / 30 d).
-- **Quarantine.** Q1–Q5 (non-earthquake type, outside envelope, corrupt geometry,
-  duplicate authoritative origin, explicit manual list incl. two inspected ids).
-- **Provenance.** Per-event product version id, access instant, payload SHA-256;
-  snapshot pinned to one instant.
+- **Quarantine.** Q1–Q5 cover event type, envelope, geometry, duplicate origins,
+  and an explicit list. The two prelisted identifiers are absent from the frozen
+  snapshot, so quarantine excludes no version 1 record.
+- **Provenance.** The activated source-locator manifest records the snapshot
+  access instant and source-payload SHA-256. The event table does not contain
+  per-event product-version or payload-hash columns.
 
 ## Uses
-- **Recommended.** Benchmarking leakage-safe evaluation, measuring naive-split
-  optimism inflation, calibration/uncertainty studies, baseline-ranking-stability
-  analysis under a fixed non-selective suite.
-- **Cautions.** The endpoint may be magnitude-dominated; many baseline differences
-  are `unresolved`. maxCDI is ascertainment-sensitive; the eligibility filter
-  mitigates but does not remove it. Descriptive-retrospective only.
+- **Recommended.** Benchmarking leakage-safe evaluation, describing split
+  behavior, calibration/uncertainty studies, and baseline-ranking analysis under
+  a fixed non-selective suite.
+- **Cautions.** The endpoint may be magnitude-dominated; the two lowest-Brier
+  models have an uncertain direct comparison. The split contrast has no retained
+  interval. Alternate threshold rows rescore fixed predictions; aggregation-grid
+  and sequence-definition sensitivities were not executed. maxCDI remains
+  ascertainment-sensitive. Descriptive and retrospective only.
 
 ## Distribution & maintenance
 - **Licence.** Derived data CC0 1.0; code MIT.
-- **Public release.** `https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.3`.
+- **Public release.** `https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.4`.
 - **Versioning.** `v1 = <access-instant>` snapshot; any later USGS revision defines
   a new version, never a silent overwrite.
 - **Reconstruction.** Fetch-and-verify source-locator manifest + payload hashes;

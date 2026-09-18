@@ -73,6 +73,10 @@ def _save(fig, name, meta_title, meta_desc):
     png = os.path.join(FIGDIR, name + ".png")
     pdf = os.path.join(FIGDIR, name + ".pdf")
     fig.savefig(svg, format="svg", bbox_inches="tight", pad_inches=0.10, metadata=svg_meta)
+    with open(svg, encoding="utf-8") as f:
+        svg_text = f.read()
+    with open(svg, "w", encoding="utf-8", newline="\n") as f:
+        f.write("\n".join(line.rstrip() for line in svg_text.splitlines()) + "\n")
     fig.savefig(png, format="png", dpi=300, bbox_inches="tight", pad_inches=0.10, metadata=png_meta)
     fig.savefig(pdf, format="pdf", bbox_inches="tight", pad_inches=0.10, metadata=pdf_meta)
     plt.close(fig)
@@ -164,7 +168,7 @@ def fig_cohort_flow(D):
     # --- Footnotes ---
     nq = len(cf["quarantine_inspected_ids"])
     ax.text(2.75, 2.40,
-            f"Source-verification records: {nq}\nremoved before eligible cohort",
+            f"Prelisted quarantine IDs: {nq}\nabsent from frozen snapshot",
             ha="center", va="center", fontsize=8.0, color=CB["rule"])
     ax.text(7.25, 2.40,
             f"Straddle events: {cf['temporal_straddle_excluded']}\nincluded in eligible cohort",

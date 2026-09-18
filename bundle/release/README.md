@@ -21,10 +21,11 @@ The primary feature set contains magnitude and depth. Response count is used
 only to establish eligibility and is forbidden as a model input. The severe
 label is event-maximum community decimal intensity (CDI) of at least 6.
 
-The observed random-versus-sequence-grouped split difference is reported as a
-descriptive measured null. Learned baselines improve on the no-skill reference,
-but the direct comparison between the two lowest-Brier models is unresolved.
-No winning model is claimed.
+The observed random-versus-sequence-grouped split difference is small and
+slightly reversed. It is a descriptive point contrast without an interval,
+equivalence claim, or zero-effect inference. Learned baselines improve on the
+no-skill reference, but the direct comparison between the two lowest-Brier
+models remains uncertain. No winning model is claimed.
 
 ## Scope
 

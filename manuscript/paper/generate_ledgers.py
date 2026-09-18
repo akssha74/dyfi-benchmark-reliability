@@ -92,6 +92,8 @@ def build_claim_ledger(ai: dict) -> list[dict]:
         "/cohort_flow/sequences/construction", ["prose", "tab:cohort", "fig:flow"])
     add("C11", "temporal-holdout seismic-sequence count", cf["sequences"]["holdout"],
         "/cohort_flow/sequences/holdout", ["prose", "tab:cohort", "fig:flow"])
+    add("C12", "temporal-straddle seismic-sequence count", cf["sequences"]["straddle"],
+        "/cohort_flow/sequences/straddle", ["tab:cohort"])
     for role_key, label in (("train", "training"), ("development", "development")):
         role = roles[role_key]
         add(f"C_{role_key}_positive", f"{label} severe-event count", role["positive"],
@@ -115,11 +117,11 @@ def build_claim_ledger(ai: dict) -> list[dict]:
         "/endpoint/no_skill_brier_floor_construction", ["prose", "tab:threshold"])
 
     lh = ai["leakage_inflation_headline"]
-    add("L1", "Brier leakage-inflation gap (sequence minus random), a measured NULL",
+    add("L1", "Brier split contrast (sequence minus random), reported descriptively",
         r3(lh["brier_inflation_seq_minus_random"]),
         "/leakage_inflation_headline/brier_inflation_seq_minus_random",
         ["abstract", "prose", "tab:leakage", "fig:leakage"])
-    add("L2", "AUROC leakage-inflation gap (random minus sequence), a measured NULL",
+    add("L2", "AUROC split contrast (random minus sequence), reported descriptively",
         r3(lh["auroc_inflation_random_minus_seq"]),
         "/leakage_inflation_headline/auroc_inflation_random_minus_seq",
         ["abstract", "prose", "tab:leakage", "fig:leakage"])
@@ -204,8 +206,6 @@ def build_claim_ledger(ai: dict) -> list[dict]:
         "/reproducibility_manifest/fit_cap", ["prose"])
     add("R_run_token", "one-shot run tokens consumed", rm["run_token_consumed_count"],
         "/reproducibility_manifest/run_token_consumed_count", ["prose"])
-    add("R_matched", "load-bearing files hash-matched", rm["n_load_bearing_files_matched"],
-        "/reproducibility_manifest/n_load_bearing_files_matched", ["prose"])
     add("F1_stale", "self-referential expected-stale manifest entries (F1)",
         rm["n_self_referential_stale"],
         "/reproducibility_manifest/n_self_referential_stale", ["prose"])
@@ -285,7 +285,7 @@ def build_build_ledger() -> dict:
         "inputs_are_immutable": True,
         "network_writes": False,
         "public_repository": "https://github.com/akssha74/dyfi-benchmark-reliability",
-        "public_release_tag": "v1.0.3",
+        "public_release_tag": "v1.0.4",
         "doi": None,
         "submitted": False,
         "main_tex_sha256": sha256(HERE / "main.tex"),

@@ -5,4 +5,4 @@ Train,1573,449,0.285,--
 Development,357,102,0.286,--
 Construction (train+dev),1930,551,0.285,1530
 External temporal holdout,430,151,0.351,354
-Temporal-straddle excluded,2,1,--,--
+Temporal-straddle excluded,2,1,--,1

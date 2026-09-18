@@ -194,12 +194,12 @@
   "determinism": {
     "byte_identical_across_two_runs": true,
     "differing_artifacts": [],
-    "n_artifacts": 45
+    "n_artifacts": 42
   },
   "file_integrity": {
     "all_ok": true,
     "issues": [],
-    "n_artifacts": 43
+    "n_artifacts": 40
   },
   "lint": {
     "clean": true,

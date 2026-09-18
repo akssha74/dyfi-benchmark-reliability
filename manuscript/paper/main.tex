@@ -31,8 +31,8 @@
 \setlength{\intextsep}{8pt plus 2pt minus 2pt}
 \AtBeginDocument{%
   \hypersetup{bookmarksdepth=2}%
-  \setlength{\bibsep}{1.5pt plus 0.5pt minus 0.5pt}%
-  \def\bibfont{\fontsize{8.5pt}{10.5pt}\selectfont}%
+  \setlength{\bibsep}{0.5pt plus 0.3pt minus 0.2pt}%
+  \def\bibfont{\fontsize{8pt}{9.2pt}\selectfont}%
 }
 
 \begin{document}
@@ -63,7 +63,8 @@ and a protected temporal evaluation. The frozen $M\geq5$ snapshot contains
 the fixed random-forest diagnostic, the observed random-versus-sequence-grouped
 differences were small and slightly favored sequence grouping (Brier-score
 difference $-0.006$; area under the receiver-operating-characteristic curve
-[AUROC] difference $-0.012$); we report this transparently as a measured null.
+[AUROC] difference $-0.012$). We report this as a descriptive contrast without
+equivalence or zero-effect inference.
 Every learned baseline improved on the no-skill reference, while the direct
 comparison between the two lowest-Brier models remained unresolved. The
 benchmark provides a versioned, leakage-audited reference for future methods,
@@ -86,8 +87,9 @@ wald2011dyfi,quitoriano2020dyfi}. Because the felt-intensity outcome of an event
 is only realised after responses accumulate, a natural retrospective question is
 how well the \emph{severe} outcome of an event---an event-maximum intensity in
 the damaging range ($\mathrm{maxCDI}\geq 6$)---can be anticipated from
-outcome-blind source metadata that are known at or near origin time (magnitude,
-depth, location, origin time). To protect the temporal holdout, however, the
+outcome-blind source metadata in the frozen catalogue snapshot (magnitude,
+depth, location, origin time). These are preferred catalogue values at the
+snapshot instant, not guaranteed first-alert or real-time values. To protect the temporal holdout, however, the
 primary models use only magnitude and depth; location and origin time appear
 only in restricted sensitivity analyses. This defines a descriptive,
 retrospective target quantity,
@@ -179,6 +181,13 @@ which is precisely why our protocol uses response count only to determine
 eligibility and forbids it as a predictive feature (Section~\ref{sec:data}).
 We reuse these provenance facts rather than re-deriving them.
 
+\paragraph{Domain benchmark resources.} The INGe resource links Italian
+macroseismic intensities to colocated strong-motion records for benchmarking
+intensity--ground-motion relationships~\citep{oliveti2021inge}. It is a
+domain-near resource precedent, but differs from the present event-level USGS
+DYFI classification task, source-only feature boundary, leakage audit, and
+protected temporal evaluation.
+
 \paragraph{Machine learning on felt/macroseismic intensity.} Recent studies
 predict macroseismic intensity with random forests and gradient boosting from
 instrumental or catalogue features~\citep{patelli2026macroseismic,
@@ -223,7 +232,7 @@ DYFI benchmark} itself: an executable six-category audit covering forbidden
 fields, proxy variables, and split contamination; a prespecified,
 sequence-grouped role assignment with a
 temporal external holdout, a documented severe endpoint with threshold and
-aggregation sensitivity, a fixed non-selective baseline suite with a no-skill
+threshold sensitivity, a fixed non-selective baseline suite with a no-skill
 comparator, a calibration/uncertainty/tie contract, an exact-reproduction
 guarantee, and a quantified naive-versus-grouped leakage-inflation headline. A
 current-year search located no released resource occupying this exact
@@ -283,14 +292,16 @@ tuning choices, and role membership is assigned by a prespecified,
 outcome-independent rule that never uses the label. We therefore describe the
 external holdout as \emph{held out from model development with aggregate
 feasibility previously known}, and we deliberately do \emph{not} call it
-``untouched'' or ``confirmatory.'' Two events examined during source
-verification are conservatively excluded from every analysis role because their
-aggregate counts had already been seen (Table~\ref{tab:cohort}); the complete
-list of protocol decisions is reported in
+``untouched'' or ``confirmatory.'' Two event identifiers were prelisted for
+quarantine because their aggregate counts had been seen during source
+verification; neither identifier occurs in the frozen snapshot, so the rule is
+non-operative in version~1 and excludes no record. The complete list of protocol decisions is reported in
 Section~\ref{sec:repro-results}. No
 respondent-level personally identifying information is redistributed; only
 event-level source metadata, the severe label, the eligibility-only response
-count, role assignment, and per-event provenance hashes are released. The
+count, identifiers, and role assignments are released. Snapshot-level
+provenance is supplied by the activated source-locator manifest and source
+payload SHA-256; version~1 does not claim per-event product-version hashes. The
 release bundle follows datasheet-for-datasets
 documentation~\citep{gebru2021datasheets} and findable, accessible,
 interoperable, and reusable (FAIR) data
@@ -376,8 +387,10 @@ Calibration and feasibility states are \emph{derived}, not hard-coded: a
 constant-prevalence predictor has no identifiable calibration slope, so the
 table reports that value as unavailable. Pairwise ranking uses a paired
 sequence-cluster bootstrap Brier difference with an explicit tie probability;
-each pair is reported as resolved (95\% interval excludes zero) or unresolved,
-with a tie-aware joint ordering (Section~\ref{sec:pairwise-results}).
+the table reports whether each 95\% interval includes zero, together with a
+tie-aware joint ordering (Section~\ref{sec:pairwise-results}). Because the
+intervals use 2{,}000 Monte Carlo draws, near-zero endpoints are interpreted
+cautiously rather than as stable ranking guarantees.
 
 \subsection{Protected evaluation and reproducibility}\label{sec:oneshot}
 
@@ -408,9 +421,9 @@ filter (severe prevalence 0.298; 703 severe events), partitioned into 1{,}573
 train, 357 development, and a 430-event temporal holdout, with two
 temporal-straddle exclusions. Thus 2{,}360 of the 2{,}362 eligible events receive
 analysis roles; they contain 702 severe events, and the 703rd severe event is one
-of the two straddle exclusions. Separately, two records examined during source
-verification were removed before the eligible cohort was constructed and are
-not part of the 2{,}362-event total. Construction severe prevalence is 0.285 and
+of the two straddle exclusions. Two identifiers prelisted for quarantine are
+absent from the frozen snapshot, so that safeguard removes no version~1 record.
+Construction severe prevalence is 0.285 and
 holdout prevalence is 0.351; the higher holdout prevalence reflects the temporal
 transport shift and is reported, not adjusted.
 
@@ -436,7 +449,10 @@ source-only logistic-regression Brier score and AUROC move monotonically (Brier
 0.240, 0.181, 0.143;
 AUROC 0.734, 0.786, 0.815). On the construction corpus the near-threshold
 fraction ($|\mathrm{maxCDI}-6|<0.5$) is 0.164 and the no-skill Brier score is
-0.204, bounding the difficulty of the primary endpoint.
+0.204, bounding the difficulty of the primary endpoint. This sensitivity check
+relabels and rescores the fixed B2 probabilities; it does not refit or
+recalibrate B2 at 5.5 or 6.5. The preregistered aggregation-grid sensitivity was
+not executed and is disclosed as a deviation (Table~\ref{tab:exclusions}).
 
 \begin{figure*}[t]
 \centering
@@ -444,7 +460,8 @@ fraction ($|\mathrm{maxCDI}-6|<0.5$) is 0.164 and the no-skill Brier score is
 \caption{Sensitivity analyses for the source-only logistic regression (B2).
 (a) Performance as the severe-intensity cutoff varies. (b) Performance
 within the 2023 ($n=250$) and 2024 ($n=180$) portions of the temporal holdout.
-Lower Brier score and higher AUROC are better.}
+The cutoff analysis rescores fixed B2 probabilities without refitting. Lower
+Brier score and higher AUROC are better.}
 \label{fig:threshold}
 \end{figure*}
 
@@ -453,9 +470,13 @@ Lower Brier score and higher AUROC are better.}
 \subsection{Observed split-performance differences}\label{sec:leakage-results}
 
 The resource's headline quantity is the optimism of naive random splitting
-relative to the sequence-grouped protocol, measured for a fixed random-forest
-diagnostic under three fold-assignment schemes on the construction corpus
-(Table~\ref{tab:leakage}, Fig.~\ref{fig:leakage}). On this $M\geq5$
+relative to the sequence-grouped protocol, measured for a fixed leakage
+diagnostic---a random forest with 300 trees and unrestricted depth---under three
+fold-assignment schemes on the construction corpus
+(Table~\ref{tab:leakage}, Fig.~\ref{fig:leakage}).
+This diagnostic is distinct from the tuned temporal-holdout baseline B4, whose
+maximum depth is 3.
+On this $M\geq5$
 one-row-per-event universe the point estimates are small and slightly reversed:
 the sequence-minus-random Brier difference is $-0.0059$ and the
 random-minus-sequence AUROC difference is $-0.0124$, calculated from unrounded
@@ -464,24 +485,26 @@ than the naive random split, not worse. The preregistration committed to
 uncertainty reporting for this contrast but did not define a paired interval
 estimator; the executed result contains point estimates only. We disclose this
 unfulfilled element as a deviation and do not invent a post-hoc interval.
-Accordingly, we report the contrast descriptively as a measured null, not as
-evidence of equivalence, leakage, or a win. Its
-explanation is structural: with 1{,}885 largely singleton
-sequences (1{,}530 in construction), there is little within-sequence
-near-duplicate structure for a random split to leak, so the sequence-grouping
-choice has little practical effect in this corpus. With one row per event,
+Accordingly, we report the contrast descriptively, not as
+evidence of equivalence, a true zero effect, leakage, or a win. Its
+plausible structural context is that 1{,}885 sequences are largely singleton
+(1{,}530 in construction), leaving limited within-sequence near-duplicate
+structure for a random split to leak. This does not prove a small true effect.
+With one row per event,
 event grouping imposes the same grouping constraint as random-event assignment,
 but its deterministic fold allocation differs and therefore produces different
 scores. It is reported as an intermediate control. The protocol remains reusable on datasets with more
-multi-event sequences. In the present sample, however, the result does not
-demonstrate practically important leakage from random splitting.
+multi-event sequences. The present result neither demonstrates practically
+important leakage from random splitting nor establishes its absence.
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.98\textwidth]{fig_leakage_split.pdf}
-\caption{Five-fold performance of the fixed random-forest diagnostic under
+\caption{Five-fold performance of the fixed leakage diagnostic (random forest:
+300 trees, unrestricted depth) under
 random-event, event-grouped, and sequence-grouped fold assignment in the
-construction sample. The small, slightly reversed differences provide no
+construction sample. It is distinct from tuned temporal-holdout baseline B4.
+The small, slightly reversed differences provide no
 evidence of performance inflation from random splitting in this sample. Dashed
 lines mark the corresponding random-event score in each panel.}
 \label{fig:leakage}
@@ -519,17 +542,18 @@ because it contains event year, which would reveal the temporal holdout period
 Table~\ref{tab:pairwise} reports all ten pairwise Brier-score comparisons. Every
 learned baseline performs better than the no-skill reference B0 (all four
 intervals exclude zero). Among the learned models, the B2--B4 and B2--B5
-comparisons are \emph{unresolved} because their intervals include zero. The
-remaining learned-model comparisons resolve directionally. In the joint
+comparisons have intervals that include zero. The remaining learned-model
+intervals exclude zero, although the B4--B5 lower endpoint (0.0003) is
+near the Monte Carlo boundary. In the joint
 bootstrap ordering, B2 has the highest probability of being uniquely best
 (0.613), followed by B5 (0.387), but the direct B2--B5 comparison remains
-unresolved. These results therefore do not justify naming a winning model.
+uncertain. These results therefore do not justify naming a winning model.
 
 The preregistration allowed an ``equivalent'' verdict but did not specify a
 positive numerical equivalence margin; its resolution floor was zero. We
 therefore do not invent a post-hoc margin or label any models equivalent.
 Instead, we report each point difference, 95\% interval, and
-resolved/unresolved conclusion. Table~\ref{tab:exclusions} records this
+whether that interval includes zero. Table~\ref{tab:exclusions} records this
 interpretive restriction, which changes no result.
 
 \input{tables/pairwise_matrix.tex}
@@ -557,10 +581,10 @@ interpretation: excluded comparators and records, the unexecuted geographic
 transport branch, the unfulfilled split-contrast interval, and the absence of an
 equivalence claim. The tagged public release contains the complete SHA-256
 fingerprints, software environment, and machine-readable verification details.
-All 83 substantive analysis files matched their
-recorded fingerprints. Three bookkeeping records are self-referential---they
+Its public-release manifest fingerprints every distributed file. Three original
+execution-bookkeeping records are self-referential---they
 cannot contain their own final fingerprints---and are therefore reported
-separately rather than counted as analysis-file mismatches.
+separately rather than treated as analysis-file mismatches.
 
 \section{Discussion}\label{sec:discussion}
 
@@ -576,14 +600,12 @@ this fixed contract without reconstructing a contaminated split, which is the
 practical benefit the field currently lacks~\citep{patelli2026macroseismic,
 mori2025explainable,roberts2017cv}.
 
-\paragraph{Interpreting the null.} The observed leakage-inflation point estimate
-is small and slightly reversed on this corpus. This is a legitimate,
-honestly reported benchmark finding rather than a defect: on a one-row-per-event
-$M\geq5$ universe of largely singleton sequences the naive random split does not
-materially inflate optimism, and sequence grouping has little practical effect
-here. The protocol remains useful for future datasets containing more
-multi-event sequences, but the present result does not demonstrate leakage. We
-do not reframe the reversed gap as evidence of leakage or as a win.
+\paragraph{Interpreting the split contrast.} The observed point estimate is
+small and slightly reversed. In these folds the naive random split did not
+inflate the diagnostic score, but the missing interval prevents an equivalence,
+zero-effect, or ``little practical effect'' inference. The protocol remains
+useful for datasets containing more multi-event sequences; this result neither
+demonstrates leakage nor supports a win.
 
 \paragraph{No winning model.} Every learned baseline separates from the no-skill
 reference. However, the direct B2--B5 comparison between the two lowest-Brier
@@ -593,37 +615,25 @@ operational, real-time, lead-time, cross-system, or causal benefit.
 
 \section{Limitations and threats to validity}\label{sec:limitations}
 
-\paragraph{Magnitude dominance.} The severe endpoint is plausibly
-magnitude-dominated; the magnitude-only baseline B1 is deliberately included as a
-strong simple comparator, and the thin learned-versus-learned separation is
-consistent with this. This bounds, and is disclosed as, a limitation on baseline
-potential improvement rather than a flaw in the protocol.
+\paragraph{Outcome and catalogue limitations.} The endpoint is
+magnitude-dominated, CDI remains sensitive to responder coverage, and magnitude
+and depth are frozen preferred catalogue values rather than guaranteed
+first-alert values. The ten-response rule mitigates ascertainment; response
+count is used only for eligibility. B1 provides the simple magnitude comparator.
 
-\paragraph{Ascertainment.} CDI depends on responder count and coverage; the
-ten-response eligibility filter mitigates but does not remove ascertainment.
-Response count is used only for eligibility and is excluded from model inputs.
+\paragraph{Unexecuted sensitivity and transport branches.} The geographic
+values are temporal-holdout subgroups, not external transport evidence. The
+registered geographic evaluation and aggregation-grid sensitivity were not
+executed, and no alternative to the fixed 100-km/30-day sequence definition was
+tested. Consequently, no geographic, aggregation, or sequence-definition
+robustness claim is made.
 
-\paragraph{Single-source scope and geographic subgrouping.} The resource is
-single-source (USGS DYFI). The geographic cells are descriptive subgroups within
-the temporal holdout, not an external geographic evaluation, and they do not
-establish transfer to another earthquake catalogue. Geographic and cross-system
-generalization are outside the reported evidence.
-
-\paragraph{Limited effect of sequence grouping in this corpus.} Because most
-sequences contain only one event, the random-versus-sequence-grouped contrast is
-close to zero. The empirical consequence in this dataset is therefore modest;
-the reusable contribution is the evaluation protocol.
-
-\paragraph{Uncertainty of the split diagnostic.} Although the preregistration
-required uncertainty for the random-versus-sequence contrast, it did not define
-the paired interval estimator, and the executed report retained only the point
-estimate. We disclose this as an unfulfilled preregistered element rather than
-adding a post-hoc interval. We therefore make neither an equivalence claim nor
-an inferential claim that the true difference is zero.
-
-\paragraph{Held-out semantics.} The external holdout is held out from model
-development with aggregate feasibility previously known; it is not ``untouched''
-and this manuscript does not describe it as untouched or confirmatory.
+\paragraph{Inference and held-out semantics.} The registered split-contrast
+uncertainty interval was not retained, so that result remains descriptive with
+no equivalence or zero-effect inference. Pairwise intervals use 2{,}000 Monte
+Carlo draws and near-zero endpoints are interpreted cautiously. The temporal
+holdout was excluded from model development, but aggregate feasibility was
+previously known; it is neither ``untouched'' nor confirmatory.
 
 \paragraph{Public release.} Version~1 of the data, code, frozen results, and
 reproduction instructions is available in a tagged public repository at
@@ -647,13 +657,10 @@ datasets containing more multi-event sequences.
 \backmatter
 
 \bmhead{Acknowledgements}
-Generative AI tools, including ChatGPT, were used for language editing,
-formatting assistance, and code review. The authors independently reviewed and
-verified all outputs and take full responsibility for the final text, code,
-citations, and quantitative results. No AI-generated figures are included. The
-underlying data are provided by the U.S. Geological
-Survey ``Did You Feel It?'' program and the Advanced National Seismic System
-(ANSS) Comprehensive Catalog.
+ChatGPT was used for language editing, formatting assistance, and code review.
+The authors verified all outputs and take responsibility for the final work; no
+AI-generated figures are included. We acknowledge the USGS ``Did You Feel It?''
+program and Advanced National Seismic System Comprehensive Catalog.
 
 \section*{Declarations}
 
@@ -670,7 +677,7 @@ respondent-level personally identifying information is accessed or redistributed
 \item \textbf{Data availability.} The version~1 derived event-level benchmark,
 frozen results, manifests, and reproduction instructions are publicly available
 under CC0~1.0 at
-\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.3}.
+\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.4}.
 The underlying source data are USGS ``Did You Feel It?'' and the ANSS
 Comprehensive Catalog (public domain;
 \href{https://doi.org/10.5066/F7J101C8}{10.5066/F7J101C8} and
@@ -688,6 +695,6 @@ L.~Prasad supervised the work and revised the manuscript. Both authors read and
 approved the final manuscript.
 \end{itemize}
 
-{\footnotesize\setlength{\bibsep}{1.5pt plus 0.3pt}\bibliography{references}}
+{\fontsize{8pt}{9.2pt}\selectfont\setlength{\bibsep}{0.5pt plus 0.2pt}\bibliography{references}}
 
 \end{document}

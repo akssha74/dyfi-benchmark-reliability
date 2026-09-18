@@ -1,42 +1,45 @@
-# Data dictionary — released event-level table (v1)
+# Data dictionary — released event-level table (version 1)
 
-One row per earthquake **event** (parent event id) with a DYFI product. The
-independence unit for leakage control is the space-time seismic **sequence**.
+`event_level_table.csv` contains one row per eligible earthquake event. Its
+columns are listed below exactly as released.
 
-| Column | Type | Units | Role | Predictive? | Notes |
-|---|---|---|---|---|---|
-| `event_id` | string | — | identifier / provenance | **No (forbidden)** | USGS event id; grouping + provenance only. Leakage family F3. |
-| `magnitude` | float | Mw-equiv | predictor | Yes | First catalogue magnitude. `SOURCE_ONLY`. |
-| `depth_km` | float | km | predictor | Yes | Event depth. `SOURCE_ONLY`. |
-| `latitude` | float | deg | predictor (expanded only) | Expanded / axis-restricted | In `EXPANDED_METADATA` only; geographic-axis proxy. |
-| `longitude` | float | deg | predictor (expanded only) | Expanded / axis-restricted | In `EXPANDED_METADATA` only; geographic-axis proxy. |
-| `origin_time` | ISO-8601 UTC | — | covariate / temporal-holdout key | Temporal covariate; **not** joinable to any post-outcome field | Derived `origin_year` is a temporal-axis proxy (B3-restricted). |
-| `maxCDI` | float | CDI | **label source** | **No (label constituent)** | Event-maximum Community Decimal Intensity. Leakage family F1. |
-| `severe_label` | int {0,1} | — | **target** | target | `1` iff `maxCDI >= 6`. |
-| `num_responses` | int | count | eligibility only | **No (forbidden)** | Post-outcome ascertainment quantity; `>=10` eligibility filter only. Leakage family F2. |
-| `sequence_id` | string | — | grouping | No | Space-time sequence cluster (100 km / 30 d). |
-| `role` | enum | — | split assignment | No | `train` / `development` / `external_temporal_holdout` (+ geographic variant). |
-| `product_version_id` | string | — | provenance | No | DYFI product version + update time. |
-| `access_instant` | ISO-8601 UTC | — | provenance | No | Snapshot access instant (hash-pinned). |
-| `source_payload_sha256` | hex | — | provenance | No | SHA-256 of the retrieved per-event payload. |
+| Column | Type | Role | Model input? | Description |
+|---|---|---|---|---|
+| `event_id` | string | identifier | No | USGS event identifier; used for provenance and deterministic grouping only |
+| `origin_time` | ISO-8601 UTC | temporal key | No | Frozen preferred origin time in the snapshot |
+| `origin_year` | integer | temporal key | B3 only; not temporal holdout | Year derived from `origin_time` |
+| `magnitude` | float | predictor | Yes | Frozen preferred catalogue magnitude; not guaranteed to be the first-alert value |
+| `magnitude_type` | string | descriptive | No | Magnitude scale reported by the catalogue |
+| `depth_km` | float | predictor | Yes | Frozen preferred catalogue depth in kilometres |
+| `latitude` | float | location | B3 only; axis-restricted | Event latitude |
+| `longitude` | float | location | B3 only; axis-restricted | Event longitude |
+| `region_code` | string | subgroup key | No | 10-degree geographic-cell identifier |
+| `num_responses` | integer | eligibility only | No | Post-event DYFI response count; at least 10 required |
+| `max_cdi` | float | label source | No | Event-maximum community decimal intensity |
+| `severe_label` | integer (0/1) | target | Target | 1 when `max_cdi` is at least 6 |
+| `sequence_id` | string | grouping | No | Space--time sequence identifier (100 km, 30 days) |
+| `role` | enum | split assignment | No | `train`, `development`, `external_temporal_holdout`, or `temporal_straddle_excluded` |
 
-## Feature schemas (strict)
+## Approved feature sets
 
-- `SOURCE_ONLY = {magnitude, depth_km}` — the **only** schema scored on the
-  temporal/geographic transport holdouts.
-- `EXPANDED_METADATA = {magnitude, depth_km, latitude, longitude, origin_year}` —
-  published **only** as a proxy-bearing sensitivity (baseline `B3`); forbidden on
-  the temporal/geographic axes.
+- **Source-only:** `magnitude`, `depth_km`. This is the only feature set
+  evaluated on the temporal holdout.
+- **Expanded metadata (B3 sensitivity):** `magnitude`, `depth_km`, `latitude`,
+  `longitude`, `origin_year`. It is not evaluated on the temporal holdout
+  because `origin_year` reveals the evaluation axis.
 
-The leakage audit accepts **only** the exact schema (same members, same order).
+The leakage audit accepts only an approved feature set in the expected order and
+rejects additional fields.
 
-## Forbidden fields (rejected by the audit)
+## Provenance
 
-`maxCDI`, cdi grid values, `maxmmi`, per-location intensity, `severe_label` as a
-feature, `num_responses`/`numResp`, any DYFI aggregate grid content, `event_id`
-and high-cardinality identifiers, and any downstream product (ShakeMap/PAGER/PGA/
-PGV/instrumental MMI). Families F1–F4 (field-level), F5 (sequence cross-role),
-F6 (temporal).
+Version 1 provides snapshot-level provenance in
+`source_locator_manifest.json`: access instant, query and count URLs, payload
+size, co-stamped count, and source-payload SHA-256. The event table does not
+contain per-event product-version, access-time, or payload-hash columns.
 
-> Real column values are written only at authorized construction; this dictionary
-> pins the schema in advance.
+## Geographic result
+
+`region_code` is used only to summarize the 430 temporal-holdout predictions by
+occupied geographic cell. This is not a leave-region-out evaluation and does not
+support a geographic-generalization claim.

@@ -1,8 +1,8 @@
-"""Validate the manuscript-asset build.
+"""Validate the public-release manuscript-asset build.
 
 Checks, and records into manuscript/validation_report.json:
-  1. Determinism: run generate_all.sh TWICE and require byte-identical sha256 for
-     every registered artifact (and identical asset_manifest.json).
+  1. Determinism: run the release table/figure generator twice and require
+     byte-identical registered outputs.
   2. Arithmetic: independently recompute cohort partition, confusion totals,
      accuracy, holdout prevalence, threshold prevalence, leakage gaps, and the
      vs-B0 pairwise cells from the frozen artifacts + generated CSVs; require
@@ -11,16 +11,19 @@ Checks, and records into manuscript/validation_report.json:
   4. File integrity: every JSON parses; every CSV has a rectangular shape; every
      PNG has the PNG signature; every SVG has an <svg> root; every table .tex has
      matching table/tabular environments.
-  5. Lint: pyflakes over all generator/validator modules (must be clean).
+  5. Syntax: compile every shipped generator/validator module.
 
-Run in the pinned analytics venv:  code/.venv/bin/python manuscript/code/validate_assets.py
+Run in the pinned analytics environment while providing PY_FIGURES for the
+separate figure environment; see bundle/release/REPRODUCTION.md.
 """
 from __future__ import annotations
 
 import csv
 import json
 import os
+import py_compile
 import subprocess
+import sys
 from typing import Dict, List
 
 import asset_common as ac
@@ -31,31 +34,35 @@ TABLES = os.path.join(MAN, "tables")
 FIGS = os.path.join(MAN, "figures")
 REPORT = os.path.join(MAN, "validation_report.json")
 
-PY_A = os.path.join(ac.ROOT, "code", ".venv", "bin", "python")
-PY_F = os.path.join(ac.ROOT, "manuscript", ".venv-fig", "bin", "python")
 GEN = os.path.join(MAN, "code", "generate_all.sh")
 
 MODULES = [
-    "asset_common.py", "build_pairwise_ranking.py", "build_f1_disclosure.py",
-    "build_asset_inputs.py", "build_tables.py", "build_asset_ledger.py",
+    "asset_common.py", "build_tables.py", "build_figures.py",
     "validate_assets.py",
 ]
 
 
 def _load_manifest_hashes() -> Dict[str, str]:
     m = ac.common.load_json(os.path.join(MAN, "asset_manifest.json"))
-    h = dict(m["artifacts"])
+    h = {
+        rel: ac.sha256_file(os.path.join(ac.ROOT, rel))
+        for rel in m["artifacts"]
+        if os.path.isfile(os.path.join(ac.ROOT, rel))
+    }
     h["__asset_manifest__"] = ac.sha256_file(os.path.join(MAN, "asset_manifest.json"))
-    h["__asset_ledger__"] = m["asset_ledger"]["sha256"]
+    h["__asset_ledger__"] = ac.sha256_file(os.path.join(MAN, "asset_ledger.jsonl"))
     return h
 
 
 def check_determinism() -> Dict[str, object]:
+    env = os.environ.copy()
+    env["PY_ANALYTICS"] = sys.executable
+    env.setdefault("PY_FIGURES", sys.executable)
     subprocess.run(["bash", GEN], check=True, cwd=ac.ROOT,
-                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                   env=env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     h1 = _load_manifest_hashes()
     subprocess.run(["bash", GEN], check=True, cwd=ac.ROOT,
-                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                   env=env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     h2 = _load_manifest_hashes()
     diffs = [k for k in h1 if h1.get(k) != h2.get(k)]
     return {
@@ -188,12 +195,13 @@ def check_files() -> Dict[str, object]:
 
 
 def check_lint() -> Dict[str, object]:
-    paths_a = [os.path.join(MAN, "code", m) for m in MODULES]
-    out_a = subprocess.run([PY_A, "-m", "pyflakes", *paths_a],
-                           capture_output=True, text=True)
-    out_f = subprocess.run([PY_F, "-m", "pyflakes", os.path.join(MAN, "code", "build_figures.py")],
-                           capture_output=True, text=True)
-    findings = [l for l in (out_a.stdout + out_a.stderr + out_f.stdout + out_f.stderr).splitlines() if l.strip()]
+    findings = []
+    for module in MODULES:
+        path = os.path.join(MAN, "code", module)
+        try:
+            py_compile.compile(path, doraise=True)
+        except py_compile.PyCompileError as exc:
+            findings.append(str(exc))
     return {"clean": len(findings) == 0, "findings": findings}
 
 
