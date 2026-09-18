@@ -28,7 +28,7 @@
     "claim_neutral_interpretation": "Provenance and integrity anchors (hashes, single token, environment pins, licences). Establishes reproducibility, makes no performance claim."
   },
   "slices": {
-    "caption": "Temporal and geographic transport slices.",
-    "claim_neutral_interpretation": "Descriptive per-slice probe Brier/AUROC. Geographic cells are single-source transport checks, not cross-system generalization claims."
+    "caption": "Temporal and geographic subgroup summaries.",
+    "claim_neutral_interpretation": "Descriptive subgroups of the temporal holdout. The geographic cells are not a leave-region-out or external geographic evaluation."
   }
 }

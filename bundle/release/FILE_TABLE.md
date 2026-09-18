@@ -8,13 +8,14 @@ materialized and content-hashed below.
 | File | Format | Present | SHA-256 (materialized) | Purpose |
 |---|---|---|---|---|
 | `README.md` | Markdown | yes | — | Overview, one-command reproduction, scope |
-| `CITATION.cff` | CFF 1.2.0 | yes | Public release `v1.0.2` | Citation metadata |
+| `CITATION.cff` | CFF 1.2.0 | yes | Public release `v1.0.3` | Citation metadata |
 | `LICENSE-DATA.txt` | text | yes | CC0-1.0 | Data licence |
 | `LICENSE-CODE.txt` | text | yes | MIT | Code licence |
 | `DATA_DICTIONARY.md` | Markdown | yes | — | Column schema, types, flags |
 | `DATASHEET.md` | Markdown | yes | — | Datasheet-for-datasets |
 | `FILE_TABLE.md` | Markdown | yes | — | This table |
 | `REPRODUCTION.md` | Markdown | yes | — | Environment + reproduction steps |
+| `CLARIFICATIONS.md` | Markdown | yes | — | Non-numeric corrections to immutable version 1 metadata and scope |
 | `source_locator_manifest.json` | JSON | **yes** | `59c1127a4535e1d7…` | Fetch-and-verify FDSNWS locators + payload hash |
 | `event_level_table.csv` | CSV | **yes** | `9657b92767b29910…` | Released derived event-level rows (2,362; all roles) |
 | `role_manifest.json` | JSON | **yes** | `5741c5cb6af77300…` | Post-assignment role event-id/sequence hashes |

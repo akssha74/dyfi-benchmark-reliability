@@ -1,4 +1,4 @@
 slice_type,slice,n,brier,auroc
 temporal,2023,250,0.185180084337,0.797137182385
 temporal,2024,180,0.174385771479,0.776568682872
-geographic_summary,82_cells,430,0.150982619519,
+geographic_subgroup_summary,82_cells,430,0.150982619519,

@@ -113,7 +113,7 @@ def build() -> Dict[str, object]:
         ("baseline_performance", "baseline performance with uncertainty/calibration"),
         ("leakage_gap", "leakage-inflation across split schemes"),
         ("pairwise_matrix", "full pairwise ranking-stability matrix"),
-        ("slices", "temporal/geographic transport slices"),
+        ("slices", "temporal and geographic subgroup summaries within the temporal holdout"),
         ("exclusions_deviations", "exclusions and disclosed deviations"),
         ("reproducibility_manifest", "data/reproducibility manifest"),
     ]
@@ -132,7 +132,7 @@ def build() -> Dict[str, object]:
     add("other", "manuscript/tables/slices_geographic_full.csv",
         "manuscript/code/build_tables.py",
         f"{PY_A} manuscript/code/build_tables.py",
-        inputs_src, "Full per-cell geographic transport Brier values (82 leave-region-out cells).")
+        inputs_src, "Full cell-level Brier values for 82 geographic subgroups of the temporal holdout; not a leave-region-out evaluation.")
 
     # Figures (editable SVG, review PNG, and publication-ready vector PDF).
     fig_specs = [

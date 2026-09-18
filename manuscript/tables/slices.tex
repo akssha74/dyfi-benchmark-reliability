@@ -2,7 +2,7 @@
 \begin{table}[t]
 \centering
 \small
-\caption{Temporal and geographic performance checks on the holdout using the source-only logistic regression (B2).}
+\caption{Temporal and geographic subgroup summaries within the temporal holdout for the source-only logistic regression (B2).}
 \label{tab:slices}
 \begin{tabular}{lrrr}
 \toprule
@@ -10,8 +10,8 @@ Subset & Events & Brier score & AUROC \\
 \midrule
 Temporal 2023 & 250 & 0.185 & 0.797 \\
 Temporal 2024 & 180 & 0.174 & 0.777 \\
-Geographic (82 cells) & 430 & 0.151 (med.) & -- \\
+Geographic cells within temporal holdout (82) & 430 & 0.151 (med.) & -- \\
 \bottomrule
 \end{tabular}
-\par\vspace{2pt}\footnotesize\emph{Note.} The geographic check covers 82 held-out 10$^\circ$ grid cells. Its entry is the median cell-level Brier score; cell-level values range from 0.002 to 0.825 and are included in the prepared supplementary results. These are within-USGS checks and do not establish transfer to another data system.
+\par\vspace{2pt}\footnotesize\emph{Note.} The geographic row partitions the same 430 temporal-holdout predictions into 82 occupied 10$^\circ$ cells. It is a descriptive subgroup summary, not a leave-region-out or external geographic evaluation. The entry is the median cell-level Brier score; cell values range from 0.002 to 0.825 and are included in the public release.
 \end{table}

@@ -14,6 +14,8 @@ This directory contains the materialized public release of the benchmark.
 - `DATA_DICTIONARY.md` and `DATASHEET.md` — field definitions, intended uses,
   scope, and limitations.
 - `REPRODUCTION.md` — verification and test instructions.
+- `CLARIFICATIONS.md` — non-numeric corrections to legacy metadata wording,
+  geographic scope, and the split-contrast uncertainty commitment.
 
 The primary feature set contains magnitude and depth. Response count is used
 only to establish eligibility and is forbidden as a model input. The severe

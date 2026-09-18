@@ -12,7 +12,7 @@ Following Gebru et al., *Datasheets for Datasets*.
   cross-system transport, causal inference, or claiming a winning model.
 
 > **Post-execution (2026-09-01).** The single authorised one-shot protected run
-> has executed on the pinned snapshot (`sha256 88722d8a…`, 7,520 features). The
+> has executed on the pinned snapshot (`sha256 88722d8a…`, 7,520 GeoJSON feature records). The
 > released `event_level_table.csv` now carries **2,362 eligible instances** across
 > all roles (train 1,573 / development 357 / external_temporal_holdout 430 /
 > temporal_straddle_excluded 2). Severe prevalence: 0.2855 (construction), 0.3512
@@ -52,7 +52,7 @@ Following Gebru et al., *Datasheets for Datasets*.
 
 ## Distribution & maintenance
 - **Licence.** Derived data CC0 1.0; code MIT.
-- **Public release.** `https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.2`.
+- **Public release.** `https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.3`.
 - **Versioning.** `v1 = <access-instant>` snapshot; any later USGS revision defines
   a new version, never a silent overwrite.
 - **Reconstruction.** Fetch-and-verify source-locator manifest + payload hashes;

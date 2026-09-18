@@ -2,11 +2,11 @@
   "artifacts": {
     "manuscript/code/asset_common.py": "d63cf3c3a9c9c82b26967425897db362033bfd6b202e48debeb98fa45ceed46a",
     "manuscript/code/build_asset_inputs.py": "880a1bf6fca72636b4af857f6ece506f095ea44bd454ed93a28966db8bb8176d",
-    "manuscript/code/build_asset_ledger.py": "abd7629fe18a0f471a5bbd1daa3c3d11b4cd87afa8f04adc2fbfd353b59fff8d",
+    "manuscript/code/build_asset_ledger.py": "24464361ec0ba44be139eda36537826863fd82de7b60aad8b8a6728cfbdaa94a",
     "manuscript/code/build_f1_disclosure.py": "94be3dc9bf88fd1f626e8d5e58b8cd303d1bd1bb2382391eeefc3ed8493a96a7",
     "manuscript/code/build_figures.py": "5c49abab896b4454938f4058eaf23935f27093b907190473b9e6d6e110d19255",
     "manuscript/code/build_pairwise_ranking.py": "4b78c26062f97fd135561f8c88a7f7d769ef20d16eddeffbcbbbd3387241a685",
-    "manuscript/code/build_tables.py": "5e822b58db1fdd9e461768759dda6a54b5f6a160817352bed5172c393957476a",
+    "manuscript/code/build_tables.py": "4e4fa32d01de6269afd003a8c55b30c825a11a915aba0947e5091f83778a047d",
     "manuscript/code/validate_assets.py": "aa36d3093d884e44f68d928b56b84ac83afff2994c06d94b9da8f69678242632",
     "manuscript/derived/asset_inputs.json": "02f2606f446e149144bd858a2bcbeab7a4dad1648be79d4474127af34f4954fd",
     "manuscript/derived/pairwise_ranking_stability.csv": "acb218ee176982bc86b876d5f25fc107f09d7e16e5653efd66d91589529b3456",
@@ -32,21 +32,21 @@
     "manuscript/tables/cohort_roles.tex": "3cd318e4a4f08bac6b0edc177cf15a668d05a4c0fe1be8c99fa09dc81a241f76",
     "manuscript/tables/endpoint_threshold_sensitivity.csv": "1c7565f5bf674975fe036facd5e31b0ae47a778985f7baf42836f5d2ffb640b4",
     "manuscript/tables/endpoint_threshold_sensitivity.tex": "e5259d44e8d8e56ddf05b8de7abcc3c1cb816a829d5e34c0f06d1d1fa988444c",
-    "manuscript/tables/exclusions_deviations.csv": "a50dfd430bc013101100681e60a4b317d08a14d1cc5d0764a8b7d93ed7b225e9",
-    "manuscript/tables/exclusions_deviations.tex": "7e3ccbc6891192c1495056908e250c586efc1f88440680421329be97b41dd147",
+    "manuscript/tables/exclusions_deviations.csv": "1b8e04c38f5beef98b3a5dd417d7968ed1a8706cb7dbfe6e8a08ec3bc62dcd36",
+    "manuscript/tables/exclusions_deviations.tex": "e4c8077f3780286a9e79101044a4930a480b3ca6ecc7448981aaca55c4ca0a63",
     "manuscript/tables/leakage_gap.csv": "e791b759c50b52c45e651da12dc23d44de35c27e5f6c13ce82b20dee56d6ed82",
-    "manuscript/tables/leakage_gap.tex": "f7807c3035f9e183757cec421487896916adefd0d647a41547d69fd43caa68c3",
+    "manuscript/tables/leakage_gap.tex": "eb270826796576436a4983375ffcfe152a0b940bb55c37d04a210f9f80640070",
     "manuscript/tables/pairwise_matrix.csv": "369bf838ba3211d6aa0e56eeca67b1076e469c67e5bf5ddc634122339bcf1a9d",
     "manuscript/tables/pairwise_matrix.tex": "01f6e450c8e0c7716b3894c185299dc5ea804cce85e585519bd4210a451b90a0",
     "manuscript/tables/reproducibility_manifest.csv": "38fa6f477061e0817197923300a6c7e024fbea9079a715a997e31714a0db694b",
     "manuscript/tables/reproducibility_manifest.tex": "3cb786278a9ad9fdc8af347babfa51a2b399259e739646ab525389b98cc410aa",
-    "manuscript/tables/slices.csv": "23d03f1608cb79d3bbb84361b6e97ed2bffbaf2003527a1db361efc42bf76d90",
-    "manuscript/tables/slices.tex": "4b31cab947cc149fdaf8aff717b55542c4b40c7ba21870e66c96661ed6e2fbd0",
+    "manuscript/tables/slices.csv": "96e0a5f68923cf9c036d275da1c5e0a74a79283b3dc5f236b28fe5239f468969",
+    "manuscript/tables/slices.tex": "358d01bb4bc39386a0f66c28f04450e0641fced12af7ef1a549fe7d07aebe677",
     "manuscript/tables/slices_geographic_full.csv": "28fb283f4887fee888fd077d42effce730d094bd23f352db102ac7b04f246afb"
   },
   "asset_ledger": {
     "path": "manuscript/asset_ledger.jsonl",
-    "sha256": "2d434b3880cfb23403f483c57dfa526dc3db80956c889d4ac26800b0b33d3b78"
+    "sha256": "ab459e4641b093cf8d21f6dcbaf2ae959e767b7036bd000767199a280286b59f"
   },
   "counts_by_type": {
     "code-listing": 8,

@@ -268,7 +268,7 @@
     {
       "check": "geographic_sum_n_430",
       "ok": true,
-      "detail": "430"
+      "detail": "430; subgroup-only wording present"
     },
     {
       "check": "W4_no_preregistered_margin",
@@ -311,6 +311,11 @@
       "detail": "[]"
     },
     {
+      "check": "seven_focused_tables_in_manuscript",
+      "ok": true,
+      "detail": "['tables/cohort_roles.tex', 'tables/endpoint_threshold_sensitivity.tex', 'tables/leakage_gap.tex', 'tables/baseline_performance.tex', 'tables/pairwise_matrix.tex', 'tables/exclusions_deviations.tex', 'tables/slices.tex']"
+    },
+    {
       "check": "input_exists_tables/cohort_roles.tex",
       "ok": true,
       "detail": "tables/cohort_roles.tex"
@@ -344,11 +349,6 @@
       "check": "input_exists_tables/slices.tex",
       "ok": true,
       "detail": "tables/slices.tex"
-    },
-    {
-      "check": "input_exists_tables/reproducibility_manifest.tex",
-      "ok": true,
-      "detail": "tables/reproducibility_manifest.tex"
     },
     {
       "check": "figure_exists_fig_cohort_flow.pdf",

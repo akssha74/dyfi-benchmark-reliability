@@ -201,7 +201,7 @@ def build() -> Dict[str, object]:
             "Cross-validated performance of the fixed random-forest diagnostic (B4) under three fold-assignment schemes in the construction sample.",
             "lrrrr",
             ["Fold assignment", "Brier score", "AUROC", "Log-loss", "Folds"], body,
-            "Using unrounded values, the sequence-grouped minus random-event Brier difference is " + f4(lk["brier_inflation_seq_minus_random"]) + "; the random-event minus sequence-grouped AUROC difference is " + f4(lk["auroc_inflation_random_minus_seq"]) + ". These are descriptive point estimates; no uncertainty interval was prespecified for this contrast. Because there is one row per event, event grouping imposes the same grouping constraint as random-event assignment, but its deterministic fold allocation is different and can produce different scores."))
+            "Using unrounded values, the sequence-grouped minus random-event Brier difference is " + f4(lk["brier_inflation_seq_minus_random"]) + "; the random-event minus sequence-grouped AUROC difference is " + f4(lk["auroc_inflation_random_minus_seq"]) + ". The preregistration required uncertainty but did not define the paired interval estimator; the executed report retained point estimates only. This deviation is disclosed, and no post-hoc interval or equivalence claim is added. Because there is one row per event, event grouping imposes the same grouping constraint as random-event assignment, but its deterministic fold allocation is different and can produce different scores."))
     shas["leakage_gap.csv"] = _write_csv("leakage_gap.csv", csv4[0], csv4[1:])
     captions["leakage_gap"] = {
         "caption": "Leakage-inflation across split schemes.",
@@ -239,7 +239,7 @@ def build() -> Dict[str, object]:
         "claim_neutral_interpretation": "Complete directional stability for every eligible pair. Equivalent class not asserted (no registered margin). Reinforces no-winning-model; overturns no headline.",
     }
 
-    # ---- Table 6: temporal / geographic slices -------------------------
+    # ---- Table 6: temporal / geographic subgroup summaries -------------
     ts_slice = D["slices"]["temporal"]
     gsum = D["slices"]["geographic_summary"]
     body = []
@@ -249,17 +249,17 @@ def build() -> Dict[str, object]:
         body.append([f"Temporal {yr}", intc(e["n"]), f3(e["brier"]),
                      (f3(e["auroc"]) if isinstance(e.get("auroc"), (int, float)) else "--")])
         csv6.append(["temporal", yr, e["n"], e["brier"], e.get("auroc")])
-    body.append([f"Geographic ({intc(gsum['n_cells'])} cells)", intc(gsum["sum_n"]),
+    body.append([f"Geographic cells within temporal holdout ({intc(gsum['n_cells'])})", intc(gsum["sum_n"]),
                  f"{f3(gsum['brier_median'])} (med.)", "--"])
-    csv6.append(["geographic_summary", f"{gsum['n_cells']}_cells", gsum["sum_n"], gsum["brier_median"], None])
+    csv6.append(["geographic_subgroup_summary", f"{gsum['n_cells']}_cells", gsum["sum_n"], gsum["brier_median"], None])
     shas["slices.tex"] = ac.write_text(
         os.path.join(TABLES, "slices.tex"),
         _table_float(
             "tab:slices",
-            "Temporal and geographic performance checks on the holdout using the source-only logistic regression (B2).",
+            "Temporal and geographic subgroup summaries within the temporal holdout for the source-only logistic regression (B2).",
             "lrrr",
             ["Subset", "Events", "Brier score", "AUROC"], body,
-            "The geographic check covers " + intc(gsum["n_cells"]) + " held-out 10$^\\circ$ grid cells. Its entry is the median cell-level Brier score; cell-level values range from " + f3(gsum["brier_min"]) + " to " + f3(gsum["brier_max"]) + " and are included in the prepared supplementary results. These are within-USGS checks and do not establish transfer to another data system."))
+            "The geographic row partitions the same 430 temporal-holdout predictions into " + intc(gsum["n_cells"]) + " occupied 10$^\\circ$ cells. It is a descriptive subgroup summary, not a leave-region-out or external geographic evaluation. The entry is the median cell-level Brier score; cell values range from " + f3(gsum["brier_min"]) + " to " + f3(gsum["brier_max"]) + " and are included in the public release."))
     # full geographic to companion CSV
     gfull = D["slices"]["geographic_full"]
     gcsv = [["region_cell", "n", "brier", "brier_status"]]
@@ -269,17 +269,17 @@ def build() -> Dict[str, object]:
     shas["slices_geographic_full.csv"] = _write_csv("slices_geographic_full.csv", gcsv[0], gcsv[1:])
     shas["slices.csv"] = _write_csv("slices.csv", csv6[0], csv6[1:])
     captions["slices"] = {
-        "caption": "Temporal and geographic transport slices.",
-        "claim_neutral_interpretation": "Descriptive per-slice probe Brier/AUROC. Geographic cells are single-source transport checks, not cross-system generalization claims.",
+        "caption": "Temporal and geographic subgroup summaries.",
+        "claim_neutral_interpretation": "Descriptive subgroups of the temporal holdout. The geographic cells are not a leave-region-out or external geographic evaluation.",
     }
 
     # ---- Table 7: exclusions / deviations ------------------------------
     body = [
         ["B3 expanded-metadata model", "Omitted from temporal holdout", "It includes event year, which would reveal the evaluation period."],
         ["Published DYFI intensity equation", "Omitted as a comparator", "It requires unavailable site distance and tectonic-region inputs, plus an unvalidated conversion to event probabilities."],
-        ["Two pre-screened records", "Excluded before analysis", "This prevents information seen during manual verification from entering an analysis role."],
+        ["Registered geographic transport evaluation", "Not executed", "The released geographic result is a subgroup summary of temporal-holdout predictions, not a leave-region-out evaluation; no geographic generalization claim is made."],
+        ["Split-contrast uncertainty", "Deviation disclosed", "The preregistration required uncertainty but did not define the paired interval estimator; the executed result retained point estimates only, and no post-hoc interval is added."],
         ["Equivalence interpretation", "Descriptive comparisons only", "No numerical equivalence margin was specified before analysis, so the paper reports resolved or unresolved differences without claiming equivalence."],
-        ["Integrity verification", "All 83 analysis files matched", "Three self-referential bookkeeping records that cannot contain their own final fingerprints are reported separately."],
     ]
     csv7 = [["item", "disposition", "reason"]]
     for r in body:
@@ -288,7 +288,7 @@ def build() -> Dict[str, object]:
         os.path.join(TABLES, "exclusions_deviations.tex"),
         _table_float(
             "tab:exclusions",
-            "Excluded analyses and safeguards affecting interpretation.",
+            "Excluded analyses and disclosed deviations affecting interpretation.",
             ">{\\raggedright\\arraybackslash}p{0.27\\linewidth} >{\\raggedright\\arraybackslash}p{0.22\\linewidth} >{\\raggedright\\arraybackslash}p{0.41\\linewidth}",
             ["Decision", "Treatment", "Rationale"], body,
             "These decisions were recorded before, or disclosed with, the analysis. No result, subset, cutoff, or comparison was omitted because of its observed outcome."))

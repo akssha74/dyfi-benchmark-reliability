@@ -107,7 +107,8 @@ def main() -> int:
     # headline must be framed as a null in prose, never spun as a win
     check("null_framed_as_null_in_prose",
           "measured null" in main_tex
-          and ("transparently" in main_tex or "honest" in main_tex), "")
+          and ("transparently" in main_tex or "honest" in main_tex)
+          and "unfulfilled element as a deviation" in main_tex, "")
     check("no_winning_model_claim_in_prose",
           "no winning model" in main_tex and ai["no_winning_model_claim"] is True, "")
 
@@ -155,7 +156,11 @@ def main() -> int:
         check(f"temporal_{yr}_brier_in_table", r3(sl[yr]["brier"]) in st, r3(sl[yr]["brier"]))
     gs = ai["slices"]["geographic_summary"]
     check("geographic_n_cells_82", gs["n_cells"] == 82 and "82" in st, str(gs["n_cells"]))
-    check("geographic_sum_n_430", gs["sum_n"] == 430, str(gs["sum_n"]))
+    check("geographic_sum_n_430",
+          gs["sum_n"] == 430
+          and "not a leave-region-out" in st
+          and "not a\nleave-region-out evaluation" in main_tex,
+          f"{gs['sum_n']}; subgroup-only wording present")
 
     # Absence of a prespecified positive equivalence margin must be disclosed.
     em = ai["pairwise_ranking_stability"]["equivalence_margin_status"]
@@ -200,7 +205,12 @@ def main() -> int:
           str(sorted(bib_keys - led_keys)))
 
     # ---- 3. file integrity ----
-    for m in re.findall(r"\\input\{(tables/[^}]+)\}", main_tex):
+    table_inputs = re.findall(r"\\input\{(tables/[^}]+)\}", main_tex)
+    check("seven_focused_tables_in_manuscript",
+          len(table_inputs) == 7
+          and "tables/reproducibility_manifest.tex" not in table_inputs,
+          str(table_inputs))
+    for m in table_inputs:
         check(f"input_exists_{m}", (HERE / m).exists(), m)
     for m in re.findall(r"\\includegraphics\[[^\]]*\]\{([^}]+)\}", main_tex):
         rel = pathlib.Path(m)

@@ -89,7 +89,8 @@ the damaging range ($\mathrm{maxCDI}\geq 6$)---can be anticipated from
 outcome-blind source metadata that are known at or near origin time (magnitude,
 depth, location, origin time). To protect the temporal holdout, however, the
 primary models use only magnitude and depth; location and origin time appear
-only in restricted sensitivity analyses. This is a descriptive-retrospective estimand,
+only in restricted sensitivity analyses. This defines a descriptive,
+retrospective target quantity,
 useful for characterising how much of the severe-shaking signal is carried by
 catalogue parameters alone, and it is distinct from any real-time,
 operational, or causal claim.
@@ -129,8 +130,8 @@ accepting \emph{only} the exact source-only feature set; it is exercised by 110
 unit tests and rejects every deliberately contaminated test case
 (Section~\ref{sec:leakage}).
 \item \textbf{Prespecified, outcome-independent roles} built on order-stable
-space--time sequence grouping, with a temporal external holdout and a secondary
-geographic check, so that split membership never uses the label
+space--time sequence grouping and a temporal external holdout, so that split
+membership never uses the label
 (Section~\ref{sec:roles}).
 \item \textbf{A fixed, non-selective baseline suite} with calibration-aware
 proper scoring, sequence-cluster bootstrap uncertainty, explicit handling of
@@ -202,7 +203,8 @@ instead supplies a versioned, digitally fingerprinted, event- and
 sequence-grouped benchmark with an executable leakage audit and a protected
 single-use evaluation, in place of
 the naive split that setup uses. Concurrently, \citet{li2025llmworldmodels}
-release a DYFI-grounded benchmark that simulates Modified Mercalli Intensity for
+release a DYFI-grounded benchmark that simulates Modified Mercalli Intensity
+(MMI) for
 two earthquakes (2014 Napa and 2019 Ridgecrest) with large language models and
 includes an explicit location-identifier leakage test; our resource differs in
 task and construction---an outcome-blind source-metadata$\rightarrow$later-severe
@@ -245,7 +247,11 @@ acquisition session, documenting one live-catalogue revision. The final
 downloaded snapshot contained 7{,}520 DYFI records, and a count repeated at that
 same instant also returned 7{,}520. Thus, the one-record change belongs only to
 the earlier preliminary checks; it is not a discrepancy in the frozen analysis
-snapshot. The digital fingerprint of the downloaded bytes, rather than a
+snapshot. Likewise, the 56-record difference between the last preliminary count
+and the final 7{,}520-record snapshot is not an analysis exclusion: the
+preliminary count had no paired payload, so its membership difference cannot be
+decomposed and is retained only as catalogue-version provenance. The co-stamped
+final query and count agree exactly. The digital fingerprint of the downloaded bytes, rather than a
 preliminary count, defines this resource version. The frozen snapshot
 contains 7{,}520 DYFI records (Table~\ref{tab:cohort}, Fig.~\ref{fig:cohort}).
 
@@ -295,7 +301,7 @@ principles~\citep{wilkinson2016fair}.
 \subsection{Feature sets and the six-category leakage audit}\label{sec:leakage}
 
 The primary \emph{source-only} feature set contains magnitude and depth. It is
-the only feature set evaluated on the transport holdouts. An
+the only feature set evaluated on the temporal holdout. An
 \emph{expanded-metadata} sensitivity analysis (baseline B3) additionally uses
 latitude, longitude, and event year, so it is not evaluated where those
 variables would disclose the holdout axis. The audit accepts only an approved
@@ -307,8 +313,10 @@ label or its constituents; F2 post-outcome ascertainment or revision (including
 the response count, eligibility-only); F3 identifier or source proxy; F4
 downstream-product proxy. Split-level: F5 sequence cross-role straddle; F6
 temporal-cutoff violation. An axis-proxy check additionally rejects origin year
-under a temporal holdout and latitude/longitude/region under a geographic
-holdout, enforcing the B3 restriction. This audit is useful independently of
+under a temporal holdout and, when a geographic holdout is configured,
+latitude/longitude/region. The latter audit branch is provided for reuse but was
+not executed as an external evaluation in this study. This enforces the B3
+restriction. The audit is useful independently of
 model performance: it must reject every deliberately contaminated test case and
 accept only the approved clean feature set. It is exercised by 110 unit tests
 across four suites, all passing, and accepted the source-only feature set in the
@@ -320,13 +328,15 @@ Events are grouped into seismic \emph{sequences} by order-stable single-link
 space--time connected components (100~km, 30~days); the sequence, not the event,
 is the unit of role assignment, so aftershocks cannot straddle roles. Roles are
 assigned by a prespecified, outcome-independent rule (fixed assignment key,
-temporal cutoff
-year 2023, development fraction 0.2, geographic-holdout fraction 0.2, five
-cross-validation
-folds); the rule provably never reads the label. The primary external holdout is
-events on or after 2023 (temporal transport); a leave-region-out geographic
-holdout is a secondary transport check. Digital fingerprints of the completed
-role assignments are published so that third parties can verify them. The
+temporal cutoff year 2023, development fraction 0.2, five cross-validation
+folds); the rule provably never reads the label. The external holdout contains
+events on or after 2023. The preregistration also named a secondary
+leave-region-out geographic evaluation, but that branch was not executed and no
+geographic role manifest is claimed. The reported geographic result instead
+summarizes the temporal-holdout predictions by 10$^\circ$ cell
+(Table~\ref{tab:slices}); Table~\ref{tab:exclusions} records this deviation.
+Digital fingerprints of the completed temporal role assignments are published
+so that third parties can verify them. The
 partition is exhaustive and disjoint:
 $1{,}573+357+430+2=2{,}362$ events, comprising 1{,}573 train, 357 development,
 430 external temporal holdout, and 2 temporal-straddle exclusions
@@ -450,9 +460,12 @@ one-row-per-event universe the point estimates are small and slightly reversed:
 the sequence-minus-random Brier difference is $-0.0059$ and the
 random-minus-sequence AUROC difference is $-0.0124$, calculated from unrounded
 scores. The sequence-grouped split therefore scores marginally \emph{better}
-than the naive random split, not worse. No uncertainty interval was prespecified
-for this diagnostic contrast, so we report it descriptively as an honest
-measured null, not as evidence of equivalence, leakage, or a win. Its
+than the naive random split, not worse. The preregistration committed to
+uncertainty reporting for this contrast but did not define a paired interval
+estimator; the executed result contains point estimates only. We disclose this
+unfulfilled element as a deviation and do not invent a post-hoc interval.
+Accordingly, we report the contrast descriptively as a measured null, not as
+evidence of equivalence, leakage, or a win. Its
 explanation is structural: with 1{,}885 largely singleton
 sequences (1{,}530 in construction), there is little within-sequence
 near-duplicate structure for a random split to leak, so the sequence-grouping
@@ -523,31 +536,31 @@ interpretive restriction, which changes no result.
 
 \input{tables/exclusions_deviations.tex}
 
-\subsection{Transport slices}\label{sec:slices-results}
+\subsection{Temporal and geographic subgroup summaries}\label{sec:slices-results}
 
 Table~\ref{tab:slices} and the right panel of Fig.~\ref{fig:threshold} report the
-temporal and geographic performance checks for the source-only logistic
-regression. The two
+temporal and geographic subgroup summaries for the source-only logistic
+regression within the temporal holdout. The two
 holdout years are internally consistent (2023: $n=250$, Brier 0.185, AUROC 0.797;
-2024: $n=180$, Brier 0.174, AUROC 0.777). The geographic check spans
-82 leave-region-out $10^\circ$ cells (per-cell Brier 0.002--0.825, median 0.151);
-these are single-source transport checks, not cross-system generalization claims.
+2024: $n=180$, Brier 0.174, AUROC 0.777). The geographic subgroup summary spans
+82 occupied $10^\circ$ cells (per-cell Brier 0.002--0.825, median 0.151).
+These values stratify the same 430 temporal-holdout predictions; they are not a
+leave-region-out evaluation and support no geographic or cross-system
+generalization claim.
 
 \input{tables/slices.tex}
 
 \subsection{Exclusions, deviations, and reproducibility}\label{sec:repro-results}
 
 Table~\ref{tab:exclusions} explains the protocol decisions most relevant to
-interpretation: excluded comparators and records, the absence of an equivalence
-claim, and integrity-verification safeguards. Table~\ref{tab:repro}
-summarizes the reproducibility safeguards and verification results. The prepared
-supplement contains the complete SHA-256 fingerprints and machine-readable
-verification details. All 83 substantive analysis files matched their
+interpretation: excluded comparators and records, the unexecuted geographic
+transport branch, the unfulfilled split-contrast interval, and the absence of an
+equivalence claim. The tagged public release contains the complete SHA-256
+fingerprints, software environment, and machine-readable verification details.
+All 83 substantive analysis files matched their
 recorded fingerprints. Three bookkeeping records are self-referential---they
 cannot contain their own final fingerprints---and are therefore reported
 separately rather than counted as analysis-file mismatches.
-
-\input{tables/reproducibility_manifest.tex}
 
 \section{Discussion}\label{sec:discussion}
 
@@ -590,20 +603,23 @@ potential improvement rather than a flaw in the protocol.
 ten-response eligibility filter mitigates but does not remove ascertainment.
 Response count is used only for eligibility and is excluded from model inputs.
 
-\paragraph{Single-source scope and transport.} The resource is single-source
-(USGS DYFI); the geographic slices are within-system transport checks and do not
-establish equivalence with another earthquake catalogue. Cross-system transport is deliberately
-excluded from scope.
+\paragraph{Single-source scope and geographic subgrouping.} The resource is
+single-source (USGS DYFI). The geographic cells are descriptive subgroups within
+the temporal holdout, not an external geographic evaluation, and they do not
+establish transfer to another earthquake catalogue. Geographic and cross-system
+generalization are outside the reported evidence.
 
 \paragraph{Limited effect of sequence grouping in this corpus.} Because most
 sequences contain only one event, the random-versus-sequence-grouped contrast is
 close to zero. The empirical consequence in this dataset is therefore modest;
 the reusable contribution is the evaluation protocol.
 
-\paragraph{Uncertainty of the split diagnostic.} The random-versus-sequence
-comparison is a descriptive point estimate; no uncertainty interval was
-prespecified for this contrast. We therefore make neither an equivalence claim
-nor an inferential claim that the true difference is zero.
+\paragraph{Uncertainty of the split diagnostic.} Although the preregistration
+required uncertainty for the random-versus-sequence contrast, it did not define
+the paired interval estimator, and the executed report retained only the point
+estimate. We disclose this as an unfulfilled preregistered element rather than
+adding a post-hoc interval. We therefore make neither an equivalence claim nor
+an inferential claim that the true difference is zero.
 
 \paragraph{Held-out semantics.} The external holdout is held out from model
 development with aggregate feasibility previously known; it is not ``untouched''
@@ -654,7 +670,7 @@ respondent-level personally identifying information is accessed or redistributed
 \item \textbf{Data availability.} The version~1 derived event-level benchmark,
 frozen results, manifests, and reproduction instructions are publicly available
 under CC0~1.0 at
-\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.2}.
+\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.3}.
 The underlying source data are USGS ``Did You Feel It?'' and the ANSS
 Comprehensive Catalog (public domain;
 \href{https://doi.org/10.5066/F7J101C8}{10.5066/F7J101C8} and
