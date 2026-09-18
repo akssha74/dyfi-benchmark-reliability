@@ -4,7 +4,7 @@
     "manuscript/code/build_asset_inputs.py": "880a1bf6fca72636b4af857f6ece506f095ea44bd454ed93a28966db8bb8176d",
     "manuscript/code/build_asset_ledger.py": "abd7629fe18a0f471a5bbd1daa3c3d11b4cd87afa8f04adc2fbfd353b59fff8d",
     "manuscript/code/build_f1_disclosure.py": "94be3dc9bf88fd1f626e8d5e58b8cd303d1bd1bb2382391eeefc3ed8493a96a7",
-    "manuscript/code/build_figures.py": "da53c39842e84b4e9a557896a7a5ab3bf5182f9c6ef6cc702c7a2788c175ffb8",
+    "manuscript/code/build_figures.py": "5c49abab896b4454938f4058eaf23935f27093b907190473b9e6d6e110d19255",
     "manuscript/code/build_pairwise_ranking.py": "4b78c26062f97fd135561f8c88a7f7d769ef20d16eddeffbcbbbd3387241a685",
     "manuscript/code/build_tables.py": "5e822b58db1fdd9e461768759dda6a54b5f6a160817352bed5172c393957476a",
     "manuscript/code/validate_assets.py": "aa36d3093d884e44f68d928b56b84ac83afff2994c06d94b9da8f69678242632",
@@ -17,9 +17,9 @@
     "manuscript/figures/fig_baseline_scores.pdf": "8701d0498ec1ffac952b4b3bca9d87fbf05a22e0aec17a51c2b66a808a16eeef",
     "manuscript/figures/fig_baseline_scores.png": "134f8a352149e5b240f5174779a7ccc488c5272021e9f5a91b7dd813da16a08b",
     "manuscript/figures/fig_baseline_scores.svg": "6b9855276bba110a878e1b3fdb4d03930bf6291457647989f1905dfd8ac962cd",
-    "manuscript/figures/fig_cohort_flow.pdf": "c7ef8ae6c94a5c39c08760a77216e77ce84adba4ff2bfef5ab0683d1f5b35008",
-    "manuscript/figures/fig_cohort_flow.png": "6fdd5260e2f25fc8162f4e2b21cde375636cb9b17ea9bbfed423e134447bcffe",
-    "manuscript/figures/fig_cohort_flow.svg": "d213146ee321227ccebaee3e5ac04d864f5d8bedb5b169305ddd68999e9f3b68",
+    "manuscript/figures/fig_cohort_flow.pdf": "1277f386b3c587e4ebc309027eed790a9f83988e40f9f8ae013f7ec2f5429837",
+    "manuscript/figures/fig_cohort_flow.png": "763007dfb7a469b7b1af36d95a862cf1e18bf6f53c5254c148ad4abbba0242cf",
+    "manuscript/figures/fig_cohort_flow.svg": "3a9757aaff2c6b1d07c3746a02ebe7600613963c806351a49fd2687635f95222",
     "manuscript/figures/fig_leakage_split.pdf": "cc42e19d6cd40b650670a898e91c586656557e70875df949566d32778e383ae6",
     "manuscript/figures/fig_leakage_split.png": "db20993d9fd79f889910227353edb0022472e901e0d8caeb01c189d55b60c799",
     "manuscript/figures/fig_leakage_split.svg": "5a52dca14a2c9b18258d20eb563bed5efd8f75bc0def0ad518feada3d1e427ca",
@@ -46,7 +46,7 @@
   },
   "asset_ledger": {
     "path": "manuscript/asset_ledger.jsonl",
-    "sha256": "3752bb23877aa7502b003dea249903b1362521f6a7948737f164fa9885920f25"
+    "sha256": "2d434b3880cfb23403f483c57dfa526dc3db80956c889d4ac26800b0b33d3b78"
   },
   "counts_by_type": {
     "code-listing": 8,

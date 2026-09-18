@@ -102,12 +102,12 @@ def fig_cohort_flow(D):
         ax.add_patch(patch)
         if sub:
             ax.text(cx, cy + 0.18, title, ha="center", va="center",
-                    fontsize=10.5, fontweight="normal", color=fg)
+                    fontsize=9.6, fontweight="normal", color=fg)
             ax.text(cx, cy - 0.20, sub, ha="center", va="center",
-                    fontsize=9.0, color=fg)
+                    fontsize=8.2, color=fg)
         else:
             ax.text(cx, cy, title, ha="center", va="center",
-                    fontsize=10.5, fontweight="normal", color=fg)
+                    fontsize=9.6, fontweight="normal", color=fg)
 
     def vfeed(x, y0, y1):
         ax.annotate("", xy=(x, y1), xytext=(x, y0),
@@ -121,7 +121,7 @@ def fig_cohort_flow(D):
           FILL["sky"], CB["ink"])
     vfeed(5.0, 8.57, 7.63)
     ax.text(5.24, 8.10, "eligibility:\nat least 10 felt reports",
-            ha="left", va="center", fontsize=9.0, color=CB["rule"], fontweight="normal")
+            ha="left", va="center", fontsize=8.2, color=CB["rule"], fontweight="normal")
 
     _node(5.0, 7.10, 5.6, 1.05,
           f"Eligible events: {cf['n_eligible_events']:,}",
@@ -165,15 +165,20 @@ def fig_cohort_flow(D):
     nq = len(cf["quarantine_inspected_ids"])
     ax.text(2.75, 2.40,
             f"Source-verification records: {nq}\nremoved before eligible cohort",
-            ha="center", va="center", fontsize=9.0, color=CB["rule"])
+            ha="center", va="center", fontsize=8.0, color=CB["rule"])
     ax.text(7.25, 2.40,
             f"Straddle events: {cf['temporal_straddle_excluded']}\nincluded in eligible cohort",
-            ha="center", va="center", fontsize=9.0, color=CB["rule"])
-    ax.text(5.0, 1.82,
-            f"Exhaustive, disjoint partition:  {tr['n']:,} + {dv['n']:,} + "
-            f"{ho['n']:,} + {cf['temporal_straddle_excluded']} = "
-            f"{cf['n_eligible_events']:,}",
-            ha="center", va="center", fontsize=9.0, color=CB["ink"], fontweight="normal")
+            ha="center", va="center", fontsize=8.0, color=CB["rule"])
+    accounting = FancyBboxPatch(
+        (2.0, 1.48), 6.0, 0.62,
+        boxstyle="round,pad=0.02,rounding_size=0.10",
+        facecolor="#F7F8F9", edgecolor="#AAB2B8", linewidth=0.7,
+    )
+    ax.add_patch(accounting)
+    ax.text(5.0, 1.79,
+            f"Role counts:  {tr['n']:,} + {dv['n']:,} + {ho['n']:,} + "
+            f"{cf['temporal_straddle_excluded']} = {cf['n_eligible_events']:,} eligible events",
+            ha="center", va="center", fontsize=8.2, color=CB["ink"], fontweight="normal")
 
     return _save(fig, "fig_cohort_flow",
                  "Cohort construction and role assignment flow",
