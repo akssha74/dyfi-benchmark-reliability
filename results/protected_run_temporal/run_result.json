@@ -1,0 +1,753 @@
+{
+  "lock": {
+    "analysis_digest": "6e1c3008e0ac5a889e5f40a72b86b72ae1d6ea309ff4e2e62e12829ca1f54a49",
+    "axis": "temporal",
+    "baseline_grid_digest": "6adadadf27a9c3759193cdc79118543172dda43e61d5289811eb123503496b47",
+    "code_hashes": "{\"acquire.py\":\"708a517d892ac0dc1334c61ee579ae5f2f0247552df873109af6213a63cc453a\",\"baselines.py\":\"6abc741a88c5531b1d7b50be9e9ad4c6bd6b342e0419ded5c6bb7cad0de36246\",\"common.py\":\"7840b8c271198509e1b4a563fc2da4fda265aaa9d78f13eb2b6bd4f341fc0e56\",\"decluster.py\":\"bfffffb768fda2f1ec797e8b8a835fa44f61e617786c3de0a4829b56e22799cb\",\"endpoint.py\":\"d477eaec030766ce699fc34dd3aa746b96feac2fa3dccacbb4493baa5fa144e9\",\"environment.py\":\"3428142a0b4337283befaa92f8a13427425e3407ba696757d7b342bc8b9f93bc\",\"external_runner.py\":\"81e78468c55f4c4fe74972ef7c5043f7d5a08740b6dd9f626e5394a1e99a284b\",\"ingest_eligibility.py\":\"893c5615830ac9781471cc4bca9055c2da11c72d43ff5548b668745cd0224bbf\",\"leakage_audit.py\":\"bd2225810c7bf10e0e3c5fb17b22e1f506fcca01a97cdf449a4e2b1e770495c9\",\"metrics.py\":\"78c2866a406d1b3f9895cf67600e09357078041fb6c53952bc8a6fafa3020026\",\"prehash_rules.py\":\"7fa67edeb180b0d1d9d9e131a5f47bd3445669158696cf1442cbf45ea1d1c89d\",\"reconstruct.py\":\"542abfa6a5b1809d4a4208c9d6893061a615b7613850b73e3409de52a29e8ce3\",\"report.py\":\"5b61fe1503237396553599b67f1ddbe35cdc0a1477fe8508ff88d015ec13bf29\",\"role_assignment.py\":\"a0ec85d695ccbc59ec85e9ef1a0569116df4bfe7f5f2737679053ff6c22f287f\"}",
+    "corpus_digest": "b0dfef1cce6f2c463504dbc9006936fe777b1df16cd4fa6b73725fb5d2b44713",
+    "endpoint_digest": "829239a9f2e1ed6efde745cc7e092249eb5eecd9944d4e4861371ec86694a47d",
+    "expected_fit_count": 91,
+    "feature_schema_digest": "a96ce60cc2bc28c23665bcf09f4f9d1d4968674bfd85d66f94f9748864a6f6fd",
+    "mode": "protected",
+    "n_construction": 1930,
+    "n_holdout": 430,
+    "prehash_combined_digest": "f678d2c2cea07a55e8ad37268b833c9e6f8971022cef855a528424ce1b5ee06e",
+    "source_snapshot_sha256": "88722d8aa6d025cfcc3562f29593cc87d84c6a073bf211e8c21d89adddd4d7e9"
+  },
+  "result_core": {
+    "axis": "temporal",
+    "data": "PROTECTED",
+    "excluded_forbidden_axis": {
+      "B3_expanded_metadata_logit": "B3_expanded_metadata_logit: schema 'expanded_metadata' carries a proxy for the 'temporal' axis and must not be fit/scored on that transport holdout"
+    },
+    "expected_fit_count": 91,
+    "fit_count": 91,
+    "fit_ledger_digest": "74ea4679ef300540c51845fe4ce649bde8472a7f38d23232b203139a0ead0f34",
+    "frozen_best_params": {
+      "B0_no_skill": {},
+      "B1_magnitude_only_logit": {
+        "C": 1.0
+      },
+      "B2_source_only_logit": {
+        "C": 0.1
+      },
+      "B3_expanded_metadata_logit": {
+        "C": 0.1
+      },
+      "B4_random_forest": {
+        "max_depth": 3,
+        "n_estimators": 300
+      },
+      "B5_xgboost": {
+        "learning_rate": 0.1,
+        "max_depth": 2,
+        "n_estimators": 100
+      }
+    },
+    "holdout_opens": 1,
+    "mode": "protected",
+    "n_construction": 1930,
+    "n_holdout": 430,
+    "predictions_digest": "58519b1ae48c949890ab3cddc3c2fcfdcbc680fc9fc71402b09f324be2d1138a",
+    "real_protected_role_opened": false,
+    "reconstruction_pipeline_digest": "dda1c23f4cc9ed7162ecdb14bed7dce309d5375f377f6c662911d0d3754a1e33",
+    "report": {
+      "data": "PROTECTED",
+      "difficulty_characterization": {
+        "fixed_probe_honest_auroc": 0.756945970738,
+        "fixed_probe_honest_brier": 0.167969602127,
+        "n_events": 1930,
+        "n_negative": 1379,
+        "n_positive": 551,
+        "n_sequences": 1530,
+        "near_threshold_fraction": 0.163730569948,
+        "no_skill_brier_floor": 0.203986415743,
+        "prevalence_severe": 0.285492227979,
+        "probe_baseline": "B2_source_only_logit",
+        "split": "sequence_grouped"
+      },
+      "evaluation": {
+        "claim_statement": "This resource characterises benchmark difficulty and the leakage inflation of naive splitting. It ranks baselines with paired uncertainty and explicit tie/INFEASIBLE states but declares NO winning model; the source-only baselines are honest comparators.",
+        "geographic_slice": {
+          "G+000+0040": {
+            "brier": 0.034267649351,
+            "brier_status": "OK",
+            "n": 2
+          },
+          "G+000+0090": {
+            "brier": 0.116954082947,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+000+0120": {
+            "brier": 0.214249028338,
+            "brier_status": "OK",
+            "n": 25
+          },
+          "G+000-0080": {
+            "brier": 0.133363771359,
+            "brier_status": "OK",
+            "n": 15
+          },
+          "G+000-0090": {
+            "brier": 0.176833595737,
+            "brier_status": "OK",
+            "n": 8
+          },
+          "G+010+0030": {
+            "brier": 0.471194182259,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+010+0040": {
+            "brier": 0.061502757514,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+010+0080": {
+            "brier": 0.023369001962,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+010+0090": {
+            "brier": 0.051665482652,
+            "brier_status": "OK",
+            "n": 2
+          },
+          "G+010+0100": {
+            "brier": 0.030861013356,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+010+0120": {
+            "brier": 0.228486784253,
+            "brier_status": "OK",
+            "n": 14
+          },
+          "G+010+0140": {
+            "brier": 0.083926668449,
+            "brier_status": "OK",
+            "n": 11
+          },
+          "G+010-0030": {
+            "brier": 0.04882498698,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+010-0060": {
+            "brier": 0.022331204529,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+010-0070": {
+            "brier": 0.138493253844,
+            "brier_status": "OK",
+            "n": 8
+          },
+          "G+010-0080": {
+            "brier": 0.281693335552,
+            "brier_status": "OK",
+            "n": 7
+          },
+          "G+010-0090": {
+            "brier": 0.160265529765,
+            "brier_status": "OK",
+            "n": 16
+          },
+          "G+010-0100": {
+            "brier": 0.159147763048,
+            "brier_status": "OK",
+            "n": 15
+          },
+          "G+010-0110": {
+            "brier": 0.29260294535,
+            "brier_status": "OK",
+            "n": 4
+          },
+          "G+010-0160": {
+            "brier": 0.224247471557,
+            "brier_status": "OK",
+            "n": 2
+          },
+          "G+020+0060": {
+            "brier": 0.064992622326,
+            "brier_status": "OK",
+            "n": 2
+          },
+          "G+020+0080": {
+            "brier": 0.315264077699,
+            "brier_status": "OK",
+            "n": 5
+          },
+          "G+020+0090": {
+            "brier": 0.2837788479,
+            "brier_status": "OK",
+            "n": 7
+          },
+          "G+020+0120": {
+            "brier": 0.150776680674,
+            "brier_status": "OK",
+            "n": 26
+          },
+          "G+020+0130": {
+            "brier": 0.002441038576,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+020-0070": {
+            "brier": 0.115022808907,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+020-0110": {
+            "brier": 0.371931069986,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+030+0000": {
+            "brier": 0.023593523678,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+030+0010": {
+            "brier": 0.151188558364,
+            "brier_status": "OK",
+            "n": 6
+          },
+          "G+030+0020": {
+            "brier": 0.170842665877,
+            "brier_status": "OK",
+            "n": 8
+          },
+          "G+030+0030": {
+            "brier": 0.283805470345,
+            "brier_status": "OK",
+            "n": 14
+          },
+          "G+030+0040": {
+            "brier": 0.209982171746,
+            "brier_status": "OK",
+            "n": 7
+          },
+          "G+030+0050": {
+            "brier": 0.023369001962,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+030+0060": {
+            "brier": 0.176663991057,
+            "brier_status": "OK",
+            "n": 4
+          },
+          "G+030+0070": {
+            "brier": 0.282597697088,
+            "brier_status": "OK",
+            "n": 12
+          },
+          "G+030+0100": {
+            "brier": 0.350354454984,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+030+0110": {
+            "brier": 0.583553432985,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+030+0130": {
+            "brier": 0.205730739003,
+            "brier_status": "OK",
+            "n": 13
+          },
+          "G+030+0140": {
+            "brier": 0.1137104987,
+            "brier_status": "OK",
+            "n": 10
+          },
+          "G+030-0010": {
+            "brier": 0.052382826694,
+            "brier_status": "OK",
+            "n": 2
+          },
+          "G+030-0100": {
+            "brier": 0.684054659969,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+030-0110": {
+            "brier": 0.662266852857,
+            "brier_status": "OK",
+            "n": 3
+          },
+          "G+030-0120": {
+            "brier": 0.365680523988,
+            "brier_status": "OK",
+            "n": 3
+          },
+          "G+040+0010": {
+            "brier": 0.631223224746,
+            "brier_status": "OK",
+            "n": 2
+          },
+          "G+040+0020": {
+            "brier": 0.216058538598,
+            "brier_status": "OK",
+            "n": 6
+          },
+          "G+040+0040": {
+            "brier": 0.368458704341,
+            "brier_status": "OK",
+            "n": 2
+          },
+          "G+040+0070": {
+            "brier": 0.172395517518,
+            "brier_status": "OK",
+            "n": 5
+          },
+          "G+040+0090": {
+            "brier": 0.023369001962,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+040+0140": {
+            "brier": 0.327620635276,
+            "brier_status": "OK",
+            "n": 5
+          },
+          "G+040-0130": {
+            "brier": 0.173728127853,
+            "brier_status": "OK",
+            "n": 14
+          },
+          "G+050+0160": {
+            "brier": 0.057979919602,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+050-0140": {
+            "brier": 0.148824778,
+            "brier_status": "OK",
+            "n": 5
+          },
+          "G+050-0160": {
+            "brier": 0.024939038036,
+            "brier_status": "OK",
+            "n": 5
+          },
+          "G+050-0170": {
+            "brier": 0.052733169537,
+            "brier_status": "OK",
+            "n": 2
+          },
+          "G+050-0180": {
+            "brier": 0.079777839029,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+060-0030": {
+            "brier": 0.041039376058,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+060-0150": {
+            "brier": 0.607984569092,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+060-0160": {
+            "brier": 0.0067602485,
+            "brier_status": "OK",
+            "n": 2
+          },
+          "G-010+0090": {
+            "brier": 0.048941483919,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-010+0100": {
+            "brier": 0.272112125668,
+            "brier_status": "OK",
+            "n": 6
+          },
+          "G-010+0110": {
+            "brier": 0.074110470729,
+            "brier_status": "OK",
+            "n": 14
+          },
+          "G-010+0120": {
+            "brier": 0.044695127868,
+            "brier_status": "OK",
+            "n": 2
+          },
+          "G-010+0130": {
+            "brier": 0.156616411964,
+            "brier_status": "OK",
+            "n": 2
+          },
+          "G-010+0140": {
+            "brier": 0.190947343424,
+            "brier_status": "OK",
+            "n": 5
+          },
+          "G-010+0150": {
+            "brier": 0.012118652747,
+            "brier_status": "OK",
+            "n": 2
+          },
+          "G-010-0080": {
+            "brier": 0.121839659753,
+            "brier_status": "OK",
+            "n": 7
+          },
+          "G-020+0160": {
+            "brier": 0.283315512781,
+            "brier_status": "OK",
+            "n": 7
+          },
+          "G-020-0070": {
+            "brier": 0.043484461728,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-020-0080": {
+            "brier": 0.109909420531,
+            "brier_status": "OK",
+            "n": 8
+          },
+          "G-020-0180": {
+            "brier": 0.195356002301,
+            "brier_status": "OK",
+            "n": 5
+          },
+          "G-030+0160": {
+            "brier": 0.058279355267,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-030+0170": {
+            "brier": 0.824898192064,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-030-0070": {
+            "brier": 0.023552775832,
+            "brier_status": "OK",
+            "n": 9
+          },
+          "G-030-0080": {
+            "brier": 0.139547655936,
+            "brier_status": "OK",
+            "n": 7
+          },
+          "G-030-0180": {
+            "brier": 0.195374934514,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-040+0010": {
+            "brier": 0.038458520346,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-040+0110": {
+            "brier": 0.038458520346,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-040+0170": {
+            "brier": 0.161483824675,
+            "brier_status": "OK",
+            "n": 4
+          },
+          "G-040-0070": {
+            "brier": 0.029654768332,
+            "brier_status": "OK",
+            "n": 3
+          },
+          "G-040-0080": {
+            "brier": 0.207237562616,
+            "brier_status": "OK",
+            "n": 15
+          },
+          "G-040-0180": {
+            "brier": 0.286108418787,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-050+0170": {
+            "brier": 0.039358546487,
+            "brier_status": "OK",
+            "n": 7
+          }
+        },
+        "no_winning_model_claim": true,
+        "per_baseline": {
+          "B0_no_skill": {
+            "auroc": 0.5,
+            "bootstrap_n_valid": 2000,
+            "bootstrap_status": "OK",
+            "brier": 0.232160107935,
+            "brier_ci": [
+              0.211565396566,
+              0.25272778619
+            ],
+            "brier_status": "OK",
+            "calibration_intercept": null,
+            "calibration_slope": null,
+            "calibration_status": "INFEASIBLE_CONSTANT_PREDICTION",
+            "confusion_at_threshold": {
+              "accuracy": 0.6488372093023256,
+              "f1": null,
+              "fn": 151,
+              "fp": 0,
+              "precision": null,
+              "recall": 0.0,
+              "tn": 279,
+              "tp": 0
+            },
+            "log_loss": 0.658310797977
+          },
+          "B1_magnitude_only_logit": {
+            "auroc": 0.718958437181,
+            "bootstrap_n_valid": 2000,
+            "bootstrap_status": "OK",
+            "brier": 0.198213701311,
+            "brier_ci": [
+              0.176575950797,
+              0.219231422693
+            ],
+            "brier_status": "OK",
+            "calibration_intercept": 0.324323667235,
+            "calibration_slope": 1.020326223589,
+            "calibration_status": "OK",
+            "confusion_at_threshold": {
+              "accuracy": 0.7046511627906977,
+              "f1": 0.3681592039800995,
+              "fn": 114,
+              "fp": 13,
+              "precision": 0.74,
+              "recall": 0.24503311258278146,
+              "tn": 266,
+              "tp": 37
+            },
+            "log_loss": 0.583331269709
+          },
+          "B2_source_only_logit": {
+            "auroc": 0.785753281588,
+            "bootstrap_n_valid": 2000,
+            "bootstrap_status": "OK",
+            "brier": 0.180661534768,
+            "brier_ci": [
+              0.160141060441,
+              0.201512231929
+            ],
+            "brier_status": "OK",
+            "calibration_intercept": 0.643751664916,
+            "calibration_slope": 1.294234260105,
+            "calibration_status": "OK",
+            "confusion_at_threshold": {
+              "accuracy": 0.727906976744186,
+              "f1": 0.45070422535211263,
+              "fn": 103,
+              "fp": 14,
+              "precision": 0.7741935483870968,
+              "recall": 0.31788079470198677,
+              "tn": 265,
+              "tp": 48
+            },
+            "log_loss": 0.536390573935
+          },
+          "B4_random_forest": {
+            "auroc": 0.777219967243,
+            "bootstrap_n_valid": 2000,
+            "bootstrap_status": "OK",
+            "brier": 0.186681056634,
+            "brier_ci": [
+              0.167913814906,
+              0.205781725915
+            ],
+            "brier_status": "OK",
+            "calibration_intercept": 0.738321528867,
+            "calibration_slope": 1.479011366878,
+            "calibration_status": "OK",
+            "confusion_at_threshold": {
+              "accuracy": 0.727906976744186,
+              "f1": 0.42926829268292677,
+              "fn": 107,
+              "fp": 10,
+              "precision": 0.8148148148148148,
+              "recall": 0.2913907284768212,
+              "tn": 269,
+              "tp": 44
+            },
+            "log_loss": 0.55271287874
+          },
+          "B5_xgboost": {
+            "auroc": 0.782786204277,
+            "bootstrap_n_valid": 2000,
+            "bootstrap_status": "OK",
+            "brier": 0.181438417478,
+            "brier_ci": [
+              0.161096567542,
+              0.20222271116
+            ],
+            "brier_status": "OK",
+            "calibration_intercept": 0.421445059154,
+            "calibration_slope": 1.068106011891,
+            "calibration_status": "OK",
+            "confusion_at_threshold": {
+              "accuracy": 0.7418604651162791,
+              "f1": 0.5022421524663677,
+              "fn": 95,
+              "fp": 16,
+              "precision": 0.7777777777777778,
+              "recall": 0.3708609271523179,
+              "tn": 263,
+              "tp": 56
+            },
+            "log_loss": 0.540989764096
+          }
+        },
+        "ranking_reference": "B0_no_skill",
+        "ranking_vs_reference": {
+          "B1_magnitude_only_logit_vs_B0_no_skill": {
+            "ci": [
+              -0.051104582364,
+              -0.017105405067
+            ],
+            "point_diff_a_minus_b": -0.033946406624,
+            "prob_a_better": 1.0,
+            "prob_b_better": 0.0,
+            "prob_tie": 0.0,
+            "resolved": true,
+            "status": "OK"
+          },
+          "B2_source_only_logit_vs_B0_no_skill": {
+            "ci": [
+              -0.068063045354,
+              -0.034206073403
+            ],
+            "point_diff_a_minus_b": -0.051498573167,
+            "prob_a_better": 1.0,
+            "prob_b_better": 0.0,
+            "prob_tie": 0.0,
+            "resolved": true,
+            "status": "OK"
+          },
+          "B4_random_forest_vs_B0_no_skill": {
+            "ci": [
+              -0.05979656139,
+              -0.030655813511
+            ],
+            "point_diff_a_minus_b": -0.0454790513,
+            "prob_a_better": 1.0,
+            "prob_b_better": 0.0,
+            "prob_tie": 0.0,
+            "resolved": true,
+            "status": "OK"
+          },
+          "B5_xgboost_vs_B0_no_skill": {
+            "ci": [
+              -0.068236451815,
+              -0.031888986925
+            ],
+            "point_diff_a_minus_b": -0.050721690457,
+            "prob_a_better": 1.0,
+            "prob_b_better": 0.0,
+            "prob_tie": 0.0,
+            "resolved": true,
+            "status": "OK"
+          }
+        },
+        "slice_probe_baseline": "B2_source_only_logit",
+        "temporal_slice": {
+          "2023": {
+            "auroc": 0.797137182385,
+            "brier": 0.185180084337,
+            "brier_status": "OK",
+            "n": 250
+          },
+          "2024": {
+            "auroc": 0.776568682872,
+            "brier": 0.174385771479,
+            "brier_status": "OK",
+            "n": 180
+          }
+        },
+        "threshold": 0.5,
+        "threshold_sensitivity": {
+          "5.5": {
+            "auroc": 0.733720398248,
+            "brier": 0.239814093497,
+            "prevalence": 0.458139534884
+          },
+          "6.0": {
+            "auroc": 0.785753281588,
+            "brier": 0.180661534768,
+            "prevalence": 0.351162790698
+          },
+          "6.5": {
+            "auroc": 0.815209456424,
+            "brier": 0.143312832619,
+            "prevalence": 0.260465116279
+          }
+        }
+      },
+      "leakage_inflation_headline": {
+        "auroc_inflation_random_minus_seq": -0.012396868243,
+        "brier_inflation_seq_minus_random": -0.005878207034,
+        "event_grouped_note": "On a one-row-per-event table event-grouped coincides with the random split; it is reported as the intermediate control between random and sequence grouping.",
+        "honest_estimate_scheme": "sequence_grouped",
+        "interpretation": "Random-event splitting lets within-sequence signal leak across folds; the sequence-grouped split is the honest, leakage-hardened estimate. A positive Brier gap (sequence minus random) and positive AUROC gap (random minus sequence) quantify the optimistic inflation of the naive split. This is the resource's headline; no model is claimed to win.",
+        "n_folds": 5,
+        "per_scheme": {
+          "event_grouped": {
+            "auroc": 0.705795646126,
+            "brier": 0.200874490602,
+            "log_loss": 0.922291670941,
+            "n_folds_populated": 5
+          },
+          "random_event": {
+            "auroc": 0.695234059242,
+            "brier": 0.204833647433,
+            "log_loss": 0.964044860549,
+            "n_folds_populated": 5
+          },
+          "sequence_grouped": {
+            "auroc": 0.707630927485,
+            "brier": 0.198955440399,
+            "log_loss": 0.970903842537,
+            "n_folds_populated": 5
+          }
+        },
+        "probe_baseline": "B4_random_forest",
+        "probe_params": {
+          "max_depth": null,
+          "n_estimators": 300
+        },
+        "seed": 20260901
+      },
+      "protected_role_opened": true,
+      "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1"
+    },
+    "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
+    "serialization_deterministic": {
+      "B0_no_skill": true,
+      "B1_magnitude_only_logit": true,
+      "B2_source_only_logit": true,
+      "B4_random_forest": true,
+      "B5_xgboost": true
+    }
+  },
+  "result_hash": "817219e89a7f28a4f0ff10512dfb16e652c4ba307854648622af7625fe683c8b",
+  "run_token": "5f3fdc2ccf5e91fda152a4bdb1791a3fa601c4f74e0a41cfbbfb735309d29845",
+  "verification": {
+    "b3_axis_prohibition_enforced": true,
+    "environment_passed": true,
+    "fit_budget_respected": true,
+    "holdout_opened_once": true,
+    "lock_verified": true,
+    "no_protected_refit": true,
+    "run_token": "5f3fdc2ccf5e91fda152a4bdb1791a3fa601c4f74e0a41cfbbfb735309d29845"
+  }
+}

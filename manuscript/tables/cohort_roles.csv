@@ -1,0 +1,8 @@
+stage,n_events,n_positive,prevalence,n_sequences
+USGS DYFI records with $M\geq5$ (frozen snapshot),7520,--,--,--
+Eligible (at least 10 felt reports),2362,703,0.298,1885
+Train,1573,449,0.285,--
+Development,357,102,0.286,--
+Construction (train+dev),1930,551,0.285,1530
+External temporal holdout,430,151,0.351,354
+Temporal-straddle excluded,2,1,--,--

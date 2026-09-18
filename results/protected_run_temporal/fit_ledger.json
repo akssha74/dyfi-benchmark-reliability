@@ -1,0 +1,582 @@
+{
+  "axis": "temporal",
+  "entries": [
+    {
+      "baseline_id": "B0_no_skill",
+      "context": "final_refit",
+      "n": 1,
+      "params": "{}"
+    },
+    {
+      "baseline_id": "B1_magnitude_only_logit",
+      "context": "cv_fold_0",
+      "n": 2,
+      "params": "{\"C\":0.1}"
+    },
+    {
+      "baseline_id": "B1_magnitude_only_logit",
+      "context": "cv_fold_1",
+      "n": 3,
+      "params": "{\"C\":0.1}"
+    },
+    {
+      "baseline_id": "B1_magnitude_only_logit",
+      "context": "cv_fold_2",
+      "n": 4,
+      "params": "{\"C\":0.1}"
+    },
+    {
+      "baseline_id": "B1_magnitude_only_logit",
+      "context": "cv_fold_3",
+      "n": 5,
+      "params": "{\"C\":0.1}"
+    },
+    {
+      "baseline_id": "B1_magnitude_only_logit",
+      "context": "cv_fold_4",
+      "n": 6,
+      "params": "{\"C\":0.1}"
+    },
+    {
+      "baseline_id": "B1_magnitude_only_logit",
+      "context": "cv_fold_0",
+      "n": 7,
+      "params": "{\"C\":1.0}"
+    },
+    {
+      "baseline_id": "B1_magnitude_only_logit",
+      "context": "cv_fold_1",
+      "n": 8,
+      "params": "{\"C\":1.0}"
+    },
+    {
+      "baseline_id": "B1_magnitude_only_logit",
+      "context": "cv_fold_2",
+      "n": 9,
+      "params": "{\"C\":1.0}"
+    },
+    {
+      "baseline_id": "B1_magnitude_only_logit",
+      "context": "cv_fold_3",
+      "n": 10,
+      "params": "{\"C\":1.0}"
+    },
+    {
+      "baseline_id": "B1_magnitude_only_logit",
+      "context": "cv_fold_4",
+      "n": 11,
+      "params": "{\"C\":1.0}"
+    },
+    {
+      "baseline_id": "B1_magnitude_only_logit",
+      "context": "cv_fold_0",
+      "n": 12,
+      "params": "{\"C\":10.0}"
+    },
+    {
+      "baseline_id": "B1_magnitude_only_logit",
+      "context": "cv_fold_1",
+      "n": 13,
+      "params": "{\"C\":10.0}"
+    },
+    {
+      "baseline_id": "B1_magnitude_only_logit",
+      "context": "cv_fold_2",
+      "n": 14,
+      "params": "{\"C\":10.0}"
+    },
+    {
+      "baseline_id": "B1_magnitude_only_logit",
+      "context": "cv_fold_3",
+      "n": 15,
+      "params": "{\"C\":10.0}"
+    },
+    {
+      "baseline_id": "B1_magnitude_only_logit",
+      "context": "cv_fold_4",
+      "n": 16,
+      "params": "{\"C\":10.0}"
+    },
+    {
+      "baseline_id": "B1_magnitude_only_logit",
+      "context": "final_refit",
+      "n": 17,
+      "params": "{\"C\":1.0}"
+    },
+    {
+      "baseline_id": "B2_source_only_logit",
+      "context": "cv_fold_0",
+      "n": 18,
+      "params": "{\"C\":0.1}"
+    },
+    {
+      "baseline_id": "B2_source_only_logit",
+      "context": "cv_fold_1",
+      "n": 19,
+      "params": "{\"C\":0.1}"
+    },
+    {
+      "baseline_id": "B2_source_only_logit",
+      "context": "cv_fold_2",
+      "n": 20,
+      "params": "{\"C\":0.1}"
+    },
+    {
+      "baseline_id": "B2_source_only_logit",
+      "context": "cv_fold_3",
+      "n": 21,
+      "params": "{\"C\":0.1}"
+    },
+    {
+      "baseline_id": "B2_source_only_logit",
+      "context": "cv_fold_4",
+      "n": 22,
+      "params": "{\"C\":0.1}"
+    },
+    {
+      "baseline_id": "B2_source_only_logit",
+      "context": "cv_fold_0",
+      "n": 23,
+      "params": "{\"C\":1.0}"
+    },
+    {
+      "baseline_id": "B2_source_only_logit",
+      "context": "cv_fold_1",
+      "n": 24,
+      "params": "{\"C\":1.0}"
+    },
+    {
+      "baseline_id": "B2_source_only_logit",
+      "context": "cv_fold_2",
+      "n": 25,
+      "params": "{\"C\":1.0}"
+    },
+    {
+      "baseline_id": "B2_source_only_logit",
+      "context": "cv_fold_3",
+      "n": 26,
+      "params": "{\"C\":1.0}"
+    },
+    {
+      "baseline_id": "B2_source_only_logit",
+      "context": "cv_fold_4",
+      "n": 27,
+      "params": "{\"C\":1.0}"
+    },
+    {
+      "baseline_id": "B2_source_only_logit",
+      "context": "cv_fold_0",
+      "n": 28,
+      "params": "{\"C\":10.0}"
+    },
+    {
+      "baseline_id": "B2_source_only_logit",
+      "context": "cv_fold_1",
+      "n": 29,
+      "params": "{\"C\":10.0}"
+    },
+    {
+      "baseline_id": "B2_source_only_logit",
+      "context": "cv_fold_2",
+      "n": 30,
+      "params": "{\"C\":10.0}"
+    },
+    {
+      "baseline_id": "B2_source_only_logit",
+      "context": "cv_fold_3",
+      "n": 31,
+      "params": "{\"C\":10.0}"
+    },
+    {
+      "baseline_id": "B2_source_only_logit",
+      "context": "cv_fold_4",
+      "n": 32,
+      "params": "{\"C\":10.0}"
+    },
+    {
+      "baseline_id": "B2_source_only_logit",
+      "context": "final_refit",
+      "n": 33,
+      "params": "{\"C\":0.1}"
+    },
+    {
+      "baseline_id": "B3_expanded_metadata_logit",
+      "context": "cv_fold_0",
+      "n": 34,
+      "params": "{\"C\":0.1}"
+    },
+    {
+      "baseline_id": "B3_expanded_metadata_logit",
+      "context": "cv_fold_1",
+      "n": 35,
+      "params": "{\"C\":0.1}"
+    },
+    {
+      "baseline_id": "B3_expanded_metadata_logit",
+      "context": "cv_fold_2",
+      "n": 36,
+      "params": "{\"C\":0.1}"
+    },
+    {
+      "baseline_id": "B3_expanded_metadata_logit",
+      "context": "cv_fold_3",
+      "n": 37,
+      "params": "{\"C\":0.1}"
+    },
+    {
+      "baseline_id": "B3_expanded_metadata_logit",
+      "context": "cv_fold_4",
+      "n": 38,
+      "params": "{\"C\":0.1}"
+    },
+    {
+      "baseline_id": "B3_expanded_metadata_logit",
+      "context": "cv_fold_0",
+      "n": 39,
+      "params": "{\"C\":1.0}"
+    },
+    {
+      "baseline_id": "B3_expanded_metadata_logit",
+      "context": "cv_fold_1",
+      "n": 40,
+      "params": "{\"C\":1.0}"
+    },
+    {
+      "baseline_id": "B3_expanded_metadata_logit",
+      "context": "cv_fold_2",
+      "n": 41,
+      "params": "{\"C\":1.0}"
+    },
+    {
+      "baseline_id": "B3_expanded_metadata_logit",
+      "context": "cv_fold_3",
+      "n": 42,
+      "params": "{\"C\":1.0}"
+    },
+    {
+      "baseline_id": "B3_expanded_metadata_logit",
+      "context": "cv_fold_4",
+      "n": 43,
+      "params": "{\"C\":1.0}"
+    },
+    {
+      "baseline_id": "B3_expanded_metadata_logit",
+      "context": "cv_fold_0",
+      "n": 44,
+      "params": "{\"C\":10.0}"
+    },
+    {
+      "baseline_id": "B3_expanded_metadata_logit",
+      "context": "cv_fold_1",
+      "n": 45,
+      "params": "{\"C\":10.0}"
+    },
+    {
+      "baseline_id": "B3_expanded_metadata_logit",
+      "context": "cv_fold_2",
+      "n": 46,
+      "params": "{\"C\":10.0}"
+    },
+    {
+      "baseline_id": "B3_expanded_metadata_logit",
+      "context": "cv_fold_3",
+      "n": 47,
+      "params": "{\"C\":10.0}"
+    },
+    {
+      "baseline_id": "B3_expanded_metadata_logit",
+      "context": "cv_fold_4",
+      "n": 48,
+      "params": "{\"C\":10.0}"
+    },
+    {
+      "baseline_id": "B3_expanded_metadata_logit",
+      "context": "final_refit",
+      "n": 49,
+      "params": "{\"C\":0.1}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_0",
+      "n": 50,
+      "params": "{\"max_depth\":3,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_1",
+      "n": 51,
+      "params": "{\"max_depth\":3,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_2",
+      "n": 52,
+      "params": "{\"max_depth\":3,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_3",
+      "n": 53,
+      "params": "{\"max_depth\":3,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_4",
+      "n": 54,
+      "params": "{\"max_depth\":3,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_0",
+      "n": 55,
+      "params": "{\"max_depth\":null,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_1",
+      "n": 56,
+      "params": "{\"max_depth\":null,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_2",
+      "n": 57,
+      "params": "{\"max_depth\":null,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_3",
+      "n": 58,
+      "params": "{\"max_depth\":null,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_4",
+      "n": 59,
+      "params": "{\"max_depth\":null,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_0",
+      "n": 60,
+      "params": "{\"max_depth\":3,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_1",
+      "n": 61,
+      "params": "{\"max_depth\":3,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_2",
+      "n": 62,
+      "params": "{\"max_depth\":3,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_3",
+      "n": 63,
+      "params": "{\"max_depth\":3,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_4",
+      "n": 64,
+      "params": "{\"max_depth\":3,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_0",
+      "n": 65,
+      "params": "{\"max_depth\":null,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_1",
+      "n": 66,
+      "params": "{\"max_depth\":null,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_2",
+      "n": 67,
+      "params": "{\"max_depth\":null,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_3",
+      "n": 68,
+      "params": "{\"max_depth\":null,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "cv_fold_4",
+      "n": 69,
+      "params": "{\"max_depth\":null,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B4_random_forest",
+      "context": "final_refit",
+      "n": 70,
+      "params": "{\"max_depth\":3,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_0",
+      "n": 71,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":2,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_1",
+      "n": 72,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":2,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_2",
+      "n": 73,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":2,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_3",
+      "n": 74,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":2,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_4",
+      "n": 75,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":2,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_0",
+      "n": 76,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":4,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_1",
+      "n": 77,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":4,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_2",
+      "n": 78,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":4,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_3",
+      "n": 79,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":4,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_4",
+      "n": 80,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":4,\"n_estimators\":100}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_0",
+      "n": 81,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":2,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_1",
+      "n": 82,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":2,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_2",
+      "n": 83,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":2,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_3",
+      "n": 84,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":2,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_4",
+      "n": 85,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":2,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_0",
+      "n": 86,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":4,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_1",
+      "n": 87,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":4,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_2",
+      "n": 88,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":4,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_3",
+      "n": 89,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":4,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "cv_fold_4",
+      "n": 90,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":4,\"n_estimators\":300}"
+    },
+    {
+      "baseline_id": "B5_xgboost",
+      "context": "final_refit",
+      "n": 91,
+      "params": "{\"learning_rate\":0.1,\"max_depth\":2,\"n_estimators\":100}"
+    }
+  ],
+  "expected_fit_count": 91,
+  "fit_cap": 91,
+  "fit_count": 91,
+  "fit_ledger_digest": "74ea4679ef300540c51845fe4ce649bde8472a7f38d23232b203139a0ead0f34",
+  "frozen_best_params": {
+    "B0_no_skill": {},
+    "B1_magnitude_only_logit": {
+      "C": 1.0
+    },
+    "B2_source_only_logit": {
+      "C": 0.1
+    },
+    "B3_expanded_metadata_logit": {
+      "C": 0.1
+    },
+    "B4_random_forest": {
+      "max_depth": 3,
+      "n_estimators": 300
+    },
+    "B5_xgboost": {
+      "learning_rate": 0.1,
+      "max_depth": 2,
+      "n_estimators": 100
+    }
+  },
+  "hard_cap_TOTAL_FIT_CAP": 120,
+  "matches_protected_run_digest": true,
+  "note": "Regenerated construction-only (train+development roles); the protected transport holdout is NEVER scored in this pass. The digest is byte-identical to the value the one-shot protected run recorded, proving the fit budget and tuning are reproducible.",
+  "record_type": "immutable_fit_ledger",
+  "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
+  "source_snapshot_sha256": "88722d8aa6d025cfcc3562f29593cc87d84c6a073bf211e8c21d89adddd4d7e9"
+}

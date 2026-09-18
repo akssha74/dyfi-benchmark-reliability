@@ -1,0 +1,230 @@
+{
+  "acquisition_envelope_pinned": {
+    "catalog": "USGS_ComCat_FDSNWS_event_v1",
+    "endtime": "2025-01-01T00:00:00Z",
+    "envelope_keys_are_outcome_independent": true,
+    "eventtype": "earthquake",
+    "minmagnitude": 5.0,
+    "orderby": "time-asc",
+    "producttype": "dyfi",
+    "starttime": "2015-01-01T00:00:00Z",
+    "universe_count_outcome_blind": {
+      "drift": 1,
+      "immediate_recheck": 7576,
+      "initial_packet": 7575,
+      "interpretation": "expected catalogue-version drift; snapshot MUST be hash-pinned to one access instant"
+    }
+  },
+  "authorization": "Real acquisition + protected scoring are gated on: venue-freshness re-verification, contract lock via isolated default-reject review, and an activation token. No per-event label has been read; only outcome-blind counts + synthetic runs.",
+  "axis_proxy_audit": {
+    "geographic": [
+      "latitude/longitude/region_code/region/geocell/gridcell"
+    ],
+    "rule": "audit_features_against_axis rejects any field that is a proxy for the evaluation axis; enforces that B3_expanded_metadata_logit cannot be fit/scored on the temporal or geographic holdout.",
+    "temporal": [
+      "origin_year/year/origin_time/epoch/timestamp/date"
+    ]
+  },
+  "baseline_suite": {
+    "baselines": [
+      {
+        "desc": "constant train-prevalence predictor (proper-scored no-skill floor)",
+        "id": "B0_no_skill",
+        "schema": "n/a"
+      },
+      {
+        "desc": "logistic on magnitude alone (strong simple baseline; magnitude expected to dominate)",
+        "id": "B1_magnitude_only_logit",
+        "schema": "magnitude-only"
+      },
+      {
+        "desc": "L2-regularised logistic on {magnitude, depth_km}",
+        "id": "B2_source_only_logit",
+        "schema": "SOURCE_ONLY"
+      },
+      {
+        "desc": "logistic adding lat/lon/year; AXIS-RESTRICTED: forbidden on temporal + geographic holdouts; published only as a proxy-bearing sensitivity",
+        "id": "B3_expanded_metadata_logit",
+        "schema": "EXPANDED_METADATA"
+      },
+      {
+        "desc": "scikit-learn RandomForestClassifier",
+        "id": "B4_random_forest",
+        "schema": "SOURCE_ONLY"
+      },
+      {
+        "desc": "XGBoost (Apache-2.0); registered ONLY IF the pinned build imports + passes a smoke fit",
+        "id": "B5_xgboost",
+        "schema": "SOURCE_ONLY"
+      }
+    ],
+    "domain_ipe_baseline": "EXCLUDED with a machine-auditable reason (ipe_exclusion.json): the verified Atkinson-Wald (2007) DYFI IPE cannot be applied to the SOURCE_ONLY schema + tectonically heterogeneous population without inventing a site-distance covariate, a per-event ACR/SCR regime assignment, and a probability link. Explicit exclusion, not silent omission; reopenable by supplying those fields.",
+    "no_winning_method_claim": true,
+    "non_selective": true,
+    "tuning_rule": "each learned baseline is tuned ONLY by the registered deterministic grouped cross-validation on the construction corpus over a REGISTERED grid; all baselines are named before external evaluation and carried unchanged to it; fixed comparator fits are not candidate method variants."
+  },
+  "compute_envelope": "local-only; FDSN fetch + tabular models on a few thousand events; no cloud/paid compute.",
+  "eligibility_filter": {
+    "disclosure": "data-informed (informed by exposed aggregate feasibility), registered before any per-event label is read; num_responses is used ONLY for eligibility and is forbidden as a feature.",
+    "rationale": "below ~10 responses maxCDI is unstable/ascertainment-dominated (inherited 242/662 in the 2025 M5 slice)",
+    "rule": "include an event only if it has a DYFI product with >=10 aggregated responses (num_responses>=10)"
+  },
+  "endpoint": {
+    "definition": "severe felt intensity == event-maximum maxCDI>=6 (reported shaking reaching intensity VI+)",
+    "grid_sensitivity_required": true,
+    "near_threshold_band": 0.5,
+    "note": "event maximum can flip across the threshold on a single outlier report; threshold-sensitivity + near-threshold counts + aggregation-grid sensitivity are reported so the endpoint is not read as a single-grid artifact. Deterministic from the frozen snapshot; independent of predictors.",
+    "primary_threshold": 6.0,
+    "sensitivity_thresholds": [
+      5.5,
+      6.0,
+      6.5
+    ]
+  },
+  "estimand": "descriptive-retrospective P(event-max CDI>=6 | source metadata) on a hash-pinned snapshot; evaluated once on a pre-hashed sequence-grouped temporal holdout (geographic transport secondary). No cross-system, real-time, lead-time, operational, causal, or winning-method claim.",
+  "fit_budget": {
+    "enforcement": "FitLedger counts every .fit() (each CV-fold fit and each final refit); the runner aborts if the cap is exceeded.",
+    "rule": "the registered grid + CV folds + final refits across B0-B5 must not exceed the cap; the protected role is scored with frozen best_params and NO re-tuning.",
+    "synthetic_demonstration_fit_count": 91,
+    "total_fit_cap": 120
+  },
+  "leakage_inflation_headline": {
+    "definition": "report Brier/AUROC/log-loss across three splitting schemes at a fixed probe baseline: random_event, event_grouped (intermediate control; coincides with random on a one-row-per-event table), sequence_grouped (honest, leakage-hardened).",
+    "reported_gap": "Brier(sequence_grouped) - Brier(random_event) and AUROC(random) - AUROC(sequence), with uncertainty.",
+    "status": "this is the resource's primary quantitative result; no model is claimed to win."
+  },
+  "metrics_and_inference": {
+    "missing_class_rule": "single-class slices/folds emit an explicit INFEASIBLE state rather than a spurious metric (missing_class_corpus fixture exercises this).",
+    "primary_metric": "event-level Brier score",
+    "ranking_rule": "paired sequence-cluster bootstrap difference; classify each pair directional / equivalent / unresolved against a PRE-REGISTERED equivalence margin with an explicit tie probability (prob_a_better / prob_b_better / prob_tie).",
+    "secondary_metrics": [
+      "log loss",
+      "AUROC",
+      "calibration intercept",
+      "calibration slope",
+      "confusion at the development-fixed threshold"
+    ],
+    "tie_and_infeasible_rules": "INFEASIBLE/OK states are DERIVED from metric feasibility, not hard-coded (e.g. calibration_status=INFEASIBLE_CONSTANT_PREDICTION for the constant no-skill predictor; brier_status/bootstrap_status flags).",
+    "uncertainty": "sequence-cluster bootstrap, n_boot>=2000, 95% CIs on every reported metric and on paired baseline differences, with a minimum-valid-replicate rule."
+  },
+  "no_selective_omission_contract": {
+    "commitment": "every registered baseline (B0-B5, subject only to the recorded XGBoost availability gate), every registered metric, every registered slice (temporal/geographic), every threshold in {5.5,6.0,6.5}, and every pairwise ranking is reported in the machine-readable results REGARDLESS of outcome. No baseline, slice, threshold, or comparison may be dropped after outcomes are read.",
+    "enforcement": "the one-shot runner emits the full per-baseline / per-slice / per-threshold / per-pair record (runner_result.json structure) and the report sets no_winning_model_claim=true.",
+    "exclusions_must_be_pre_registered_and_machine_auditable": [
+      "the domain IPE exclusion (ipe_exclusion.json)",
+      "B3 axis restriction (baselines.assert_fit_allowed + axis audit)",
+      "the two quarantined inspected event ids"
+    ],
+    "unresolved_is_a_reportable_result": "a pairwise difference classified 'unresolved' or a calibration_status 'INFEASIBLE' is reported as such; it is never suppressed or reframed as a win."
+  },
+  "prehash_combined_digest": "f678d2c2cea07a55e8ad37268b833c9e6f8971022cef855a528424ce1b5ee06e",
+  "prehash_combined_digest_q5_transition": {
+    "new": "f678d2c2cea07a55e8ad37268b833c9e6f8971022cef855a528424ce1b5ee06e",
+    "note": "Re-pinned at activation for the authorized Q5 manual-quarantine addition; scientific plan unchanged.",
+    "old": "f678d2c2cea07a55e8ad37268b833c9e6f8971022cef855a528424ce1b5ee06e"
+  },
+  "preregistered_at": "2026-09-01",
+  "protected_execution_sequence": {
+    "step_1_freeze_query_envelope": "outcome-free; already recorded (source_count_preflight.json).",
+    "step_2_retrieve_and_hash_products": "pin product version id + access instant + payload sha256 per event; opens per-event source metadata -> AUTHORIZED ONLY after venue verification + lock + activation.",
+    "step_3_apply_eligibility_filter": "num_responses>=10; carry the quarantine list.",
+    "step_4_decluster": "assign sequence clusters (100km/30d).",
+    "step_5_assign_frozen_roles": "pre-hashed outcome-independent temporal (primary) + geographic (secondary) roles; publish role-manifest hashes.",
+    "step_6_leakage_audit": "run the six-family audit + fixtures; must reject 100% seeded forbidden/proxy/straddle fixtures and accept only the exact clean schema.",
+    "step_7_freeze_baselines_metrics": "tune B0-B5 on train/development over the registered grid within the 120 cap; freeze best_params.",
+    "step_8_assemble_release": "source locators + hashes, licences, schema, endpoint def, role algorithm + hashes, leakage tests + fixtures, baseline configs + env lock, metrics/bootstrap code, machine-readable results, README + datasheet + data dictionary + CITATION.",
+    "step_9_one_shot_protected_scoring": "external_runner opens the protected role EXACTLY ONCE with a single globally-consumed run token; carries frozen best_params; enforces B3 axis prohibition; derives INFEASIBLE states; reports the leakage-inflation headline. Currently interface-only (runner_interface_contract.json); NOT executed."
+  },
+  "quarantine_rules": {
+    "Q1_non_earthquake_event_type": "quarry blast/explosion/ice quake/sonic boom removed independently of outcome",
+    "Q2_outside_pinned_envelope": "origin outside [2015,2025) or M<5.0",
+    "Q3_corrupt_or_missing_geometry": "missing/non-finite/out-of-range lat/lon/depth",
+    "Q4_duplicate_authoritative_origin": "keep latest authoritative revision; quarantine superseded",
+    "Q5_explicit_listed_quarantine_id": "frozen reason-bearing manual list; currently empty in code, with two inspected event ids (ci40925991, us6000pgsd) added at activation as a logged non-silent change",
+    "reads_label": false
+  },
+  "record_type": "frozen_preregistration",
+  "reproducibility_guarantee": "two clean local reruns from the release manifest reproduce role hashes, predictions, and metric JSON exactly (point summaries to <=1e-12; CIs to Monte-Carlo error). Determinism of the construction analytics is already demonstrated: two independent re-runs of both stage validators reproduced every emitted JSON artifact byte-for-byte.",
+  "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
+  "role_assignment": {
+    "development_fraction": 0.2,
+    "geographic_holdout_fraction": 0.2,
+    "n_cv_folds": 5,
+    "post_assignment_role_manifest_hashes_published": true,
+    "primary_external_holdout": "TEMPORAL: events on/after cutoff year 2023 form the external-holdout evaluation corpus; earlier events form train + development.",
+    "reads_label": false,
+    "role_salt": "dyfi-usgs-severe-felt-intensity-v1",
+    "secondary_transport": "GEOGRAPHIC leave-region-out variant reported as an internal transport check (still single-source USGS).",
+    "temporal_cutoff_year": 2023
+  },
+  "schema_version": 1,
+  "sequence_grouping": {
+    "assignment_unit": "sequence",
+    "decluster_space_km": 100.0,
+    "decluster_time_days": 30.0,
+    "rationale": "aftershock near-duplicates cannot straddle roles; the grouping key is registered before role assignment and reads no label.",
+    "rule": "single-link space-time connected components"
+  },
+  "six_leakage_families": [
+    {
+      "control": "forbidden-field audit rejects",
+      "example": "cdi/maxcdi/mmi/severe/label/intensity",
+      "family": "F1_direct_label_or_constituent",
+      "surface": "field-level"
+    },
+    {
+      "control": "forbidden-field audit; num_responses is eligibility-only, never a feature",
+      "example": "num_responses/felt/responses/updated/revisedflag",
+      "family": "F2_post_outcome_ascertainment_or_revision",
+      "surface": "field-level"
+    },
+    {
+      "control": "forbidden-field audit rejects memorisation proxies",
+      "example": "event_id/net/source/contributor/sequenceid",
+      "family": "F3_identifier_or_source_proxy",
+      "surface": "field-level"
+    },
+    {
+      "control": "forbidden-field audit rejects different-information-set proxies",
+      "example": "shakemap/pager/pga/pgv/instrumentalmmi",
+      "family": "F4_downstream_product_proxy",
+      "surface": "field-level"
+    },
+    {
+      "control": "space-time declustering; roles assigned by sequence cluster; audit_role_manifest rejects cross-role sequence straddles",
+      "example": "a mainshock in train and its aftershock in the holdout",
+      "family": "F5_sequence_cross_role",
+      "surface": "split-level"
+    },
+    {
+      "control": "temporal cutoff; strictly disjoint time ranges; audit_role_manifest rejects violations",
+      "example": "future events informing past roles",
+      "family": "F6_temporal_leakage",
+      "surface": "split-level"
+    }
+  ],
+  "status": "PLAN_ONLY_NOT_EXECUTED_ON_REAL_DATA",
+  "strict_feature_schemas": {
+    "EXPANDED_METADATA": {
+      "features": [
+        "magnitude",
+        "depth_km",
+        "latitude",
+        "longitude",
+        "origin_year"
+      ],
+      "role": "published ONLY as an explicitly proxy-bearing sensitivity (baseline B3); forbidden on the temporal and geographic axes it would leak"
+    },
+    "SOURCE_ONLY": {
+      "features": [
+        "magnitude",
+        "depth_km"
+      ],
+      "note": "lat/lon/origin_year excluded here because they are transport-axis proxies",
+      "role": "the ONLY schema scored on the temporal/geographic transport holdouts"
+    },
+    "audit_rule": "leakage_audit.audit_feature_names accepts ONLY the exact schema (same members, same order); any extra/unknown field is rejected."
+  },
+  "task": "Binary classification of severe felt intensity (event-max maxCDI>=6) from outcome-blind event-level source metadata, evaluated under a leakage-safe sequence-grouped protocol on a single frozen USGS DYFI snapshot.",
+  "versioning_contract": "the released resource is a dated, hash-pinned snapshot (v1 = <access-instant>); any later USGS revision defines a NEW version, never a silent overwrite."
+}

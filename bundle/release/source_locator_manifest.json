@@ -1,0 +1,66 @@
+{
+  "access_instant": null,
+  "catalog": "USGS_ComCat_FDSNWS_event_v1",
+  "count_url_outcome_free": "https://earthquake.usgs.gov/fdsnws/event/1/count?starttime=2015-01-01T00%3A00%3A00Z&endtime=2025-01-01T00%3A00%3A00Z&minmagnitude=5.0&producttype=dyfi&eventtype=earthquake&orderby=time-asc&format=text",
+  "drift_receipt": {
+    "count_drift": 1,
+    "count_max": 7576,
+    "count_min": 7575,
+    "drift_is_error": false,
+    "interpretation": "Catalogue-version drift: the DYFI/ComCat window count changed by 1 between observations (e.g. 7575 -> 7576). This is expected catalogue evolution (a revision entering the window), which is why the outcome-bearing snapshot must be pinned to one access instant and hash-locked; a count from one instant must never be paired with a payload fetched at another.",
+    "n_observations": 2,
+    "observations": [
+      {
+        "count": 7575,
+        "label": "initial_packet",
+        "note": "first live /count preflight against the pinned envelope"
+      },
+      {
+        "count": 7576,
+        "label": "immediate_recheck",
+        "note": "second live /count within the same session; +1 catalogue drift"
+      }
+    ],
+    "requires_pinned_snapshot": true
+  },
+  "duplicate_revision_policy": "keep latest authoritative revision; quarantine superseded (Q4)",
+  "envelope": {
+    "endtime": "2025-01-01T00:00:00Z",
+    "eventtype": "earthquake",
+    "minmagnitude": 5.0,
+    "note": "M>=5 DYFI-bearing events over the pinned decade; the magnitude floor, product type, and time bounds are outcome-independent selection keys.",
+    "orderby": "time-asc",
+    "producttype": "dyfi",
+    "starttime": "2015-01-01T00:00:00Z"
+  },
+  "exact_full_response_required": true,
+  "outcome_fetched": false,
+  "payload_bytes": null,
+  "prehash_combined_digest": "f678d2c2cea07a55e8ad37268b833c9e6f8971022cef855a528424ce1b5ee06e",
+  "quarantine_rule_ids": [
+    "Q1_non_earthquake_event_type",
+    "Q2_outside_pinned_envelope",
+    "Q3_corrupt_or_missing_geometry",
+    "Q4_duplicate_authoritative_origin",
+    "Q5_explicit_listed_quarantine_id"
+  ],
+  "query_url_outcome_bearing": "https://earthquake.usgs.gov/fdsnws/event/1/query?starttime=2015-01-01T00%3A00%3A00Z&endtime=2025-01-01T00%3A00%3A00Z&minmagnitude=5.0&producttype=dyfi&eventtype=earthquake&orderby=time-asc&format=geojson",
+  "record_type": "source_locator_manifest",
+  "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
+  "retry_policy": {
+    "backoff_base_s": 2.0,
+    "backoff_cap_s": 60.0,
+    "max_attempts": 5,
+    "min_interval_between_requests_s": 1.0,
+    "per_request_timeout_s": 120.0,
+    "retry_on_status": [
+      429,
+      500,
+      502,
+      503,
+      504
+    ]
+  },
+  "source_payload_sha256": null,
+  "status": "PENDING_ACTIVATION"
+}

@@ -1,0 +1,9 @@
+{
+  "consumed_tokens": [
+    "5f3fdc2ccf5e91fda152a4bdb1791a3fa601c4f74e0a41cfbbfb735309d29845"
+  ],
+  "last": {
+    "output_dir": "results/protected_run_temporal",
+    "result_hash": "817219e89a7f28a4f0ff10512dfb16e652c4ba307854648622af7625fe683c8b"
+  }
+}

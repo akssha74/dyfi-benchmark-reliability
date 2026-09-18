@@ -1,0 +1,77 @@
+{
+  "data": "PROTECTED",
+  "difficulty": {
+    "fixed_probe_honest_auroc": 0.756945970738,
+    "fixed_probe_honest_brier": 0.167969602127,
+    "n_events": 1930,
+    "n_negative": 1379,
+    "n_positive": 551,
+    "n_sequences": 1530,
+    "near_threshold_fraction": 0.163730569948,
+    "no_skill_brier_floor": 0.203986415743,
+    "prevalence_severe": 0.285492227979,
+    "probe_baseline": "B2_source_only_logit",
+    "split": "sequence_grouped"
+  },
+  "excluded_forbidden_axis": [
+    "B3_expanded_metadata_logit"
+  ],
+  "expected_fit_count": 91,
+  "fit_count": 91,
+  "holdout_opens": 1,
+  "leakage_inflation_headline": {
+    "auroc_inflation_random_minus_seq": -0.012396868243,
+    "brier_inflation_seq_minus_random": -0.005878207034,
+    "event_grouped_note": "On a one-row-per-event table event-grouped coincides with the random split; it is reported as the intermediate control between random and sequence grouping.",
+    "honest_estimate_scheme": "sequence_grouped",
+    "interpretation": "Random-event splitting lets within-sequence signal leak across folds; the sequence-grouped split is the honest, leakage-hardened estimate. A positive Brier gap (sequence minus random) and positive AUROC gap (random minus sequence) quantify the optimistic inflation of the naive split. This is the resource's headline; no model is claimed to win.",
+    "n_folds": 5,
+    "per_scheme": {
+      "event_grouped": {
+        "auroc": 0.705795646126,
+        "brier": 0.200874490602,
+        "log_loss": 0.922291670941,
+        "n_folds_populated": 5
+      },
+      "random_event": {
+        "auroc": 0.695234059242,
+        "brier": 0.204833647433,
+        "log_loss": 0.964044860549,
+        "n_folds_populated": 5
+      },
+      "sequence_grouped": {
+        "auroc": 0.707630927485,
+        "brier": 0.198955440399,
+        "log_loss": 0.970903842537,
+        "n_folds_populated": 5
+      }
+    },
+    "probe_baseline": "B4_random_forest",
+    "probe_params": {
+      "max_depth": null,
+      "n_estimators": 300
+    },
+    "seed": 20260901
+  },
+  "n_construction": 1930,
+  "n_holdout": 430,
+  "result_hash": "817219e89a7f28a4f0ff10512dfb16e652c4ba307854648622af7625fe683c8b",
+  "run_token": "5f3fdc2ccf5e91fda152a4bdb1791a3fa601c4f74e0a41cfbbfb735309d29845",
+  "runtime_seconds": 7.1,
+  "serialization_deterministic": {
+    "B0_no_skill": true,
+    "B1_magnitude_only_logit": true,
+    "B2_source_only_logit": true,
+    "B4_random_forest": true,
+    "B5_xgboost": true
+  },
+  "verification": {
+    "b3_axis_prohibition_enforced": true,
+    "environment_passed": true,
+    "fit_budget_respected": true,
+    "holdout_opened_once": true,
+    "lock_verified": true,
+    "no_protected_refit": true,
+    "run_token": "5f3fdc2ccf5e91fda152a4bdb1791a3fa601c4f74e0a41cfbbfb735309d29845"
+  }
+}

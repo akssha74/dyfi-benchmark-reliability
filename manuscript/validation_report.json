@@ -1,0 +1,212 @@
+{
+  "arithmetic": {
+    "all_ok": true,
+    "checks": [
+      {
+        "check": "cohort_partition_sums_to_eligible",
+        "detail": "2362 == 2362",
+        "ok": true
+      },
+      {
+        "check": "construction_equals_train_plus_dev",
+        "detail": "",
+        "ok": true
+      },
+      {
+        "check": "B0_no_skill.confusion_sums_to_430",
+        "detail": "430",
+        "ok": true
+      },
+      {
+        "check": "B0_no_skill.positives_151",
+        "detail": "",
+        "ok": true
+      },
+      {
+        "check": "B0_no_skill.negatives_279",
+        "detail": "",
+        "ok": true
+      },
+      {
+        "check": "B0_no_skill.accuracy_matches",
+        "detail": "0.6488372093023256 vs 0.648837209302",
+        "ok": true
+      },
+      {
+        "check": "B1_magnitude_only_logit.confusion_sums_to_430",
+        "detail": "430",
+        "ok": true
+      },
+      {
+        "check": "B1_magnitude_only_logit.positives_151",
+        "detail": "",
+        "ok": true
+      },
+      {
+        "check": "B1_magnitude_only_logit.negatives_279",
+        "detail": "",
+        "ok": true
+      },
+      {
+        "check": "B1_magnitude_only_logit.accuracy_matches",
+        "detail": "0.7046511627906977 vs 0.704651162791",
+        "ok": true
+      },
+      {
+        "check": "B2_source_only_logit.confusion_sums_to_430",
+        "detail": "430",
+        "ok": true
+      },
+      {
+        "check": "B2_source_only_logit.positives_151",
+        "detail": "",
+        "ok": true
+      },
+      {
+        "check": "B2_source_only_logit.negatives_279",
+        "detail": "",
+        "ok": true
+      },
+      {
+        "check": "B2_source_only_logit.accuracy_matches",
+        "detail": "0.727906976744186 vs 0.727906976744",
+        "ok": true
+      },
+      {
+        "check": "B4_random_forest.confusion_sums_to_430",
+        "detail": "430",
+        "ok": true
+      },
+      {
+        "check": "B4_random_forest.positives_151",
+        "detail": "",
+        "ok": true
+      },
+      {
+        "check": "B4_random_forest.negatives_279",
+        "detail": "",
+        "ok": true
+      },
+      {
+        "check": "B4_random_forest.accuracy_matches",
+        "detail": "0.727906976744186 vs 0.727906976744",
+        "ok": true
+      },
+      {
+        "check": "B5_xgboost.confusion_sums_to_430",
+        "detail": "430",
+        "ok": true
+      },
+      {
+        "check": "B5_xgboost.positives_151",
+        "detail": "",
+        "ok": true
+      },
+      {
+        "check": "B5_xgboost.negatives_279",
+        "detail": "",
+        "ok": true
+      },
+      {
+        "check": "B5_xgboost.accuracy_matches",
+        "detail": "0.7418604651162791 vs 0.741860465116",
+        "ok": true
+      },
+      {
+        "check": "holdout_prevalence_151_over_430",
+        "detail": "",
+        "ok": true
+      },
+      {
+        "check": "threshold_5.5_prevalence",
+        "detail": "197/430 vs 0.458139534884",
+        "ok": true
+      },
+      {
+        "check": "threshold_6.0_prevalence",
+        "detail": "151/430 vs 0.351162790698",
+        "ok": true
+      },
+      {
+        "check": "threshold_6.5_prevalence",
+        "detail": "112/430 vs 0.260465116279",
+        "ok": true
+      },
+      {
+        "check": "brier_gap_seq_minus_random",
+        "detail": "",
+        "ok": true
+      },
+      {
+        "check": "auroc_gap_random_minus_seq",
+        "detail": "",
+        "ok": true
+      },
+      {
+        "check": "pairwise_vs_B0[B1_magnitude_only_logit]_point_negates_frozen",
+        "detail": "0.033946406624 vs -(-0.033946406624)",
+        "ok": true
+      },
+      {
+        "check": "pairwise_vs_B0[B1_magnitude_only_logit]_resolved_matches",
+        "detail": "",
+        "ok": true
+      },
+      {
+        "check": "pairwise_vs_B0[B2_source_only_logit]_point_negates_frozen",
+        "detail": "0.051498573167 vs -(-0.051498573167)",
+        "ok": true
+      },
+      {
+        "check": "pairwise_vs_B0[B2_source_only_logit]_resolved_matches",
+        "detail": "",
+        "ok": true
+      },
+      {
+        "check": "pairwise_vs_B0[B4_random_forest]_point_negates_frozen",
+        "detail": "0.0454790513 vs -(-0.0454790513)",
+        "ok": true
+      },
+      {
+        "check": "pairwise_vs_B0[B4_random_forest]_resolved_matches",
+        "detail": "",
+        "ok": true
+      },
+      {
+        "check": "pairwise_vs_B0[B5_xgboost]_point_negates_frozen",
+        "detail": "0.050721690457 vs -(-0.050721690457)",
+        "ok": true
+      },
+      {
+        "check": "pairwise_vs_B0[B5_xgboost]_resolved_matches",
+        "detail": "",
+        "ok": true
+      },
+      {
+        "check": "predictions_digest_bit_identical",
+        "detail": "58519b1ae48c949890ab3cddc3c2fcfdcbc680fc9fc71402b09f324be2d1138a",
+        "ok": true
+      }
+    ],
+    "n_checks": 37,
+    "n_failed": 0
+  },
+  "determinism": {
+    "byte_identical_across_two_runs": true,
+    "differing_artifacts": [],
+    "n_artifacts": 45
+  },
+  "file_integrity": {
+    "all_ok": true,
+    "issues": [],
+    "n_artifacts": 43
+  },
+  "lint": {
+    "clean": true,
+    "findings": []
+  },
+  "overall_pass": true,
+  "record_type": "manuscript_asset_validation_report",
+  "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
+  "validated_at": "2026-09-01"
+}

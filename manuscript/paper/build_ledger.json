@@ -1,0 +1,21 @@
+{
+  "record_type": "manuscript_build_ledger",
+  "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
+  "engine": "tectonic (auto bibtex + reruns)",
+  "entrypoint": "manuscript/paper/build.sh",
+  "ordered_steps": [
+    "python3 format_tables.py  (layout-only venue table copies)",
+    "cp ../figures/*.pdf figures/  (byte-identical vector figures)",
+    "tectonic --keep-logs main.tex  (compile -> main.pdf)"
+  ],
+  "inputs_are_immutable": true,
+  "network_writes": false,
+  "public_repository": "https://github.com/akssha74/dyfi-benchmark-reliability",
+  "public_release_tag": "v1.0.0",
+  "doi": null,
+  "submitted": false,
+  "main_tex_sha256": "3359b1f1312ccf7a8c488082f6f55905d56ee892f0e302783c48984b9d06176a",
+  "references_bib_sha256": "6a5a70333446d9ac978a93c871ba01bf0a3a3e32a0102c1423005d7420cbaeef",
+  "main_pdf_sha256": "98d338a83380dba91440b98966070f5acb15655059e894121f35d3cda23f8b6f",
+  "main_pdf_bytes": 274131
+}

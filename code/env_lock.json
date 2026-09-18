@@ -1,0 +1,57 @@
+{
+  "environment_verified": true,
+  "index_url": "https://pypi-proxy.dev.databricks.com/simple",
+  "interpreter": {
+    "expected_minor": "3.11",
+    "implementation": "cpython",
+    "python_version": "3.11.15"
+  },
+  "licence_policy": "OSI-approved permissive only (BSD-3-Clause / Apache-2.0)",
+  "packages": [
+    {
+      "licence": "BSD-3-Clause",
+      "package": "numpy",
+      "resolved": "1.26.4",
+      "role": "numeric/serialisation dependency",
+      "version": "1.26.4"
+    },
+    {
+      "licence": "BSD-3-Clause",
+      "package": "scipy",
+      "resolved": "1.13.1",
+      "role": "numeric/serialisation dependency",
+      "version": "1.13.1"
+    },
+    {
+      "licence": "BSD-3-Clause",
+      "package": "scikit-learn",
+      "resolved": "1.5.2",
+      "role": "named-baseline engine",
+      "version": "1.5.2"
+    },
+    {
+      "licence": "Apache-2.0",
+      "package": "xgboost",
+      "resolved": "2.1.4",
+      "role": "named-baseline engine",
+      "version": "2.1.4"
+    },
+    {
+      "licence": "BSD-3-Clause",
+      "package": "joblib",
+      "resolved": "1.5.3",
+      "role": "numeric/serialisation dependency",
+      "version": "1.5.3"
+    },
+    {
+      "licence": "BSD-3-Clause",
+      "package": "threadpoolctl",
+      "resolved": "3.6.0",
+      "role": "numeric/serialisation dependency",
+      "version": "3.6.0"
+    }
+  ],
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "resolver": "uv 0.12.3",
+  "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1"
+}

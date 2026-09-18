@@ -1,0 +1,1121 @@
+{
+  "cohort_flow": {
+    "construction_total": {
+      "n": 1930,
+      "negative": 1379,
+      "positive": 551,
+      "prevalence": 0.2854922279792746
+    },
+    "eligibility_rule": "num_responses >= 10 (eligibility only; forbidden as a feature)",
+    "eligible_prevalence": 0.29762912785774764,
+    "fdsn_features_pinned_snapshot": 7520,
+    "n_eligible_events": 2362,
+    "n_eligible_severe": 703,
+    "n_role_assigned": 2360,
+    "n_role_assigned_severe": 702,
+    "quarantine_inspected_ids": [
+      "ci40925991",
+      "us6000pgsd"
+    ],
+    "quarantine_inspected_present_in_table": [],
+    "roles": {
+      "development": {
+        "n": 357,
+        "negative": 255,
+        "positive": 102,
+        "prevalence": 0.2857142857142857
+      },
+      "external_temporal_holdout": {
+        "n": 430,
+        "negative": 279,
+        "positive": 151,
+        "prevalence": 0.3511627906976744
+      },
+      "train": {
+        "n": 1573,
+        "negative": 1124,
+        "positive": 449,
+        "prevalence": 0.28544183089637637
+      }
+    },
+    "sequences": {
+      "all_eligible": 1885,
+      "construction": 1530,
+      "holdout": 354
+    },
+    "temporal_straddle": {
+      "n": 2,
+      "negative": 1,
+      "positive": 1,
+      "prevalence": 0.5
+    },
+    "temporal_straddle_excluded": 2
+  },
+  "endpoint": {
+    "construction_prevalence": 0.285492227979,
+    "definition": "severe_label = 1[event-max maxCDI >= 6.0]",
+    "holdout_prevalence": 0.3511627906976744,
+    "near_threshold_band": 0.5,
+    "near_threshold_fraction_construction": 0.163730569948,
+    "no_skill_brier_floor_construction": 0.203986415743,
+    "primary_threshold": 6.0,
+    "threshold_sensitivity": {
+      "5.5": {
+        "auroc": 0.733720398248,
+        "brier": 0.239814093497,
+        "prevalence": 0.458139534884
+      },
+      "6.0": {
+        "auroc": 0.785753281588,
+        "brier": 0.180661534768,
+        "prevalence": 0.351162790698
+      },
+      "6.5": {
+        "auroc": 0.815209456424,
+        "brier": 0.143312832619,
+        "prevalence": 0.260465116279
+      }
+    },
+    "threshold_sensitivity_probe": "B2_source_only_logit"
+  },
+  "exclusions_and_deviations": {
+    "B3_axis_excluded": "B3_expanded_metadata_logit: schema 'expanded_metadata' carries a proxy for the 'temporal' axis and must not be fit/scored on that transport holdout",
+    "F1_self_reference": {
+      "disclosure": "manuscript/disclosures/F1_phase_f_self_reference_disclosure.json",
+      "n_expected_stale_self_referential": 3,
+      "n_load_bearing_matched": 83
+    },
+    "F3_leakage_null_framing": "Leakage-inflation gap is near-null / slightly reversed on this M>=5 one-row-per-event corpus; reported as an honest measured null, not as leakage evidence or a win.",
+    "IPE_excluded": "Atkinson-Wald (2007) DYFI IPE cannot be applied to the SOURCE_ONLY schema + tectonically heterogeneous population without inventing a site-distance covariate, a per-event ACR/SCR regime, and a probability link (see code/ipe_exclusion.json).",
+    "W4_equivalence_margin_deviation": {
+      "disclosure": "manuscript/disclosures/W4_pairwise_ranking_deviation_disclosure.json",
+      "genuinely_registered_resolution_floor": 0.0,
+      "handling": "narrowed to complete pairwise descriptive reporting; equivalent class not asserted",
+      "preregistered_numeric_equivalence_margin": null
+    },
+    "quarantined_inspected_ids": [
+      "ci40925991",
+      "us6000pgsd"
+    ]
+  },
+  "leakage_inflation_headline": {
+    "auroc_inflation_random_minus_seq": -0.012396868243,
+    "brier_inflation_seq_minus_random": -0.005878207034,
+    "event_grouped_note": "On a one-row-per-event table event-grouped coincides with the random split; it is reported as the intermediate control between random and sequence grouping.",
+    "honest_estimate_scheme": "sequence_grouped",
+    "interpretation": "Random-event splitting lets within-sequence signal leak across folds; the sequence-grouped split is the honest, leakage-hardened estimate. A positive Brier gap (sequence minus random) and positive AUROC gap (random minus sequence) quantify the optimistic inflation of the naive split. This is the resource's headline; no model is claimed to win.",
+    "n_folds": 5,
+    "per_scheme": {
+      "event_grouped": {
+        "auroc": 0.705795646126,
+        "brier": 0.200874490602,
+        "log_loss": 0.922291670941,
+        "n_folds_populated": 5
+      },
+      "random_event": {
+        "auroc": 0.695234059242,
+        "brier": 0.204833647433,
+        "log_loss": 0.964044860549,
+        "n_folds_populated": 5
+      },
+      "sequence_grouped": {
+        "auroc": 0.707630927485,
+        "brier": 0.198955440399,
+        "log_loss": 0.970903842537,
+        "n_folds_populated": 5
+      }
+    },
+    "probe_baseline": "B4_random_forest",
+    "probe_params": {
+      "max_depth": null,
+      "n_estimators": 300
+    },
+    "seed": 20260901
+  },
+  "no_winning_model_claim": true,
+  "pairwise_ranking_stability": {
+    "eligible_baselines": [
+      "B0_no_skill",
+      "B1_magnitude_only_logit",
+      "B2_source_only_logit",
+      "B4_random_forest",
+      "B5_xgboost"
+    ],
+    "equivalence_margin_status": {
+      "disclosure": "manuscript/disclosures/W4_pairwise_ranking_deviation_disclosure.json",
+      "equivalent_class_populated": false,
+      "genuinely_registered_resolution_floor": 0.0,
+      "handling": "narrowed_to_complete_pairwise_descriptive_reporting",
+      "preregistered_numeric_equivalence_margin": null
+    },
+    "excluded_baselines": {
+      "B3_expanded_metadata_logit": {
+        "axis": "temporal",
+        "kind": "axis_excluded",
+        "note": "Schema carries a temporal proxy (origin_year); forbidden on the temporal transport holdout. No pairwise cell is fabricated for B3.",
+        "reason": "B3_expanded_metadata_logit: schema 'expanded_metadata' carries a proxy for the 'temporal' axis and must not be fit/scored on that transport holdout"
+      },
+      "B_domain_IPE": {
+        "kind": "excluded",
+        "note": "Not a scored baseline; no pairwise cell is fabricated for the IPE.",
+        "reason": "Atkinson-Wald (2007) DYFI IPE cannot be applied to the SOURCE_ONLY schema + tectonically heterogeneous population without inventing a site-distance covariate, a per-event ACR/SCR regime, and a probability link (see code/ipe_exclusion.json)."
+      }
+    },
+    "n_pairs": 10,
+    "pairwise_matrix": {
+      "B0_no_skill_vs_B1_magnitude_only_logit": {
+        "baseline_a": "B0_no_skill",
+        "baseline_b": "B1_magnitude_only_logit",
+        "bootstrap_status": "OK",
+        "ci": [
+          0.017105405067,
+          0.051104582364
+        ],
+        "ci_level": 0.95,
+        "directional_better_baseline": "B1_magnitude_only_logit",
+        "equivalence_class_populated": false,
+        "equivalence_margin_registered": 0.0,
+        "equivalent": "not_assessable_no_registered_margin",
+        "lower_is_better": true,
+        "metric": "brier",
+        "n_clusters": 354,
+        "n_valid": 2000,
+        "point_diff_a_minus_b": 0.033946406624,
+        "prob_a_better": 0.0,
+        "prob_b_better": 1.0,
+        "prob_tie": 0.0,
+        "resolved": true,
+        "status": "resolved_directional"
+      },
+      "B0_no_skill_vs_B2_source_only_logit": {
+        "baseline_a": "B0_no_skill",
+        "baseline_b": "B2_source_only_logit",
+        "bootstrap_status": "OK",
+        "ci": [
+          0.034206073403,
+          0.068063045354
+        ],
+        "ci_level": 0.95,
+        "directional_better_baseline": "B2_source_only_logit",
+        "equivalence_class_populated": false,
+        "equivalence_margin_registered": 0.0,
+        "equivalent": "not_assessable_no_registered_margin",
+        "lower_is_better": true,
+        "metric": "brier",
+        "n_clusters": 354,
+        "n_valid": 2000,
+        "point_diff_a_minus_b": 0.051498573167,
+        "prob_a_better": 0.0,
+        "prob_b_better": 1.0,
+        "prob_tie": 0.0,
+        "resolved": true,
+        "status": "resolved_directional"
+      },
+      "B0_no_skill_vs_B4_random_forest": {
+        "baseline_a": "B0_no_skill",
+        "baseline_b": "B4_random_forest",
+        "bootstrap_status": "OK",
+        "ci": [
+          0.030655813511,
+          0.05979656139
+        ],
+        "ci_level": 0.95,
+        "directional_better_baseline": "B4_random_forest",
+        "equivalence_class_populated": false,
+        "equivalence_margin_registered": 0.0,
+        "equivalent": "not_assessable_no_registered_margin",
+        "lower_is_better": true,
+        "metric": "brier",
+        "n_clusters": 354,
+        "n_valid": 2000,
+        "point_diff_a_minus_b": 0.0454790513,
+        "prob_a_better": 0.0,
+        "prob_b_better": 1.0,
+        "prob_tie": 0.0,
+        "resolved": true,
+        "status": "resolved_directional"
+      },
+      "B0_no_skill_vs_B5_xgboost": {
+        "baseline_a": "B0_no_skill",
+        "baseline_b": "B5_xgboost",
+        "bootstrap_status": "OK",
+        "ci": [
+          0.031888986925,
+          0.068236451815
+        ],
+        "ci_level": 0.95,
+        "directional_better_baseline": "B5_xgboost",
+        "equivalence_class_populated": false,
+        "equivalence_margin_registered": 0.0,
+        "equivalent": "not_assessable_no_registered_margin",
+        "lower_is_better": true,
+        "metric": "brier",
+        "n_clusters": 354,
+        "n_valid": 2000,
+        "point_diff_a_minus_b": 0.050721690457,
+        "prob_a_better": 0.0,
+        "prob_b_better": 1.0,
+        "prob_tie": 0.0,
+        "resolved": true,
+        "status": "resolved_directional"
+      },
+      "B1_magnitude_only_logit_vs_B2_source_only_logit": {
+        "baseline_a": "B1_magnitude_only_logit",
+        "baseline_b": "B2_source_only_logit",
+        "bootstrap_status": "OK",
+        "ci": [
+          0.01011892086,
+          0.024854050792
+        ],
+        "ci_level": 0.95,
+        "directional_better_baseline": "B2_source_only_logit",
+        "equivalence_class_populated": false,
+        "equivalence_margin_registered": 0.0,
+        "equivalent": "not_assessable_no_registered_margin",
+        "lower_is_better": true,
+        "metric": "brier",
+        "n_clusters": 354,
+        "n_valid": 2000,
+        "point_diff_a_minus_b": 0.017552166543,
+        "prob_a_better": 0.0,
+        "prob_b_better": 1.0,
+        "prob_tie": 0.0,
+        "resolved": true,
+        "status": "resolved_directional"
+      },
+      "B1_magnitude_only_logit_vs_B4_random_forest": {
+        "baseline_a": "B1_magnitude_only_logit",
+        "baseline_b": "B4_random_forest",
+        "bootstrap_status": "OK",
+        "ci": [
+          0.002320044189,
+          0.020505112323
+        ],
+        "ci_level": 0.95,
+        "directional_better_baseline": "B4_random_forest",
+        "equivalence_class_populated": false,
+        "equivalence_margin_registered": 0.0,
+        "equivalent": "not_assessable_no_registered_margin",
+        "lower_is_better": true,
+        "metric": "brier",
+        "n_clusters": 354,
+        "n_valid": 2000,
+        "point_diff_a_minus_b": 0.011532644677,
+        "prob_a_better": 0.0085,
+        "prob_b_better": 0.9915,
+        "prob_tie": 0.0,
+        "resolved": true,
+        "status": "resolved_directional"
+      },
+      "B1_magnitude_only_logit_vs_B5_xgboost": {
+        "baseline_a": "B1_magnitude_only_logit",
+        "baseline_b": "B5_xgboost",
+        "bootstrap_status": "OK",
+        "ci": [
+          0.005483460133,
+          0.02732736553
+        ],
+        "ci_level": 0.95,
+        "directional_better_baseline": "B5_xgboost",
+        "equivalence_class_populated": false,
+        "equivalence_margin_registered": 0.0,
+        "equivalent": "not_assessable_no_registered_margin",
+        "lower_is_better": true,
+        "metric": "brier",
+        "n_clusters": 354,
+        "n_valid": 2000,
+        "point_diff_a_minus_b": 0.016775283833,
+        "prob_a_better": 0.001,
+        "prob_b_better": 0.999,
+        "prob_tie": 0.0,
+        "resolved": true,
+        "status": "resolved_directional"
+      },
+      "B2_source_only_logit_vs_B4_random_forest": {
+        "baseline_a": "B2_source_only_logit",
+        "baseline_b": "B4_random_forest",
+        "bootstrap_status": "OK",
+        "ci": [
+          -0.011786326949,
+          0.000222393998
+        ],
+        "ci_level": 0.95,
+        "directional_better_baseline": null,
+        "equivalence_class_populated": false,
+        "equivalence_margin_registered": 0.0,
+        "equivalent": "not_assessable_no_registered_margin",
+        "lower_is_better": true,
+        "metric": "brier",
+        "n_clusters": 354,
+        "n_valid": 2000,
+        "point_diff_a_minus_b": -0.006019521866,
+        "prob_a_better": 0.9695,
+        "prob_b_better": 0.0305,
+        "prob_tie": 0.0,
+        "resolved": false,
+        "status": "unresolved"
+      },
+      "B2_source_only_logit_vs_B5_xgboost": {
+        "baseline_a": "B2_source_only_logit",
+        "baseline_b": "B5_xgboost",
+        "bootstrap_status": "OK",
+        "ci": [
+          -0.007788532339,
+          0.006815010117
+        ],
+        "ci_level": 0.95,
+        "directional_better_baseline": null,
+        "equivalence_class_populated": false,
+        "equivalence_margin_registered": 0.0,
+        "equivalent": "not_assessable_no_registered_margin",
+        "lower_is_better": true,
+        "metric": "brier",
+        "n_clusters": 354,
+        "n_valid": 2000,
+        "point_diff_a_minus_b": -0.000776882709,
+        "prob_a_better": 0.613,
+        "prob_b_better": 0.387,
+        "prob_tie": 0.0,
+        "resolved": false,
+        "status": "unresolved"
+      },
+      "B4_random_forest_vs_B5_xgboost": {
+        "baseline_a": "B4_random_forest",
+        "baseline_b": "B5_xgboost",
+        "bootstrap_status": "OK",
+        "ci": [
+          0.000343540507,
+          0.009905432725
+        ],
+        "ci_level": 0.95,
+        "directional_better_baseline": "B5_xgboost",
+        "equivalence_class_populated": false,
+        "equivalence_margin_registered": 0.0,
+        "equivalent": "not_assessable_no_registered_margin",
+        "lower_is_better": true,
+        "metric": "brier",
+        "n_clusters": 354,
+        "n_valid": 2000,
+        "point_diff_a_minus_b": 0.005242639157,
+        "prob_a_better": 0.017,
+        "prob_b_better": 0.983,
+        "prob_tie": 0.0,
+        "resolved": true,
+        "status": "resolved_directional"
+      }
+    },
+    "tie_aware_joint_ordering": {
+      "expected_rank": {
+        "B0_no_skill": 5.0,
+        "B1_magnitude_only_logit": 3.9905000000000004,
+        "B2_source_only_logit": 1.4175,
+        "B4_random_forest": 2.961,
+        "B5_xgboost": 1.631
+      },
+      "n_boot": 2000,
+      "n_valid": 2000,
+      "prob_best": {
+        "B0_no_skill": 0.0,
+        "B1_magnitude_only_logit": 0.0,
+        "B2_source_only_logit": 0.613,
+        "B4_random_forest": 0.0,
+        "B5_xgboost": 0.387
+      },
+      "prob_tie_at_top": 0.0,
+      "rank_distribution": {
+        "B0_no_skill": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "B1_magnitude_only_logit": [
+          0.0,
+          0.001,
+          0.0075,
+          0.9915,
+          0.0
+        ],
+        "B2_source_only_logit": [
+          0.613,
+          0.3565,
+          0.0305,
+          0.0,
+          0.0
+        ],
+        "B4_random_forest": [
+          0.0,
+          0.0475,
+          0.944,
+          0.0085,
+          0.0
+        ],
+        "B5_xgboost": [
+          0.387,
+          0.595,
+          0.018,
+          0.0,
+          0.0
+        ]
+      },
+      "ranks_are_1_indexed_lower_is_better": true,
+      "resolution_floor": 0.0,
+      "seed": 20260901
+    }
+  },
+  "per_baseline": {
+    "B0_no_skill": {
+      "auroc": 0.5,
+      "bootstrap_n_valid": 2000,
+      "bootstrap_status": "OK",
+      "brier": 0.232160107935,
+      "brier_ci": [
+        0.211565396566,
+        0.25272778619
+      ],
+      "brier_status": "OK",
+      "calibration_intercept": null,
+      "calibration_slope": null,
+      "calibration_status": "INFEASIBLE_CONSTANT_PREDICTION",
+      "confusion_at_threshold": {
+        "accuracy": 0.6488372093023256,
+        "f1": null,
+        "fn": 151,
+        "fp": 0,
+        "precision": null,
+        "recall": 0.0,
+        "tn": 279,
+        "tp": 0
+      },
+      "log_loss": 0.658310797977
+    },
+    "B1_magnitude_only_logit": {
+      "auroc": 0.718958437181,
+      "bootstrap_n_valid": 2000,
+      "bootstrap_status": "OK",
+      "brier": 0.198213701311,
+      "brier_ci": [
+        0.176575950797,
+        0.219231422693
+      ],
+      "brier_status": "OK",
+      "calibration_intercept": 0.324323667235,
+      "calibration_slope": 1.020326223589,
+      "calibration_status": "OK",
+      "confusion_at_threshold": {
+        "accuracy": 0.7046511627906977,
+        "f1": 0.3681592039800995,
+        "fn": 114,
+        "fp": 13,
+        "precision": 0.74,
+        "recall": 0.24503311258278146,
+        "tn": 266,
+        "tp": 37
+      },
+      "log_loss": 0.583331269709
+    },
+    "B2_source_only_logit": {
+      "auroc": 0.785753281588,
+      "bootstrap_n_valid": 2000,
+      "bootstrap_status": "OK",
+      "brier": 0.180661534768,
+      "brier_ci": [
+        0.160141060441,
+        0.201512231929
+      ],
+      "brier_status": "OK",
+      "calibration_intercept": 0.643751664916,
+      "calibration_slope": 1.294234260105,
+      "calibration_status": "OK",
+      "confusion_at_threshold": {
+        "accuracy": 0.727906976744186,
+        "f1": 0.45070422535211263,
+        "fn": 103,
+        "fp": 14,
+        "precision": 0.7741935483870968,
+        "recall": 0.31788079470198677,
+        "tn": 265,
+        "tp": 48
+      },
+      "log_loss": 0.536390573935
+    },
+    "B4_random_forest": {
+      "auroc": 0.777219967243,
+      "bootstrap_n_valid": 2000,
+      "bootstrap_status": "OK",
+      "brier": 0.186681056634,
+      "brier_ci": [
+        0.167913814906,
+        0.205781725915
+      ],
+      "brier_status": "OK",
+      "calibration_intercept": 0.738321528867,
+      "calibration_slope": 1.479011366878,
+      "calibration_status": "OK",
+      "confusion_at_threshold": {
+        "accuracy": 0.727906976744186,
+        "f1": 0.42926829268292677,
+        "fn": 107,
+        "fp": 10,
+        "precision": 0.8148148148148148,
+        "recall": 0.2913907284768212,
+        "tn": 269,
+        "tp": 44
+      },
+      "log_loss": 0.55271287874
+    },
+    "B5_xgboost": {
+      "auroc": 0.782786204277,
+      "bootstrap_n_valid": 2000,
+      "bootstrap_status": "OK",
+      "brier": 0.181438417478,
+      "brier_ci": [
+        0.161096567542,
+        0.20222271116
+      ],
+      "brier_status": "OK",
+      "calibration_intercept": 0.421445059154,
+      "calibration_slope": 1.068106011891,
+      "calibration_status": "OK",
+      "confusion_at_threshold": {
+        "accuracy": 0.7418604651162791,
+        "f1": 0.5022421524663677,
+        "fn": 95,
+        "fp": 16,
+        "precision": 0.7777777777777778,
+        "recall": 0.3708609271523179,
+        "tn": 263,
+        "tp": 56
+      },
+      "log_loss": 0.540989764096
+    }
+  },
+  "provenance": {
+    "n_verification_checks": 87,
+    "predictions_digest": "58519b1ae48c949890ab3cddc3c2fcfdcbc680fc9fc71402b09f324be2d1138a",
+    "reconstruction_verified": true,
+    "result_hash": "817219e89a7f28a4f0ff10512dfb16e652c4ba307854648622af7625fe683c8b",
+    "run_result": "results/protected_run_temporal/run_result.json",
+    "source_snapshot_sha256": "88722d8aa6d025cfcc3562f29593cc87d84c6a073bf211e8c21d89adddd4d7e9"
+  },
+  "ranking_reference": "B0_no_skill",
+  "ranking_vs_reference": {
+    "B1_magnitude_only_logit_vs_B0_no_skill": {
+      "ci": [
+        -0.051104582364,
+        -0.017105405067
+      ],
+      "point_diff_a_minus_b": -0.033946406624,
+      "prob_a_better": 1.0,
+      "prob_b_better": 0.0,
+      "prob_tie": 0.0,
+      "resolved": true,
+      "status": "OK"
+    },
+    "B2_source_only_logit_vs_B0_no_skill": {
+      "ci": [
+        -0.068063045354,
+        -0.034206073403
+      ],
+      "point_diff_a_minus_b": -0.051498573167,
+      "prob_a_better": 1.0,
+      "prob_b_better": 0.0,
+      "prob_tie": 0.0,
+      "resolved": true,
+      "status": "OK"
+    },
+    "B4_random_forest_vs_B0_no_skill": {
+      "ci": [
+        -0.05979656139,
+        -0.030655813511
+      ],
+      "point_diff_a_minus_b": -0.0454790513,
+      "prob_a_better": 1.0,
+      "prob_b_better": 0.0,
+      "prob_tie": 0.0,
+      "resolved": true,
+      "status": "OK"
+    },
+    "B5_xgboost_vs_B0_no_skill": {
+      "ci": [
+        -0.068236451815,
+        -0.031888986925
+      ],
+      "point_diff_a_minus_b": -0.050721690457,
+      "prob_a_better": 1.0,
+      "prob_b_better": 0.0,
+      "prob_tie": 0.0,
+      "resolved": true,
+      "status": "OK"
+    }
+  },
+  "record_type": "manuscript_asset_inputs",
+  "reproducibility_manifest": {
+    "environment": {
+      "joblib": "1.5.3",
+      "numpy": "1.26.4",
+      "scikit-learn": "1.5.2",
+      "scipy": "1.13.1",
+      "threadpoolctl": "3.6.0",
+      "xgboost": "2.1.4"
+    },
+    "fdsn_features": 7520,
+    "fit_cap": 120,
+    "fit_count": 91,
+    "fit_ledger_digest": "74ea4679ef300540c51845fe4ce649bde8472a7f38d23232b203139a0ead0f34",
+    "licences": {
+      "code": "MIT",
+      "data": "CC0-1.0",
+      "source": "USGS public domain"
+    },
+    "n_load_bearing_files_matched": 83,
+    "n_self_referential_stale": 3,
+    "predictions_digest": "58519b1ae48c949890ab3cddc3c2fcfdcbc680fc9fc71402b09f324be2d1138a",
+    "python": "3.11.15",
+    "reconstruction_pipeline_digest": "dda1c23f4cc9ed7162ecdb14bed7dce309d5375f377f6c662911d0d3754a1e33",
+    "result_hash": "817219e89a7f28a4f0ff10512dfb16e652c4ba307854648622af7625fe683c8b",
+    "run_token_consumed_count": 1,
+    "source_snapshot_bytes": 5752776,
+    "source_snapshot_sha256": "88722d8aa6d025cfcc3562f29593cc87d84c6a073bf211e8c21d89adddd4d7e9"
+  },
+  "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
+  "slices": {
+    "geographic_full": {
+      "G+000+0040": {
+        "brier": 0.034267649351,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+000+0090": {
+        "brier": 0.116954082947,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+000+0120": {
+        "brier": 0.214249028338,
+        "brier_status": "OK",
+        "n": 25
+      },
+      "G+000-0080": {
+        "brier": 0.133363771359,
+        "brier_status": "OK",
+        "n": 15
+      },
+      "G+000-0090": {
+        "brier": 0.176833595737,
+        "brier_status": "OK",
+        "n": 8
+      },
+      "G+010+0030": {
+        "brier": 0.471194182259,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+010+0040": {
+        "brier": 0.061502757514,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+010+0080": {
+        "brier": 0.023369001962,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+010+0090": {
+        "brier": 0.051665482652,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+010+0100": {
+        "brier": 0.030861013356,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+010+0120": {
+        "brier": 0.228486784253,
+        "brier_status": "OK",
+        "n": 14
+      },
+      "G+010+0140": {
+        "brier": 0.083926668449,
+        "brier_status": "OK",
+        "n": 11
+      },
+      "G+010-0030": {
+        "brier": 0.04882498698,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+010-0060": {
+        "brier": 0.022331204529,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+010-0070": {
+        "brier": 0.138493253844,
+        "brier_status": "OK",
+        "n": 8
+      },
+      "G+010-0080": {
+        "brier": 0.281693335552,
+        "brier_status": "OK",
+        "n": 7
+      },
+      "G+010-0090": {
+        "brier": 0.160265529765,
+        "brier_status": "OK",
+        "n": 16
+      },
+      "G+010-0100": {
+        "brier": 0.159147763048,
+        "brier_status": "OK",
+        "n": 15
+      },
+      "G+010-0110": {
+        "brier": 0.29260294535,
+        "brier_status": "OK",
+        "n": 4
+      },
+      "G+010-0160": {
+        "brier": 0.224247471557,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+020+0060": {
+        "brier": 0.064992622326,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+020+0080": {
+        "brier": 0.315264077699,
+        "brier_status": "OK",
+        "n": 5
+      },
+      "G+020+0090": {
+        "brier": 0.2837788479,
+        "brier_status": "OK",
+        "n": 7
+      },
+      "G+020+0120": {
+        "brier": 0.150776680674,
+        "brier_status": "OK",
+        "n": 26
+      },
+      "G+020+0130": {
+        "brier": 0.002441038576,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+020-0070": {
+        "brier": 0.115022808907,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+020-0110": {
+        "brier": 0.371931069986,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030+0000": {
+        "brier": 0.023593523678,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030+0010": {
+        "brier": 0.151188558364,
+        "brier_status": "OK",
+        "n": 6
+      },
+      "G+030+0020": {
+        "brier": 0.170842665877,
+        "brier_status": "OK",
+        "n": 8
+      },
+      "G+030+0030": {
+        "brier": 0.283805470345,
+        "brier_status": "OK",
+        "n": 14
+      },
+      "G+030+0040": {
+        "brier": 0.209982171746,
+        "brier_status": "OK",
+        "n": 7
+      },
+      "G+030+0050": {
+        "brier": 0.023369001962,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030+0060": {
+        "brier": 0.176663991057,
+        "brier_status": "OK",
+        "n": 4
+      },
+      "G+030+0070": {
+        "brier": 0.282597697088,
+        "brier_status": "OK",
+        "n": 12
+      },
+      "G+030+0100": {
+        "brier": 0.350354454984,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030+0110": {
+        "brier": 0.583553432985,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030+0130": {
+        "brier": 0.205730739003,
+        "brier_status": "OK",
+        "n": 13
+      },
+      "G+030+0140": {
+        "brier": 0.1137104987,
+        "brier_status": "OK",
+        "n": 10
+      },
+      "G+030-0010": {
+        "brier": 0.052382826694,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+030-0100": {
+        "brier": 0.684054659969,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030-0110": {
+        "brier": 0.662266852857,
+        "brier_status": "OK",
+        "n": 3
+      },
+      "G+030-0120": {
+        "brier": 0.365680523988,
+        "brier_status": "OK",
+        "n": 3
+      },
+      "G+040+0010": {
+        "brier": 0.631223224746,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+040+0020": {
+        "brier": 0.216058538598,
+        "brier_status": "OK",
+        "n": 6
+      },
+      "G+040+0040": {
+        "brier": 0.368458704341,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+040+0070": {
+        "brier": 0.172395517518,
+        "brier_status": "OK",
+        "n": 5
+      },
+      "G+040+0090": {
+        "brier": 0.023369001962,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+040+0140": {
+        "brier": 0.327620635276,
+        "brier_status": "OK",
+        "n": 5
+      },
+      "G+040-0130": {
+        "brier": 0.173728127853,
+        "brier_status": "OK",
+        "n": 14
+      },
+      "G+050+0160": {
+        "brier": 0.057979919602,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+050-0140": {
+        "brier": 0.148824778,
+        "brier_status": "OK",
+        "n": 5
+      },
+      "G+050-0160": {
+        "brier": 0.024939038036,
+        "brier_status": "OK",
+        "n": 5
+      },
+      "G+050-0170": {
+        "brier": 0.052733169537,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+050-0180": {
+        "brier": 0.079777839029,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+060-0030": {
+        "brier": 0.041039376058,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+060-0150": {
+        "brier": 0.607984569092,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+060-0160": {
+        "brier": 0.0067602485,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G-010+0090": {
+        "brier": 0.048941483919,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-010+0100": {
+        "brier": 0.272112125668,
+        "brier_status": "OK",
+        "n": 6
+      },
+      "G-010+0110": {
+        "brier": 0.074110470729,
+        "brier_status": "OK",
+        "n": 14
+      },
+      "G-010+0120": {
+        "brier": 0.044695127868,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G-010+0130": {
+        "brier": 0.156616411964,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G-010+0140": {
+        "brier": 0.190947343424,
+        "brier_status": "OK",
+        "n": 5
+      },
+      "G-010+0150": {
+        "brier": 0.012118652747,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G-010-0080": {
+        "brier": 0.121839659753,
+        "brier_status": "OK",
+        "n": 7
+      },
+      "G-020+0160": {
+        "brier": 0.283315512781,
+        "brier_status": "OK",
+        "n": 7
+      },
+      "G-020-0070": {
+        "brier": 0.043484461728,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-020-0080": {
+        "brier": 0.109909420531,
+        "brier_status": "OK",
+        "n": 8
+      },
+      "G-020-0180": {
+        "brier": 0.195356002301,
+        "brier_status": "OK",
+        "n": 5
+      },
+      "G-030+0160": {
+        "brier": 0.058279355267,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-030+0170": {
+        "brier": 0.824898192064,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-030-0070": {
+        "brier": 0.023552775832,
+        "brier_status": "OK",
+        "n": 9
+      },
+      "G-030-0080": {
+        "brier": 0.139547655936,
+        "brier_status": "OK",
+        "n": 7
+      },
+      "G-030-0180": {
+        "brier": 0.195374934514,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-040+0010": {
+        "brier": 0.038458520346,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-040+0110": {
+        "brier": 0.038458520346,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-040+0170": {
+        "brier": 0.161483824675,
+        "brier_status": "OK",
+        "n": 4
+      },
+      "G-040-0070": {
+        "brier": 0.029654768332,
+        "brier_status": "OK",
+        "n": 3
+      },
+      "G-040-0080": {
+        "brier": 0.207237562616,
+        "brier_status": "OK",
+        "n": 15
+      },
+      "G-040-0180": {
+        "brier": 0.286108418787,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-050+0170": {
+        "brier": 0.039358546487,
+        "brier_status": "OK",
+        "n": 7
+      }
+    },
+    "geographic_summary": {
+      "brier_max": 0.824898192064,
+      "brier_median": 0.150982619519,
+      "brier_min": 0.002441038576,
+      "max_cell_n": 26,
+      "min_cell_n": 1,
+      "n_cells": 82,
+      "sum_n": 430
+    },
+    "slice_probe_baseline": "B2_source_only_logit",
+    "temporal": {
+      "2023": {
+        "auroc": 0.797137182385,
+        "brier": 0.185180084337,
+        "brier_status": "OK",
+        "n": 250
+      },
+      "2024": {
+        "auroc": 0.776568682872,
+        "brier": 0.174385771479,
+        "brier_status": "OK",
+        "n": 180
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this benchmark, please cite the accompanying article and this release."
+title: "A versioned, leakage-audited USGS Did You Feel It? benchmark for retrospective severe felt-intensity prediction"
+type: dataset
+version: "1.0.0"
+date-released: "2026-09-19"
+repository-code: "https://github.com/akssha74/dyfi-benchmark-reliability"
+url: "https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.0"
+license: CC0-1.0
+authors:
+  - family-names: Sharma
+    given-names: Akshay
+  - family-names: Prasad
+    given-names: Lalji
+keywords:
+  - Did You Feel It
+  - DYFI
+  - USGS
+  - macroseismic intensity
+  - benchmark resource
+  - leakage-safe evaluation
+  - sequence-grouped split
+abstract: >-
+  Version 1 of a frozen, single-source USGS DYFI event-level benchmark for
+  retrospective prediction of severe felt intensity from earthquake source
+  metadata, with prespecified sequence-grouped roles, a six-category leakage
+  audit, fixed reference baselines, and reproducible evaluation outputs.
+references:
+  - type: data
+    title: "USGS Did You Feel It? and ANSS Comprehensive Catalog"
+    doi: "10.5066/F7J101C8"

@@ -1,0 +1,541 @@
+{
+  "all_checks_match": true,
+  "checks": [
+    {
+      "check": "predictions_digest",
+      "match": true,
+      "recomputed": "58519b1ae48c949890ab3cddc3c2fcfdcbc680fc9fc71402b09f324be2d1138a",
+      "recorded": "58519b1ae48c949890ab3cddc3c2fcfdcbc680fc9fc71402b09f324be2d1138a"
+    },
+    {
+      "check": "predictions_digest_equals_bit_identity",
+      "match": true,
+      "recomputed": 1,
+      "recorded": 1
+    },
+    {
+      "check": "reconstruction_pipeline_digest",
+      "match": true,
+      "recomputed": "dda1c23f4cc9ed7162ecdb14bed7dce309d5375f377f6c662911d0d3754a1e33",
+      "recorded": "dda1c23f4cc9ed7162ecdb14bed7dce309d5375f377f6c662911d0d3754a1e33"
+    },
+    {
+      "check": "B0_no_skill.brier",
+      "match": true,
+      "recomputed": 0.232160107935,
+      "recorded": 0.232160107935
+    },
+    {
+      "check": "B0_no_skill.log_loss",
+      "match": true,
+      "recomputed": 0.658310797977,
+      "recorded": 0.658310797977
+    },
+    {
+      "check": "B0_no_skill.auroc",
+      "match": true,
+      "recomputed": 0.5,
+      "recorded": 0.5
+    },
+    {
+      "check": "B0_no_skill.calibration_status",
+      "match": true,
+      "recomputed": "INFEASIBLE_CONSTANT_PREDICTION",
+      "recorded": "INFEASIBLE_CONSTANT_PREDICTION"
+    },
+    {
+      "check": "B0_no_skill.calibration_slope",
+      "match": true,
+      "recomputed": null,
+      "recorded": null
+    },
+    {
+      "check": "B0_no_skill.calibration_intercept",
+      "match": true,
+      "recomputed": null,
+      "recorded": null
+    },
+    {
+      "check": "B0_no_skill.brier_ci_lower",
+      "match": true,
+      "recomputed": 0.211565396566,
+      "recorded": 0.211565396566
+    },
+    {
+      "check": "B0_no_skill.brier_ci_upper",
+      "match": true,
+      "recomputed": 0.25272778619,
+      "recorded": 0.25272778619
+    },
+    {
+      "check": "B0_no_skill.confusion.tp",
+      "match": true,
+      "recomputed": 0,
+      "recorded": 0
+    },
+    {
+      "check": "B0_no_skill.confusion.fp",
+      "match": true,
+      "recomputed": 0,
+      "recorded": 0
+    },
+    {
+      "check": "B0_no_skill.confusion.tn",
+      "match": true,
+      "recomputed": 279,
+      "recorded": 279
+    },
+    {
+      "check": "B0_no_skill.confusion.fn",
+      "match": true,
+      "recomputed": 151,
+      "recorded": 151
+    },
+    {
+      "check": "B1_magnitude_only_logit.brier",
+      "match": true,
+      "recomputed": 0.198213701311,
+      "recorded": 0.198213701311
+    },
+    {
+      "check": "B1_magnitude_only_logit.log_loss",
+      "match": true,
+      "recomputed": 0.583331269709,
+      "recorded": 0.583331269709
+    },
+    {
+      "check": "B1_magnitude_only_logit.auroc",
+      "match": true,
+      "recomputed": 0.718958437181,
+      "recorded": 0.718958437181
+    },
+    {
+      "check": "B1_magnitude_only_logit.calibration_status",
+      "match": true,
+      "recomputed": "OK",
+      "recorded": "OK"
+    },
+    {
+      "check": "B1_magnitude_only_logit.calibration_slope",
+      "match": true,
+      "recomputed": 1.020326223589,
+      "recorded": 1.020326223589
+    },
+    {
+      "check": "B1_magnitude_only_logit.calibration_intercept",
+      "match": true,
+      "recomputed": 0.324323667235,
+      "recorded": 0.324323667235
+    },
+    {
+      "check": "B1_magnitude_only_logit.brier_ci_lower",
+      "match": true,
+      "recomputed": 0.176575950797,
+      "recorded": 0.176575950797
+    },
+    {
+      "check": "B1_magnitude_only_logit.brier_ci_upper",
+      "match": true,
+      "recomputed": 0.219231422693,
+      "recorded": 0.219231422693
+    },
+    {
+      "check": "B1_magnitude_only_logit.confusion.tp",
+      "match": true,
+      "recomputed": 37,
+      "recorded": 37
+    },
+    {
+      "check": "B1_magnitude_only_logit.confusion.fp",
+      "match": true,
+      "recomputed": 13,
+      "recorded": 13
+    },
+    {
+      "check": "B1_magnitude_only_logit.confusion.tn",
+      "match": true,
+      "recomputed": 266,
+      "recorded": 266
+    },
+    {
+      "check": "B1_magnitude_only_logit.confusion.fn",
+      "match": true,
+      "recomputed": 114,
+      "recorded": 114
+    },
+    {
+      "check": "B2_source_only_logit.brier",
+      "match": true,
+      "recomputed": 0.180661534768,
+      "recorded": 0.180661534768
+    },
+    {
+      "check": "B2_source_only_logit.log_loss",
+      "match": true,
+      "recomputed": 0.536390573935,
+      "recorded": 0.536390573935
+    },
+    {
+      "check": "B2_source_only_logit.auroc",
+      "match": true,
+      "recomputed": 0.785753281588,
+      "recorded": 0.785753281588
+    },
+    {
+      "check": "B2_source_only_logit.calibration_status",
+      "match": true,
+      "recomputed": "OK",
+      "recorded": "OK"
+    },
+    {
+      "check": "B2_source_only_logit.calibration_slope",
+      "match": true,
+      "recomputed": 1.294234260105,
+      "recorded": 1.294234260105
+    },
+    {
+      "check": "B2_source_only_logit.calibration_intercept",
+      "match": true,
+      "recomputed": 0.643751664916,
+      "recorded": 0.643751664916
+    },
+    {
+      "check": "B2_source_only_logit.brier_ci_lower",
+      "match": true,
+      "recomputed": 0.160141060441,
+      "recorded": 0.160141060441
+    },
+    {
+      "check": "B2_source_only_logit.brier_ci_upper",
+      "match": true,
+      "recomputed": 0.201512231929,
+      "recorded": 0.201512231929
+    },
+    {
+      "check": "B2_source_only_logit.confusion.tp",
+      "match": true,
+      "recomputed": 48,
+      "recorded": 48
+    },
+    {
+      "check": "B2_source_only_logit.confusion.fp",
+      "match": true,
+      "recomputed": 14,
+      "recorded": 14
+    },
+    {
+      "check": "B2_source_only_logit.confusion.tn",
+      "match": true,
+      "recomputed": 265,
+      "recorded": 265
+    },
+    {
+      "check": "B2_source_only_logit.confusion.fn",
+      "match": true,
+      "recomputed": 103,
+      "recorded": 103
+    },
+    {
+      "check": "B4_random_forest.brier",
+      "match": true,
+      "recomputed": 0.186681056634,
+      "recorded": 0.186681056634
+    },
+    {
+      "check": "B4_random_forest.log_loss",
+      "match": true,
+      "recomputed": 0.55271287874,
+      "recorded": 0.55271287874
+    },
+    {
+      "check": "B4_random_forest.auroc",
+      "match": true,
+      "recomputed": 0.777219967243,
+      "recorded": 0.777219967243
+    },
+    {
+      "check": "B4_random_forest.calibration_status",
+      "match": true,
+      "recomputed": "OK",
+      "recorded": "OK"
+    },
+    {
+      "check": "B4_random_forest.calibration_slope",
+      "match": true,
+      "recomputed": 1.479011366878,
+      "recorded": 1.479011366878
+    },
+    {
+      "check": "B4_random_forest.calibration_intercept",
+      "match": true,
+      "recomputed": 0.738321528867,
+      "recorded": 0.738321528867
+    },
+    {
+      "check": "B4_random_forest.brier_ci_lower",
+      "match": true,
+      "recomputed": 0.167913814906,
+      "recorded": 0.167913814906
+    },
+    {
+      "check": "B4_random_forest.brier_ci_upper",
+      "match": true,
+      "recomputed": 0.205781725915,
+      "recorded": 0.205781725915
+    },
+    {
+      "check": "B4_random_forest.confusion.tp",
+      "match": true,
+      "recomputed": 44,
+      "recorded": 44
+    },
+    {
+      "check": "B4_random_forest.confusion.fp",
+      "match": true,
+      "recomputed": 10,
+      "recorded": 10
+    },
+    {
+      "check": "B4_random_forest.confusion.tn",
+      "match": true,
+      "recomputed": 269,
+      "recorded": 269
+    },
+    {
+      "check": "B4_random_forest.confusion.fn",
+      "match": true,
+      "recomputed": 107,
+      "recorded": 107
+    },
+    {
+      "check": "B5_xgboost.brier",
+      "match": true,
+      "recomputed": 0.181438417478,
+      "recorded": 0.181438417478
+    },
+    {
+      "check": "B5_xgboost.log_loss",
+      "match": true,
+      "recomputed": 0.540989764096,
+      "recorded": 0.540989764096
+    },
+    {
+      "check": "B5_xgboost.auroc",
+      "match": true,
+      "recomputed": 0.782786204277,
+      "recorded": 0.782786204277
+    },
+    {
+      "check": "B5_xgboost.calibration_status",
+      "match": true,
+      "recomputed": "OK",
+      "recorded": "OK"
+    },
+    {
+      "check": "B5_xgboost.calibration_slope",
+      "match": true,
+      "recomputed": 1.068106011891,
+      "recorded": 1.068106011891
+    },
+    {
+      "check": "B5_xgboost.calibration_intercept",
+      "match": true,
+      "recomputed": 0.421445059154,
+      "recorded": 0.421445059154
+    },
+    {
+      "check": "B5_xgboost.brier_ci_lower",
+      "match": true,
+      "recomputed": 0.161096567542,
+      "recorded": 0.161096567542
+    },
+    {
+      "check": "B5_xgboost.brier_ci_upper",
+      "match": true,
+      "recomputed": 0.20222271116,
+      "recorded": 0.20222271116
+    },
+    {
+      "check": "B5_xgboost.confusion.tp",
+      "match": true,
+      "recomputed": 56,
+      "recorded": 56
+    },
+    {
+      "check": "B5_xgboost.confusion.fp",
+      "match": true,
+      "recomputed": 16,
+      "recorded": 16
+    },
+    {
+      "check": "B5_xgboost.confusion.tn",
+      "match": true,
+      "recomputed": 263,
+      "recorded": 263
+    },
+    {
+      "check": "B5_xgboost.confusion.fn",
+      "match": true,
+      "recomputed": 95,
+      "recorded": 95
+    },
+    {
+      "check": "rank[B1_magnitude_only_logit_vs_B0_no_skill].point",
+      "match": true,
+      "recomputed": -0.033946406624,
+      "recorded": -0.033946406624
+    },
+    {
+      "check": "rank[B1_magnitude_only_logit_vs_B0_no_skill].ci_lo",
+      "match": true,
+      "recomputed": -0.051104582364,
+      "recorded": -0.051104582364
+    },
+    {
+      "check": "rank[B1_magnitude_only_logit_vs_B0_no_skill].ci_hi",
+      "match": true,
+      "recomputed": -0.017105405067,
+      "recorded": -0.017105405067
+    },
+    {
+      "check": "rank[B1_magnitude_only_logit_vs_B0_no_skill].prob_a_better",
+      "match": true,
+      "recomputed": 1.0,
+      "recorded": 1.0
+    },
+    {
+      "check": "rank[B1_magnitude_only_logit_vs_B0_no_skill].prob_tie",
+      "match": true,
+      "recomputed": 0.0,
+      "recorded": 0.0
+    },
+    {
+      "check": "rank[B1_magnitude_only_logit_vs_B0_no_skill].resolved",
+      "match": true,
+      "recomputed": true,
+      "recorded": true
+    },
+    {
+      "check": "rank[B2_source_only_logit_vs_B0_no_skill].point",
+      "match": true,
+      "recomputed": -0.051498573167,
+      "recorded": -0.051498573167
+    },
+    {
+      "check": "rank[B2_source_only_logit_vs_B0_no_skill].ci_lo",
+      "match": true,
+      "recomputed": -0.068063045354,
+      "recorded": -0.068063045354
+    },
+    {
+      "check": "rank[B2_source_only_logit_vs_B0_no_skill].ci_hi",
+      "match": true,
+      "recomputed": -0.034206073403,
+      "recorded": -0.034206073403
+    },
+    {
+      "check": "rank[B2_source_only_logit_vs_B0_no_skill].prob_a_better",
+      "match": true,
+      "recomputed": 1.0,
+      "recorded": 1.0
+    },
+    {
+      "check": "rank[B2_source_only_logit_vs_B0_no_skill].prob_tie",
+      "match": true,
+      "recomputed": 0.0,
+      "recorded": 0.0
+    },
+    {
+      "check": "rank[B2_source_only_logit_vs_B0_no_skill].resolved",
+      "match": true,
+      "recomputed": true,
+      "recorded": true
+    },
+    {
+      "check": "rank[B4_random_forest_vs_B0_no_skill].point",
+      "match": true,
+      "recomputed": -0.0454790513,
+      "recorded": -0.0454790513
+    },
+    {
+      "check": "rank[B4_random_forest_vs_B0_no_skill].ci_lo",
+      "match": true,
+      "recomputed": -0.05979656139,
+      "recorded": -0.05979656139
+    },
+    {
+      "check": "rank[B4_random_forest_vs_B0_no_skill].ci_hi",
+      "match": true,
+      "recomputed": -0.030655813511,
+      "recorded": -0.030655813511
+    },
+    {
+      "check": "rank[B4_random_forest_vs_B0_no_skill].prob_a_better",
+      "match": true,
+      "recomputed": 1.0,
+      "recorded": 1.0
+    },
+    {
+      "check": "rank[B4_random_forest_vs_B0_no_skill].prob_tie",
+      "match": true,
+      "recomputed": 0.0,
+      "recorded": 0.0
+    },
+    {
+      "check": "rank[B4_random_forest_vs_B0_no_skill].resolved",
+      "match": true,
+      "recomputed": true,
+      "recorded": true
+    },
+    {
+      "check": "rank[B5_xgboost_vs_B0_no_skill].point",
+      "match": true,
+      "recomputed": -0.050721690457,
+      "recorded": -0.050721690457
+    },
+    {
+      "check": "rank[B5_xgboost_vs_B0_no_skill].ci_lo",
+      "match": true,
+      "recomputed": -0.068236451815,
+      "recorded": -0.068236451815
+    },
+    {
+      "check": "rank[B5_xgboost_vs_B0_no_skill].ci_hi",
+      "match": true,
+      "recomputed": -0.031888986925,
+      "recorded": -0.031888986925
+    },
+    {
+      "check": "rank[B5_xgboost_vs_B0_no_skill].prob_a_better",
+      "match": true,
+      "recomputed": 1.0,
+      "recorded": 1.0
+    },
+    {
+      "check": "rank[B5_xgboost_vs_B0_no_skill].prob_tie",
+      "match": true,
+      "recomputed": 0.0,
+      "recorded": 0.0
+    },
+    {
+      "check": "rank[B5_xgboost_vs_B0_no_skill].resolved",
+      "match": true,
+      "recomputed": true,
+      "recorded": true
+    }
+  ],
+  "n_checks": 87,
+  "n_failed": 0,
+  "predictions_digest_recomputed": "58519b1ae48c949890ab3cddc3c2fcfdcbc680fc9fc71402b09f324be2d1138a",
+  "predictions_digest_recorded": "58519b1ae48c949890ab3cddc3c2fcfdcbc680fc9fc71402b09f324be2d1138a",
+  "reconstruction_pipeline_digest": "dda1c23f4cc9ed7162ecdb14bed7dce309d5375f377f6c662911d0d3754a1e33",
+  "record_type": "frozen_prediction_reconstruction_verification",
+  "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
+  "source_snapshot": {
+    "bytes": 5752776,
+    "match": true,
+    "path": "activation/raw/dyfi_M5_dyfi_2015_2025_20260901T063330Z.geojson",
+    "recomputed_sha256": "88722d8aa6d025cfcc3562f29593cc87d84c6a073bf211e8c21d89adddd4d7e9",
+    "recorded_sha256": "88722d8aa6d025cfcc3562f29593cc87d84c6a073bf211e8c21d89adddd4d7e9"
+  }
+}

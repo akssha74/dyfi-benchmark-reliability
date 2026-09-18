@@ -1,0 +1,28 @@
+# Pinned dependency lock for the DYFI-USGS single-source severe-felt-intensity
+# benchmark analytics stack. This is the EXACT environment in which the named
+# baselines are fit and the metrics/bootstrap smoke tests are executed.
+#
+# Interpreter : CPython 3.11.15 (uv-managed; the system CPython 3.9.6 ships an
+#               EOL LibreSSL 2.8.3 that cannot complete a modern TLS handshake
+#               with the package index, so a uv-managed 3.11 is pinned instead).
+# Resolver    : uv 0.12.3
+# Index       : https://pypi-proxy.dev.databricks.com/simple
+# Platform    : macOS-26.6.2-arm64 (aarch64-apple-darwin). Wheels are pure/ABI
+#               wheels; the lock is portable to any CPython 3.11 on the same
+#               major platform. Re-resolve on a different OS/arch.
+#
+# Only OSI-approved, permissively licensed (BSD-3-Clause / Apache-2.0) packages
+# are admitted; see env_lock.json for the machine-readable version+licence record.
+#
+# Regenerate exactly:
+#   uv venv --python 3.11.15 .venv && . .venv/bin/activate
+#   uv pip install -r requirements.lock.txt
+#
+# Direct dependencies (named-baseline + metrics stack):
+scikit-learn==1.5.2
+numpy==1.26.4
+scipy==1.13.1
+xgboost==2.1.4
+# Transitive (pinned for a fully reproducible resolution):
+joblib==1.5.3
+threadpoolctl==3.6.0

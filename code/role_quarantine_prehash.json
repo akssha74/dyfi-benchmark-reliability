@@ -1,0 +1,82 @@
+{
+  "acquisition_envelope": {
+    "endtime": "2025-01-01T00:00:00Z",
+    "eventtype": "earthquake",
+    "minmagnitude": 5.0,
+    "note": "M>=5 DYFI-bearing events over the pinned decade; the magnitude floor, product type, and time bounds are outcome-independent selection keys.",
+    "orderby": "time-asc",
+    "producttype": "dyfi",
+    "starttime": "2015-01-01T00:00:00Z"
+  },
+  "activated": false,
+  "activation_note": "Rules are PINNED and HASHED only. Real acquisition/outcome execution is disabled until contract lock + activation token are supplied; the runner records combined_digest and fails closed on any drift.",
+  "digests": {
+    "combined_digest": "f678d2c2cea07a55e8ad37268b833c9e6f8971022cef855a528424ce1b5ee06e",
+    "envelope_digest": "7c395ba862675b9f609502ddb2daefcbe4c1e336f7302904d838929c9975709d",
+    "quarantine_rules_digest": "c4ca0c3a2cb5644ea597ec3204573f0792e910d1492e111ba4b826cb0c11c04d",
+    "role_rules_digest": "51a444f5e322c47b5dcb96fde6cd29d97a1791796838f3ecd12f946ab0c2d809"
+  },
+  "quarantine_rules": {
+    "envelope_bounds": {
+      "end_year_exclusive": 2025,
+      "min_magnitude": 5.0,
+      "start_year": 2015
+    },
+    "geometry_bounds": {
+      "depth_max_km": 1000.0,
+      "depth_min_km": -10.0,
+      "lat_abs_max": 90.0,
+      "lon_abs_max": 180.0
+    },
+    "manual_quarantine_ids": [
+      {
+        "added_at": "2026-09-01",
+        "authorization": "independent_lock_review.json binding condition Q5",
+        "event_id": "ci40925991",
+        "reason": "Its aggregate report count was exposed during antecedent source verification (and as the DYFI sample event); exclude from every role."
+      },
+      {
+        "added_at": "2026-09-01",
+        "authorization": "independent_lock_review.json binding condition Q5",
+        "event_id": "us6000pgsd",
+        "reason": "A prior broad source-code search surfaced one of its rows; exclude if later found eligible."
+      }
+    ],
+    "reads_label": false,
+    "rules": [
+      {
+        "description": "eventtype is not 'earthquake' (quarry blast, explosion, ice quake, sonic boom, etc.); these are not the tectonic population and are removed independently of any felt outcome.",
+        "rule_id": "Q1_non_earthquake_event_type"
+      },
+      {
+        "description": "origin_time outside [2015-01-01, 2025-01-01) or magnitude < 5.0; the event falls outside the pinned acquisition envelope and must not enter the resource even if it appears in a wider re-query.",
+        "rule_id": "Q2_outside_pinned_envelope"
+      },
+      {
+        "description": "longitude/latitude/depth missing, non-finite, or out of physical range (|lat|>90, |lon|>180, depth<-10 km); a geometry that cannot be placed on the grid is quarantined rather than coerced.",
+        "rule_id": "Q3_corrupt_or_missing_geometry"
+      },
+      {
+        "description": "a second feature shares this event's authoritative (network,eventid) origin; the non-authoritative revision is quarantined so a revision cannot enter twice (handled with the revision-reconciliation receipt).",
+        "rule_id": "Q4_duplicate_authoritative_origin"
+      },
+      {
+        "description": "the event id is on the frozen, reason-bearing manual quarantine list below; each addition is logged, never silent.",
+        "rule_id": "Q5_explicit_listed_quarantine_id"
+      }
+    ]
+  },
+  "record_type": "outcome_independent_role_and_quarantine_prehash",
+  "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
+  "role_rules": {
+    "assignment_unit": "sequence",
+    "decluster_space_km": 100.0,
+    "decluster_time_days": 30.0,
+    "development_fraction": 0.2,
+    "geographic_holdout_fraction": 0.2,
+    "n_cv_folds": 5,
+    "reads_label": false,
+    "role_salt": "dyfi-usgs-severe-felt-intensity-v1",
+    "temporal_cutoff_year": 2023
+  }
+}

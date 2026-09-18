@@ -1,0 +1,92 @@
+{
+  "checks": {
+    "environment": {
+      "detail": {
+        "expected_versions": {
+          "joblib": "1.5.3",
+          "numpy": "1.26.4",
+          "scikit-learn": "1.5.2",
+          "scipy": "1.13.1",
+          "threadpoolctl": "3.6.0",
+          "xgboost": "2.1.4"
+        },
+        "licences": {
+          "joblib": "BSD-3-Clause",
+          "numpy": "BSD-3-Clause",
+          "scikit-learn": "BSD-3-Clause",
+          "scipy": "BSD-3-Clause",
+          "threadpoolctl": "BSD-3-Clause",
+          "xgboost": "Apache-2.0"
+        },
+        "mismatches": [],
+        "passed": true,
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "python_ok": true,
+        "python_version": "3.11.15",
+        "resolved_versions": {
+          "joblib": "1.5.3",
+          "numpy": "1.26.4",
+          "scikit-learn": "1.5.2",
+          "scipy": "1.13.1",
+          "threadpoolctl": "3.6.0",
+          "xgboost": "2.1.4"
+        }
+      },
+      "passed": true
+    },
+    "files": {
+      "missing": [],
+      "n_required": 16,
+      "passed": true
+    },
+    "fixtures": {
+      "missing": [],
+      "n_required": 9,
+      "passed": true
+    },
+    "smoke_determinism": {
+      "fit_cap": 120,
+      "fit_cap_respected": true,
+      "fit_ledger_count": 91,
+      "passed": true,
+      "run1_hash": "70d232fc7104a4cbbbbf5846f833086be55fde82f34c17b50946b9a0f3b1e82b",
+      "run2_hash": "70d232fc7104a4cbbbbf5846f833086be55fde82f34c17b50946b9a0f3b1e82b"
+    },
+    "unit_tests": {
+      "error_names": [],
+      "errors": 0,
+      "failure_names": [],
+      "failures": 0,
+      "modules": [
+        "test_benchmark_modules",
+        "test_analytics_stack"
+      ],
+      "passed": true,
+      "skipped": 0,
+      "tests_run": 66
+    }
+  },
+  "output_hash_manifest": {
+    "baselines.py": "6abc741a88c5531b1d7b50be9e9ad4c6bd6b342e0419ded5c6bb7cad0de36246",
+    "common.py": "7840b8c271198509e1b4a563fc2da4fda265aaa9d78f13eb2b6bd4f341fc0e56",
+    "decluster.py": "bfffffb768fda2f1ec797e8b8a835fa44f61e617786c3de0a4829b56e22799cb",
+    "endpoint.py": "d477eaec030766ce699fc34dd3aa746b96feac2fa3dccacbb4493baa5fa144e9",
+    "env_lock.json": "425b7146e0941cd4d9f9cb52c26d4436b589bdaf42554cf8fad47a4003149961",
+    "environment.py": "3428142a0b4337283befaa92f8a13427425e3407ba696757d7b342bc8b9f93bc",
+    "ingest_eligibility.py": "893c5615830ac9781471cc4bca9055c2da11c72d43ff5548b668745cd0224bbf",
+    "ipe_exclusion.json": "8b54232c9d814ea3c92f251eafc4030d96830a8b735f9d8e7d31063f0e302756",
+    "leakage_audit.py": "bd2225810c7bf10e0e3c5fb17b22e1f506fcca01a97cdf449a4e2b1e770495c9",
+    "metrics.py": "78c2866a406d1b3f9895cf67600e09357078041fb6c53952bc8a6fafa3020026",
+    "requirements.lock.txt": "a405e879f35685b98df4bdb99a82c70d2ec1b3cd34f3406fbbdfc21a2a29420d",
+    "role_assignment.py": "a0ec85d695ccbc59ec85e9ef1a0569116df4bfe7f5f2737679053ff6c22f287f",
+    "runner_interface_contract.json": "e4f4a8f605582e0056fc0f231fca7ac991797ffe0ebfb0f8abd22a374ccc34cb",
+    "smoke_report.json": "8158d3669a03339e66f5d6fc3b77e5e034cc353fed8e17f916dee5cdcbf99e60",
+    "smoke_test.py": "7c0f00b1782bf4f756436d0ccbfc30764f19e15bbb2088b561f9a6a06aa0f20a",
+    "synthetic_fixtures.py": "781f9ab92e23403afe1fc3ce33302299b42ab5f7abd07f27e670285fa6c7f474",
+    "test_analytics_stack.py": "3b324dab9fa8998dd72447371eb6022d4da5d604dc4e2b1b544e5b6ef1c43cae",
+    "test_benchmark_modules.py": "5726982c9e5596df3ae64a7a9d5063e66902c38fabf035a542784409267078d3"
+  },
+  "overall_passed": true,
+  "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
+  "stage": "analytics_stack_construction"
+}

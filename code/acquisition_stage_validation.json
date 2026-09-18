@@ -1,0 +1,125 @@
+{
+  "artifact_digests": {
+    "reconstruction_pipeline_digest": "d023e32206ee274115a9ca289925502b82220fb96137785c1b25feeb3c61aab0",
+    "runner_result_core_hash": "89e508d7916306f65b55aca3489bc1f96dd1609eca611bc71e4f90b280a345cd"
+  },
+  "checks": {
+    "acquisition_guards": {
+      "count_drift": 1,
+      "count_preflight_outcome_free": true,
+      "outcome_bearing_fetch_disabled": true,
+      "passed": true,
+      "protected_blockers": [
+        "no stamped source-locator manifest (outcome-bearing fetch disabled)",
+        "contract lock not authorised (governance simultaneous-submission flags)",
+        "activation token absent"
+      ],
+      "protected_run_ready": false
+    },
+    "environment": {
+      "detail": {
+        "expected_versions": {
+          "joblib": "1.5.3",
+          "numpy": "1.26.4",
+          "scikit-learn": "1.5.2",
+          "scipy": "1.13.1",
+          "threadpoolctl": "3.6.0",
+          "xgboost": "2.1.4"
+        },
+        "licences": {
+          "joblib": "BSD-3-Clause",
+          "numpy": "BSD-3-Clause",
+          "scikit-learn": "BSD-3-Clause",
+          "scipy": "BSD-3-Clause",
+          "threadpoolctl": "BSD-3-Clause",
+          "xgboost": "Apache-2.0"
+        },
+        "mismatches": [],
+        "passed": true,
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "python_ok": true,
+        "python_version": "3.11.15",
+        "resolved_versions": {
+          "joblib": "1.5.3",
+          "numpy": "1.26.4",
+          "scikit-learn": "1.5.2",
+          "scipy": "1.13.1",
+          "threadpoolctl": "3.6.0",
+          "xgboost": "2.1.4"
+        }
+      },
+      "passed": true
+    },
+    "files": {
+      "missing": [],
+      "n_required": 18,
+      "passed": true
+    },
+    "fixtures": {
+      "missing": [],
+      "n_required": 2,
+      "passed": true
+    },
+    "reconstruct_determinism": {
+      "leakage_passed": true,
+      "order_stable": true,
+      "passed": true,
+      "pipeline_digest": "d023e32206ee274115a9ca289925502b82220fb96137785c1b25feeb3c61aab0"
+    },
+    "runner_determinism": {
+      "excluded_forbidden_axis": [
+        "B3_expanded_metadata_logit"
+      ],
+      "expected_fit_count": 91,
+      "fit_count": 91,
+      "holdout_opens": 1,
+      "passed": true,
+      "run1_hash": "89e508d7916306f65b55aca3489bc1f96dd1609eca611bc71e4f90b280a345cd",
+      "run2_hash": "89e508d7916306f65b55aca3489bc1f96dd1609eca611bc71e4f90b280a345cd"
+    },
+    "unit_tests": {
+      "error_names": [],
+      "errors": 0,
+      "failure_names": [],
+      "failures": 0,
+      "modules": [
+        "test_benchmark_modules",
+        "test_analytics_stack",
+        "test_acquisition_reconstruction",
+        "test_runner_report"
+      ],
+      "passed": true,
+      "skipped": 0,
+      "tests_run": 110
+    }
+  },
+  "output_hash_manifest": {
+    "acquire.py": "708a517d892ac0dc1334c61ee579ae5f2f0247552df873109af6213a63cc453a",
+    "baselines.py": "6abc741a88c5531b1d7b50be9e9ad4c6bd6b342e0419ded5c6bb7cad0de36246",
+    "common.py": "7840b8c271198509e1b4a563fc2da4fda265aaa9d78f13eb2b6bd4f341fc0e56",
+    "decluster.py": "bfffffb768fda2f1ec797e8b8a835fa44f61e617786c3de0a4829b56e22799cb",
+    "endpoint.py": "d477eaec030766ce699fc34dd3aa746b96feac2fa3dccacbb4493baa5fa144e9",
+    "environment.py": "3428142a0b4337283befaa92f8a13427425e3407ba696757d7b342bc8b9f93bc",
+    "external_runner.py": "81e78468c55f4c4fe74972ef7c5043f7d5a08740b6dd9f626e5394a1e99a284b",
+    "ingest_eligibility.py": "893c5615830ac9781471cc4bca9055c2da11c72d43ff5548b668745cd0224bbf",
+    "integration_fixtures.py": "52913c47672ba615f311445e442e3d45b3aaedc061e2006508f121dfc53e3fdd",
+    "leakage_audit.py": "bd2225810c7bf10e0e3c5fb17b22e1f506fcca01a97cdf449a4e2b1e770495c9",
+    "metrics.py": "78c2866a406d1b3f9895cf67600e09357078041fb6c53952bc8a6fafa3020026",
+    "prehash_rules.py": "7fa67edeb180b0d1d9d9e131a5f47bd3445669158696cf1442cbf45ea1d1c89d",
+    "reconstruct.py": "542abfa6a5b1809d4a4208c9d6893061a615b7613850b73e3409de52a29e8ce3",
+    "reconstruction_manifest.json": "8c5a433dfb5fd75c787e6f54c2a5148e8fcd5c6db329945477dd4ed756d7cf14",
+    "report.py": "5b61fe1503237396553599b67f1ddbe35cdc0a1477fe8508ff88d015ec13bf29",
+    "role_assignment.py": "a0ec85d695ccbc59ec85e9ef1a0569116df4bfe7f5f2737679053ff6c22f287f",
+    "role_quarantine_prehash.json": "b29789876fc79dc38aebed96ff915747350020b405017758bcd12664cdc39c0a",
+    "runner_interface_contract.json": "e4f4a8f605582e0056fc0f231fca7ac991797ffe0ebfb0f8abd22a374ccc34cb",
+    "runner_result.json": "6317a7b6427c76444aa88ef8a0fdaa5d49ff72ba1f8dda063c9182693cd20abf",
+    "source_count_preflight.json": "308e913ca4c7f1466cee1340889a8869be8659d109e9d967d30d03857389b14e",
+    "source_locator_manifest.json": "59c1127a4535e1d7d00190578477a68a8ed066d120fde52c5935967152ff3759",
+    "test_acquisition_reconstruction.py": "35f7712c1b799ee2800e3b53bbe0d8d5308497775d7c9024d9f411480ab32f6b",
+    "test_runner_report.py": "8e8dc3925672bded89b0105463df6100c83f772128759a97adfa1bc6c5372aea"
+  },
+  "overall_passed": true,
+  "prehash_combined_digest": "f678d2c2cea07a55e8ad37268b833c9e6f8971022cef855a528424ce1b5ee06e",
+  "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
+  "stage": "acquisition_reconstruction_oneshot_runner_construction"
+}

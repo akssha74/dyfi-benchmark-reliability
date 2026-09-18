@@ -1,0 +1,712 @@
+{
+  "result_core": {
+    "axis": "temporal",
+    "data": "SYNTHETIC_ONLY",
+    "excluded_forbidden_axis": {
+      "B3_expanded_metadata_logit": "B3_expanded_metadata_logit: schema 'expanded_metadata' carries a proxy for the 'temporal' axis and must not be fit/scored on that transport holdout"
+    },
+    "expected_fit_count": 91,
+    "fit_count": 91,
+    "fit_ledger_digest": "9833f16a13efb71ad9a7e93cf1c7298086627ce11fbd3101fa8f8e236a60a08a",
+    "frozen_best_params": {
+      "B0_no_skill": {},
+      "B1_magnitude_only_logit": {
+        "C": 10.0
+      },
+      "B2_source_only_logit": {
+        "C": 10.0
+      },
+      "B3_expanded_metadata_logit": {
+        "C": 1.0
+      },
+      "B4_random_forest": {
+        "max_depth": 3,
+        "n_estimators": 300
+      },
+      "B5_xgboost": {
+        "learning_rate": 0.1,
+        "max_depth": 2,
+        "n_estimators": 100
+      }
+    },
+    "holdout_opens": 1,
+    "mode": "synthetic",
+    "n_construction": 338,
+    "n_holdout": 86,
+    "predictions_digest": "80d895e8af7698a8a544691fdc4f4294e4c258eba5df991c992435026675492f",
+    "real_protected_role_opened": false,
+    "reconstruction_pipeline_digest": "685d7bc92ceca1b9bf3f2f562712e96fea7b25802d06d22c918cc58ee8aa2cc0",
+    "report": {
+      "data": "SYNTHETIC_ONLY",
+      "difficulty_characterization": {
+        "fixed_probe_honest_auroc": 0.828043478261,
+        "fixed_probe_honest_brier": 0.162131794933,
+        "n_events": 338,
+        "n_negative": 200,
+        "n_positive": 138,
+        "n_sequences": 337,
+        "near_threshold_fraction": 0.289940828402,
+        "no_skill_brier_floor": 0.241588179686,
+        "prevalence_severe": 0.408284023669,
+        "probe_baseline": "B2_source_only_logit",
+        "split": "sequence_grouped"
+      },
+      "evaluation": {
+        "claim_statement": "This resource characterises benchmark difficulty and the leakage inflation of naive splitting. It ranks baselines with paired uncertainty and explicit tie/INFEASIBLE states but declares NO winning model; the source-only baselines are honest comparators.",
+        "geographic_slice": {
+          "G+000+0010": {
+            "brier": 0.694885096785,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+000+0040": {
+            "brier": 0.006835872328,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+000+0050": {
+            "brier": 0.836236474652,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+000+0160": {
+            "brier": 0.505987241793,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+000-0020": {
+            "brier": 0.012408527491,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+000-0030": {
+            "brier": 0.102217134839,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+000-0090": {
+            "brier": 0.264199273903,
+            "brier_status": "OK",
+            "n": 3
+          },
+          "G+000-0110": {
+            "brier": 0.007034547928,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+000-0120": {
+            "brier": 0.016195634989,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+000-0130": {
+            "brier": 0.06960998584,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+000-0140": {
+            "brier": 0.110279422916,
+            "brier_status": "OK",
+            "n": 2
+          },
+          "G+000-0160": {
+            "brier": 0.520706104816,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+000-0170": {
+            "brier": 0.025358043982,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+010+0030": {
+            "brier": 0.16083466013,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+010+0080": {
+            "brier": 0.009688349978,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+010+0090": {
+            "brier": 0.502545151083,
+            "brier_status": "OK",
+            "n": 2
+          },
+          "G+010-0020": {
+            "brier": 0.002588220165,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+010-0060": {
+            "brier": 0.026251239069,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+010-0110": {
+            "brier": 0.11497522984,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+010-0120": {
+            "brier": 0.003377446158,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+020+0040": {
+            "brier": 0.332009421975,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+020+0070": {
+            "brier": 0.142627581153,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+020+0110": {
+            "brier": 0.060534167127,
+            "brier_status": "OK",
+            "n": 2
+          },
+          "G+020-0010": {
+            "brier": 0.639353779568,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+020-0130": {
+            "brier": 0.005088998237,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+030+0000": {
+            "brier": 0.654394780667,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+030+0110": {
+            "brier": 0.027357397656,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+030-0030": {
+            "brier": 0.000105414495,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+030-0080": {
+            "brier": 0.026860413831,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+030-0090": {
+            "brier": 0.004675713345,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+030-0110": {
+            "brier": 0.919460214861,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+030-0130": {
+            "brier": 0.060346474749,
+            "brier_status": "OK",
+            "n": 2
+          },
+          "G+030-0150": {
+            "brier": 0.000368019019,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+040+0020": {
+            "brier": 0.129609032725,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+040+0030": {
+            "brier": 0.023759233428,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+040+0040": {
+            "brier": 0.017596833232,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+040-0060": {
+            "brier": 0.106937946963,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+040-0100": {
+            "brier": 0.11294147339,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+040-0160": {
+            "brier": 0.091243573567,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+050+0060": {
+            "brier": 0.236380609975,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+050-0030": {
+            "brier": 0.006600750834,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G+050-0050": {
+            "brier": 0.160484957661,
+            "brier_status": "OK",
+            "n": 2
+          },
+          "G+050-0060": {
+            "brier": 0.349708606362,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-010+0080": {
+            "brier": 0.004863924659,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-010-0020": {
+            "brier": 0.249298761798,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-010-0060": {
+            "brier": 0.085813013019,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-010-0090": {
+            "brier": 0.021580384966,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-020+0080": {
+            "brier": 0.042967835734,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-020+0160": {
+            "brier": 0.223970068775,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-020-0050": {
+            "brier": 0.634946565153,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-020-0130": {
+            "brier": 0.301307247421,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-020-0150": {
+            "brier": 0.096888209811,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-020-0170": {
+            "brier": 0.076774056903,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-030+0160": {
+            "brier": 0.023297426918,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-030-0050": {
+            "brier": 0.001616182663,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-030-0150": {
+            "brier": 0.048173221851,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-030-0170": {
+            "brier": 0.547089799476,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-040+0000": {
+            "brier": 0.00996420103,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-040+0040": {
+            "brier": 0.060494752106,
+            "brier_status": "OK",
+            "n": 2
+          },
+          "G-040+0080": {
+            "brier": 0.234508111336,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-040+0140": {
+            "brier": 0.012223884345,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-040-0060": {
+            "brier": 0.350093907584,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-040-0080": {
+            "brier": 0.021262715214,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-050+0040": {
+            "brier": 0.032358852111,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-050+0060": {
+            "brier": 0.01364066659,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-050+0110": {
+            "brier": 0.138245686121,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-050+0120": {
+            "brier": 0.011289549129,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-050+0130": {
+            "brier": 0.192279710034,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-050-0010": {
+            "brier": 0.003071867215,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-050-0040": {
+            "brier": 0.293959205833,
+            "brier_status": "OK",
+            "n": 2
+          },
+          "G-050-0050": {
+            "brier": 0.004205121266,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-050-0060": {
+            "brier": 0.00723024176,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-050-0120": {
+            "brier": 0.195536814375,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-060+0040": {
+            "brier": 0.142298255872,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-060+0110": {
+            "brier": 0.006355634888,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-060-0010": {
+            "brier": 0.030707284639,
+            "brier_status": "OK",
+            "n": 1
+          },
+          "G-060-0040": {
+            "brier": 0.016432470773,
+            "brier_status": "OK",
+            "n": 1
+          }
+        },
+        "no_winning_model_claim": true,
+        "per_baseline": {
+          "B0_no_skill": {
+            "auroc": 0.5,
+            "bootstrap_n_valid": 2000,
+            "bootstrap_status": "OK",
+            "brier": 0.247747171904,
+            "brier_ci": [
+              0.228550804765,
+              0.266943539043
+            ],
+            "brier_status": "OK",
+            "calibration_intercept": null,
+            "calibration_slope": null,
+            "calibration_status": "INFEASIBLE_CONSTANT_PREDICTION",
+            "confusion_at_threshold": {
+              "accuracy": 0.5581395348837209,
+              "f1": null,
+              "fn": 38,
+              "fp": 0,
+              "precision": null,
+              "recall": 0.0,
+              "tn": 48,
+              "tp": 0
+            },
+            "log_loss": 0.688686899782
+          },
+          "B1_magnitude_only_logit": {
+            "auroc": 0.827302631579,
+            "bootstrap_n_valid": 2000,
+            "bootstrap_status": "OK",
+            "brier": 0.171651433193,
+            "brier_ci": [
+              0.128842497624,
+              0.218164562635
+            ],
+            "brier_status": "OK",
+            "calibration_intercept": -0.310579438189,
+            "calibration_slope": 0.935397938992,
+            "calibration_status": "OK",
+            "confusion_at_threshold": {
+              "accuracy": 0.7441860465116279,
+              "f1": 0.7317073170731707,
+              "fn": 8,
+              "fp": 14,
+              "precision": 0.6818181818181818,
+              "recall": 0.7894736842105263,
+              "tn": 34,
+              "tp": 30
+            },
+            "log_loss": 0.517681068397
+          },
+          "B2_source_only_logit": {
+            "auroc": 0.84649122807,
+            "bootstrap_n_valid": 2000,
+            "bootstrap_status": "OK",
+            "brier": 0.162935434467,
+            "brier_ci": [
+              0.119383456877,
+              0.210545605861
+            ],
+            "brier_status": "OK",
+            "calibration_intercept": -0.327228559332,
+            "calibration_slope": 0.937919864645,
+            "calibration_status": "OK",
+            "confusion_at_threshold": {
+              "accuracy": 0.7906976744186046,
+              "f1": 0.7804878048780488,
+              "fn": 6,
+              "fp": 12,
+              "precision": 0.7272727272727273,
+              "recall": 0.8421052631578947,
+              "tn": 36,
+              "tp": 32
+            },
+            "log_loss": 0.497416669893
+          },
+          "B4_random_forest": {
+            "auroc": 0.821546052632,
+            "bootstrap_n_valid": 2000,
+            "bootstrap_status": "OK",
+            "brier": 0.171731499993,
+            "brier_ci": [
+              0.131818292242,
+              0.21598217892
+            ],
+            "brier_status": "OK",
+            "calibration_intercept": -0.161626737174,
+            "calibration_slope": 1.065907264776,
+            "calibration_status": "OK",
+            "confusion_at_threshold": {
+              "accuracy": 0.7558139534883721,
+              "f1": 0.7272727272727273,
+              "fn": 10,
+              "fp": 11,
+              "precision": 0.717948717948718,
+              "recall": 0.7368421052631579,
+              "tn": 37,
+              "tp": 28
+            },
+            "log_loss": 0.520964384532
+          },
+          "B5_xgboost": {
+            "auroc": 0.80975877193,
+            "bootstrap_n_valid": 2000,
+            "bootstrap_status": "OK",
+            "brier": 0.181879463106,
+            "brier_ci": [
+              0.132228676731,
+              0.237188610112
+            ],
+            "brier_status": "OK",
+            "calibration_intercept": -0.280317907753,
+            "calibration_slope": 0.63441620451,
+            "calibration_status": "OK",
+            "confusion_at_threshold": {
+              "accuracy": 0.7674418604651163,
+              "f1": 0.7500000000000001,
+              "fn": 8,
+              "fp": 12,
+              "precision": 0.7142857142857143,
+              "recall": 0.7894736842105263,
+              "tn": 36,
+              "tp": 30
+            },
+            "log_loss": 0.570361773966
+          }
+        },
+        "ranking_reference": "B0_no_skill",
+        "ranking_vs_reference": {
+          "B1_magnitude_only_logit_vs_B0_no_skill": {
+            "ci": [
+              -0.124189721821,
+              -0.023043780663
+            ],
+            "point_diff_a_minus_b": -0.076095738711,
+            "prob_a_better": 0.998,
+            "prob_b_better": 0.002,
+            "prob_tie": 0.0,
+            "resolved": true,
+            "status": "OK"
+          },
+          "B2_source_only_logit_vs_B0_no_skill": {
+            "ci": [
+              -0.132495088365,
+              -0.030517724864
+            ],
+            "point_diff_a_minus_b": -0.084811737437,
+            "prob_a_better": 0.999,
+            "prob_b_better": 0.001,
+            "prob_tie": 0.0,
+            "resolved": true,
+            "status": "OK"
+          },
+          "B4_random_forest_vs_B0_no_skill": {
+            "ci": [
+              -0.1201860396,
+              -0.027305756651
+            ],
+            "point_diff_a_minus_b": -0.076015671911,
+            "prob_a_better": 0.999,
+            "prob_b_better": 0.001,
+            "prob_tie": 0.0,
+            "resolved": true,
+            "status": "OK"
+          },
+          "B5_xgboost_vs_B0_no_skill": {
+            "ci": [
+              -0.118408934733,
+              -0.004640373231
+            ],
+            "point_diff_a_minus_b": -0.065867708798,
+            "prob_a_better": 0.982,
+            "prob_b_better": 0.018,
+            "prob_tie": 0.0,
+            "resolved": true,
+            "status": "OK"
+          }
+        },
+        "slice_probe_baseline": "B2_source_only_logit",
+        "temporal_slice": {
+          "2023": {
+            "auroc": 0.79176201373,
+            "brier": 0.186245042619,
+            "brier_status": "OK",
+            "n": 42
+          },
+          "2024": {
+            "auroc": 0.882105263158,
+            "brier": 0.140685353958,
+            "brier_status": "OK",
+            "n": 44
+          }
+        },
+        "threshold": 0.5,
+        "threshold_sensitivity": {
+          "5.5": {
+            "auroc": 0.91087962963,
+            "brier": 0.143436125243,
+            "prevalence": 0.627906976744
+          },
+          "6.0": {
+            "auroc": 0.84649122807,
+            "brier": 0.162935434467,
+            "prevalence": 0.441860465116
+          },
+          "6.5": {
+            "auroc": 0.827106227106,
+            "brier": 0.214120151898,
+            "prevalence": 0.244186046512
+          }
+        }
+      },
+      "leakage_inflation_headline": {
+        "auroc_inflation_random_minus_seq": 0.047173913043,
+        "brier_inflation_seq_minus_random": 0.025856965374,
+        "event_grouped_note": "On a one-row-per-event table event-grouped coincides with the random split; it is reported as the intermediate control between random and sequence grouping.",
+        "honest_estimate_scheme": "sequence_grouped",
+        "interpretation": "Random-event splitting lets within-sequence signal leak across folds; the sequence-grouped split is the honest, leakage-hardened estimate. A positive Brier gap (sequence minus random) and positive AUROC gap (random minus sequence) quantify the optimistic inflation of the naive split. This is the resource's headline; no model is claimed to win.",
+        "n_folds": 5,
+        "per_scheme": {
+          "event_grouped": {
+            "auroc": 0.784456521739,
+            "brier": 0.186377337927,
+            "log_loss": 0.78130456605,
+            "n_folds_populated": 5
+          },
+          "random_event": {
+            "auroc": 0.820760869565,
+            "brier": 0.165333661814,
+            "log_loss": 0.540565900951,
+            "n_folds_populated": 5
+          },
+          "sequence_grouped": {
+            "auroc": 0.773586956522,
+            "brier": 0.191190627188,
+            "log_loss": 0.81230891342,
+            "n_folds_populated": 5
+          }
+        },
+        "probe_baseline": "B4_random_forest",
+        "probe_params": {
+          "max_depth": null,
+          "n_estimators": 300
+        },
+        "seed": 20260901
+      },
+      "protected_role_opened": false,
+      "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1"
+    },
+    "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
+    "serialization_deterministic": {
+      "B0_no_skill": true,
+      "B1_magnitude_only_logit": true,
+      "B2_source_only_logit": true,
+      "B4_random_forest": true,
+      "B5_xgboost": true
+    }
+  },
+  "result_hash": "89e508d7916306f65b55aca3489bc1f96dd1609eca611bc71e4f90b280a345cd",
+  "verification": {
+    "b3_axis_prohibition_enforced": true,
+    "environment_passed": true,
+    "fit_budget_respected": true,
+    "holdout_opened_once": true,
+    "lock_verified": true,
+    "no_protected_refit": true,
+    "run_token": "31804a50fb0f4c943ecd323ecf5f3b36dab0c0da3a5cae0f9fcd53d50ecad12d"
+  }
+}

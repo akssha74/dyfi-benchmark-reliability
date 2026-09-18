@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "record_type": "q5_manual_quarantine_and_prehash_repin",
+  "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
+  "performed_at": "2026-09-01",
+  "binding_condition": "Q5 (independent_lock_review.json): add the two inspected event ids (ci40925991, us6000pgsd) to the manual quarantine list as a logged, digest-changing change BEFORE any role is materialized; rebuild and re-pin the runner lock against the updated prehash digest.",
+
+  "manual_quarantine_ids_added": [
+    {"event_id": "ci40925991", "reason": "aggregate report count exposed during antecedent source verification (and as the DYFI sample event)", "rule": "Q5_explicit_listed_quarantine_id", "excluded_from": ["train", "development", "external_temporal_holdout", "geo_holdout"]},
+    {"event_id": "us6000pgsd", "reason": "a prior broad source-code search surfaced one of its rows", "rule": "Q5_explicit_listed_quarantine_id", "excluded_from": ["train", "development", "external_temporal_holdout", "geo_holdout"]}
+  ],
+  "reasons_are_outcome_independent": true,
+
+  "no_other_review_exposed_event_ids": {
+    "verified": true,
+    "method": "Full-packet scan (excluding .venv) for real USGS FDSN event-id patterns and 'event_id'/'inspected' references; cross-checked governance/outcome_boundaries.json:quarantined_inspected_events.",
+    "finding": "Exactly two real USGS event ids appear anywhere in the packet as inspected/exposed events: ci40925991 and us6000pgsd. All other event-id-like tokens are synthetic fixtures (syn*, LKD*, e1/e2) or false positives (e.g. 'producttype', prevalence numbers). No additional review-exposed event id exists that would require quarantine."
+  },
+
+  "semantics_preserving_wiring": {
+    "prehash_rules.py": "MANUAL_QUARANTINE_IDS populated with the two ids (+ reasons/authorization); added manual_quarantine_id_list() helper. Changes the quarantine_rules_digest and hence combined_digest (intended).",
+    "external_runner.py": "build_lock() and run_analysis() now pass quarantine=prehash_rules.manual_quarantine_id_list() to reconstruct.reconstruct(), so the two ids are dropped from every role. No-op on synthetic data (ids absent), so the synthetic pipeline remains deterministic; the recorded quarantine PARAMETER changes the synthetic reconstruction/runner manifests (honest provenance), not the scientific logic.",
+    "acquire.py": "fetch_outcome_bearing_geojson() activation branch wired to perform ONE dated pull of the pinned outcome-bearing query URL under the audited retry policy when (and only when) an explicit activation token AND allow_network=True are supplied; still fails closed otherwise (guard re-verified PASS).",
+    "unchanged_scientific_logic": "endpoint threshold, decluster window, role rule, role_salt, cutoff year, feature schemas, baseline suite/grids, metric/bootstrap definitions, fit cap are all byte-identical to the pre-activation packet."
+  },
+
+  "digest_transitions": {
+    "prehash_combined_digest": {"old": "122bf4ccbaad986e37edc4fa914c3481ea90ab823cdead68f5577617455cfcd5", "new": "f678d2c2cea07a55e8ad37268b833c9e6f8971022cef855a528424ce1b5ee06e"},
+    "synthetic_runner_result_core_hash": {"old": "c32561e2ec4066e596265104825d5ab03b75099806fa24fef401e42bb754abac", "new": "89e508d7916306f65b55aca3489bc1f96dd1609eca611bc71e4f90b280a345cd"},
+    "reconstruction_pipeline_digest_default_quarantine": {"old": "d023e32206ee274115a9ca289925502b82220fb96137785c1b25feeb3c61aab0", "new": "d023e32206ee274115a9ca289925502b82220fb96137785c1b25feeb3c61aab0", "note": "unchanged: the standalone reconstruction demo uses the default (empty) quarantine"}
+  },
+
+  "updated_code_file_hashes": {
+    "code/prehash_rules.py": "7fa67edeb180b0d1d9d9e131a5f47bd3445669158696cf1442cbf45ea1d1c89d",
+    "code/external_runner.py": "3120ce8813ad68b48414faad48458aa5e240acaba9f0a406f6fbd8b96d68a7d5",
+    "code/acquire.py": "708a517d892ac0dc1334c61ee579ae5f2f0247552df873109af6213a63cc453a",
+    "code/role_quarantine_prehash.json": "b29789876fc79dc38aebed96ff915747350020b405017758bcd12664cdc39c0a",
+    "code/source_locator_manifest.json": "59c1127a4535e1d7d00190578477a68a8ed066d120fde52c5935967152ff3759",
+    "code/runner_result.json": "135707d9b2d3a391ec2d2a6a7a985423337006c1a372d4e8729e4b8dde7172d2"
+  },
+
+  "manifests_updated": [
+    "governance/frozen_artifact_manifest.json (all artifact hashes recomputed; key_facts.prehash_combined_digest + runner_result_core_hash re-pinned; q5_repin_provenance block added)",
+    "preregistration/frozen_preregistration.json (prehash_combined_digest re-pinned; q5 transition note added; scientific plan unchanged)",
+    "reports/source_locator_activation_procedure.json (prehash_combined_digest references re-pinned; q5 note added)"
+  ],
+
+  "runner_relock": "external_runner.build_lock computes prehash_combined_digest live via prehash_rules.compute_lock(); the runner therefore automatically locks to the new digest f678d2c2 and fails closed on any drift from it. The re-pin is thus enforced at execution, not merely documented.",
+
+  "not_modified_intentionally": {
+    "review/lock-review-opus48/*": "the reviewer's pinned record of the pre-Q5 packet is preserved as the historical review artifact; it explicitly authorized this digest change.",
+    "governance/validate_prelock_packet.py": "the pre-lock gate (EXPECTED_PREHASH=122bf4cc, requires locked=false) is intentionally left as-is; it is superseded once the contract is locked and the digest re-pinned. Post-lock consistency is checked in the post-execution validation report instead."
+  },
+
+  "determinism_after_repin": "acquisition-stage validator re-run: 110/110 tests PASS, guards fail-closed, runner determinism holds (synthetic core hash 89e508d7 reproduced across two runs).",
+  "verdict": "Q5 satisfied; prehash digest re-pinned and enforced by the runner; dependent manifests updated; originals preserved."
+}

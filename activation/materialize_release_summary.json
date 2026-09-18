@@ -1,0 +1,32 @@
+{
+  "csv_columns": [
+    "event_id",
+    "origin_time",
+    "origin_year",
+    "magnitude",
+    "magnitude_type",
+    "depth_km",
+    "latitude",
+    "longitude",
+    "region_code",
+    "num_responses",
+    "max_cdi",
+    "severe_label",
+    "sequence_id",
+    "role"
+  ],
+  "materialized_files": {
+    "event_level_table.csv": "9657b92767b29910db385c81523cdfd0e2ab812d0462b84397b830092523d505",
+    "fit_ledger.json": "f993b509e6204e1f681ef3491f5ff6460e85d0f284df330329585d3367c714eb",
+    "results.json": "b3ec45d587d6125da25890b7e91bfb140309c8645c7d8c365d80a2e0df73ae3b",
+    "role_manifest.json": "5741c5cb6af7730c8e021215df4ffa872819a02303ad7a95410e0da5dc81cd5e",
+    "source_locator_manifest.json": "59c1127a4535e1d7d00190578477a68a8ed066d120fde52c5935967152ff3759"
+  },
+  "n_eligible": 2362,
+  "role_counts": {
+    "development": 357,
+    "external_temporal_holdout": 430,
+    "temporal_straddle_excluded": 2,
+    "train": 1573
+  }
+}

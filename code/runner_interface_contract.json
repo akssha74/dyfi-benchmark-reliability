@@ -1,0 +1,45 @@
+{
+  "record_type": "protected_runner_interface_contract",
+  "for_stage": "step_9_one_shot_evaluation_runner (external_runner.py)",
+  "status": "NOT_IMPLEMENTED_THIS_STAGE (interface-only; the protected runner is a separate, role-scoring stage and is intentionally not built or executed here)",
+  "scope_boundary": "This stage built ONLY the construction-side analytics (environment lock, baselines, metrics, fixtures, tests, smoke, validator) on SYNTHETIC data. The runner below opens the protected held-out role EXACTLY ONCE after contract lock is authorised; it is out of scope now.",
+  "consumes": {
+    "pinned_snapshot": "source_locator_manifest.json (FDSNWS query URL(s), access instant, bytes, sha256) - verified by hash before any parse.",
+    "environment_lock": "env_lock.json + requirements.lock.txt - runner must verify via environment.verify_environment(strict=True) and abort on any mismatch.",
+    "frozen_baseline_configs": "best_params per baseline id from the construction tuning record (baselines.tune_and_fit output), carried UNCHANGED; the runner performs NO re-tuning on the protected role.",
+    "role_manifest_hashes": "role_manifest.json hashes from role_assignment (temporal primary; geographic secondary).",
+    "stage_validation_hash": "output_hash_manifest from validation_report.json of this stage."
+  },
+  "must_call_interfaces": {
+    "ingest_eligibility.parse_geojson(geojson, quarantine)": "canonical eligible rows (post-report ascertainment gate).",
+    "endpoint.add_labels(rows)": "attaches severe_label = 1[max_cdi>=6]; label-defining/outcome-bearing.",
+    "decluster.assign_sequences(rows, space_km=100, time_days=30)": "deterministic sequence_id per event.",
+    "role_assignment.assign_temporal_roles(rows) / assign_geographic_roles(rows)": "pre-hashed outcome-independent roles.",
+    "leakage_audit.audit_feature_names(features, schema)": "field-level F1-F4 audit; must pass (100% forbidden rejected, exact clean accepted) before any fit.",
+    "leakage_audit.audit_features_against_axis(features, axis)": "axis proxy audit; must pass for the axis being evaluated.",
+    "leakage_audit.audit_role_manifest(rows, cutoff_year)": "split-level F5/F6 audit; must pass before scoring.",
+    "baselines.assert_fit_allowed(spec, axis)": "raises LeakageError if the baseline's schema leaks the evaluation axis (e.g. B3_expanded_metadata_logit on temporal/geographic).",
+    "baselines.tune_and_fit(spec, construction_rows, construction_groups, ledger, axis)": "fit ONLY on the construction role.",
+    "baselines.predict_proba(fitted, protected_rows)": "score the protected role features (source-only, no leaking axis proxy).",
+    "metrics.summary(y, p, groups, threshold)": "Brier (primary), log-loss, AUROC, calibration, confusion at the development-fixed threshold.",
+    "metrics.cluster_bootstrap(y, p, groups, metric, n_boot>=2000, seed)": "sequence-cluster CI with the minimum-valid-replicate rule.",
+    "metrics.paired_cluster_bootstrap_difference(y, pa, pb, groups, metric, resolution_floor)": "paired ranking with tie probability and a resolution rule.",
+    "metrics.slice_metrics / metrics.threshold_sensitivity": "temporal/geographic slices and cdi>=5.5/6/6.5 endpoint-threshold sensitivity."
+  },
+  "hard_guarantees_the_runner_must_enforce": [
+    "Verify pinned snapshot + inventory + role_manifest + env_lock hashes; abort on any mismatch.",
+    "Fit every baseline ONLY on the construction role; NEVER fit on protected-role outcomes.",
+    "Carry frozen best_params unchanged; perform no hyperparameter selection on the protected role.",
+    "Enforce baselines.assert_fit_allowed: B3_expanded_metadata_logit is forbidden on the temporal and geographic transport holdouts (it may appear only on a non-leaking split, as a disclosed proxy-bearing sensitivity).",
+    "Issue ONE globally consumed run token; reject event subsets; make retry across output directories impossible.",
+    "Derive (not hard-code) any omission/INFEASIBLE status from the metric feasibility states.",
+    "Open the protected role EXACTLY ONCE; the role is 'held out from model development with aggregate feasibility previously known', never 'untouched'.",
+    "Report the random-vs-event-grouped-vs-sequence-grouped leakage gap as the headline resource output."
+  ],
+  "protected_role_not_scored_here": true,
+  "blocked_until": [
+    "contract lock authorised (currently blocked by governance simultaneous-submission flags)",
+    "pipeline frozen and hashed",
+    "run token minted"
+  ]
+}

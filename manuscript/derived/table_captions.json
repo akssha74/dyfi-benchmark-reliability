@@ -1,0 +1,34 @@
+{
+  "baseline_performance": {
+    "caption": "Per-baseline performance with uncertainty and calibration states.",
+    "claim_neutral_interpretation": "Reports proper scores, bootstrap CIs, and calibration feasibility for the fixed baseline suite. B0's INFEASIBLE calibration is a derived state. No winning-model claim."
+  },
+  "cohort_roles": {
+    "caption": "Cohort construction and role assignment.",
+    "claim_neutral_interpretation": "Descriptive cohort accounting; the partition is exhaustive and disjoint (1573+357+430+2 = 2362) and roles are outcome-independent. No performance claim."
+  },
+  "endpoint_threshold_sensitivity": {
+    "caption": "Endpoint threshold sensitivity.",
+    "claim_neutral_interpretation": "Shows the endpoint is not a single-grid artifact; prevalence and probe scores move smoothly across 5.5/6.0/6.5. No model-superiority claim."
+  },
+  "exclusions_deviations": {
+    "caption": "Protocol decisions affecting interpretation.",
+    "claim_neutral_interpretation": "Explains excluded comparators and records, the lack of an equivalence claim, integrity bookkeeping, and interpretation of the near-zero split comparison."
+  },
+  "leakage_gap": {
+    "caption": "Leakage-inflation across split schemes.",
+    "claim_neutral_interpretation": "Quantifies naive-vs-grouped split optimism for a fixed diagnostic model. The gap is near zero and slightly reversed, so it is reported as a null result rather than a gain."
+  },
+  "pairwise_matrix": {
+    "caption": "Full pairwise ranking-stability matrix.",
+    "claim_neutral_interpretation": "Complete directional stability for every eligible pair. Equivalent class not asserted (no registered margin). Reinforces no-winning-model; overturns no headline."
+  },
+  "reproducibility_manifest": {
+    "caption": "Data and reproducibility manifest.",
+    "claim_neutral_interpretation": "Provenance and integrity anchors (hashes, single token, environment pins, licences). Establishes reproducibility, makes no performance claim."
+  },
+  "slices": {
+    "caption": "Temporal and geographic transport slices.",
+    "claim_neutral_interpretation": "Descriptive per-slice probe Brier/AUROC. Geographic cells are single-source transport checks, not cross-system generalization claims."
+  }
+}

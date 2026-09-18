@@ -1,0 +1,39 @@
+{
+  "axis": "temporal",
+  "cross_role_sequence_disjoint": true,
+  "n_eligible_events": 2362,
+  "n_sequences_total": 1885,
+  "note": "Roles assigned by the pre-hashed, label-independent temporal rule (cutoff year 2023, ROLE_SALT). temporal_straddle_excluded holds sequences that cross the cutoff and enter NO scored role -- a documented exclusion, not selective omission. event_level_table carries every eligible row across all roles.",
+  "prehash_combined_digest": "f678d2c2cea07a55e8ad37268b833c9e6f8971022cef855a528424ce1b5ee06e",
+  "prevalence_severe_all_eligible": 0.297629127858,
+  "reconstruction_pipeline_digest": "dda1c23f4cc9ed7162ecdb14bed7dce309d5375f377f6c662911d0d3754a1e33",
+  "record_type": "post_assignment_role_manifest",
+  "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
+  "roles": {
+    "development": {
+      "event_id_sha256": "814cdab1471f84e6535629b59d76a8d4a583c1861961016fa65b51a1b64e278e",
+      "n_events": 357,
+      "n_sequences": 303,
+      "sequence_id_sha256": "1c46d856dbc53c899b94b2649c2522dcc5ef21ffeeccc60f4fc11e881993244e"
+    },
+    "external_temporal_holdout": {
+      "event_id_sha256": "91070321493b6832f0de4d2d9e44e32b5bf81ca628b4480d51fa26958117de5d",
+      "n_events": 430,
+      "n_sequences": 354,
+      "sequence_id_sha256": "a4cdab60b5e87475029f773660424aa909d760e6998e9040e6055dbffa82f872"
+    },
+    "temporal_straddle_excluded": {
+      "event_id_sha256": "847f69312ca3ded70103915b3e788bd4ecc31b52dd2fc3464afe367f08c263fb",
+      "n_events": 2,
+      "n_sequences": 1,
+      "sequence_id_sha256": "7e7193423d183c2fc4778725108e06f8c6e65e4b76c85439145b1360a96a73ac"
+    },
+    "train": {
+      "event_id_sha256": "811bd214e8d5bf597d7a5c48ad15d856695ec93a5d1879dcec71127b081a6e6a",
+      "n_events": 1573,
+      "n_sequences": 1227,
+      "sequence_id_sha256": "36ae3b2c47a20ceee61634417a70eaa8165a15bbc23a7feecf1df247bf8b55c2"
+    }
+  },
+  "source_snapshot_sha256": "88722d8aa6d025cfcc3562f29593cc87d84c6a073bf211e8c21d89adddd4d7e9"
+}

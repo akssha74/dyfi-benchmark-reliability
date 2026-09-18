@@ -1,0 +1,42 @@
+{
+  "record_type": "domain_baseline_exclusion",
+  "baseline_id": "B_domain_IPE",
+  "decision": "EXCLUDED",
+  "one_line": "A specific published IPE was verified, but it cannot be applied to this benchmark's source-only schema and tectonically heterogeneous population without inventing a site-distance input and a per-event tectonic-regime assignment; per the stage rule we record this exclusion rather than invent one.",
+  "verified_published_equation": {
+    "citation": "Atkinson, G. M., and D. J. Wald (2007). \"Did You Feel It?\" intensity data: A surprisingly good measure of earthquake ground motion. Seismological Research Letters 78(3), 362-368.",
+    "doi": "10.1785/gssrl.78.3.362",
+    "source_pdf_verified": "https://earthquake.usgs.gov/static/lfs/data/pager/AtkinsonWaldDYFI.pdf",
+    "output_units": "Modified Mercalli Intensity (MMI), continuous, with a reported average error of ~0.4 MMI units",
+    "functional_form": "MMI = c1 + c2*(M-6) + c3*(M-6)^2 + c4*log10(R) + c5*R + c6*B + c7*M*B, with R = sqrt(D_h^2 + h^2), B = max(log10(R/Rt), 0), where M is moment magnitude, D_h is hypocentral (site-to-source) distance in km, h is an effective-depth fitting constant, and Rt is a transition distance.",
+    "coefficients_table1": {
+      "California_active_crustal_region": {"c1": 12.27, "c2": 2.270, "c3": 0.1304, "c4": -1.30, "c5": -0.0007070, "c6": 1.95, "c7": -0.577, "h_km": 14.0, "Rt_km": 30.0},
+      "central_eastern_US_stable_continental_region": {"c1": 11.72, "c2": 2.36, "c3": 0.1155, "c4": -0.44, "c5": -0.002044, "c6": 2.31, "c7": -0.479, "h_km": 17.0, "Rt_km": 80.0}
+    },
+    "stated_tectonic_applicability": "Two regionalisations ONLY: California (archetypal active crustal region, ACR) and the Central & Eastern United States (stable continental region, SCR). Regression calibrated on DYFI data mostly for Mw >= 3.0 over distances ~10-500 km.",
+    "verification_status": "VERIFIED (equation form, all Table 1 coefficients, units, tectonic applicability, and citation confirmed against the USGS-hosted paper text)."
+  },
+  "why_excluded_from_this_benchmark": [
+    {
+      "id": "E1_distance_covariate_absent",
+      "detail": "The IPE predicts MMI at a SITE at hypocentral distance D_h. The benchmark's SOURCE_ONLY schema is {magnitude, depth_km} and the endpoint is the event-MAXIMUM CDI over aggregated report cells; there is no site-to-source distance covariate. Evaluating the IPE at the event maximum would require assuming the maximum occurs at a specific distance (e.g. D_h=0, the epicentre) AND treating the equation's regional effective-depth constant h (14/17 km) as the near-source distance. Both are modelling inventions not present in the published equation, and 'depth_km' is the source depth, NOT the fitting constant h.",
+      "would_require_inventing": true
+    },
+    {
+      "id": "E2_tectonic_regime_assignment_missing",
+      "detail": "The equation supplies coefficients for exactly two regimes (CA/ACR and CEUS/SCR). This single-source benchmark is USGS DYFI/ComCat over a tectonically HETEROGENEOUS population (Alaska, Hawaii, Puerto Rico, intraplate CEUS, active-crust CA, and international events). Applying either coefficient set uniformly violates the equation's stated applicability; applying it correctly requires a per-event ACR/SCR classification (e.g. a craton-index or tectonic-regionalisation map) that is NOT in the schema and would be an additional unverified modelling layer.",
+      "would_require_inventing": true
+    },
+    {
+      "id": "E3_probability_link_unverified",
+      "detail": "The endpoint is a binary P(event-max CDI >= 6). The IPE returns a continuous MMI point estimate; converting it to a calibrated severe-probability needs an assumed link (e.g. a Gaussian CDF at the reported sigma). That link is a further modelling choice not in the published equation.",
+      "would_require_inventing": true
+    }
+  ],
+  "alternatives_considered": [
+    "Refitting an IPE-style functional form to the corpus -> REJECTED: that is a learned model, not the named published domain baseline, and refitting on the benchmark population is precisely what the leakage-safe protocol forbids at this stage.",
+    "Restricting the benchmark to California-only events to satisfy applicability -> REJECTED here: it would silently redefine the single-source resource scope, which this stage is instructed not to redesign."
+  ],
+  "audit_consequence": "The learned baselines (B1-B5) remain the honest comparators. The absence of a domain IPE baseline is an explicit, verifiable exclusion, not a silent omission; a downstream user can re-open this decision by supplying a distance covariate and a verified per-event tectonic-regime field, at which point the verified coefficients above can be applied directly.",
+  "machine_auditable": true
+}

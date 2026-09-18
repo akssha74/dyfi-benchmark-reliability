@@ -1,0 +1,449 @@
+{
+  "record_type": "manuscript_paper_validation_report",
+  "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
+  "n_checks": 88,
+  "n_failed": 0,
+  "overall_pass": true,
+  "checks": [
+    {
+      "check": "partition_sums_to_eligible",
+      "ok": true,
+      "detail": "2362 == 2362"
+    },
+    {
+      "check": "construction_equals_train_plus_dev",
+      "ok": true,
+      "detail": "1930"
+    },
+    {
+      "check": "eligible_severe_reconciles_with_roles_and_straddle",
+      "ok": true,
+      "detail": "703 == 702 + 1"
+    },
+    {
+      "check": "role_assigned_severe_equals_702",
+      "ok": true,
+      "detail": "702"
+    },
+    {
+      "check": "eligible_severe_703_in_table",
+      "ok": true,
+      "detail": "703"
+    },
+    {
+      "check": "eligible_prevalence_0.298_in_table",
+      "ok": true,
+      "detail": "0.298"
+    },
+    {
+      "check": "eligible_prevalence_0.298_in_prose",
+      "ok": true,
+      "detail": "0.298 present and stale 0.297 absent"
+    },
+    {
+      "check": "holdout_prevalence_151_over_430",
+      "ok": true,
+      "detail": "0.351"
+    },
+    {
+      "check": "threshold_5.5_prevalence_in_table",
+      "ok": true,
+      "detail": "0.458"
+    },
+    {
+      "check": "threshold_5.5_brier_in_table",
+      "ok": true,
+      "detail": "0.240"
+    },
+    {
+      "check": "threshold_5.5_auroc_in_table",
+      "ok": true,
+      "detail": "0.734"
+    },
+    {
+      "check": "threshold_6.0_prevalence_in_table",
+      "ok": true,
+      "detail": "0.351"
+    },
+    {
+      "check": "threshold_6.0_brier_in_table",
+      "ok": true,
+      "detail": "0.181"
+    },
+    {
+      "check": "threshold_6.0_auroc_in_table",
+      "ok": true,
+      "detail": "0.786"
+    },
+    {
+      "check": "threshold_6.5_prevalence_in_table",
+      "ok": true,
+      "detail": "0.260"
+    },
+    {
+      "check": "threshold_6.5_brier_in_table",
+      "ok": true,
+      "detail": "0.143"
+    },
+    {
+      "check": "threshold_6.5_auroc_in_table",
+      "ok": true,
+      "detail": "0.815"
+    },
+    {
+      "check": "leakage_brier_gap_recompute",
+      "ok": true,
+      "detail": "-0.005878207034 vs -0.005878207034"
+    },
+    {
+      "check": "leakage_auroc_gap_recompute",
+      "ok": true,
+      "detail": "-0.012396868243 vs -0.012396868243"
+    },
+    {
+      "check": "leakage_brier_gap_-0.0059_in_table",
+      "ok": true,
+      "detail": "-0.005878207034"
+    },
+    {
+      "check": "leakage_auroc_gap_-0.0124_in_table",
+      "ok": true,
+      "detail": "-0.012396868243"
+    },
+    {
+      "check": "null_framed_as_null_in_prose",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "no_winning_model_claim_in_prose",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "B0_no_skill_brier_in_table",
+      "ok": true,
+      "detail": "0.232"
+    },
+    {
+      "check": "B0_no_skill_brier_ci_in_table",
+      "ok": true,
+      "detail": "[0.212, 0.253]"
+    },
+    {
+      "check": "B1_magnitude_only_logit_brier_in_table",
+      "ok": true,
+      "detail": "0.198"
+    },
+    {
+      "check": "B1_magnitude_only_logit_brier_ci_in_table",
+      "ok": true,
+      "detail": "[0.177, 0.219]"
+    },
+    {
+      "check": "B2_source_only_logit_brier_in_table",
+      "ok": true,
+      "detail": "0.181"
+    },
+    {
+      "check": "B2_source_only_logit_brier_ci_in_table",
+      "ok": true,
+      "detail": "[0.160, 0.202]"
+    },
+    {
+      "check": "B4_random_forest_brier_in_table",
+      "ok": true,
+      "detail": "0.187"
+    },
+    {
+      "check": "B4_random_forest_brier_ci_in_table",
+      "ok": true,
+      "detail": "[0.168, 0.206]"
+    },
+    {
+      "check": "B5_xgboost_brier_in_table",
+      "ok": true,
+      "detail": "0.181"
+    },
+    {
+      "check": "B5_xgboost_brier_ci_in_table",
+      "ok": true,
+      "detail": "[0.161, 0.202]"
+    },
+    {
+      "check": "B0_no_skill_confusion_sums_to_430",
+      "ok": true,
+      "detail": "430"
+    },
+    {
+      "check": "B0_no_skill_positives_151",
+      "ok": true,
+      "detail": "151"
+    },
+    {
+      "check": "B1_magnitude_only_logit_confusion_sums_to_430",
+      "ok": true,
+      "detail": "430"
+    },
+    {
+      "check": "B1_magnitude_only_logit_positives_151",
+      "ok": true,
+      "detail": "151"
+    },
+    {
+      "check": "B2_source_only_logit_confusion_sums_to_430",
+      "ok": true,
+      "detail": "430"
+    },
+    {
+      "check": "B2_source_only_logit_positives_151",
+      "ok": true,
+      "detail": "151"
+    },
+    {
+      "check": "B4_random_forest_confusion_sums_to_430",
+      "ok": true,
+      "detail": "430"
+    },
+    {
+      "check": "B4_random_forest_positives_151",
+      "ok": true,
+      "detail": "151"
+    },
+    {
+      "check": "B5_xgboost_confusion_sums_to_430",
+      "ok": true,
+      "detail": "430"
+    },
+    {
+      "check": "B5_xgboost_positives_151",
+      "ok": true,
+      "detail": "151"
+    },
+    {
+      "check": "pairwise_B0_no_skill_vs_B1_magnitude_only_logit_negates_frozen",
+      "ok": true,
+      "detail": "0.033946406624 vs -(-0.033946406624)"
+    },
+    {
+      "check": "pairwise_B0_no_skill_vs_B2_source_only_logit_negates_frozen",
+      "ok": true,
+      "detail": "0.051498573167 vs -(-0.051498573167)"
+    },
+    {
+      "check": "pairwise_B0_no_skill_vs_B4_random_forest_negates_frozen",
+      "ok": true,
+      "detail": "0.0454790513 vs -(-0.0454790513)"
+    },
+    {
+      "check": "pairwise_B0_no_skill_vs_B5_xgboost_negates_frozen",
+      "ok": true,
+      "detail": "0.050721690457 vs -(-0.050721690457)"
+    },
+    {
+      "check": "B2_source_only_logit_vs_B4_random_forest_unresolved",
+      "ok": true,
+      "detail": "unresolved"
+    },
+    {
+      "check": "B2_source_only_logit_vs_B5_xgboost_unresolved",
+      "ok": true,
+      "detail": "unresolved"
+    },
+    {
+      "check": "temporal_2023_brier_in_table",
+      "ok": true,
+      "detail": "0.185"
+    },
+    {
+      "check": "temporal_2024_brier_in_table",
+      "ok": true,
+      "detail": "0.174"
+    },
+    {
+      "check": "geographic_n_cells_82",
+      "ok": true,
+      "detail": "82"
+    },
+    {
+      "check": "geographic_sum_n_430",
+      "ok": true,
+      "detail": "430"
+    },
+    {
+      "check": "W4_no_preregistered_margin",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "equivalence_margin_limit_disclosed_in_prose",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "three_self_referential_records_disclosed_in_prose",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "held_out_not_untouched",
+      "ok": true,
+      "detail": "phrasing present (with explicit not-untouched)"
+    },
+    {
+      "check": "all_cited_keys_in_bib",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "check": "all_bib_entries_cited",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "check": "only_expected_entry_has_no_doi",
+      "ok": true,
+      "detail": "['pedregosa2011sklearn']"
+    },
+    {
+      "check": "citation_ledger_covers_bib",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "check": "input_exists_tables/cohort_roles.tex",
+      "ok": true,
+      "detail": "tables/cohort_roles.tex"
+    },
+    {
+      "check": "input_exists_tables/endpoint_threshold_sensitivity.tex",
+      "ok": true,
+      "detail": "tables/endpoint_threshold_sensitivity.tex"
+    },
+    {
+      "check": "input_exists_tables/leakage_gap.tex",
+      "ok": true,
+      "detail": "tables/leakage_gap.tex"
+    },
+    {
+      "check": "input_exists_tables/baseline_performance.tex",
+      "ok": true,
+      "detail": "tables/baseline_performance.tex"
+    },
+    {
+      "check": "input_exists_tables/pairwise_matrix.tex",
+      "ok": true,
+      "detail": "tables/pairwise_matrix.tex"
+    },
+    {
+      "check": "input_exists_tables/exclusions_deviations.tex",
+      "ok": true,
+      "detail": "tables/exclusions_deviations.tex"
+    },
+    {
+      "check": "input_exists_tables/slices.tex",
+      "ok": true,
+      "detail": "tables/slices.tex"
+    },
+    {
+      "check": "input_exists_tables/reproducibility_manifest.tex",
+      "ok": true,
+      "detail": "tables/reproducibility_manifest.tex"
+    },
+    {
+      "check": "figure_exists_fig_cohort_flow.pdf",
+      "ok": true,
+      "detail": "figures/fig_cohort_flow.pdf"
+    },
+    {
+      "check": "figure_exists_fig_threshold_slice.pdf",
+      "ok": true,
+      "detail": "figures/fig_threshold_slice.pdf"
+    },
+    {
+      "check": "figure_exists_fig_leakage_split.pdf",
+      "ok": true,
+      "detail": "figures/fig_leakage_split.pdf"
+    },
+    {
+      "check": "figure_exists_fig_baseline_scores.pdf",
+      "ok": true,
+      "detail": "figures/fig_baseline_scores.pdf"
+    },
+    {
+      "check": "style_present_sn-jnl.cls",
+      "ok": true,
+      "detail": "sn-jnl.cls"
+    },
+    {
+      "check": "style_present_sn-basic.bst",
+      "ok": true,
+      "detail": "sn-basic.bst"
+    },
+    {
+      "check": "style_present_references.bib",
+      "ok": true,
+      "detail": "references.bib"
+    },
+    {
+      "check": "figure_byte_identical_fig_threshold_slice.pdf",
+      "ok": true,
+      "detail": "fig_threshold_slice.pdf"
+    },
+    {
+      "check": "figure_byte_identical_fig_baseline_scores.pdf",
+      "ok": true,
+      "detail": "fig_baseline_scores.pdf"
+    },
+    {
+      "check": "figure_byte_identical_fig_leakage_split.pdf",
+      "ok": true,
+      "detail": "fig_leakage_split.pdf"
+    },
+    {
+      "check": "figure_byte_identical_fig_cohort_flow.pdf",
+      "ok": true,
+      "detail": "fig_cohort_flow.pdf"
+    },
+    {
+      "check": "canonical_table_hash_baseline_performance.tex",
+      "ok": true,
+      "detail": "baseline_performance.tex"
+    },
+    {
+      "check": "canonical_table_hash_cohort_roles.tex",
+      "ok": true,
+      "detail": "cohort_roles.tex"
+    },
+    {
+      "check": "canonical_table_hash_endpoint_threshold_sensitivity.tex",
+      "ok": true,
+      "detail": "endpoint_threshold_sensitivity.tex"
+    },
+    {
+      "check": "canonical_table_hash_exclusions_deviations.tex",
+      "ok": true,
+      "detail": "exclusions_deviations.tex"
+    },
+    {
+      "check": "canonical_table_hash_leakage_gap.tex",
+      "ok": true,
+      "detail": "leakage_gap.tex"
+    },
+    {
+      "check": "canonical_table_hash_pairwise_matrix.tex",
+      "ok": true,
+      "detail": "pairwise_matrix.tex"
+    },
+    {
+      "check": "canonical_table_hash_reproducibility_manifest.tex",
+      "ok": true,
+      "detail": "reproducibility_manifest.tex"
+    },
+    {
+      "check": "canonical_table_hash_slices.tex",
+      "ok": true,
+      "detail": "slices.tex"
+    }
+  ]
+}

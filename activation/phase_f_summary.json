@@ -1,0 +1,12 @@
+{
+  "artifact_manifest_files": 86,
+  "consumed_tokens": 1,
+  "elapsed_seconds": 16.64,
+  "fit_ledger_digest_match": true,
+  "recorded_result_hash": "817219e89a7f28a4f0ff10512dfb16e652c4ba307854648622af7625fe683c8b",
+  "reproducibility_W2": "PASS",
+  "rerun_hashes": [
+    "817219e89a7f28a4f0ff10512dfb16e652c4ba307854648622af7625fe683c8b",
+    "817219e89a7f28a4f0ff10512dfb16e652c4ba307854648622af7625fe683c8b"
+  ]
+}

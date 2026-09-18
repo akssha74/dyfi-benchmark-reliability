@@ -1,0 +1,11 @@
+baseline_a,baseline_b,point_diff_a_minus_b,ci_lower,ci_upper,prob_a_better,prob_b_better,prob_tie,status,directional_better
+B0_no_skill,B1_magnitude_only_logit,0.033946406624,0.017105405067,0.051104582364,0.0,1.0,0.0,resolved_directional,B1_magnitude_only_logit
+B0_no_skill,B2_source_only_logit,0.051498573167,0.034206073403,0.068063045354,0.0,1.0,0.0,resolved_directional,B2_source_only_logit
+B0_no_skill,B4_random_forest,0.0454790513,0.030655813511,0.05979656139,0.0,1.0,0.0,resolved_directional,B4_random_forest
+B0_no_skill,B5_xgboost,0.050721690457,0.031888986925,0.068236451815,0.0,1.0,0.0,resolved_directional,B5_xgboost
+B1_magnitude_only_logit,B2_source_only_logit,0.017552166543,0.01011892086,0.024854050792,0.0,1.0,0.0,resolved_directional,B2_source_only_logit
+B1_magnitude_only_logit,B4_random_forest,0.011532644677,0.002320044189,0.020505112323,0.0085,0.9915,0.0,resolved_directional,B4_random_forest
+B1_magnitude_only_logit,B5_xgboost,0.016775283833,0.005483460133,0.02732736553,0.001,0.999,0.0,resolved_directional,B5_xgboost
+B2_source_only_logit,B4_random_forest,-0.006019521866,-0.011786326949,0.000222393998,0.9695,0.0305,0.0,unresolved,
+B2_source_only_logit,B5_xgboost,-0.000776882709,-0.007788532339,0.006815010117,0.613,0.387,0.0,unresolved,
+B4_random_forest,B5_xgboost,0.005242639157,0.000343540507,0.009905432725,0.017,0.983,0.0,resolved_directional,B5_xgboost

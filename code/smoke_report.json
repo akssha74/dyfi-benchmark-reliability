@@ -1,0 +1,1054 @@
+{
+  "deterministic_equal": true,
+  "environment": {
+    "expected_versions": {
+      "joblib": "1.5.3",
+      "numpy": "1.26.4",
+      "scikit-learn": "1.5.2",
+      "scipy": "1.13.1",
+      "threadpoolctl": "3.6.0",
+      "xgboost": "2.1.4"
+    },
+    "licences": {
+      "joblib": "BSD-3-Clause",
+      "numpy": "BSD-3-Clause",
+      "scikit-learn": "BSD-3-Clause",
+      "scipy": "BSD-3-Clause",
+      "threadpoolctl": "BSD-3-Clause",
+      "xgboost": "Apache-2.0"
+    },
+    "mismatches": [],
+    "passed": true,
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "python_ok": true,
+    "python_version": "3.11.15",
+    "resolved_versions": {
+      "joblib": "1.5.3",
+      "numpy": "1.26.4",
+      "scikit-learn": "1.5.2",
+      "scipy": "1.13.1",
+      "threadpoolctl": "3.6.0",
+      "xgboost": "2.1.4"
+    }
+  },
+  "result_core": {
+    "baselines": {
+      "B0_no_skill": {
+        "auroc": 0.5,
+        "best_params": {},
+        "bootstrap_n_valid": 2000,
+        "bootstrap_status": "OK",
+        "brier": 0.229513888889,
+        "brier_ci": [
+          0.214236111111,
+          0.244791666667
+        ],
+        "calibration_intercept": null,
+        "calibration_slope": null,
+        "calibration_status": "INFEASIBLE_CONSTANT_PREDICTION",
+        "features": [
+          "magnitude",
+          "depth_km"
+        ],
+        "log_loss": 0.651630517696,
+        "n_eval": 180,
+        "name": "No-skill train-prevalence constant",
+        "schema": "source_only",
+        "serialize_roundtrip_identical": true
+      },
+      "B1_magnitude_only_logit": {
+        "auroc": 0.894935344828,
+        "best_params": {
+          "C": 1.0
+        },
+        "bootstrap_n_valid": 2000,
+        "bootstrap_status": "OK",
+        "brier": 0.126664148368,
+        "brier_ci": [
+          0.101110101345,
+          0.152856074152
+        ],
+        "calibration_intercept": 0.172973981378,
+        "calibration_slope": 0.923403331611,
+        "calibration_status": "OK",
+        "features": [
+          "magnitude"
+        ],
+        "log_loss": 0.383353496391,
+        "n_eval": 180,
+        "name": "Magnitude-only logistic regression",
+        "schema": "magnitude_only",
+        "serialize_roundtrip_identical": true
+      },
+      "B2_source_only_logit": {
+        "auroc": 0.895339439655,
+        "best_params": {
+          "C": 1.0
+        },
+        "bootstrap_n_valid": 2000,
+        "bootstrap_status": "OK",
+        "brier": 0.126553812622,
+        "brier_ci": [
+          0.100989398846,
+          0.152176268395
+        ],
+        "calibration_intercept": 0.16095954038,
+        "calibration_slope": 0.917175017412,
+        "calibration_status": "OK",
+        "features": [
+          "magnitude",
+          "depth_km"
+        ],
+        "log_loss": 0.382265584986,
+        "n_eval": 180,
+        "name": "Source-only regularised logistic regression",
+        "schema": "source_only",
+        "serialize_roundtrip_identical": true
+      },
+      "B3_expanded_metadata_logit": {
+        "auroc": 0.890220905172,
+        "best_params": {
+          "C": 1.0
+        },
+        "bootstrap_n_valid": 2000,
+        "bootstrap_status": "OK",
+        "brier": 0.129576542048,
+        "brier_ci": [
+          0.102301565221,
+          0.157608060845
+        ],
+        "calibration_intercept": 0.166067858114,
+        "calibration_slope": 0.875292602581,
+        "calibration_status": "OK",
+        "features": [
+          "magnitude",
+          "depth_km",
+          "latitude",
+          "longitude",
+          "origin_year"
+        ],
+        "log_loss": 0.393835530424,
+        "n_eval": 180,
+        "name": "Expanded-metadata logistic (proxy-bearing sensitivity)",
+        "schema": "expanded_metadata",
+        "serialize_roundtrip_identical": true
+      },
+      "B4_random_forest": {
+        "auroc": 0.878771551724,
+        "best_params": {
+          "max_depth": null,
+          "n_estimators": 300
+        },
+        "bootstrap_n_valid": 2000,
+        "bootstrap_status": "OK",
+        "brier": 0.131379135802,
+        "brier_ci": [
+          0.098603035494,
+          0.167734117284
+        ],
+        "calibration_intercept": -0.237445491097,
+        "calibration_slope": 0.291258598303,
+        "calibration_status": "OK",
+        "features": [
+          "magnitude",
+          "depth_km"
+        ],
+        "log_loss": 0.777452008272,
+        "n_eval": 180,
+        "name": "scikit-learn random forest",
+        "schema": "source_only",
+        "serialize_roundtrip_identical": true
+      },
+      "B5_xgboost": {
+        "auroc": 0.892039331897,
+        "best_params": {
+          "learning_rate": 0.1,
+          "max_depth": 2,
+          "n_estimators": 100
+        },
+        "bootstrap_n_valid": 2000,
+        "bootstrap_status": "OK",
+        "brier": 0.130682151781,
+        "brier_ci": [
+          0.098413652379,
+          0.16605817657
+        ],
+        "calibration_intercept": -0.057652983173,
+        "calibration_slope": 0.6387914588,
+        "calibration_status": "OK",
+        "features": [
+          "magnitude",
+          "depth_km"
+        ],
+        "log_loss": 0.435456182801,
+        "n_eval": 180,
+        "name": "XGBoost gradient-boosted trees",
+        "schema": "source_only",
+        "serialize_roundtrip_identical": true
+      }
+    },
+    "bootstrap_draws": 2000,
+    "data": "SYNTHETIC_ONLY",
+    "dev_threshold": 0.5,
+    "fit_cap": 120,
+    "fit_ledger_count": 91,
+    "fit_ledger_digest": "6d6ed2ac50684f17f1f25a2bf2d5f55d7608f08daa67af379f7473252f8d5308",
+    "geographic_slice": {
+      "G+000+0010": {
+        "brier": 0.002107541077,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+000+0090": {
+        "brier": 0.610168362287,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+000+0110": {
+        "brier": 0.001766356641,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+000-0030": {
+        "brier": 0.597394632827,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+000-0040": {
+        "brier": 0.118333081921,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+000-0050": {
+        "brier": 0.310234096888,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+000-0100": {
+        "brier": 0.10572086096,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+000-0150": {
+        "brier": 0.03434016577,
+        "brier_status": "OK",
+        "n": 3
+      },
+      "G+000-0160": {
+        "brier": 0.038533216805,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+000-0170": {
+        "brier": 0.004905503708,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+010+0000": {
+        "brier": 1.42714e-07,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+010+0030": {
+        "brier": 0.20297059766,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+010+0050": {
+        "brier": 0.01345894543,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+010+0090": {
+        "brier": 4.8751101e-05,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+010+0140": {
+        "brier": 6.458277e-06,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+010+0150": {
+        "brier": 0.317634965001,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+010+0160": {
+        "brier": 0.396161223652,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+010-0070": {
+        "brier": 0.258237571715,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+010-0110": {
+        "brier": 0.17419837458,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+010-0150": {
+        "brier": 0.000134567848,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+010-0170": {
+        "brier": 0.011204905495,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+020+0000": {
+        "brier": 0.162186041861,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+020+0010": {
+        "brier": 0.016628651585,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+020+0020": {
+        "brier": 4.38962e-07,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+020+0030": {
+        "brier": 0.001688408549,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+020+0040": {
+        "brier": 0.087264144241,
+        "brier_status": "OK",
+        "n": 3
+      },
+      "G+020+0050": {
+        "brier": 5.1245999e-05,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+020+0130": {
+        "brier": 0.000237832433,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+020+0150": {
+        "brier": 0.354538127086,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+020+0160": {
+        "brier": 0.535656887314,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+020-0010": {
+        "brier": 0.021497298537,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+020-0020": {
+        "brier": 0.029480952542,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+020-0070": {
+        "brier": 9.9273685e-05,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+020-0080": {
+        "brier": 0.013967969081,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+020-0110": {
+        "brier": 0.926513369255,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+020-0150": {
+        "brier": 0.805098232128,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030+0010": {
+        "brier": 0.050402572675,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030+0030": {
+        "brier": 0.705036488974,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030+0040": {
+        "brier": 0.136265565347,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030+0050": {
+        "brier": 0.151901291341,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030+0060": {
+        "brier": 2.539739e-06,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030+0070": {
+        "brier": 0.002737562373,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030+0080": {
+        "brier": 0.002428922155,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030+0110": {
+        "brier": 4.0290958e-05,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030+0130": {
+        "brier": 0.002796044712,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030+0150": {
+        "brier": 0.005439541861,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+030+0160": {
+        "brier": 0.037618661329,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030-0040": {
+        "brier": 0.00010135143,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+030-0050": {
+        "brier": 9.368209e-06,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030-0070": {
+        "brier": 0.004169223628,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030-0080": {
+        "brier": 0.002432233022,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+030-0100": {
+        "brier": 0.77618377973,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030-0130": {
+        "brier": 3.1629945e-05,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+030-0140": {
+        "brier": 0.318162820738,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+030-0150": {
+        "brier": 0.024185689017,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+040+0020": {
+        "brier": 0.848655623513,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+040+0030": {
+        "brier": 0.341841805184,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+040+0060": {
+        "brier": 0.016028328854,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+040+0080": {
+        "brier": 0.285501351923,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+040+0120": {
+        "brier": 7.1028043e-05,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+040+0140": {
+        "brier": 0.001551865776,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+040-0010": {
+        "brier": 0.024435780687,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+040-0020": {
+        "brier": 0.01024269535,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+040-0030": {
+        "brier": 0.593525858063,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+040-0070": {
+        "brier": 0.000586010222,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+040-0090": {
+        "brier": 0.017302977215,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+040-0160": {
+        "brier": 0.044782856994,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+050+0040": {
+        "brier": 0.03913078183,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+050+0050": {
+        "brier": 0.00834112922,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+050+0070": {
+        "brier": 0.127179765817,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+050+0090": {
+        "brier": 0.001052478797,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+050+0100": {
+        "brier": 0.157316926449,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+050+0110": {
+        "brier": 0.004579882028,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+050-0030": {
+        "brier": 0.016802367687,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+050-0070": {
+        "brier": 4.2025576e-05,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+050-0080": {
+        "brier": 0.027143295503,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G+050-0130": {
+        "brier": 0.281720775425,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G+050-0170": {
+        "brier": 0.000358497544,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-010+0040": {
+        "brier": 0.005400015462,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G-010+0050": {
+        "brier": 0.2094165231,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-010+0100": {
+        "brier": 0.004301836562,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-010+0160": {
+        "brier": 0.166938706904,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-010-0010": {
+        "brier": 0.001259280114,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-010-0020": {
+        "brier": 0.030721054094,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G-010-0050": {
+        "brier": 0.002395132943,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-010-0070": {
+        "brier": 0.001201824376,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-010-0080": {
+        "brier": 0.658380866652,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-010-0150": {
+        "brier": 0.00157243624,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-020+0040": {
+        "brier": 0.397418996877,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-020+0050": {
+        "brier": 0.00476825434,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-020+0070": {
+        "brier": 0.144134089861,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-020+0090": {
+        "brier": 0.071449402351,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-020+0130": {
+        "brier": 0.001256148744,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-020-0030": {
+        "brier": 0.204779177632,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-020-0090": {
+        "brier": 0.345356592511,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G-030+0010": {
+        "brier": 2.297034e-06,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-030+0020": {
+        "brier": 0.017050258227,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-030+0140": {
+        "brier": 0.029063193318,
+        "brier_status": "OK",
+        "n": 3
+      },
+      "G-030-0010": {
+        "brier": 0.013453484885,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-030-0040": {
+        "brier": 0.008551551327,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-030-0140": {
+        "brier": 0.291296835401,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-030-0160": {
+        "brier": 0.001005844438,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G-040+0000": {
+        "brier": 0.169396161589,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-040+0030": {
+        "brier": 0.37709643848,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-040+0040": {
+        "brier": 0.013307130859,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-040+0140": {
+        "brier": 0.001366455701,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-040-0020": {
+        "brier": 0.058759476784,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-040-0040": {
+        "brier": 0.144669967965,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-040-0050": {
+        "brier": 0.002503933198,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-040-0060": {
+        "brier": 0.000810357032,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-040-0090": {
+        "brier": 0.08975247482,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-040-0100": {
+        "brier": 2.0096e-08,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-040-0130": {
+        "brier": 0.375260766006,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-040-0140": {
+        "brier": 0.000246174365,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-040-0150": {
+        "brier": 0.002499679438,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-040-0160": {
+        "brier": 0.233781876578,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G-040-0170": {
+        "brier": 0.455875740074,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-050+0010": {
+        "brier": 0.097626952703,
+        "brier_status": "OK",
+        "n": 4
+      },
+      "G-050+0060": {
+        "brier": 0.542593918405,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-050+0080": {
+        "brier": 2.1983699e-05,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G-050+0100": {
+        "brier": 0.101800189254,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-050+0120": {
+        "brier": 0.019422529909,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-050+0150": {
+        "brier": 0.014107455291,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-050-0020": {
+        "brier": 0.410758414704,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-050-0030": {
+        "brier": 0.411010697121,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-050-0040": {
+        "brier": 0.115256001219,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-050-0050": {
+        "brier": 0.00502645327,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-050-0070": {
+        "brier": 0.282107620997,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-050-0090": {
+        "brier": 0.093332706862,
+        "brier_status": "OK",
+        "n": 4
+      },
+      "G-050-0120": {
+        "brier": 0.000123564637,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G-050-0140": {
+        "brier": 0.011892644631,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-050-0160": {
+        "brier": 0.000311961755,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-060+0080": {
+        "brier": 0.027152015855,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-060+0090": {
+        "brier": 0.003254987107,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-060+0120": {
+        "brier": 0.434537935387,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-060+0130": {
+        "brier": 0.040475168895,
+        "brier_status": "OK",
+        "n": 2
+      },
+      "G-060+0150": {
+        "brier": 1.0637746e-05,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-060+0160": {
+        "brier": 0.740299205387,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-060-0050": {
+        "brier": 3.968e-07,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-060-0100": {
+        "brier": 0.007540652097,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-060-0140": {
+        "brier": 0.018755909526,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-060-0160": {
+        "brier": 0.000118781733,
+        "brier_status": "OK",
+        "n": 1
+      },
+      "G-060-0170": {
+        "brier": 0.006104858889,
+        "brier_status": "OK",
+        "n": 1
+      }
+    },
+    "predictions_digest": "f901b0e592930f0f83ed930909a7660b823d7d34a8b04515ef30b38864e6149c",
+    "protected_role_opened": false,
+    "ranking_vs_no_skill": {
+      "B1_magnitude_only_logit_vs_B0_no_skill": {
+        "ci": [
+          -0.127116873408,
+          -0.077419501059
+        ],
+        "point_diff_a_minus_b": -0.102849740521,
+        "prob_a_better": 1.0,
+        "prob_tie": 0.0,
+        "resolved": true,
+        "status": "OK"
+      },
+      "B2_source_only_logit_vs_B0_no_skill": {
+        "ci": [
+          -0.126729397896,
+          -0.077950536017
+        ],
+        "point_diff_a_minus_b": -0.102960076267,
+        "prob_a_better": 1.0,
+        "prob_tie": 0.0,
+        "resolved": true,
+        "status": "OK"
+      },
+      "B3_expanded_metadata_logit_vs_B0_no_skill": {
+        "ci": [
+          -0.126144649327,
+          -0.073232258494
+        ],
+        "point_diff_a_minus_b": -0.09993734684,
+        "prob_a_better": 1.0,
+        "prob_tie": 0.0,
+        "resolved": true,
+        "status": "OK"
+      },
+      "B4_random_forest_vs_B0_no_skill": {
+        "ci": [
+          -0.130701277778,
+          -0.06354712963
+        ],
+        "point_diff_a_minus_b": -0.098134753086,
+        "prob_a_better": 1.0,
+        "prob_tie": 0.0,
+        "resolved": true,
+        "status": "OK"
+      },
+      "B5_xgboost_vs_B0_no_skill": {
+        "ci": [
+          -0.131571595731,
+          -0.064291858229
+        ],
+        "point_diff_a_minus_b": -0.098831737108,
+        "prob_a_better": 1.0,
+        "prob_tie": 0.0,
+        "resolved": true,
+        "status": "OK"
+      }
+    },
+    "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
+    "temporal_slice": {
+      "2015": {
+        "brier": 0.190580787576,
+        "brier_status": "OK",
+        "n": 18
+      },
+      "2016": {
+        "brier": 0.113136169308,
+        "brier_status": "OK",
+        "n": 22
+      },
+      "2017": {
+        "brier": 0.113452141157,
+        "brier_status": "OK",
+        "n": 19
+      },
+      "2018": {
+        "brier": 0.134938090118,
+        "brier_status": "OK",
+        "n": 14
+      },
+      "2019": {
+        "brier": 0.055121572285,
+        "brier_status": "OK",
+        "n": 16
+      },
+      "2020": {
+        "brier": 0.191210445341,
+        "brier_status": "OK",
+        "n": 21
+      },
+      "2021": {
+        "brier": 0.155858502612,
+        "brier_status": "OK",
+        "n": 13
+      },
+      "2022": {
+        "brier": 0.035020567259,
+        "brier_status": "OK",
+        "n": 14
+      },
+      "2023": {
+        "brier": 0.273743347832,
+        "brier_status": "OK",
+        "n": 14
+      },
+      "2024": {
+        "brier": 0.083118925407,
+        "brier_status": "OK",
+        "n": 12
+      },
+      "2025": {
+        "brier": 0.034807406034,
+        "brier_status": "OK",
+        "n": 17
+      }
+    },
+    "temporal_slice_example_baseline": "B1_magnitude_only_logit",
+    "threshold_sensitivity": {
+      "5.5": {
+        "brier": 0.164176366612,
+        "prevalence": 0.5
+      },
+      "6.0": {
+        "brier": 0.126664148368,
+        "prevalence": 0.355555555556
+      },
+      "6.5": {
+        "brier": 0.124058120218,
+        "prevalence": 0.233333333333
+      }
+    }
+  },
+  "run1_hash": "70d232fc7104a4cbbbbf5846f833086be55fde82f34c17b50946b9a0f3b1e82b",
+  "run2_hash": "70d232fc7104a4cbbbbf5846f833086be55fde82f34c17b50946b9a0f3b1e82b",
+  "xgboost_status": {
+    "available": true,
+    "licence": "Apache-2.0",
+    "reason": "import + smoke fit ok",
+    "version": "2.1.4"
+  }
+}

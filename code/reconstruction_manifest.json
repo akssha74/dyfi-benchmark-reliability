@@ -1,0 +1,64 @@
+{
+  "leakage_passed": true,
+  "mode": "temporal",
+  "n_eligible": 304,
+  "n_sequences": 303,
+  "pipeline_digest": "d023e32206ee274115a9ca289925502b82220fb96137785c1b25feeb3c61aab0",
+  "record_type": "reconstruction_manifest",
+  "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
+  "role_counts": "{\"development\":45,\"external_temporal_holdout\":59,\"train\":200}",
+  "stage_digests": [
+    "ee07cb0ff55eec98ef32f3752f5841448412008521b830f3612f60b0e7eee6a7",
+    "544db3bf734580daac9bcda09f00d401a01bb14948a68bb8528370e3653fba35",
+    "b0674997621d37777a76fd64cb61b25bcb4e7d470f3388cc6e54984a8bf9049f",
+    "d3e66a872768e3a075181ac8e98ae40cb6a20547aecbaea3f3d919415c04566a",
+    "477eb38ea793cce697cd9a681f408d062a1113d1f753c8ec21884ddf8a568a14"
+  ],
+  "stages": [
+    {
+      "extra": "{\"eligibility_rule\":\"post_report_ascertainment\",\"min_responses\":10,\"n_below_min_reports\":1,\"n_eligible\":304,\"n_features\":306,\"n_no_cdi\":1,\"n_quarantined\":0,\"outcome_independent\":false,\"selection_boundary\":\"data_informed\"}",
+      "input_digest": "75683aaff607c47b425458f63a2af607ae35d3ee996cc350a7a89b99d3bc7f6f",
+      "n_in": 306,
+      "n_out": 304,
+      "output_digest": "a72fe07650eb5d9249c1174f4e9313d377ee05671d092ff235cc057c9cbe54bb",
+      "params": "{\"min_responses\":10,\"quarantine\":[]}",
+      "stage": "ingest_eligibility"
+    },
+    {
+      "extra": "{\"n_events\":304,\"near_threshold_band\":0.5,\"near_threshold_events\":88,\"note\":\"Event maximum CDI can flip across the severe threshold on a single outlier report; threshold-sensitivity and near-threshold counts are reported so the endpoint is not read as grid/aggregation artefact.\",\"primary_threshold\":6.0,\"thresholds\":{\"5.5\":{\"positives\":164,\"prevalence\":0.5394736842105263},\"6.0\":{\"positives\":122,\"prevalence\":0.40131578947368424},\"6.5\":{\"positives\":69,\"prevalence\":0.22697368421052633}}}",
+      "input_digest": "a72fe07650eb5d9249c1174f4e9313d377ee05671d092ff235cc057c9cbe54bb",
+      "n_in": 304,
+      "n_out": 304,
+      "output_digest": "43b9a92e52a303c2bab384744d86d1fb1fdc443543c204b0375fc894e65b21a2",
+      "params": "{\"primary_threshold\":6.0}",
+      "stage": "endpoint_add_labels"
+    },
+    {
+      "extra": "{\"grouping_rule\":\"single_link_space_time_connected_components\",\"largest_sequence_size\":2,\"n_events\":304,\"n_sequences\":303,\"n_singleton_sequences\":302,\"space_km\":100.0,\"time_days\":30.0}",
+      "input_digest": "43b9a92e52a303c2bab384744d86d1fb1fdc443543c204b0375fc894e65b21a2",
+      "n_in": 304,
+      "n_out": 304,
+      "output_digest": "a2a0f6711b6dc02ccf2ee1f1265e0ac77db307ea14f9e0bf2c0c6db65969f1ab",
+      "params": "{\"space_km\":100.0,\"time_days\":30.0}",
+      "stage": "decluster_assign_sequences"
+    },
+    {
+      "extra": "{\"cutoff_year\":2023,\"development_fraction\":0.2,\"event_counts_by_role\":{\"development\":45,\"external_temporal_holdout\":59,\"train\":200},\"geographic_holdout_fraction\":0.2,\"role_salt\":\"dyfi-usgs-severe-felt-intensity-v1\",\"sequence_counts_by_role\":{\"development\":44,\"external_temporal_holdout\":59,\"train\":200}}",
+      "input_digest": "a2a0f6711b6dc02ccf2ee1f1265e0ac77db307ea14f9e0bf2c0c6db65969f1ab",
+      "n_in": 304,
+      "n_out": 304,
+      "output_digest": "b2c0f774f0517cff013ad4dbd5db5b444c89b230c498f57b547c940dfb7fe294",
+      "params": "{\"cutoff_year\":2023,\"development_fraction\":0.2,\"geographic_holdout_fraction\":0.2,\"mode\":\"temporal\",\"role_salt\":\"dyfi-usgs-severe-felt-intensity-v1\"}",
+      "stage": "role_assignment_temporal"
+    },
+    {
+      "extra": "{\"F5_sequence_cross_role_violations\":[],\"F6_temporal_leakage_violations\":[],\"passed\":true}",
+      "input_digest": "b2c0f774f0517cff013ad4dbd5db5b444c89b230c498f57b547c940dfb7fe294",
+      "n_in": 304,
+      "n_out": 304,
+      "output_digest": "b2c0f774f0517cff013ad4dbd5db5b444c89b230c498f57b547c940dfb7fe294",
+      "params": "{\"cutoff_year\":2023}",
+      "stage": "leakage_audit_role_manifest"
+    }
+  ]
+}

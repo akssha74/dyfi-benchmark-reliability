@@ -1,0 +1,28 @@
+Creative Commons CC0 1.0 Universal (Public Domain Dedication)
+=============================================================
+
+The derived event-level data files in this release
+(DYFI-USGS single-source severe-felt-intensity benchmark, v1) are dedicated to
+the public domain under the Creative Commons CC0 1.0 Universal Public Domain
+Dedication.
+
+To the extent possible under law, the resource authors have waived all copyright
+and related or neighbouring rights to these derived data. You can copy, modify,
+distribute, and use the data, even for commercial purposes, all without asking
+permission.
+
+Full legal code: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+Source data provenance
+----------------------
+The underlying data are USGS "Did You Feel It?" (DYFI) and the ComCat event
+catalogue (U.S. Geological Survey), which are US-Government works in the public
+domain (CC0-compatible), cite DOI 10.5066/F7J101C8. No respondent-level personally
+identifiable information is redistributed: only event-level source metadata,
+derived labels, non-predictive eligibility fields, role assignments, and
+per-event provenance hashes are released. Reconstruct the exact hash-pinned
+snapshot via the fetch-and-verify source-locator manifest.
+
+Attribution (requested, not required under CC0)
+-----------------------------------------------
+Please cite the resource (see CITATION.cff) and acknowledge USGS DYFI/ComCat.
