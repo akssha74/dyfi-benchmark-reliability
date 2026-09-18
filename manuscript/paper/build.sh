@@ -10,6 +10,7 @@
 # Requires: python3, tectonic. No network write, no DOI mint, no submission.
 set -euo pipefail
 cd "$(dirname "$0")"
+export SOURCE_DATE_EPOCH=1262304000
 
 echo "[1/3] formatting tables from canonical assets ..."
 python3 format_tables.py
