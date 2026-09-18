@@ -20,8 +20,9 @@ catalogue (U.S. Geological Survey), which are US-Government works in the public
 domain (CC0-compatible), cite DOI 10.5066/F7J101C8. No respondent-level personally
 identifiable information is redistributed: only event-level source metadata,
 derived labels, non-predictive eligibility fields, role assignments, and
-per-event provenance hashes are released. Reconstruct the exact hash-pinned
-snapshot via the fetch-and-verify source-locator manifest.
+identifiers are released. Snapshot-level provenance (access instant, source URL,
+payload size, and payload SHA-256) is recorded in the activated
+source-locator manifest.
 
 Attribution (requested, not required under CC0)
 -----------------------------------------------

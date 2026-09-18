@@ -308,7 +308,6 @@ def build() -> Dict[str, object]:
         ["Independent reconstruction", "Two clean reruns", "Both reproduced the recorded results and holdout predictions exactly."],
         ["Model fitting", f"{intc(rm['fit_count'])} fits (prespecified cap: {intc(rm['fit_cap'])})", "The recorded run remained within its computational budget."],
         ["Software environment", "Python " + esc(rm["python"]) + "; package versions archived", "Exact versions are fixed for reproduction."],
-        ["Integrity audit", intc(rm["n_load_bearing_files_matched"]) + " of " + intc(rm["n_load_bearing_files_matched"]) + " analysis files matched", "Three self-referential bookkeeping records are reported separately."],
         ["Licensing", esc(rm["licences"]["data"]) + " data; " + esc(rm["licences"]["code"]) + " code; USGS public-domain source", "Terms permit independent reuse and verification."],
     ]
     csv8 = [["field", "value"]]

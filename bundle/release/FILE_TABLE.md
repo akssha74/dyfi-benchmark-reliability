@@ -8,7 +8,7 @@ materialized and content-hashed below.
 | File | Format | Present | SHA-256 (materialized) | Purpose |
 |---|---|---|---|---|
 | `README.md` | Markdown | yes | — | Overview, one-command reproduction, scope |
-| `CITATION.cff` | CFF 1.2.0 | yes | Public release `v1.0.4` | Citation metadata |
+| `CITATION.cff` | CFF 1.2.0 | yes | Public release `v1.0.5` | Citation metadata |
 | `LICENSE-DATA.txt` | text | yes | CC0-1.0 | Data licence |
 | `LICENSE-CODE.txt` | text | yes | MIT | Code licence |
 | `DATA_DICTIONARY.md` | Markdown | yes | — | Column schema, types, flags |

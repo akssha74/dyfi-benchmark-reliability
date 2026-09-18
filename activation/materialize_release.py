@@ -106,10 +106,28 @@ def main() -> int:
         with open(dst, "rb") as fh:
             emitted[dst_name] = _sha_bytes(fh.read())
 
-    # --- stamped source-locator manifest ----------------------------------
-    slm_src = os.path.join(CODE, "source_locator_manifest.json")
+    # --- activated source-locator manifest --------------------------------
+    # code/source_locator_manifest.json is the preserved pre-activation
+    # template. Materialization stamps it from the immutable acquisition record
+    # so rerunning this script cannot regress the public bundle to PENDING.
+    slm = common.load_json(os.path.join(CODE, "source_locator_manifest.json"))
+    acquisition = common.load_json(
+        os.path.join(ROOT, "activation", "acquisition_record.json")
+    )
+    slm.update({
+        "access_instant": acquisition["access_instant"],
+        "count_access_instant": acquisition["count_access_instant"],
+        "costamped_count": acquisition["costamped_count"],
+        "count_delta": acquisition["count_delta"],
+        "count_url_outcome_free": acquisition["count_url"],
+        "outcome_fetched": True,
+        "payload_bytes": acquisition["payload_bytes"],
+        "query_url_outcome_bearing": acquisition["query_url"],
+        "source_payload_sha256": acquisition["source_payload_sha256"],
+        "status": "ACTIVATED_FROZEN",
+    })
     slm_dst = os.path.join(REL, "source_locator_manifest.json")
-    shutil.copyfile(slm_src, slm_dst)
+    common.write_json(slm_dst, slm)
     with open(slm_dst, "rb") as fh:
         emitted["source_locator_manifest.json"] = _sha_bytes(fh.read())
 
@@ -119,6 +137,8 @@ def main() -> int:
         "role_counts": dict(counts),
         "n_eligible": len(rows),
         "csv_columns": COLUMNS,
+        "source_locator_status": slm["status"],
+        "source_locator_source": "activation/acquisition_record.json",
     }
     common.write_json(os.path.join(ROOT, "activation", "materialize_release_summary.json"),
                       out)

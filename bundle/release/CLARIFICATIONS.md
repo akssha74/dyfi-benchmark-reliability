@@ -56,3 +56,6 @@ listed in `DATA_DICTIONARY.md`; source provenance is snapshot-level in the
 activated `source_locator_manifest.json`, not per-event product-version hashes.
 The similarly named file under `code/` is the preserved pre-activation template;
 the activated manifest in this release directory is canonical for version 1.
+`activation/materialize_release.py` stamps that template from the immutable
+acquisition record, and its summary records `ACTIVATED_FROZEN`, so rerunning
+materialization cannot restore the pending template to the public bundle.

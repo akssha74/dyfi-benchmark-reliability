@@ -59,14 +59,14 @@ six-category leakage audit, prespecified space--time sequence grouping,
 outcome-independent analysis roles, endpoint sensitivity analysis, fixed
 baselines, calibration-aware scoring, sequence-cluster bootstrap uncertainty,
 and a protected temporal evaluation. The frozen $M\geq5$ snapshot contains
-7{,}520 records, 2{,}362 eligible events, and a 430-event temporal holdout. For
-the fixed random-forest diagnostic, the observed random-versus-sequence-grouped
-differences were small and slightly favored sequence grouping (Brier-score
-difference $-0.006$; area under the receiver-operating-characteristic curve
-[AUROC] difference $-0.012$). We report this as a descriptive contrast without
-equivalence or zero-effect inference.
-Every learned baseline improved on the no-skill reference, while the direct
-comparison between the two lowest-Brier models remained unresolved. The
+7{,}520 records, 2{,}362 eligible events, and a 430-event temporal holdout. The
+cross-validation comparison yielded small differences favoring sequence-grouped
+over random folds (sequence minus random: Brier $-0.006$; area under the
+receiver-operating-characteristic curve [AUROC] $+0.012$). Because the executed
+analysis retained only point estimates for this contrast, we interpret it
+descriptively. All learned baselines outperformed the no-skill reference, but
+the paired 95\% interval between the two lowest-Brier models included zero;
+therefore, we identify no winning model. The
 benchmark provides a versioned, leakage-audited reference for future methods,
 and every reported value can be reconstructed exactly from the frozen analysis
 files.}
@@ -187,6 +187,11 @@ intensity--ground-motion relationships~\citep{oliveti2021inge}. It is a
 domain-near resource precedent, but differs from the present event-level USGS
 DYFI classification task, source-only feature boundary, leakage audit, and
 protected temporal evaluation.
+The 2026 USGS Western North America resource contains about 696{,}000
+site-level macroseismic observations from about 5{,}600 earthquakes and is
+predominantly DYFI~\citep{fathiansabet2026western}. It is a larger observational
+resource, but does not define this event-maximum binary task, executable leakage
+audit, or frozen temporal evaluation.
 
 \paragraph{Machine learning on felt/macroseismic intensity.} Recent studies
 predict macroseismic intensity with random forests and gradient boosting from
@@ -677,7 +682,7 @@ respondent-level personally identifying information is accessed or redistributed
 \item \textbf{Data availability.} The version~1 derived event-level benchmark,
 frozen results, manifests, and reproduction instructions are publicly available
 under CC0~1.0 at
-\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.4}.
+\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.5}.
 The underlying source data are USGS ``Did You Feel It?'' and the ANSS
 Comprehensive Catalog (public domain;
 \href{https://doi.org/10.5066/F7J101C8}{10.5066/F7J101C8} and
@@ -685,10 +690,11 @@ Comprehensive Catalog (public domain;
 via the released fetch-and-verify source-locator manifest. No respondent-level
 personally identifying information is redistributed.
 \item \textbf{Code availability.} The resource code (leakage audit, sequence
-grouping, role assignment, baselines, metrics, protected-evaluation runner, and a
-dependency-free verifier that recomputes every reported number from the frozen
-per-event outputs) is released under the MIT licence in the same tagged public
-repository as the data.
+grouping, role assignment, baselines, metrics, and protected-evaluation runner)
+is released under the MIT licence in the same tagged public repository as the
+data. Its standard-library manuscript verifier checks printed values against the
+committed canonical analysis assets; full prediction reconstruction and model
+tests use the separately pinned scientific-Python environment.
 \item \textbf{Author contributions.} A.~Sharma designed the benchmark protocol
 and instrumentation, implemented the analysis, and drafted the manuscript.
 L.~Prasad supervised the work and revised the manuscript. Both authors read and
