@@ -16,5 +16,5 @@ B4 (random forest) & 0.187 & [0.168, 0.206] & 0.553 & 0.777 & 0.74 / 1.48 & 0.73
 B5 (XGBoost) & 0.181 & [0.161, 0.202] & 0.541 & 0.783 & 0.42 / 1.07 & 0.74 \\
 \bottomrule
 \end{tabular}
-\par\vspace{2pt}\footnotesize\emph{Note.} $^a$~Intercept / slope. These values cannot be estimated for B0 because it assigns the same probability to every event. B3 includes event year and is therefore omitted from the temporal holdout (Table~\ref{tab:exclusions}). Accuracy uses the probability cutoff of 0.5 fixed on the development set. Lower Brier score and log-loss are better; higher AUROC and accuracy are better. The two lowest-Brier models cannot be distinguished in their direct paired comparison.
+\par\vspace{2pt}\footnotesize\emph{Note.} $^a$~Intercept / slope. These values cannot be estimated for B0 because it assigns the same probability to every event. B3 includes event year and is therefore omitted from the temporal holdout (Table~\ref{tab:exclusions}). Accuracy uses a fixed probability cutoff of 0.5 that was not selected on the holdout. Log-loss clips probabilities to $[10^{-15},1-10^{-15}]$. Lower Brier score and log-loss are better; higher AUROC and accuracy are better. The two lowest-Brier models cannot be distinguished in their direct paired comparison.
 \end{table*}

@@ -177,7 +177,7 @@ def build() -> Dict[str, object]:
             "lccccc c",
             ["Baseline", "Brier", "95\\% CI", "Log-loss", "AUROC", "Calibration$^a$", "Accuracy"],
             body,
-            "$^a$~Intercept / slope. These values cannot be estimated for B0 because it assigns the same probability to every event. B3 includes event year and is therefore omitted from the temporal holdout (Table~\\ref{tab:exclusions}). Accuracy uses the probability cutoff of 0.5 fixed on the development set. Lower Brier score and log-loss are better; higher AUROC and accuracy are better. The two lowest-Brier models cannot be distinguished in their direct paired comparison."))
+            "$^a$~Intercept / slope. These values cannot be estimated for B0 because it assigns the same probability to every event. B3 includes event year and is therefore omitted from the temporal holdout (Table~\\ref{tab:exclusions}). Accuracy uses a fixed probability cutoff of 0.5 that was not selected on the holdout. Log-loss clips probabilities to $[10^{-15},1-10^{-15}]$. Lower Brier score and log-loss are better; higher AUROC and accuracy are better. The two lowest-Brier models cannot be distinguished in their direct paired comparison."))
     shas["baseline_performance.csv"] = _write_csv("baseline_performance.csv", csv3[0], csv3[1:])
     captions["baseline_performance"] = {
         "caption": "Per-baseline performance with uncertainty and calibration states.",

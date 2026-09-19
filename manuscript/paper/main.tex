@@ -192,6 +192,11 @@ site-level macroseismic observations from about 5{,}600 earthquakes and is
 predominantly DYFI~\citep{fathiansabet2026western}. It is a larger observational
 resource, but does not define this event-maximum binary task, executable leakage
 audit, or frozen temporal evaluation.
+An adjacent event-level binary study used post-event LastQuake felt reports to
+classify high- versus low-impact earthquakes and evaluated later 2022
+events~\citep{lilienkamp2023feltreports}. Its crowdsourced predictors,
+impact endpoint, and rapid-response objective differ from the source-only DYFI
+benchmark and reusable evaluation contract developed here.
 
 \paragraph{Machine learning on felt/macroseismic intensity.} Recent studies
 predict macroseismic intensity with random forests and gradient boosting from
@@ -385,6 +390,8 @@ a probability link.
 
 The primary score is the Brier score~\citep{brier1950}; secondary scores are
 log-loss, AUROC, and calibration intercept/slope~\citep{vancalster2019calibration}.
+For numerical stability, log-loss clips predicted probabilities symmetrically
+to $[10^{-15},1-10^{-15}]$ before taking logarithms.
 Uncertainty is quantified by a sequence-cluster bootstrap
 ($n_{\text{boot}}=2000$, 95\% intervals) that resamples whole sequences rather
 than events~\citep{field2007bootstrap}, with a minimum-valid-replicate rule.
@@ -682,19 +689,17 @@ respondent-level personally identifying information is accessed or redistributed
 \item \textbf{Data availability.} The version~1 derived event-level benchmark,
 frozen results, manifests, and reproduction instructions are publicly available
 under CC0~1.0 at
-\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.6}.
+\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.7}.
 The underlying source data are USGS ``Did You Feel It?'' and the ANSS
 Comprehensive Catalog (public domain;
 \href{https://doi.org/10.5066/F7J101C8}{10.5066/F7J101C8} and
 \href{https://doi.org/10.5066/F7MS3QZH}{10.5066/F7MS3QZH}) and are reconstructable
 via the released fetch-and-verify source-locator manifest. No respondent-level
 personally identifying information is redistributed.
-\item \textbf{Code availability.} The resource code (leakage audit, sequence
-grouping, role assignment, baselines, metrics, and protected-evaluation runner)
-is released under the MIT licence in the same tagged public repository as the
-data. Its standard-library manuscript verifier checks printed values against the
-committed canonical analysis assets; full prediction reconstruction and model
-tests use the separately pinned scientific-Python environment.
+\item \textbf{Code availability.} MIT-licensed resource code and a
+standard-library printed-value verifier are provided in the same tagged release.
+Full prediction reconstruction and model tests use the separately pinned
+scientific-Python environment.
 \item \textbf{Author contributions.} A.~Sharma designed the benchmark protocol
 and instrumentation, implemented the analysis, and drafted the manuscript.
 L.~Prasad supervised the work and revised the manuscript. Both authors read and

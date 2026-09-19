@@ -2,7 +2,7 @@
   "artifacts": {
     "manuscript/code/asset_common.py": "d63cf3c3a9c9c82b26967425897db362033bfd6b202e48debeb98fa45ceed46a",
     "manuscript/code/build_figures.py": "01d68cd10e3fa4b4afe6f9678026cbb6c885f6372afd13f1bca0087295ea0ddc",
-    "manuscript/code/build_tables.py": "2648f637361ee8e05f8dd8f088edfe86fe0251b64fb33a4f19f61ec781bad42e",
+    "manuscript/code/build_tables.py": "1913652198cef53d26ebdc5937185fefde1b35158e35ea4595fb650c444c541a",
     "manuscript/code/generate_all.sh": "3e7a2e8b69cb46c1f65696105876e1a10e9a52d0e82588f5956bf3773137fa44",
     "manuscript/code/validate_assets.py": "4bf182f31d0940e0d76c35c8221c901d3b37f9da359521e79793d32151c7a2ad",
     "manuscript/derived/asset_inputs.json": "b7f7dea60c7421b0b75870d45421c094e3cd4b5e325702c94b498ebc7926ace9",
@@ -24,7 +24,7 @@
     "manuscript/figures/fig_threshold_slice.svg": "85b8db417f5d211ee8c6dda44645d05d9cba604b748c4c93b64b7db4180c6cb1",
     "manuscript/requirements-assets.lock.txt": "0c3c10b33e23901fcedde9ac7b49dad9eccee9d2cc458ab67fbd926256bdfd3a",
     "manuscript/tables/baseline_performance.csv": "c1bf2520f2e092696423929cf36f053ed3b9ccd50ea53b204db1bdcc43bc32d6",
-    "manuscript/tables/baseline_performance.tex": "36f6a4d7434a9491ab443adf86d8db2c610a622152925e47d668b1dee67f2749",
+    "manuscript/tables/baseline_performance.tex": "b955fe7bd7024486650779876372700fef6ac3419256d18bd35b4a8a53cdd1e1",
     "manuscript/tables/cohort_roles.csv": "62fa78d920afe8a09a72f29f6a142618752796d291838d68b9e983d299c2b4a7",
     "manuscript/tables/cohort_roles.tex": "84784a81c7ea417e16b70944d212661983af65218e877831d49f0c6cd9cc23a1",
     "manuscript/tables/endpoint_threshold_sensitivity.csv": "1c7565f5bf674975fe036facd5e31b0ae47a778985f7baf42836f5d2ffb640b4",
@@ -41,7 +41,7 @@
   },
   "asset_ledger": {
     "path": "manuscript/asset_ledger.jsonl",
-    "sha256": "c7bbf4815d2f2dcc3ca88e6c783a73dcc6dfe4fd5449d41dbd0d47cd7ac54da6"
+    "sha256": "23e77aefd99cee94e0d2bc53b6db77329819fdfce4ab70c5076d8d3722c5bc90"
   },
   "counts_by_type": {
     "code": 5,
@@ -53,6 +53,6 @@
   "n_artifacts": 38,
   "note": "Release-specific manifest. Shipped generators rebuild the seven reader-facing tables and four figures from committed verified asset inputs; they do not refit models or reopen the protected role.",
   "record_type": "public_release_manuscript_asset_manifest",
-  "release": "v1.0.6",
+  "release": "v1.0.7",
   "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1"
 }

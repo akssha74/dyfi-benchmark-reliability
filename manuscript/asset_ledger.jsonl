@@ -1,6 +1,6 @@
 {"kind": "code", "path": "manuscript/code/asset_common.py", "record_type": "public_manuscript_asset", "sha256": "d63cf3c3a9c9c82b26967425897db362033bfd6b202e48debeb98fa45ceed46a"}
 {"kind": "code", "path": "manuscript/code/build_figures.py", "record_type": "public_manuscript_asset", "sha256": "01d68cd10e3fa4b4afe6f9678026cbb6c885f6372afd13f1bca0087295ea0ddc"}
-{"kind": "code", "path": "manuscript/code/build_tables.py", "record_type": "public_manuscript_asset", "sha256": "2648f637361ee8e05f8dd8f088edfe86fe0251b64fb33a4f19f61ec781bad42e"}
+{"kind": "code", "path": "manuscript/code/build_tables.py", "record_type": "public_manuscript_asset", "sha256": "1913652198cef53d26ebdc5937185fefde1b35158e35ea4595fb650c444c541a"}
 {"kind": "code", "path": "manuscript/code/generate_all.sh", "record_type": "public_manuscript_asset", "sha256": "3e7a2e8b69cb46c1f65696105876e1a10e9a52d0e82588f5956bf3773137fa44"}
 {"kind": "code", "path": "manuscript/code/validate_assets.py", "record_type": "public_manuscript_asset", "sha256": "4bf182f31d0940e0d76c35c8221c901d3b37f9da359521e79793d32151c7a2ad"}
 {"kind": "other", "path": "manuscript/derived/asset_inputs.json", "record_type": "public_manuscript_asset", "sha256": "b7f7dea60c7421b0b75870d45421c094e3cd4b5e325702c94b498ebc7926ace9"}
@@ -22,7 +22,7 @@
 {"kind": "figure", "path": "manuscript/figures/fig_threshold_slice.svg", "record_type": "public_manuscript_asset", "sha256": "85b8db417f5d211ee8c6dda44645d05d9cba604b748c4c93b64b7db4180c6cb1"}
 {"kind": "other", "path": "manuscript/requirements-assets.lock.txt", "record_type": "public_manuscript_asset", "sha256": "0c3c10b33e23901fcedde9ac7b49dad9eccee9d2cc458ab67fbd926256bdfd3a"}
 {"kind": "table", "path": "manuscript/tables/baseline_performance.csv", "record_type": "public_manuscript_asset", "sha256": "c1bf2520f2e092696423929cf36f053ed3b9ccd50ea53b204db1bdcc43bc32d6"}
-{"kind": "table", "path": "manuscript/tables/baseline_performance.tex", "record_type": "public_manuscript_asset", "sha256": "36f6a4d7434a9491ab443adf86d8db2c610a622152925e47d668b1dee67f2749"}
+{"kind": "table", "path": "manuscript/tables/baseline_performance.tex", "record_type": "public_manuscript_asset", "sha256": "b955fe7bd7024486650779876372700fef6ac3419256d18bd35b4a8a53cdd1e1"}
 {"kind": "table", "path": "manuscript/tables/cohort_roles.csv", "record_type": "public_manuscript_asset", "sha256": "62fa78d920afe8a09a72f29f6a142618752796d291838d68b9e983d299c2b4a7"}
 {"kind": "table", "path": "manuscript/tables/cohort_roles.tex", "record_type": "public_manuscript_asset", "sha256": "84784a81c7ea417e16b70944d212661983af65218e877831d49f0c6cd9cc23a1"}
 {"kind": "table", "path": "manuscript/tables/endpoint_threshold_sensitivity.csv", "record_type": "public_manuscript_asset", "sha256": "1c7565f5bf674975fe036facd5e31b0ae47a778985f7baf42836f5d2ffb640b4"}
