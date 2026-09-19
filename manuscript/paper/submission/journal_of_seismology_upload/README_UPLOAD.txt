@@ -9,5 +9,5 @@ Journal of Seismology upload files
 Article type: Research Article documenting a public data/software benchmark resource.
 The source ZIP compiles with the Springer Nature sn-jnl [iicol] template.
 
-main.pdf SHA-256: 909df03e7dd817bf0de01c98a38059475aaa20234957daa022a3412d2da1ec60
-source ZIP SHA-256: 518c824d8fec3422de9a8fca3f65e6746223735239d6b2c91a8e99fc5d77f5ee
+main.pdf SHA-256: af3f0a957d4d7aa2d364f281a9c7f23f79553667125e5d9e432e37d651a211b6
+source ZIP SHA-256: 379386a6c11eb6cc8ae6e69eaa13c6a8c48b5875738146dcc17bda5c43fca98c
