@@ -151,38 +151,38 @@ def fig_cohort_flow(D):
           f"{ho['n']:,} · {100 * ho['prevalence']:.1f}% severe", FILL["vermillion"], CB["ink"])
 
     # --- Construction pool bracket under train + dev ---
-    lft, rgt, by = xs[0] - rw / 2, xs[1] + rw / 2, 4.30
-    ax.plot([lft, lft, rgt, rgt], [4.47, by, by, 4.47], color=CB["purple"], lw=1.1)
+    lft, rgt, by = xs[0], xs[1], 4.15
+    ax.plot([lft, lft, rgt, rgt], [4.38, by, by, 4.38], color=CB["purple"], lw=1.1)
     mid = (lft + rgt) / 2
-    ax.plot([mid, mid], [by, 4.12], color=CB["purple"], lw=1.1)
-    _node(mid, 3.60, rgt - lft, 1.00,
+    ax.plot([mid, mid], [by, 3.91], color=CB["purple"], lw=1.1)
+    _node(mid, 3.43, 6.0, 0.96,
           f"Construction pool: {cf['construction_total']['n']:,} events",
           f"train + dev · {cf['sequences']['construction']:,} sequences",
           FILL["purple"], CB["ink"])
 
     # --- Holdout sequences box ---
-    ax.plot([xs[2], xs[2]], [4.47, 4.12], color=CB["vermillion"], lw=1.1)
-    _node(xs[2], 3.60, rw + 0.05, 1.00,
+    ax.plot([xs[2], xs[2]], [4.38, 3.91], color=CB["vermillion"], lw=1.1)
+    _node(xs[2], 3.43, rw + 0.05, 0.96,
           "Holdout",
           f"{cf['sequences']['holdout']:,} sequences", FILL["holdout"], CB["ink"])
 
     # --- Footnotes ---
     nq = len(cf["quarantine_inspected_ids"])
-    ax.text(2.75, 2.40,
+    ax.text(2.75, 2.25,
             f"Prelisted quarantine IDs: {nq}\nabsent from frozen snapshot",
             ha="center", va="center", fontsize=10.5, color=CB["rule"])
-    ax.text(7.25, 2.40,
+    ax.text(7.25, 2.25,
             f"Straddle events: {cf['temporal_straddle_excluded']}\nincluded in eligible cohort",
             ha="center", va="center", fontsize=10.5, color=CB["rule"])
     accounting = FancyBboxPatch(
-        (2.0, 1.48), 6.0, 0.62,
+        (2.0, 0.95), 6.0, 0.56,
         boxstyle="round,pad=0.02,rounding_size=0.10",
         facecolor="#F7F8F9", edgecolor="#AAB2B8", linewidth=0.7,
     )
     ax.add_patch(accounting)
-    ax.text(5.0, 1.79,
-            f"Role counts:  {tr['n']:,} + {dv['n']:,} + {ho['n']:,} + "
-            f"{cf['temporal_straddle_excluded']} = {cf['n_eligible_events']:,} eligible events",
+    ax.text(5.0, 1.23,
+            f"Roles: {tr['n']:,} + {dv['n']:,} + {ho['n']:,} + "
+            f"{cf['temporal_straddle_excluded']} = {cf['n_eligible_events']:,} events",
             ha="center", va="center", fontsize=10.5, color=CB["ink"], fontweight="normal")
 
     return _save(fig, "fig_cohort_flow",

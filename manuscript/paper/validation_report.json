@@ -413,17 +413,17 @@
     {
       "check": "build_ledger_main_tex_is_current",
       "ok": true,
-      "detail": "a32568e7dfdcb5e5f2fd647670282a77671ff1852336e0108143f4365562bfc1"
+      "detail": "8e08d46654dcbf1e7ea4f413608a19f505c4a1735f0c560d80800783de3e4de2"
     },
     {
       "check": "build_ledger_main_pdf_is_current",
       "ok": true,
-      "detail": "9ac7454fae90718ce100bf1d866e632285a759cf0b8b0a9a81216cc1fd012c9c"
+      "detail": "c3b444f46752e8d8c187cc794137cc6e845d82fe3ccc9b3a27c62c81d8b07e1e"
     },
     {
       "check": "build_ledger_release_tag_matches_manuscript",
       "ok": true,
-      "detail": "v1.0.15"
+      "detail": "v1.0.16"
     },
     {
       "check": "figure_byte_identical_fig_threshold_slice.pdf",
