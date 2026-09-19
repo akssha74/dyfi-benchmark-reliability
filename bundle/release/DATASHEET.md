@@ -57,7 +57,7 @@ Following Gebru et al., *Datasheets for Datasets*.
 
 ## Distribution & maintenance
 - **Licence.** Derived data CC0 1.0; code MIT.
-- **Public release.** `https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.11`.
+- **Public release.** `https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.12`.
 - **Versioning.** `v1 = <access-instant>` snapshot; any later USGS revision defines
   a new version, never a silent overwrite.
 - **Reconstruction.** Fetch-and-verify source-locator manifest + payload hashes;

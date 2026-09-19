@@ -340,7 +340,7 @@ def fig_threshold_slice(D):
     ax2.set_ylabel("Metric value", fontsize=13.5)
     ax2.set_ylim(0, 1.08)
     ax2.set_title("(b) Performance by holdout year", fontsize=13.0, pad=7)
-    ax2.legend(fontsize=13.0, loc="lower right", framealpha=0.95, edgecolor="0.6")
+    ax2.legend(fontsize=13.0, loc="upper center", framealpha=0.95, edgecolor="0.6")
     ax2.grid(axis="y", linestyle=":", alpha=0.22)
 
     return _save(fig, "fig_threshold_slice",

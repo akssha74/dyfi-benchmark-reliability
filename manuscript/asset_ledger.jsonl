@@ -1,5 +1,5 @@
 {"kind": "code", "path": "manuscript/code/asset_common.py", "record_type": "public_manuscript_asset", "sha256": "d63cf3c3a9c9c82b26967425897db362033bfd6b202e48debeb98fa45ceed46a"}
-{"kind": "code", "path": "manuscript/code/build_figures.py", "record_type": "public_manuscript_asset", "sha256": "2c1c282262440a9ffa848c287c9fca4e45fe2fcaea10dab865572a4ddba2d4e2"}
+{"kind": "code", "path": "manuscript/code/build_figures.py", "record_type": "public_manuscript_asset", "sha256": "c66bfa3d7d37e728dca9a75967eee9718be43b3f807962b85fad5fcbba3dc6ec"}
 {"kind": "code", "path": "manuscript/code/build_tables.py", "record_type": "public_manuscript_asset", "sha256": "10832ea96022378f1959205f2e9775b1bac2bbbdb82ab5caa2c86c2047e4895e"}
 {"kind": "code", "path": "manuscript/code/generate_all.sh", "record_type": "public_manuscript_asset", "sha256": "3e7a2e8b69cb46c1f65696105876e1a10e9a52d0e82588f5956bf3773137fa44"}
 {"kind": "code", "path": "manuscript/code/validate_assets.py", "record_type": "public_manuscript_asset", "sha256": "4bf182f31d0940e0d76c35c8221c901d3b37f9da359521e79793d32151c7a2ad"}
@@ -17,9 +17,9 @@
 {"kind": "figure", "path": "manuscript/figures/fig_leakage_split.pdf", "record_type": "public_manuscript_asset", "sha256": "ef49b393d61ac69a8cca15e46e94e78a6df8006b4a89d1dde37d808b1eeb03b7"}
 {"kind": "figure", "path": "manuscript/figures/fig_leakage_split.png", "record_type": "public_manuscript_asset", "sha256": "c549aab57045ccd340d28d9d5bca5064c340b64ae247bfb178035183eec30efc"}
 {"kind": "figure", "path": "manuscript/figures/fig_leakage_split.svg", "record_type": "public_manuscript_asset", "sha256": "f1dbae622db479cd8f236e0532ddc8c3eb005af31564842d7b6057048a310ae5"}
-{"kind": "figure", "path": "manuscript/figures/fig_threshold_slice.pdf", "record_type": "public_manuscript_asset", "sha256": "70b523e011ec3867aec84550e73ed58385606ecbbced1f9a14bfe801d6d55354"}
-{"kind": "figure", "path": "manuscript/figures/fig_threshold_slice.png", "record_type": "public_manuscript_asset", "sha256": "a6a87fdc728a3c355a3ac691348acac5d2edd777534a879fa00f9aa46ddc52f5"}
-{"kind": "figure", "path": "manuscript/figures/fig_threshold_slice.svg", "record_type": "public_manuscript_asset", "sha256": "83833609123338390d9bf9a4c25ced23c91626022d259a24a099008d86bc5263"}
+{"kind": "figure", "path": "manuscript/figures/fig_threshold_slice.pdf", "record_type": "public_manuscript_asset", "sha256": "339280721f9dc50918534cedef09dbabac65e1e51108105a3e7e53c0d254786d"}
+{"kind": "figure", "path": "manuscript/figures/fig_threshold_slice.png", "record_type": "public_manuscript_asset", "sha256": "593d9a287899996049c0cc8d9d527002b625d6e29fc886db55395a3cff401a58"}
+{"kind": "figure", "path": "manuscript/figures/fig_threshold_slice.svg", "record_type": "public_manuscript_asset", "sha256": "3d73258598ac13bf3ff4d82afad2a25c2bc292306c5653324911011a859963bd"}
 {"kind": "other", "path": "manuscript/requirements-assets.lock.txt", "record_type": "public_manuscript_asset", "sha256": "0c3c10b33e23901fcedde9ac7b49dad9eccee9d2cc458ab67fbd926256bdfd3a"}
 {"kind": "table", "path": "manuscript/tables/baseline_performance.csv", "record_type": "public_manuscript_asset", "sha256": "c1bf2520f2e092696423929cf36f053ed3b9ccd50ea53b204db1bdcc43bc32d6"}
 {"kind": "table", "path": "manuscript/tables/baseline_performance.tex", "record_type": "public_manuscript_asset", "sha256": "b955fe7bd7024486650779876372700fef6ac3419256d18bd35b4a8a53cdd1e1"}
