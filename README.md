@@ -10,7 +10,7 @@ The resource uses a frozen USGS *Did You Feel It?* (DYFI) snapshot for
 - 2,362 eligible events in 1,885 seismic sequences;
 - 703 severe events, defined by event-maximum community decimal intensity
   (CDI) of at least 6;
-- prespecified train (1,573), development (357), temporal-holdout (430), and
+- internally specified train (1,573), development (357), temporal-holdout (430), and
   temporal-straddle (2) roles; and
 - fixed reference baselines, a six-category leakage audit, and reproducible
   evaluation outputs.
@@ -26,7 +26,7 @@ model.
 | `bundle/release/` | Event-level table, role manifest, frozen results, fit log, source locator, data dictionary, and licences |
 | `activation/raw/` | Frozen USGS GeoJSON source snapshot |
 | `code/` | Leakage audit, grouping, baselines, metrics, tests, and validators |
-| `preregistration/` | Frozen analysis specification |
+| `preregistration/` | Frozen internal protocol record (first publicly timestamped with the repository release) |
 | `results/` | Protected-run result and construction-side fit record |
 | `manuscript/` | Paper source, PDF, tables, vector figures, ledgers, and manuscript validator |
 
@@ -41,7 +41,7 @@ python3 manuscript/paper/validate_manuscript.py
 Expected result:
 
 ```text
-validate_manuscript: 91 checks, 0 failed -> PASS
+validate_manuscript: 94 checks, 0 failed -> PASS
 ```
 
 To run the benchmark test suite:

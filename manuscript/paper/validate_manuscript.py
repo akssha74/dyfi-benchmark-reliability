@@ -112,6 +112,12 @@ def main() -> int:
           and "unfulfilled element as a deviation" in main_tex, "")
     check("no_winning_model_claim_in_prose",
           "no winning model" in main_tex and ai["no_winning_model_claim"] is True, "")
+    check("protocol_chronology_disclosed",
+          "first publicly timestamped on 2026-09-19" in main_tex
+          and "not an externally registered preregistration" in main_tex, "")
+    check("metric_uncertainty_coverage_disclosed",
+          "only Brier-based intervals" in main_tex
+          and "other metrics are descriptive point estimates" in main_tex, "")
 
     # per-baseline holdout values must appear in the baseline table
     bt = tables["baseline_performance.tex"]
@@ -205,6 +211,14 @@ def main() -> int:
                 led_keys.add(json.loads(line)["key"])
     check("citation_ledger_covers_bib", bib_keys <= led_keys,
           str(sorted(bib_keys - led_keys)))
+    check("corrected_authoritative_reference_metadata",
+          "@article{oliveti2022inge" in bibtext
+          and "year    = {2022}" in bibtext
+          and "volume  = {65}" in bibtext
+          and "@misc{usgs_dyfi_data" in bibtext
+          and "year         = {2005}" in bibtext
+          and "author       = {Wald, David J. and Dewey, James W.}" in bibtext,
+          "")
 
     # ---- 3. file integrity ----
     table_inputs = re.findall(r"\\input\{(tables/[^}]+)\}", main_tex)

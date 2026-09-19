@@ -55,9 +55,9 @@ events from crossing data splits. We introduce version~1 of a single-source USGS
 ``Did You Feel It?'' (DYFI) benchmark for retrospective prediction of severe
 felt intensity (event-maximum community decimal intensity $\geq6$) from
 earthquake source metadata. The resource combines a frozen dataset, a
-six-category leakage audit, prespecified space--time sequence grouping,
+six-category leakage audit, internally specified space--time sequence grouping,
 outcome-independent analysis roles, endpoint sensitivity analysis, fixed
-baselines, calibration-aware scoring, sequence-cluster bootstrap uncertainty,
+baselines, calibration-aware scoring, Brier-score sequence-cluster bootstrap uncertainty,
 and a protected temporal evaluation. The frozen $M\geq5$ snapshot contains
 7{,}520 records, 2{,}362 eligible events, and a 430-event temporal holdout. The
 cross-validation comparison yielded small differences favoring sequence-grouped
@@ -131,12 +131,12 @@ and rejects cross-role sequence straddles and temporal-cutoff violations,
 accepting \emph{only} the exact source-only feature set; it is exercised by 110
 unit tests and rejects every deliberately contaminated test case
 (Section~\ref{sec:leakage}).
-\item \textbf{Prespecified, outcome-independent roles} built on order-stable
+\item \textbf{Internally specified, outcome-independent roles} built on order-stable
 space--time sequence grouping and a temporal external holdout, so that split
 membership never uses the label
 (Section~\ref{sec:roles}).
 \item \textbf{A fixed, non-selective baseline suite} with calibration-aware
-proper scoring, sequence-cluster bootstrap uncertainty, explicit handling of
+proper scoring, Brier-score sequence-cluster bootstrap uncertainty, explicit handling of
 ties and unavailable calibration estimates, and a single-use protected evaluation
 (Sections~\ref{sec:metrics}--\ref{sec:oneshot}).
 \item \textbf{A quantified leakage-inflation diagnostic} (naive random versus
@@ -151,24 +151,12 @@ real-time, lead-time, operational, or causal claim.
 
 \subsection{Significance}\label{sec:significance}
 
-The study is significant because the macroseismic-intensity machine-learning
-literature currently lacks a released, versioned, leakage-audited evaluation
-resource for the felt-intensity task. It supplies a reusable evaluation
-foundation: a version-frozen corpus, an executable leakage
-audit, outcome-independent grouped roles, calibrated baselines reported without
-overclaiming, and an exact-reproduction guarantee.
-Filling this gap lets subsequent work evaluate against a fixed leakage-safe
-contract instead of re-inventing a contaminated split, which is the precondition
-for comparable, reproducible progress on the problem. Releasing an evaluation
-resource of this kind is an established contribution type in applied-science
-venues: for instance,
-\citet{urs2026benchmarking} independently benchmark existing prediction tools
-against gold-standard datasets and report the gap between claimed and
-independently measured performance, an evaluation-resource contribution
-analogous in kind, though in a different domain, to the one made here. This
-paragraph concerns the
-study's significance and the literature gap, not its findings, which are reported
-separately.
+The resource gives later studies a fixed, auditable contract instead of another
+bespoke split. Evaluation-resource articles are an established applied-science
+contribution type: \citet{urs2026benchmarking}, for example, benchmark existing
+prediction tools against gold-standard datasets in another domain. Here the
+version-frozen corpus, executable audit, grouped roles, reference baselines, and
+exact reconstruction provide that foundation for felt-intensity modelling.
 
 \section{Related work and novelty}\label{sec:related}
 
@@ -183,7 +171,7 @@ We reuse these provenance facts rather than re-deriving them.
 
 \paragraph{Domain benchmark resources.} The INGe resource links Italian
 macroseismic intensities to colocated strong-motion records for benchmarking
-intensity--ground-motion relationships~\citep{oliveti2021inge}. It is a
+intensity--ground-motion relationships~\citep{oliveti2022inge}. It is a
 domain-near resource precedent, but differs from the present event-level USGS
 DYFI classification task, source-only feature boundary, leakage audit, and
 protected temporal evaluation.
@@ -210,7 +198,7 @@ train/test split on seismometric inputs. Their concrete drawback for our purpose
 is the evaluation contract: a random or stratified split does not remove
 within-sequence near-duplicate contamination, and none ships an executable
 leakage audit or a version-frozen resource that a third party can rerun.
-Our protocol addresses that specific drawback with prespecified sequence-grouped
+Our protocol addresses that specific drawback with internally specified sequence-grouped
 roles and an executable six-category audit.
 
 \paragraph{DYFI-based intensity models and concurrent leakage-aware work.}
@@ -227,7 +215,7 @@ release a DYFI-grounded benchmark that simulates Modified Mercalli Intensity
 two earthquakes (2014 Napa and 2019 Ridgecrest) with large language models and
 includes an explicit location-identifier leakage test; our resource differs in
 task and construction---an outcome-blind source-metadata$\rightarrow$later-severe
-binary classification over a decade-scale $M\geq5$ corpus with prespecified
+binary classification over a decade-scale $M\geq5$ corpus with internally specified
 sequence-grouped roles, rather than multimodal per-zip-code MMI simulation for two
 events---so the two are complementary rather than duplicative.
 
@@ -239,7 +227,7 @@ practice~\citep{roberts2017cv,kaufman2012leakage}; we do not claim this as novel
 \paragraph{Novelty delta.} Conceding the above, the delta this resource supplies
 that prior work does not is the \emph{released, versioned, hashed, single-source
 DYFI benchmark} itself: an executable six-category audit covering forbidden
-fields, proxy variables, and split contamination; a prespecified,
+fields, proxy variables, and split contamination; an internally specified,
 sequence-grouped role assignment with a
 temporal external holdout, a documented severe endpoint with threshold and
 threshold sensitivity, a fixed non-selective baseline suite with a no-skill
@@ -274,6 +262,10 @@ final query and count agree exactly. The digital fingerprint of the downloaded b
 preliminary count, defines this resource version. The frozen snapshot
 contains 7{,}520 DYFI records (Table~\ref{tab:cohort}, Fig.~\ref{fig:cohort}).
 
+\paragraph{Protocol chronology.} The file records an internal 2026-09-01 freeze
+but was first publicly timestamped on 2026-09-19. We therefore describe it as an
+internally frozen protocol, not an externally registered preregistration.
+
 \paragraph{Retrospective eligibility and post-report ascertainment.} DYFI
 intensity is an after-the-event quantity whose reliability grows with the number
 of felt reports~\citep{quitoriano2020dyfi}. To keep the label meaningful we apply
@@ -283,7 +275,7 @@ a predictive feature, because it is a post-outcome ascertainment proxy; this
 forbiddance is enforced by the leakage audit (family F2,
 Section~\ref{sec:leakage}). Eligibility yields 2{,}362 events with severe
 prevalence 0.298 (703 severe events). Of these, 2{,}360 events are assigned to
-the prespecified analysis roles (Section~\ref{sec:roles}) and contain 702 severe
+the internally specified analysis roles (Section~\ref{sec:roles}) and contain 702 severe
 events; the remaining two are temporal-straddle exclusions, one of which is
 severe. That single severe straddle event accounts for the difference between the
 eligible cohort (703 severe) and the analysis-assigned set (702 severe), so
@@ -298,7 +290,7 @@ $\{5.5,6.0,6.5\}$ and a near-threshold band of $\pm0.5$
 \paragraph{Outcome-boundary disclosure and held-out semantics.} Only corpus-level
 outcome-blind counts and inherited aggregate feasibility statistics were exposed
 before construction; no per-event label informed the endpoint, split, or
-tuning choices, and role membership is assigned by a prespecified,
+tuning choices, and role membership is assigned by an internally specified,
 outcome-independent rule that never uses the label. We therefore describe the
 external holdout as \emph{held out from model development with aggregate
 feasibility previously known}, and we deliberately do \emph{not} call it
@@ -348,10 +340,10 @@ frozen snapshot.
 Events are grouped into seismic \emph{sequences} by order-stable single-link
 space--time connected components (100~km, 30~days); the sequence, not the event,
 is the unit of role assignment, so aftershocks cannot straddle roles. Roles are
-assigned by a prespecified, outcome-independent rule (fixed assignment key,
+assigned by an internally specified, outcome-independent rule (fixed assignment key,
 temporal cutoff year 2023, development fraction 0.2, five cross-validation
 folds); the rule provably never reads the label. The external holdout contains
-events on or after 2023. The preregistration also named a secondary
+events on or after 2023. The frozen internal protocol also named a secondary
 leave-region-out geographic evaluation, but that branch was not executed and no
 geographic role manifest is claimed. The reported geographic result instead
 summarizes the temporal-holdout predictions by 10$^\circ$ cell
@@ -372,11 +364,11 @@ regression, B2 source-only logistic regression, B3 expanded-metadata logistic
 regression (used only in compatible sensitivity analyses), B4 random forest
 (scikit-learn;
 \citealp{pedregosa2011sklearn}), and B5 XGBoost~\citep{chen2016xgboost}. Each learned
-baseline is tuned \emph{only} by the registered deterministic grouped
+baseline is tuned \emph{only} by the protocol-defined deterministic grouped
 cross-validation on the construction corpus over a fixed grid, named before
 evaluation, and carried unchanged to the protected holdout with frozen
 best parameters. A machine-readable fit log enforces a maximum of 120 model
-fits; the executed run used 91. Two comparators are excluded for prespecified,
+fits; the executed run used 91. Two comparators are excluded for protocol-defined,
 reproducible reasons recorded in the protocol-decision table
 (Section~\ref{sec:repro-results}): B3 is
 not evaluated on the temporal holdout because its feature set carries origin year, a
@@ -392,7 +384,7 @@ The primary score is the Brier score~\citep{brier1950}; secondary scores are
 log-loss, AUROC, and calibration intercept/slope~\citep{vancalster2019calibration}.
 For numerical stability, log-loss clips predicted probabilities symmetrically
 to $[10^{-15},1-10^{-15}]$ before taking logarithms.
-Uncertainty is quantified by a sequence-cluster bootstrap
+Brier-score uncertainty is quantified by a sequence-cluster bootstrap
 ($n_{\text{boot}}=2000$, 95\% intervals) that resamples whole sequences rather
 than events~\citep{field2007bootstrap}, with a minimum-valid-replicate rule.
 Calibration and feasibility states are \emph{derived}, not hard-coded: a
@@ -403,6 +395,9 @@ the table reports whether each 95\% interval includes zero, together with a
 tie-aware joint ordering (Section~\ref{sec:pairwise-results}). Because the
 intervals use 2{,}000 Monte Carlo draws, near-zero endpoints are interpreted
 cautiously rather than as stable ranking guarantees.
+The protocol requested intervals for every metric; only Brier-based intervals
+were retained, so other metrics are descriptive point estimates
+(Table~\ref{tab:exclusions}).
 
 \subsection{Protected evaluation and reproducibility}\label{sec:oneshot}
 
@@ -415,7 +410,7 @@ pinned scientific-Python
 environment (NumPy, SciPy, scikit-learn, XGBoost;
 \citealp{harris2020numpy,virtanen2020scipy,pedregosa2011sklearn,chen2016xgboost}).
 All fits, exclusions, subsets, cutoffs, and pairwise comparisons are reported
-regardless of outcome; the only permitted omissions are the prespecified
+regardless of outcome; the only permitted omissions are the protocol-defined
 exclusions above.
 Computation is local-only under a pinned environment.
 
@@ -441,7 +436,7 @@ transport shift and is reported, not adjusted.
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.92\textwidth]{fig_cohort_flow.pdf}
+\includegraphics[width=\textwidth]{fig_cohort_flow.pdf}
 \caption{Cohort construction and outcome-independent role assignment on the
 frozen USGS DYFI $M\geq5$ snapshot. The 7{,}520 source records yield 2{,}362
 eligible events in 1{,}885 seismic sequences. Of these, 2{,}360 are assigned to
@@ -463,12 +458,12 @@ AUROC 0.734, 0.786, 0.815). On the construction corpus the near-threshold
 fraction ($|\mathrm{maxCDI}-6|<0.5$) is 0.164 and the no-skill Brier score is
 0.204, bounding the difficulty of the primary endpoint. This sensitivity check
 relabels and rescores the fixed B2 probabilities; it does not refit or
-recalibrate B2 at 5.5 or 6.5. The preregistered aggregation-grid sensitivity was
+recalibrate B2 at 5.5 or 6.5. The protocol-required aggregation-grid sensitivity was
 not executed and is disclosed as a deviation (Table~\ref{tab:exclusions}).
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.98\textwidth]{fig_threshold_slice.pdf}
+\includegraphics[width=\textwidth]{fig_threshold_slice.pdf}
 \caption{Sensitivity analyses for the source-only logistic regression (B2).
 (a) Performance as the severe-intensity cutoff varies. (b) Performance
 within the 2023 ($n=250$) and 2024 ($n=180$) portions of the temporal holdout.
@@ -493,7 +488,7 @@ one-row-per-event universe the point estimates are small and slightly reversed:
 the sequence-minus-random Brier difference is $-0.0059$ and the
 random-minus-sequence AUROC difference is $-0.0124$, calculated from unrounded
 scores. The sequence-grouped split therefore scores marginally \emph{better}
-than the naive random split, not worse. The preregistration committed to
+than the naive random split, not worse. The frozen internal protocol required
 uncertainty reporting for this contrast but did not define a paired interval
 estimator; the executed result contains point estimates only. We disclose this
 unfulfilled element as a deviation and do not invent a post-hoc interval.
@@ -511,7 +506,7 @@ important leakage from random splitting nor establishes its absence.
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.98\textwidth]{fig_leakage_split.pdf}
+\includegraphics[width=\textwidth]{fig_leakage_split.pdf}
 \caption{Five-fold performance of the fixed leakage diagnostic (random forest:
 300 trees, unrestricted depth) under
 random-event, event-grouped, and sequence-grouped fold assignment in the
@@ -538,7 +533,7 @@ only.
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.90\textwidth]{fig_baseline_scores.pdf}
+\includegraphics[width=\textwidth]{fig_baseline_scores.pdf}
 \caption{Brier scores and 95\% sequence-cluster bootstrap confidence intervals
 for the five baselines on the temporal holdout ($n=430$). Lower values are
 better; the vertical dashed line marks the no-skill B0 score. B3 is omitted
@@ -561,7 +556,7 @@ bootstrap ordering, B2 has the highest probability of being uniquely best
 (0.613), followed by B5 (0.387), but the direct B2--B5 comparison remains
 uncertain. These results therefore do not justify naming a winning model.
 
-The preregistration allowed an ``equivalent'' verdict but did not specify a
+The frozen internal protocol allowed an ``equivalent'' verdict but did not specify a
 positive numerical equivalence margin; its resolution floor was zero. We
 therefore do not invent a post-hoc margin or label any models equivalent.
 Instead, we report each point difference, 95\% interval, and
@@ -603,7 +598,7 @@ separately rather than treated as analysis-file mismatches.
 \paragraph{Benchmark utility.} The resource's utility does not rest on any model
 outcome. It rests on four reusable properties, each demonstrated here: an
 executable leakage audit that rejects seeded contamination and accepts only the
-approved feature set; prespecified outcome-independent roles that a third party
+approved feature set; internally specified outcome-independent roles that a third party
 can reproduce; calibrated, uncertainty-bearing baselines with a genuine no-skill
 comparator; and exact reconstruction anchored by recorded digital
 fingerprints and a single-use evaluation safeguard. A later study can evaluate a
@@ -635,14 +630,15 @@ count is used only for eligibility. B1 provides the simple magnitude comparator.
 
 \paragraph{Unexecuted sensitivity and transport branches.} The geographic
 values are temporal-holdout subgroups, not external transport evidence. The
-registered geographic evaluation and aggregation-grid sensitivity were not
+protocol-defined geographic evaluation and aggregation-grid sensitivity were not
 executed, and no alternative to the fixed 100-km/30-day sequence definition was
 tested. Consequently, no geographic, aggregation, or sequence-definition
 robustness claim is made.
 
-\paragraph{Inference and held-out semantics.} The registered split-contrast
+\paragraph{Inference and held-out semantics.} The protocol-required split-contrast
 uncertainty interval was not retained, so that result remains descriptive with
-no equivalence or zero-effect inference. Pairwise intervals use 2{,}000 Monte
+no equivalence or zero-effect inference. Non-Brier scores remain descriptive
+point estimates. Pairwise intervals use 2{,}000 Monte
 Carlo draws and near-zero endpoints are interpreted cautiously. The temporal
 holdout was excluded from model development, but aggregate feasibility was
 previously known; it is neither ``untouched'' nor confirmatory.
@@ -669,29 +665,23 @@ datasets containing more multi-event sequences.
 \backmatter
 
 \bmhead{Acknowledgements}
-ChatGPT was used for language editing, formatting assistance, and code review.
-The authors verified all outputs and take responsibility for the final work; no
-AI-generated figures are included. We acknowledge the USGS ``Did You Feel It?''
-program and Advanced National Seismic System Comprehensive Catalog.
+ChatGPT assisted language editing, formatting, and code review; the authors
+verified all outputs and accept responsibility. No figure was AI-generated. We
+thank the USGS DYFI and ANSS Comprehensive Catalog programs.
 
 \section*{Declarations}
 
 \begin{itemize}\setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}\setlength{\parsep}{0pt}
-\item \textbf{Funding.} No specific grant from funding agencies in the public,
-commercial, or not-for-profit sectors was received for this work.
-\item \textbf{Competing interests.} The authors declare that they have no
-competing interests.
-\item \textbf{Ethics approval and consent to participate.} Not applicable; this
-study involves no human participants, no new human-subjects collection, and no
-animals. It reuses aggregate, public-domain, event-level metadata; no
-respondent-level personally identifying information is accessed or redistributed.
+\item \textbf{Funding.} No specific funding was received.
+\item \textbf{Competing interests.} The authors declare none.
+\item \textbf{Ethics approval and consent to participate.} Not applicable; the
+study reuses aggregate public event metadata, with no participants, new
+human-subject collection, animals, or respondent-level identifying information.
 \item \textbf{Consent for publication.} Not applicable.
-\item \textbf{Data availability.} The version~1 derived event-level benchmark,
-frozen results, manifests, and reproduction instructions are publicly available
-under CC0~1.0 at
-\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.8}.
-The underlying source data are USGS ``Did You Feel It?'' and the ANSS
-Comprehensive Catalog (public domain;
+\item \textbf{Data availability.} Version~1 data, results, manifests, and
+instructions are available under CC0~1.0 at
+\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.9}.
+Source data are USGS DYFI and ANSS ComCat (public domain;
 \href{https://doi.org/10.5066/F7J101C8}{10.5066/F7J101C8} and
 \href{https://doi.org/10.5066/F7MS3QZH}{10.5066/F7MS3QZH}) and are reconstructable
 via the released fetch-and-verify source-locator manifest. No respondent-level
@@ -701,9 +691,8 @@ standard-library printed-value verifier are provided in the same tagged release.
 Full prediction reconstruction and model tests use the separately pinned
 scientific-Python environment.
 \item \textbf{Author contributions.} A.~Sharma designed the benchmark protocol
-and instrumentation, implemented the analysis, and drafted the manuscript.
-L.~Prasad supervised the work and revised the manuscript. Both authors read and
-approved the final manuscript.
+and analysis and drafted the manuscript. L.~Prasad supervised and revised the
+work. Both authors approved the final manuscript.
 \end{itemize}
 
 {\fontsize{8pt}{9.2pt}\selectfont\setlength{\bibsep}{0.5pt plus 0.2pt}\bibliography{references}}

@@ -141,7 +141,7 @@ def build() -> Dict[str, object]:
             "Sensitivity to the severe-intensity cutoff on the temporal holdout, evaluated with the source-only logistic regression (B2).",
             "lrrr",
             ["Maximum CDI cutoff", "Severe rate", "Brier score", "AUROC"], body,
-            "$^a$~Prespecified primary cutoff ($\\geq 6$). CDI denotes community decimal intensity. The sensitivity rows relabel and rescore fixed B2 probabilities; B2 is not refit or recalibrated for the alternate cutoffs. In the construction sample, " + f3(ep["near_threshold_fraction_construction"]) + " of events lie within 0.5 CDI units of the primary cutoff, and the no-skill Brier score is " + f3(ep["no_skill_brier_floor_construction"]) + ". Lower Brier score and higher AUROC indicate better performance."))
+            "$^a$~Protocol-defined primary cutoff ($\\geq 6$). CDI denotes community decimal intensity. The sensitivity rows relabel and rescore fixed B2 probabilities; B2 is not refit or recalibrated for the alternate cutoffs. In the construction sample, " + f3(ep["near_threshold_fraction_construction"]) + " of events lie within 0.5 CDI units of the primary cutoff, and the no-skill Brier score is " + f3(ep["no_skill_brier_floor_construction"]) + ". Lower Brier score and higher AUROC indicate better performance."))
     shas["endpoint_threshold_sensitivity.csv"] = _write_csv("endpoint_threshold_sensitivity.csv", csv2[0], csv2[1:])
     captions["endpoint_threshold_sensitivity"] = {
         "caption": "Endpoint threshold sensitivity.",
@@ -201,7 +201,7 @@ def build() -> Dict[str, object]:
             "Cross-validated performance of a fixed leakage diagnostic (random forest: 300 trees, unrestricted depth) under three fold-assignment schemes in the construction sample.",
             "lrrrr",
             ["Fold assignment", "Brier score", "AUROC", "Log-loss", "Folds"], body,
-            "The diagnostic is distinct from the tuned temporal-holdout baseline B4 (depth 3). Using unrounded values, the sequence-grouped minus random-event Brier difference is " + f4(lk["brier_inflation_seq_minus_random"]) + "; the random-event minus sequence-grouped AUROC difference is " + f4(lk["auroc_inflation_random_minus_seq"]) + ". The preregistration required uncertainty but did not define the paired interval estimator; the executed report retained point estimates only. This deviation is disclosed, and no post-hoc interval or equivalence claim is added. Because there is one row per event, event grouping imposes the same grouping constraint as random-event assignment, but its deterministic fold allocation is different and can produce different scores."))
+            "The diagnostic is distinct from the tuned temporal-holdout baseline B4 (depth 3). Using unrounded values, the sequence-grouped minus random-event Brier difference is " + f4(lk["brier_inflation_seq_minus_random"]) + "; the random-event minus sequence-grouped AUROC difference is " + f4(lk["auroc_inflation_random_minus_seq"]) + ". The frozen internal protocol required uncertainty but did not define the paired interval estimator; the executed report retained point estimates only. This deviation is disclosed, and no post-hoc interval or equivalence claim is added. Because there is one row per event, event grouping imposes the same grouping constraint as random-event assignment, but its deterministic fold allocation is different and can produce different scores."))
     shas["leakage_gap.csv"] = _write_csv("leakage_gap.csv", csv4[0], csv4[1:])
     captions["leakage_gap"] = {
         "caption": "Split-performance contrast across fold-assignment schemes.",
@@ -280,7 +280,7 @@ def build() -> Dict[str, object]:
         ["Two prelisted quarantine IDs", "No effect in version 1", "Both are absent from the frozen snapshot; no released record is excluded."],
         ["Geographic transport evaluation", "Not executed", "Only temporal-holdout geographic subgroups are reported; no leave-region-out or generalization claim."],
         ["Aggregation-grid sensitivity", "Not executed", "Required but absent; only threshold sensitivity of fixed predictions is reported."],
-        ["Split-contrast uncertainty", "Deviation disclosed", "Required, but no paired estimator was defined; the result is point-only with no post-hoc interval."],
+        ["Uncertainty coverage", "Partial deviation", "The protocol requested intervals for every metric and the split contrast; only Brier-based intervals were retained."],
         ["Equivalence interpretation", "Descriptive only", "No numerical margin was specified; intervals are reported without equivalence labels."],
     ]
     csv7 = [["item", "disposition", "reason"]]
@@ -297,7 +297,7 @@ def build() -> Dict[str, object]:
     shas["exclusions_deviations.csv"] = _write_csv("exclusions_deviations.csv", csv7[0], csv7[1:])
     captions["exclusions_deviations"] = {
         "caption": "Protocol decisions affecting interpretation.",
-        "claim_neutral_interpretation": "Discloses omitted comparators, non-operative quarantine, unexecuted geographic and aggregation analyses, missing split uncertainty, and the absence of an equivalence margin.",
+        "claim_neutral_interpretation": "Discloses omitted comparators, non-operative quarantine, unexecuted geographic and aggregation analyses, incomplete uncertainty coverage, and the absence of an equivalence margin.",
     }
 
     cap_sha = ac.write_json_sorted(os.path.join(DERIVED, "table_captions.json"), captions)

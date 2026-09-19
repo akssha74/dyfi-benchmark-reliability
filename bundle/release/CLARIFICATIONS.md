@@ -1,6 +1,6 @@
 # Version 1 clarification record
 
-This record clarifies four non-numeric metadata and reporting points in the
+This record clarifies non-numeric metadata and reporting points in the
 immutable version 1 results. It does not change any cohort, prediction, metric,
 confidence interval, or model comparison.
 
@@ -30,17 +30,28 @@ geographic-generalization claim.
 ## Endpoint sensitivity
 
 The threshold analysis relabels and rescores the fixed B2 probabilities; it does
-not refit or recalibrate B2 for the alternate cutoffs. The preregistered
+not refit or recalibrate B2 for the alternate cutoffs. The protocol-required
 aggregation-grid sensitivity was not executed. Version 1 therefore makes no
 aggregation-robustness claim.
 
-## Split-contrast uncertainty
+## Protocol chronology and uncertainty
 
-The preregistration required uncertainty for the random-versus-sequence split
+The protocol file records an internal freeze date of 2026-09-01, but it was
+first published in the repository on 2026-09-19 and has no third-party
+pre-analysis timestamp. Version 1 therefore describes it as a frozen internal
+protocol record rather than independently registered preregistration.
+
+The protocol required uncertainty for the random-versus-sequence split
 contrast but did not define the paired interval estimator. The executed report
 retained point estimates only. Version 1 discloses this as an unfulfilled
-preregistered element and does not add a post-hoc interval, equivalence claim,
+protocol element and does not add a post-hoc interval, equivalence claim,
 or inference that the true difference is zero.
+
+The protocol also requested 95% intervals for every reported metric. The
+executed artifacts retain intervals for Brier scores and paired Brier
+differences only; log-loss, AUROC, calibration, and accuracy remain point
+estimates. This broader uncertainty-coverage deviation is disclosed without
+post-hoc intervals.
 
 ## Leakage diagnostic identity
 

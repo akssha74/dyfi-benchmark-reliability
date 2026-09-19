@@ -26,6 +26,7 @@ matplotlib.rcParams["svg.fonttype"] = "path"
 matplotlib.rcParams["font.family"] = "DejaVu Sans"
 matplotlib.rcParams["axes.grid"] = False
 matplotlib.rcParams["figure.dpi"] = 300
+matplotlib.rcParams["font.size"] = 13.0
 matplotlib.rcParams["axes.titleweight"] = "normal"
 matplotlib.rcParams["axes.labelweight"] = "normal"
 
@@ -106,12 +107,12 @@ def fig_cohort_flow(D):
         ax.add_patch(patch)
         if sub:
             ax.text(cx, cy + 0.18, title, ha="center", va="center",
-                    fontsize=9.6, fontweight="normal", color=fg)
+                    fontsize=10.8, fontweight="normal", color=fg)
             ax.text(cx, cy - 0.20, sub, ha="center", va="center",
-                    fontsize=8.2, color=fg)
+                    fontsize=10.5, color=fg)
         else:
             ax.text(cx, cy, title, ha="center", va="center",
-                    fontsize=9.6, fontweight="normal", color=fg)
+                    fontsize=10.8, fontweight="normal", color=fg)
 
     def vfeed(x, y0, y1):
         ax.annotate("", xy=(x, y1), xytext=(x, y0),
@@ -125,11 +126,11 @@ def fig_cohort_flow(D):
           FILL["sky"], CB["ink"])
     vfeed(5.0, 8.57, 7.63)
     ax.text(5.24, 8.10, "eligibility:\nat least 10 felt reports",
-            ha="left", va="center", fontsize=8.2, color=CB["rule"], fontweight="normal")
+            ha="left", va="center", fontsize=10.5, color=CB["rule"], fontweight="normal")
 
     _node(5.0, 7.10, 5.6, 1.05,
           f"Eligible events: {cf['n_eligible_events']:,}",
-          f"seismic sequences: {cf['sequences']['all_eligible']:,}   ·   severe events: {cf['n_eligible_severe']:,}",
+          f"{cf['sequences']['all_eligible']:,} sequences · {cf['n_eligible_severe']:,} severe",
           FILL["blue"], CB["ink"])
 
     # --- Distributor bus (clean orthogonal routing, no crossing) ---
@@ -141,13 +142,13 @@ def fig_cohort_flow(D):
         vfeed(x, bus_y, 5.55)
 
     # --- Role boxes ---
-    rw, rcy, rh = 2.85, 5.00, 1.08
+    rw, rcy, rh = 2.85, 5.00, 1.22
     _node(xs[0], rcy, rw, rh, "Train",
-          f"{tr['n']:,} events · {100 * tr['prevalence']:.1f}% severe", FILL["green"], CB["ink"])
+          f"{tr['n']:,} · {100 * tr['prevalence']:.1f}% severe", FILL["green"], CB["ink"])
     _node(xs[1], rcy, rw, rh, "Development",
-          f"{dv['n']:,} events · {100 * dv['prevalence']:.1f}% severe", FILL["orange"], CB["ink"])
+          f"{dv['n']:,} · {100 * dv['prevalence']:.1f}% severe", FILL["orange"], CB["ink"])
     _node(xs[2], rcy, rw, rh, "Temporal holdout",
-          f"{ho['n']:,} events · {100 * ho['prevalence']:.1f}% severe", FILL["vermillion"], CB["ink"])
+          f"{ho['n']:,} · {100 * ho['prevalence']:.1f}% severe", FILL["vermillion"], CB["ink"])
 
     # --- Construction pool bracket under train + dev ---
     lft, rgt, by = xs[0] - rw / 2, xs[1] + rw / 2, 4.30
@@ -156,7 +157,7 @@ def fig_cohort_flow(D):
     ax.plot([mid, mid], [by, 4.12], color=CB["purple"], lw=1.1)
     _node(mid, 3.60, rgt - lft, 1.00,
           f"Construction pool: {cf['construction_total']['n']:,} events",
-          f"train + development   ·   {cf['sequences']['construction']:,} sequences",
+          f"train + dev · {cf['sequences']['construction']:,} sequences",
           FILL["purple"], CB["ink"])
 
     # --- Holdout sequences box ---
@@ -169,10 +170,10 @@ def fig_cohort_flow(D):
     nq = len(cf["quarantine_inspected_ids"])
     ax.text(2.75, 2.40,
             f"Prelisted quarantine IDs: {nq}\nabsent from frozen snapshot",
-            ha="center", va="center", fontsize=8.0, color=CB["rule"])
+            ha="center", va="center", fontsize=10.5, color=CB["rule"])
     ax.text(7.25, 2.40,
             f"Straddle events: {cf['temporal_straddle_excluded']}\nincluded in eligible cohort",
-            ha="center", va="center", fontsize=8.0, color=CB["rule"])
+            ha="center", va="center", fontsize=10.5, color=CB["rule"])
     accounting = FancyBboxPatch(
         (2.0, 1.48), 6.0, 0.62,
         boxstyle="round,pad=0.02,rounding_size=0.10",
@@ -182,7 +183,7 @@ def fig_cohort_flow(D):
     ax.text(5.0, 1.79,
             f"Role counts:  {tr['n']:,} + {dv['n']:,} + {ho['n']:,} + "
             f"{cf['temporal_straddle_excluded']} = {cf['n_eligible_events']:,} eligible events",
-            ha="center", va="center", fontsize=8.2, color=CB["ink"], fontweight="normal")
+            ha="center", va="center", fontsize=10.5, color=CB["ink"], fontweight="normal")
 
     return _save(fig, "fig_cohort_flow",
                  "Cohort construction and role assignment flow",
@@ -217,16 +218,16 @@ def fig_baseline_scores(D):
             markeredgecolor=CB["ink"], markeredgewidth=0.7, elinewidth=1.7, zorder=3,
         )
         ax.text(hi + 0.004, yy, f"{value:.3f}  [{lo:.3f}, {hi:.3f}]",
-                ha="left", va="center", fontsize=10.0, fontweight="normal")
+                ha="left", va="center", fontsize=11.2, fontweight="normal")
     ax.axvline(pb["B0_no_skill"]["brier"], color=CB["grey"], linestyle="--",
                linewidth=1.3, alpha=0.8, zorder=1)
     ax.set_yticks(y)
-    ax.set_yticklabels(labels, fontsize=10.5)
+    ax.set_yticklabels(labels, fontsize=11.2)
     ax.set_xlabel("Brier score (lower is better)", fontsize=11.5)
     ax.set_xlim(min(ci_lo) - 0.012, max(ci_hi) + 0.047)
     ax.set_ylim(-0.6, len(order) - 0.4)
     ax.set_title("Baseline performance on the temporal holdout (95% CI)",
-                 fontsize=11.0, pad=8)
+                 fontsize=11.5, pad=8)
     ax.grid(axis="x", linestyle=":", alpha=0.22)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
@@ -240,7 +241,7 @@ def fig_leakage_split(D):
     lk = D["leakage_inflation_headline"]
     ps = lk["per_scheme"]
     schemes = ["random_event", "event_grouped", "sequence_grouped"]
-    labels = ["Random-event\n(naive)", "Event-grouped\n(control)", "Sequence-grouped\n(primary)"]
+    labels = ["Random\n(naive)", "Event\n(control)", "Sequence\n(primary)"]
     brier = [ps[s]["brier"] for s in schemes]
     auroc = [ps[s]["auroc"] for s in schemes]
 
@@ -254,12 +255,12 @@ def fig_leakage_split(D):
         bar.set_hatch(hatch)
     ax1.axhline(brier[0], color=CB["vermillion"], linestyle="--", linewidth=0.9, alpha=0.7)
     for i, v in enumerate(brier):
-        ax1.text(i, v + 0.0018, f"{v:.3f}", ha="center", va="bottom", fontsize=9.5, fontweight="normal")
+        ax1.text(i, v + 0.0018, f"{v:.3f}", ha="center", va="bottom", fontsize=13.0, fontweight="normal")
     ax1.set_xticks(x)
-    ax1.set_xticklabels(labels, fontsize=10.0, fontweight="normal")
-    ax1.set_ylabel("Brier score (lower is better)", fontsize=11.0)
+    ax1.set_xticklabels(labels, fontsize=13.0, fontweight="normal")
+    ax1.set_ylabel("Brier score (lower is better)", fontsize=13.5)
     ax1.set_ylim(min(brier) - 0.012, max(brier) + 0.016)
-    ax1.set_title(f"(a) Brier difference: sequence $-$ random = {lk['brier_inflation_seq_minus_random']:+.4f}", fontsize=10.5, pad=7)
+    ax1.set_title(f"(a) Brier difference: sequence $-$ random = {lk['brier_inflation_seq_minus_random']:+.4f}", fontsize=13.0, pad=7)
     ax1.grid(axis="y", linestyle=":", alpha=0.22)
 
     bars2 = ax2.bar(x, auroc, color=colors, edgecolor=CB["rule"], linewidth=0.7, alpha=0.82)
@@ -267,12 +268,12 @@ def fig_leakage_split(D):
         bar.set_hatch(hatch)
     ax2.axhline(auroc[0], color=CB["vermillion"], linestyle="--", linewidth=0.9, alpha=0.7)
     for i, v in enumerate(auroc):
-        ax2.text(i, v + 0.0015, f"{v:.3f}", ha="center", va="bottom", fontsize=9.5, fontweight="normal")
+        ax2.text(i, v + 0.0015, f"{v:.3f}", ha="center", va="bottom", fontsize=13.0, fontweight="normal")
     ax2.set_xticks(x)
-    ax2.set_xticklabels(labels, fontsize=10.0, fontweight="normal")
-    ax2.set_ylabel("AUROC (higher is better)", fontsize=11.0)
+    ax2.set_xticklabels(labels, fontsize=13.0, fontweight="normal")
+    ax2.set_ylabel("AUROC (higher is better)", fontsize=13.5)
     ax2.set_ylim(min(auroc) - 0.012, max(auroc) + 0.016)
-    ax2.set_title(f"(b) AUROC difference: random $-$ sequence = {lk['auroc_inflation_random_minus_seq']:+.4f}", fontsize=10.5, pad=7)
+    ax2.set_title(f"(b) AUROC difference: random $-$ sequence = {lk['auroc_inflation_random_minus_seq']:+.4f}", fontsize=13.0, pad=7)
     ax2.grid(axis="y", linestyle=":", alpha=0.22)
 
     return _save(fig, "fig_leakage_split",
@@ -300,29 +301,29 @@ def fig_threshold_slice(D):
         dx = -0.04 if t == 6.0 else 0.0
         ax1.text(t + dx, b + 0.016, f"{b:.3f}",
                  ha=("right" if t == 6.0 else "center"),
-                 fontsize=9.5, fontweight="normal")
+                 fontsize=13.0, fontweight="normal")
     for t, a in zip(thr, auroc):
         dx = 0.04 if t == 6.0 else 0.0
         ax1.text(t + dx, a + 0.016, f"{a:.3f}",
                  ha=("left" if t == 6.0 else "center"),
-                 fontsize=9.5, fontweight="normal")
+                 fontsize=13.0, fontweight="normal")
     for t, p in zip(thr, prev):
         dx = -0.04 if t == 6.0 else 0.0
         ax1.text(t + dx, p - 0.040, f"{p:.3f}",
                  ha=("right" if t == 6.0 else "center"),
-                 fontsize=9.5, color=CB["grey"], fontweight="normal")
+                 fontsize=13.0, color=CB["grey"], fontweight="normal")
 
     ax1.set_ylim(0.08, 0.92)
     ax1.axvline(6.0, color=CB["vermillion"], linestyle=":", linewidth=1.2)
-    ax1.text(6.0, 0.88, "prespecified cutoff (6.0)", color=CB["vermillion"], fontsize=10.0,
+    ax1.text(6.0, 0.88, "protocol-defined cutoff (6.0)", color=CB["vermillion"], fontsize=13.0,
              fontweight="normal", ha="center",
              bbox=dict(boxstyle="round,pad=0.25", facecolor=FILL["vermillion"], edgecolor=CB["vermillion"], alpha=0.9))
-    ax1.set_xlabel("Severe cutoff (maximum CDI)", fontsize=11.0)
-    ax1.set_ylabel("Metric value", fontsize=11.0)
+    ax1.set_xlabel("Severe cutoff (maximum CDI)", fontsize=13.5)
+    ax1.set_ylabel("Metric value", fontsize=13.5)
     ax1.set_xticks(thr)
-    ax1.set_xticklabels([f"{t:.1f}" for t in thr], fontsize=10.0)
-    ax1.set_title("(a) Sensitivity to the severe-intensity cutoff", fontsize=10.5, pad=7)
-    ax1.legend(fontsize=9.5, loc="center right", framealpha=0.95, edgecolor="0.6")
+    ax1.set_xticklabels([f"{t:.1f}" for t in thr], fontsize=13.0)
+    ax1.set_title("(a) Sensitivity to the severe-intensity cutoff", fontsize=13.0, pad=7)
+    ax1.legend(fontsize=13.0, loc="center right", framealpha=0.95, edgecolor="0.6")
     ax1.grid(True, linestyle=":", alpha=0.22)
 
     x = list(range(len(years)))
@@ -332,14 +333,14 @@ def fig_threshold_slice(D):
     ax2.bar([i + width / 2 for i in x], ya, width, color=CB["green"],
             edgecolor=CB["rule"], linewidth=0.7, hatch="..", alpha=0.82, label="AUROC")
     for i in x:
-        ax2.text(i - width / 2, yb[i] + 0.015, f"{yb[i]:.3f}", ha="center", fontsize=9.5, fontweight="normal")
-        ax2.text(i + width / 2, ya[i] + 0.015, f"{ya[i]:.3f}", ha="center", fontsize=9.5, fontweight="normal")
+        ax2.text(i - width / 2, yb[i] + 0.015, f"{yb[i]:.3f}", ha="center", fontsize=13.0, fontweight="normal")
+        ax2.text(i + width / 2, ya[i] + 0.015, f"{ya[i]:.3f}", ha="center", fontsize=13.0, fontweight="normal")
     ax2.set_xticks(x)
-    ax2.set_xticklabels([f"{y}\n({tslice[y]['n']} events)" for y in years], fontsize=10.0, fontweight="normal")
-    ax2.set_ylabel("Metric value", fontsize=11.0)
+    ax2.set_xticklabels([f"{y}\n({tslice[y]['n']} events)" for y in years], fontsize=13.0, fontweight="normal")
+    ax2.set_ylabel("Metric value", fontsize=13.5)
     ax2.set_ylim(0, 1.08)
-    ax2.set_title("(b) Performance by holdout year", fontsize=10.5, pad=7)
-    ax2.legend(fontsize=9.5, loc="lower right", framealpha=0.95, edgecolor="0.6")
+    ax2.set_title("(b) Performance by holdout year", fontsize=13.0, pad=7)
+    ax2.legend(fontsize=13.0, loc="lower right", framealpha=0.95, edgecolor="0.6")
     ax2.grid(axis="y", linestyle=":", alpha=0.22)
 
     return _save(fig, "fig_threshold_slice",

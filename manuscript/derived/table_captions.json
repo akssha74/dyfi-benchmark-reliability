@@ -13,7 +13,7 @@
   },
   "exclusions_deviations": {
     "caption": "Protocol decisions affecting interpretation.",
-    "claim_neutral_interpretation": "Discloses omitted comparators, non-operative quarantine, unexecuted geographic and aggregation analyses, missing split uncertainty, and the absence of an equivalence margin."
+    "claim_neutral_interpretation": "Discloses omitted comparators, non-operative quarantine, unexecuted geographic and aggregation analyses, incomplete uncertainty coverage, and the absence of an equivalence margin."
   },
   "leakage_gap": {
     "caption": "Split-performance contrast across fold-assignment schemes.",

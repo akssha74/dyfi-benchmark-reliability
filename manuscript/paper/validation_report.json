@@ -1,7 +1,7 @@
 {
   "record_type": "manuscript_paper_validation_report",
   "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
-  "n_checks": 91,
+  "n_checks": 94,
   "n_failed": 0,
   "overall_pass": true,
   "checks": [
@@ -117,6 +117,16 @@
     },
     {
       "check": "no_winning_model_claim_in_prose",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "protocol_chronology_disclosed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_uncertainty_coverage_disclosed",
       "ok": true,
       "detail": ""
     },
@@ -311,6 +321,11 @@
       "detail": "[]"
     },
     {
+      "check": "corrected_authoritative_reference_metadata",
+      "ok": true,
+      "detail": ""
+    },
+    {
       "check": "seven_focused_tables_in_manuscript",
       "ok": true,
       "detail": "['tables/cohort_roles.tex', 'tables/endpoint_threshold_sensitivity.tex', 'tables/leakage_gap.tex', 'tables/baseline_performance.tex', 'tables/pairwise_matrix.tex', 'tables/exclusions_deviations.tex', 'tables/slices.tex']"
@@ -393,17 +408,17 @@
     {
       "check": "build_ledger_main_tex_is_current",
       "ok": true,
-      "detail": "2a002c8655e4a5ce51e7a56780f4e5893bfd34a1272ba95ec6d51166c49ccfe5"
+      "detail": "4ace39a6d2e6f24e1ec69330eb79eea71075bf7e70c01db7b91136fc65d85f03"
     },
     {
       "check": "build_ledger_main_pdf_is_current",
       "ok": true,
-      "detail": "f9a6f6261f65a78c53da3d7c49894180392166bed1822f82e904abb66db0527f"
+      "detail": "aac8afee331afabd28b9b8ca2e8de690f0eb0c6bbf710bff4a9b1fd910b3f52c"
     },
     {
       "check": "build_ledger_release_tag_matches_manuscript",
       "ok": true,
-      "detail": "v1.0.8"
+      "detail": "v1.0.9"
     },
     {
       "check": "figure_byte_identical_fig_threshold_slice.pdf",
