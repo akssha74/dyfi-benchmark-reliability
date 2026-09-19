@@ -23,10 +23,6 @@
     "caption": "Full pairwise ranking-stability matrix.",
     "claim_neutral_interpretation": "Reports whether each finite-bootstrap interval includes zero, with near-boundary results interpreted cautiously. No equivalence class or winning model is asserted."
   },
-  "reproducibility_manifest": {
-    "caption": "Data and reproducibility manifest.",
-    "claim_neutral_interpretation": "Provenance and integrity anchors (hashes, single token, environment pins, licences). Establishes reproducibility, makes no performance claim."
-  },
   "slices": {
     "caption": "Temporal and geographic subgroup summaries.",
     "claim_neutral_interpretation": "Descriptive subgroups of the temporal holdout. The geographic cells are not a leave-region-out or external geographic evaluation."

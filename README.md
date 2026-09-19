@@ -54,6 +54,9 @@ cd code
 python -m unittest discover -p 'test_*.py'
 ```
 
+From the repository root, `python code/verify_test_inventory.py` confirms that
+the four shipped suites contain 110 tests in total.
+
 The frozen source snapshot has SHA-256
 `88722d8aa6d025cfcc3562f29593cc87d84c6a073bf211e8c21d89adddd4d7e9`.
 The activated source-locator manifest records the same payload hash, access

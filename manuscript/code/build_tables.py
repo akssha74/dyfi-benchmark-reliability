@@ -300,41 +300,6 @@ def build() -> Dict[str, object]:
         "claim_neutral_interpretation": "Discloses omitted comparators, non-operative quarantine, unexecuted geographic and aggregation analyses, missing split uncertainty, and the absence of an equivalence margin.",
     }
 
-    # ---- Table 8: data / reproducibility manifest ----------------------
-    rm = D["reproducibility_manifest"]
-    body = [
-        ["Frozen source data", f"{int(rm['fdsn_features']):,} USGS DYFI records", "A complete SHA-256 digital fingerprint is archived."],
-        ["Protected holdout use", "Opened once", "A single-use safeguard prevented repeat evaluation."],
-        ["Independent reconstruction", "Two clean reruns", "Both reproduced the recorded results and holdout predictions exactly."],
-        ["Model fitting", f"{intc(rm['fit_count'])} fits (prespecified cap: {intc(rm['fit_cap'])})", "The recorded run remained within its computational budget."],
-        ["Software environment", "Python " + esc(rm["python"]) + "; package versions archived", "Exact versions are fixed for reproduction."],
-        ["Licensing", esc(rm["licences"]["data"]) + " data; " + esc(rm["licences"]["code"]) + " code; USGS public-domain source", "Terms permit independent reuse and verification."],
-    ]
-    csv8 = [["field", "value"]]
-    csv8.append(["source_snapshot_sha256", rm["source_snapshot_sha256"]])
-    csv8.append(["result_hash", rm["result_hash"]])
-    csv8.append(["predictions_digest", rm["predictions_digest"]])
-    csv8.append(["fit_ledger_digest", rm["fit_ledger_digest"]])
-    csv8.append(["reconstruction_pipeline_digest", rm["reconstruction_pipeline_digest"]])
-    csv8.append(["fit_count", rm["fit_count"]])
-    csv8.append(["run_token_consumed_count", rm["run_token_consumed_count"]])
-    csv8.append(["python", rm["python"]])
-    for k, v in rm["environment"].items():
-        csv8.append([f"pin_{k}", v])
-    shas["reproducibility_manifest.tex"] = ac.write_text(
-        os.path.join(TABLES, "reproducibility_manifest.tex"),
-        _table_float(
-            "tab:repro",
-            "Reproducibility safeguards and verification results.",
-            ">{\\raggedright\\arraybackslash}p{0.25\\linewidth} >{\\raggedright\\arraybackslash}p{0.31\\linewidth} >{\\raggedright\\arraybackslash}p{0.34\\linewidth}",
-            ["Check", "Recorded result", "What it establishes"], body,
-            "Complete digital fingerprints, environment details, and machine-readable verification records are included in the tagged public release."))
-    shas["reproducibility_manifest.csv"] = _write_csv("reproducibility_manifest.csv", csv8[0], csv8[1:])
-    captions["reproducibility_manifest"] = {
-        "caption": "Data and reproducibility manifest.",
-        "claim_neutral_interpretation": "Provenance and integrity anchors (hashes, single token, environment pins, licences). Establishes reproducibility, makes no performance claim.",
-    }
-
     cap_sha = ac.write_json_sorted(os.path.join(DERIVED, "table_captions.json"), captions)
     shas["table_captions.json"] = cap_sha
     return shas

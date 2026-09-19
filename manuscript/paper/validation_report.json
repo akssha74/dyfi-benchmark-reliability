@@ -316,6 +316,11 @@
       "detail": "['tables/cohort_roles.tex', 'tables/endpoint_threshold_sensitivity.tex', 'tables/leakage_gap.tex', 'tables/baseline_performance.tex', 'tables/pairwise_matrix.tex', 'tables/exclusions_deviations.tex', 'tables/slices.tex']"
     },
     {
+      "check": "no_orphaned_reproducibility_table_assets",
+      "ok": true,
+      "detail": ""
+    },
+    {
       "check": "input_exists_tables/cohort_roles.tex",
       "ok": true,
       "detail": "tables/cohort_roles.tex"
@@ -434,11 +439,6 @@
       "check": "canonical_table_hash_pairwise_matrix.tex",
       "ok": true,
       "detail": "pairwise_matrix.tex"
-    },
-    {
-      "check": "canonical_table_hash_reproducibility_manifest.tex",
-      "ok": true,
-      "detail": "reproducibility_manifest.tex"
     },
     {
       "check": "canonical_table_hash_slices.tex",

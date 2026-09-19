@@ -60,7 +60,7 @@ def format_all() -> list[str]:
                 "\\label{tab:baselines}\n\\setlength{\\tabcolsep}{4.5pt}\n"
                 "\\begin{tabular}{lccccc c}",
             )
-        elif name in {"exclusions_deviations.tex", "reproducibility_manifest.tex"}:
+        elif name == "exclusions_deviations.tex":
             text = text.replace(
                 "\\label{tab:", "\\renewcommand{\\arraystretch}{1.08}\n\\label{tab:", 1
             )

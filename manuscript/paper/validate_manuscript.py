@@ -211,6 +211,10 @@ def main() -> int:
           len(table_inputs) == 7
           and "tables/reproducibility_manifest.tex" not in table_inputs,
           str(table_inputs))
+    check("no_orphaned_reproducibility_table_assets",
+          not (MAN / "tables" / "reproducibility_manifest.tex").exists()
+          and not (HERE / "tables" / "reproducibility_manifest.tex").exists(),
+          "")
     for m in table_inputs:
         check(f"input_exists_{m}", (HERE / m).exists(), m)
     for m in re.findall(r"\\includegraphics\[[^\]]*\]\{([^}]+)\}", main_tex):

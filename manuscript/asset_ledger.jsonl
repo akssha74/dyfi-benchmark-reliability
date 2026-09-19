@@ -1,13 +1,13 @@
 {"kind": "code", "path": "manuscript/code/asset_common.py", "record_type": "public_manuscript_asset", "sha256": "d63cf3c3a9c9c82b26967425897db362033bfd6b202e48debeb98fa45ceed46a"}
 {"kind": "code", "path": "manuscript/code/build_figures.py", "record_type": "public_manuscript_asset", "sha256": "01d68cd10e3fa4b4afe6f9678026cbb6c885f6372afd13f1bca0087295ea0ddc"}
-{"kind": "code", "path": "manuscript/code/build_tables.py", "record_type": "public_manuscript_asset", "sha256": "4ec430a1a552864004a3ffe297fca4a47194fa55c8a0f08d9c4bc574605b37ef"}
+{"kind": "code", "path": "manuscript/code/build_tables.py", "record_type": "public_manuscript_asset", "sha256": "2648f637361ee8e05f8dd8f088edfe86fe0251b64fb33a4f19f61ec781bad42e"}
 {"kind": "code", "path": "manuscript/code/generate_all.sh", "record_type": "public_manuscript_asset", "sha256": "3e7a2e8b69cb46c1f65696105876e1a10e9a52d0e82588f5956bf3773137fa44"}
 {"kind": "code", "path": "manuscript/code/validate_assets.py", "record_type": "public_manuscript_asset", "sha256": "4bf182f31d0940e0d76c35c8221c901d3b37f9da359521e79793d32151c7a2ad"}
 {"kind": "other", "path": "manuscript/derived/asset_inputs.json", "record_type": "public_manuscript_asset", "sha256": "b7f7dea60c7421b0b75870d45421c094e3cd4b5e325702c94b498ebc7926ace9"}
 {"kind": "other", "path": "manuscript/derived/pairwise_ranking_stability.csv", "record_type": "public_manuscript_asset", "sha256": "acb218ee176982bc86b876d5f25fc107f09d7e16e5653efd66d91589529b3456"}
 {"kind": "other", "path": "manuscript/derived/pairwise_ranking_stability.json", "record_type": "public_manuscript_asset", "sha256": "88ebdd04c5e687623c3ff9d9a4f63fd6ec30b5270bf9cbb9636b87deab6bcff8"}
 {"kind": "other", "path": "manuscript/derived/reconstruction_verification.json", "record_type": "public_manuscript_asset", "sha256": "512482193eb4a0861a03ab6247a9c9833618405ad2566d2be5fe246a62f735f2"}
-{"kind": "other", "path": "manuscript/derived/table_captions.json", "record_type": "public_manuscript_asset", "sha256": "a55048b0743bca769cd9c73f862da63b32c363a089ddda28710a443f10dd0cc0"}
+{"kind": "other", "path": "manuscript/derived/table_captions.json", "record_type": "public_manuscript_asset", "sha256": "5a624450272a204bc1d90b53f11ac2fdadf8e5b8cdc07b57ea59ede41ee12317"}
 {"kind": "figure", "path": "manuscript/figures/fig_baseline_scores.pdf", "record_type": "public_manuscript_asset", "sha256": "8701d0498ec1ffac952b4b3bca9d87fbf05a22e0aec17a51c2b66a808a16eeef"}
 {"kind": "figure", "path": "manuscript/figures/fig_baseline_scores.png", "record_type": "public_manuscript_asset", "sha256": "134f8a352149e5b240f5174779a7ccc488c5272021e9f5a91b7dd813da16a08b"}
 {"kind": "figure", "path": "manuscript/figures/fig_baseline_scores.svg", "record_type": "public_manuscript_asset", "sha256": "103d658ae63510325d4b30d8ac256bf032cff137645c04d9b30e067120c96cb8"}
@@ -33,8 +33,6 @@
 {"kind": "table", "path": "manuscript/tables/leakage_gap.tex", "record_type": "public_manuscript_asset", "sha256": "9cae59901b34f911e74e0bb3ed11fb881af270a736792f1752fc3f02aae2aa3b"}
 {"kind": "table", "path": "manuscript/tables/pairwise_matrix.csv", "record_type": "public_manuscript_asset", "sha256": "369bf838ba3211d6aa0e56eeca67b1076e469c67e5bf5ddc634122339bcf1a9d"}
 {"kind": "table", "path": "manuscript/tables/pairwise_matrix.tex", "record_type": "public_manuscript_asset", "sha256": "5d3737bffc4ffefb67e04abdea79e5d2900881c7835776817a1f3598a6585a9d"}
-{"kind": "table", "path": "manuscript/tables/reproducibility_manifest.csv", "record_type": "public_manuscript_asset", "sha256": "38fa6f477061e0817197923300a6c7e024fbea9079a715a997e31714a0db694b"}
-{"kind": "table", "path": "manuscript/tables/reproducibility_manifest.tex", "record_type": "public_manuscript_asset", "sha256": "0776ed3fb48a8f928930dfb6b1600a7fbff8261f326457397aff8d9f2002dd16"}
 {"kind": "table", "path": "manuscript/tables/slices.csv", "record_type": "public_manuscript_asset", "sha256": "96e0a5f68923cf9c036d275da1c5e0a74a79283b3dc5f236b28fe5239f468969"}
 {"kind": "table", "path": "manuscript/tables/slices.tex", "record_type": "public_manuscript_asset", "sha256": "358d01bb4bc39386a0f66c28f04450e0641fced12af7ef1a549fe7d07aebe677"}
 {"kind": "table", "path": "manuscript/tables/slices_geographic_full.csv", "record_type": "public_manuscript_asset", "sha256": "28fb283f4887fee888fd077d42effce730d094bd23f352db102ac7b04f246afb"}

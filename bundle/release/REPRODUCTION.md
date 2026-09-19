@@ -41,11 +41,13 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r code/requirements.lock.txt
 (cd code && python -m unittest discover -p 'test_*.py')
+python code/verify_test_inventory.py
 ```
 
 The tests cover field-level leakage rejection, sequence grouping, role
 assignment, metrics, baseline behavior, deterministic reporting, acquisition
-guards, and reconstruction.
+guards, and reconstruction. The inventory command independently confirms four
+suites containing 24, 35, 31, and 20 tests (110 total).
 
 ## 4. Regenerate and validate manuscript tables and figures
 
