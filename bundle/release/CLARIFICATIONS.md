@@ -63,6 +63,15 @@ The split comparison uses a fixed random forest with 300 trees and unrestricted
 depth. It is a diagnostic configuration, not the tuned temporal-holdout baseline
 B4, whose maximum depth is 3.
 
+## Leakage interpretation template
+
+`results.json` retains a generic `leakage_inflation_headline.interpretation`
+string describing the expected positive-gap direction of the estimand. It is a
+template, not a description of the observed values. The authoritative numeric
+fields are negative/reversed (sequence-minus-random Brier `-0.0059`;
+random-minus-sequence AUROC `-0.0124`), as reported in the manuscript, generated
+table, and figure. No observed leakage inflation or winning-model claim is made.
+
 ## Quarantine and provenance
 
 The two prelisted quarantine identifiers are absent from the frozen snapshot, so
