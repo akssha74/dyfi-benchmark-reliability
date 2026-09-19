@@ -1,5 +1,5 @@
-A frozen USGS DYFI resource enables reproducible comparison of felt-intensity models.
+A frozen USGS felt-report resource enables reproducible comparison of intensity models.
 
-Earthquakes from the same seismic sequence remain together during model evaluation.
+Related earthquakes remain together when model performance is evaluated.
 
-Observed split differences were small, and no model was declared the winner.
+Split differences were small, and no model was declared the winner.

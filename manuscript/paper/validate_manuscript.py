@@ -88,6 +88,8 @@ def main() -> int:
     ai_heading = r"\paragraph{Reproducible artwork and generative AI assistance.}"
     check("generative_ai_disclosed_in_methods",
           ai_heading in main_tex
+          and "literature discovery" in main_tex
+          and "scientific judgements and final decisions remained with the authors" in main_tex
           and main_tex.index(ai_heading) < main_tex.index(r"\section{Results}"),
           "")
     check("acknowledgements_in_front_matter",

@@ -33,7 +33,7 @@
     {
       "check": "three_highlights_under_120_characters",
       "ok": true,
-      "detail": "[(85, 'A frozen USGS DYFI resource enables reproducible comparison of felt-intensity models.'), (83, 'Earthquakes from the same seismic sequence remain together during model evaluation.'), (76, 'Observed split differences were small, and no model was declared the winner.')]"
+      "detail": "[(87, 'A frozen USGS felt-report resource enables reproducible comparison of intensity models.'), (72, 'Related earthquakes remain together when model performance is evaluated.'), (67, 'Split differences were small, and no model was declared the winner.')]"
     },
     {
       "check": "statements_and_declarations_heading",
@@ -508,17 +508,17 @@
     {
       "check": "build_ledger_main_tex_is_current",
       "ok": true,
-      "detail": "e12ea93eceb16d08566f8ee3e1ab8c0f3fddf6b1f60e2fd3b7d8272e9cb0f93b"
+      "detail": "99959b1b4cee38c7a9297a653ef8c2bda5e2b225f1f0f72ad45dfaa91f5ce5e4"
     },
     {
       "check": "build_ledger_main_pdf_is_current",
       "ok": true,
-      "detail": "573b6d396d7b1c1bc78b7498ec98a99c3ad89e9710ce2186e470bbb45b5b17d4"
+      "detail": "18a43dc4ab7085b75f744a962f9f72b70113850071b1b1a9eb2e47fbf7d17494"
     },
     {
       "check": "build_ledger_release_tag_matches_manuscript",
       "ok": true,
-      "detail": "v1.0.20"
+      "detail": "v1.0.21"
     },
     {
       "check": "figure_byte_identical_fig_threshold_slice.pdf",
