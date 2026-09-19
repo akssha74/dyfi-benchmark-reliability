@@ -37,7 +37,8 @@ submitted. `[x]` = completed locally; `[ ]` = external/pre-submission action.
 - [x] Split contrast is descriptive only; no equivalence, zero-effect, leakage,
       winning-model, real-time, operational, causal, or cross-system claim
 - [x] Unexecuted geographic/aggregation/sequence sensitivities and incomplete
-      uncertainty coverage disclosed
+      uncertainty coverage disclosed; fixed sequence heuristic does not claim
+      complete physical-aftershock identification
 
 ## Journal format
 - [x] Official Springer Nature `sn-jnl` LaTeX class with `[iicol]`
@@ -74,7 +75,7 @@ submitted. `[x]` = completed locally; `[ ]` = external/pre-submission action.
 - [x] Clean-clone 16-page Tectonic reference build passes
 - [x] Public release manifest and canonical manuscript assets hash-verify
 - [x] Frozen result/code bytes were not changed during venue retargeting
-- [x] Evidence-corrected GitHub release v1.0.24 published and clean-clone verified
+- [x] Claim-scoped GitHub release v1.0.25 published and clean-clone verified
 - [x] Isolated `manuscript_source.zip` build reproduces the canonical 16-page PDF
 
 ## Author-side submission files

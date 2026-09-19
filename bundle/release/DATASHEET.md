@@ -3,7 +3,7 @@
 Following Gebru et al., *Datasheets for Datasets*.
 
 ## Motivation
-- **Purpose.** Provide a reusable, versioned, leakage-safe evaluation contract
+- **Purpose.** Provide a reusable, versioned, leakage-audited evaluation contract
   for predicting a later event-maximum severe felt-intensity label (`maxCDI>=6`)
   from outcome-blind USGS event source metadata, replacing ad-hoc single-system
   random splits with a frozen sequence-grouped protocol and an executable leakage
@@ -39,6 +39,8 @@ Following Gebru et al., *Datasheets for Datasets*.
 - **Eligibility.** `num_responses >= 10` (data-informed, disclosed; eligibility
   only).
 - **Grouping.** Single-link space-time connected components (100 km / 30 d).
+  Events linked by this fixed heuristic remain together, but the rule is not a
+  validated catalogue of all physical aftershock relationships.
 - **Quarantine.** Q1–Q5 cover event type, envelope, geometry, duplicate origins,
   and an explicit list. The two prelisted identifiers are absent from the frozen
   snapshot, so quarantine excludes no version 1 record.
@@ -47,7 +49,7 @@ Following Gebru et al., *Datasheets for Datasets*.
   per-event product-version or payload-hash columns.
 
 ## Uses
-- **Recommended.** Benchmarking leakage-safe evaluation, describing split
+- **Recommended.** Benchmarking leakage-audited evaluation, describing split
   behavior, calibration/uncertainty studies, and baseline-ranking analysis under
   a fixed non-selective suite.
 - **Cautions.** The endpoint may be magnitude-dominated; the two lowest-Brier
@@ -58,7 +60,7 @@ Following Gebru et al., *Datasheets for Datasets*.
 
 ## Distribution & maintenance
 - **Licence.** Derived data CC0 1.0; code MIT.
-- **Public release.** `https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.24`.
+- **Public release.** `https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.25`.
 - **Versioning.** `v1 = <access-instant>` snapshot; any later USGS revision defines
   a new version, never a silent overwrite.
 - **Reconstruction.** Fetch-and-verify source-locator manifest + payload hashes;

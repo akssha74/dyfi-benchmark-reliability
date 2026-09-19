@@ -148,7 +148,7 @@ def main() -> int:
     check("all_policy_pages_in_compliance_matrix",
           all(url in compliance_text for url in required_policy_urls)
           and "Validator count: 202 words" in compliance_text
-          and "87/72/67 characters" in compliance_text,
+          and "87/77/67 characters" in compliance_text,
           str(sorted(url for url in required_policy_urls if url not in compliance_text)))
     check("peer_model_and_alt_text_actions_recorded",
           "explicitly states single-anonymous peer review" in compliance_text
@@ -211,7 +211,11 @@ def main() -> int:
     check("split_contrast_framed_descriptively",
           "report the contrast descriptively" in main_tex
           and "zero-effect" in main_tex
-          and "unfulfilled element as a deviation" in main_tex, "")
+          and "unfulfilled element as a deviation" in main_tex
+          and "deterministic grouping heuristic" in main_tex
+          and "unlinked true" in main_tex
+          and "leakage-safe" not in main_tex
+          and "aftershocks cannot straddle roles" not in main_tex, "")
     check("no_winning_model_claim_in_prose",
           "no winning model" in main_tex and ai["no_winning_model_claim"] is True, "")
     check("protocol_chronology_disclosed",
@@ -381,8 +385,13 @@ def main() -> int:
           build_ledger["main_pdf_sha256"] == sha256(HERE / "main.pdf"),
           build_ledger["main_pdf_sha256"])
     release_tag = build_ledger["public_release_tag"]
+    root_citation = (MAN.parent / "CITATION.cff").read_text()
+    bundle_citation = (MAN.parent / "bundle" / "release" / "CITATION.cff").read_text()
     check("build_ledger_release_tag_matches_manuscript",
-          f"/releases/tag/{release_tag}" in main_tex,
+          f"/releases/tag/{release_tag}" in main_tex
+          and f'version: "{release_tag.removeprefix("v")}"' in root_citation
+          and f"/releases/tag/{release_tag}" in root_citation
+          and root_citation == bundle_citation,
           release_tag)
 
     # ---- 5. asset hash identity ----

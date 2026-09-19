@@ -45,7 +45,7 @@ Status key: **PASS**, **N/A**, **EXTERNAL** (author/portal action), **OPTIONAL**
 | Abstract 150–250 words | PASS | Validator count: 202 words |
 | No undefined abbreviations/references in abstract | PASS | DYFI and AUROC defined; no citations |
 | 4–6 keywords | PASS | Six keywords |
-| Three non-technical highlights, each ≤120 characters | PASS | 87/72/67 characters; included below abstract and as upload text |
+| Three non-technical highlights, each ≤120 characters | PASS | 87/77/67 characters; included below abstract and as upload text |
 | Statements and Declarations heading | PASS | Exact heading present |
 
 ### Text and references

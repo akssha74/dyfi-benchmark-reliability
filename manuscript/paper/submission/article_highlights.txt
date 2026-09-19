@@ -1,5 +1,5 @@
 A frozen USGS felt-report resource enables reproducible comparison of intensity models.
 
-Related earthquakes remain together when model performance is evaluated.
+Events linked by the fixed space-time rule remain together during evaluation.
 
 Split differences were small, and no model was declared the winner.

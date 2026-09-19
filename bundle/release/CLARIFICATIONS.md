@@ -11,6 +11,16 @@ with random splitting on a one-row-per-event table. The precise interpretation
 is that both impose the same grouping constraint because each event has one row.
 Their fold allocations are different, so their reported scores can differ.
 
+## Sequence-heuristic scope
+
+Historical protocol and code comments use “aftershock sequence” as shorthand
+for the fixed 100-km/30-day connected components. The implemented guarantee is
+narrower: events linked by that deterministic rule cannot straddle roles. The
+rule is not a validated catalogue of every physical mainshock--aftershock
+relationship, and an unlinked true aftershock can remain in a different role.
+No alternative sequence definition was executed in version 1, so the release
+makes no complete-aftershock-isolation or sequence-definition robustness claim.
+
 ## Protected-role status flag
 
 `result_core.real_protected_role_opened=false` is a stale compatibility field

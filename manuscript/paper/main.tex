@@ -71,7 +71,7 @@ resource, sequence-grouped cross-validation, reproducibility}
 \section*{Article Highlights}
 \begin{itemize}\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}
 \item A frozen USGS felt-report resource enables reproducible comparison of intensity models.
-\item Related earthquakes remain together when model performance is evaluated.
+\item Events linked by the fixed space--time rule remain together during evaluation.
 \item Split differences were small, and no model was declared the winner.
 \end{itemize}
 
@@ -117,7 +117,7 @@ reproduce and easy to over-read.
 \subsection{Contributions}\label{sec:contrib}
 
 We address the reproducibility and leakage gap by introducing a versioned
-benchmark resource centered on a reusable, leakage-safe evaluation contract.
+benchmark resource centered on a reusable, leakage-audited evaluation contract.
 Concretely, the resource provides:
 
 \begin{enumerate}
@@ -372,7 +372,10 @@ frozen snapshot.
 
 Events are grouped into seismic \emph{sequences} by order-stable single-link
 space--time connected components (100~km, 30~days); the sequence, not the event,
-is the unit of role assignment, so aftershocks cannot straddle roles. Roles are
+is the unit of role assignment, so events linked by this fixed rule cannot
+straddle roles. This rule is a deterministic grouping heuristic, not a validated
+catalogue of all physical mainshock--aftershock relationships; unlinked true
+aftershocks may therefore remain in different roles. Roles are
 assigned by an internally specified, outcome-independent rule (fixed assignment key,
 temporal cutoff year 2023, development fraction 0.2, five cross-validation
 folds); the rule provably never reads the label. The external holdout contains
@@ -679,8 +682,10 @@ count is used only for eligibility. B1 provides the simple magnitude comparator.
 values are temporal-holdout subgroups, not external transport evidence. The
 protocol-defined geographic evaluation and aggregation-grid sensitivity were not
 executed, and no alternative to the fixed 100-km/30-day sequence definition was
-tested. Consequently, no geographic, aggregation, or sequence-definition
-robustness claim is made.
+tested. The rule guarantees co-assignment only for events it links; it does not
+guarantee identification of every physical aftershock relationship.
+Consequently, no geographic, aggregation, sequence-definition, or complete
+aftershock-isolation robustness claim is made.
 
 \paragraph{Inference and held-out semantics.} The protocol-required split-contrast
 uncertainty interval was not retained, so that result remains descriptive with
@@ -706,7 +711,7 @@ split difference is small and slightly reversed, every learned baseline
 separates from the no-skill reference, and comparisons among the lowest-Brier
 models do not establish a winner. Every reported number reproduces exactly from
 the frozen analysis files. The resource lets subsequent macroseismic-intensity work evaluate
-against a fixed leakage-safe protocol, and remains reusable on denser-sequence
+against a fixed leakage-audited protocol, and remains reusable on denser-sequence
 datasets containing more multi-event sequences.
 
 \backmatter
@@ -726,7 +731,7 @@ recruited.
 \item \textbf{Consent for publication.} Not applicable.
 \item \textbf{Data availability.} Version~1 data, results, manifests, and
 instructions are available under CC0~1.0 at
-\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.24}.
+\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.25}.
 Source data are USGS DYFI and ANSS ComCat (public domain;
 \href{https://doi.org/10.5066/F7J101C8}{10.5066/F7J101C8} and
 \href{https://doi.org/10.5066/F7MS3QZH}{10.5066/F7MS3QZH}) and are reconstructable

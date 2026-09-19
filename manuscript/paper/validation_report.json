@@ -33,7 +33,7 @@
     {
       "check": "three_highlights_under_120_characters",
       "ok": true,
-      "detail": "[(87, 'A frozen USGS felt-report resource enables reproducible comparison of intensity models.'), (72, 'Related earthquakes remain together when model performance is evaluated.'), (67, 'Split differences were small, and no model was declared the winner.')]"
+      "detail": "[(87, 'A frozen USGS felt-report resource enables reproducible comparison of intensity models.'), (78, 'Events linked by the fixed space--time rule remain together during evaluation.'), (67, 'Split differences were small, and no model was declared the winner.')]"
     },
     {
       "check": "statements_and_declarations_heading",
@@ -518,17 +518,17 @@
     {
       "check": "build_ledger_main_tex_is_current",
       "ok": true,
-      "detail": "2d027d539f0f3278c89ac6a6e6f013cccaab8c5cd3d45795a7f49ad5ec0b3912"
+      "detail": "0335c3ce30abf2ccd6fbbc165627ae26add846773e6a6e2d8274d955f6cf0ffd"
     },
     {
       "check": "build_ledger_main_pdf_is_current",
       "ok": true,
-      "detail": "e2a809dd41539c51884c9dd4472bac872eb4fe575f817ce7336cdbbde39f9064"
+      "detail": "909df03e7dd817bf0de01c98a38059475aaa20234957daa022a3412d2da1ec60"
     },
     {
       "check": "build_ledger_release_tag_matches_manuscript",
       "ok": true,
-      "detail": "v1.0.24"
+      "detail": "v1.0.25"
     },
     {
       "check": "figure_byte_identical_fig_threshold_slice.pdf",
