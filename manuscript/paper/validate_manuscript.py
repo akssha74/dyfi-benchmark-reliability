@@ -140,7 +140,9 @@ def main() -> int:
         "rights-permissions-third-party-distribution",
     }
     check("all_policy_pages_in_compliance_matrix",
-          all(url in compliance_text for url in required_policy_urls),
+          all(url in compliance_text for url in required_policy_urls)
+          and "Validator count: 195 words" in compliance_text
+          and "87/72/67 characters" in compliance_text,
           str(sorted(url for url in required_policy_urls if url not in compliance_text)))
     check("peer_model_and_alt_text_actions_recorded",
           "explicitly states single-anonymous peer review" in compliance_text

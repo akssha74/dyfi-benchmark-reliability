@@ -42,10 +42,10 @@ Status key: **PASS**, **N/A**, **EXTERNAL** (author/portal action), **OPTIONAL**
 | LLM not listed as author | PASS | Only human authors listed |
 | LLM use documented in Methods where applicable | PASS | “Reproducible artwork and generative AI assistance” paragraph |
 | Human accountability for AI-assisted text/code | PASS | Explicit author verification and responsibility |
-| Abstract 150–250 words | PASS | Validator checks range; current abstract 189 words under journal counting |
+| Abstract 150–250 words | PASS | Validator count: 195 words |
 | No undefined abbreviations/references in abstract | PASS | DYFI and AUROC defined; no citations |
 | 4–6 keywords | PASS | Six keywords |
-| Three non-technical highlights, each ≤120 characters | PASS | 85/83/76 characters; included below abstract and as upload text |
+| Three non-technical highlights, each ≤120 characters | PASS | 87/72/67 characters; included below abstract and as upload text |
 | Statements and Declarations heading | PASS | Exact heading present |
 
 ### Text and references
