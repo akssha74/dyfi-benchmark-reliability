@@ -77,3 +77,7 @@ materialization cannot restore the pending template to the public bundle.
 The FDSN event service defines `endtime` as inclusive. No frozen event occurs at
 the 2025-01-01T00:00:00Z boundary, so the realized records span 2015--2024 even
 though the query envelope includes the boundary instant.
+The acquisition record retains the historical field name `costamped_count`;
+the count was requested at 06:34:20Z, 50 seconds after the 06:33:30Z payload
+access, within the same acquisition session. “Near-contemporaneous” is the
+precise interpretation; the two observations were not simultaneous.

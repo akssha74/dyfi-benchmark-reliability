@@ -21,7 +21,8 @@ Following Gebru et al., *Datasheets for Datasets*.
 ## Composition
 - **Instances.** One row per earthquake event with a DYFI product, drawn from a
   single hash-pinned USGS DYFI/ComCat snapshot; `M>=5`, 2015–2024, worldwide.
-  Outcome-blind universe count: 7,520 (co-stamped 2026-09-01T06:34:20Z; packet
+  Outcome-blind universe count: 7,520 (near-contemporaneous count at
+  2026-09-01T06:34:20Z, 50 seconds after payload access; packet
   preflight 7,575/7,576 — within disclosed catalogue-drift tolerance; the single
   pinned instant governs). Eligible after `num_responses>=10` + Q1–Q5: 2,362.
 - **Label.** `severe_label = 1[maxCDI>=6]`; primary threshold 6.0 with sensitivity
@@ -57,7 +58,7 @@ Following Gebru et al., *Datasheets for Datasets*.
 
 ## Distribution & maintenance
 - **Licence.** Derived data CC0 1.0; code MIT.
-- **Public release.** `https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.13`.
+- **Public release.** `https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.14`.
 - **Versioning.** `v1 = <access-instant>` snapshot; any later USGS revision defines
   a new version, never a silent overwrite.
 - **Reconstruction.** Fetch-and-verify source-locator manifest + payload hashes;

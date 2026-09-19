@@ -35,7 +35,7 @@ rejects additional fields.
 
 Version 1 provides snapshot-level provenance in
 `source_locator_manifest.json`: access instant, query and count URLs, payload
-size, co-stamped count, and source-payload SHA-256. The event table does not
+size, near-contemporaneous same-session count, and source-payload SHA-256. The event table does not
 contain per-event product-version, access-time, or payload-hash columns.
 
 ## Geographic result

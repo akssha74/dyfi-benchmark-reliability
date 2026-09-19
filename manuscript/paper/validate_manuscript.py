@@ -120,7 +120,8 @@ def main() -> int:
           and "other metrics are descriptive point estimates" in main_tex, "")
     check("fdsn_inclusive_endtime_disclosed",
           "FDSN defines the end bound as inclusive" in main_tex
-          and "realized snapshot spans 2015--2024" in main_tex, "")
+          and "realized snapshot spans 2015--2024" in main_tex
+          and "50 seconds later in the same acquisition session" in main_tex, "")
 
     # per-baseline holdout values must appear in the baseline table
     bt = tables["baseline_performance.tex"]
