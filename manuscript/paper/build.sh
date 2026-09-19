@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Deterministic, self-contained build of the Discover Applied Sciences manuscript.
+# Deterministic, self-contained build of the Journal of Seismology manuscript.
 #
 # Steps (all scripted, no hand-editing):
 #   1. Regenerate the venue-formatted table inputs from the canonical, validated

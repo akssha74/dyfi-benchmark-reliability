@@ -72,6 +72,8 @@ submitted. `[x]` = completed locally; `[ ]` = external/pre-submission action.
 - [x] Clean-clone 15-page Tectonic reference build passes
 - [x] Public release manifest and canonical manuscript assets hash-verify
 - [x] Frozen result/code bytes were not changed during venue retargeting
+- [ ] Venue-retargeted GitHub release v1.0.18 published and clean-clone verified
+- [x] Isolated `manuscript_source.zip` build reproduces the canonical 15-page PDF
 
 ## Author-side submission files
 - [x] Journal-specific cover letter drafted
