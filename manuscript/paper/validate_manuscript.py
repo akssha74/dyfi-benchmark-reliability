@@ -32,6 +32,7 @@ MANIFEST = MAN / "asset_manifest.json"
 MAIN = HERE / "main.tex"
 BIB = HERE / "references.bib"
 CITELEDGER = HERE / "citation_ledger.jsonl"
+BUILD_LEDGER = HERE / "build_ledger.json"
 
 results: list[dict] = []
 
@@ -228,7 +229,20 @@ def main() -> int:
     for f in ("sn-jnl.cls", "sn-basic.bst", "references.bib"):
         check(f"style_present_{f}", (HERE / f).exists(), f)
 
-    # ---- 4. asset hash identity ----
+    # ---- 4. compiled-artifact currency ----
+    build_ledger = json.loads(BUILD_LEDGER.read_text())
+    check("build_ledger_main_tex_is_current",
+          build_ledger["main_tex_sha256"] == sha256(MAIN),
+          build_ledger["main_tex_sha256"])
+    check("build_ledger_main_pdf_is_current",
+          build_ledger["main_pdf_sha256"] == sha256(HERE / "main.pdf"),
+          build_ledger["main_pdf_sha256"])
+    release_tag = build_ledger["public_release_tag"]
+    check("build_ledger_release_tag_matches_manuscript",
+          f"/releases/tag/{release_tag}" in main_tex,
+          release_tag)
+
+    # ---- 5. asset hash identity ----
     for fig in (HERE / "figures").glob("*.pdf"):
         canon = MAN / "figures" / fig.name
         check(f"figure_byte_identical_{fig.name}",

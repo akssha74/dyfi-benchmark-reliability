@@ -1,7 +1,7 @@
 {
   "record_type": "manuscript_paper_validation_report",
   "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
-  "n_checks": 88,
+  "n_checks": 91,
   "n_failed": 0,
   "overall_pass": true,
   "checks": [
@@ -389,6 +389,21 @@
       "check": "style_present_references.bib",
       "ok": true,
       "detail": "references.bib"
+    },
+    {
+      "check": "build_ledger_main_tex_is_current",
+      "ok": true,
+      "detail": "2a002c8655e4a5ce51e7a56780f4e5893bfd34a1272ba95ec6d51166c49ccfe5"
+    },
+    {
+      "check": "build_ledger_main_pdf_is_current",
+      "ok": true,
+      "detail": "f9a6f6261f65a78c53da3d7c49894180392166bed1822f82e904abb66db0527f"
+    },
+    {
+      "check": "build_ledger_release_tag_matches_manuscript",
+      "ok": true,
+      "detail": "v1.0.8"
     },
     {
       "check": "figure_byte_identical_fig_threshold_slice.pdf",
