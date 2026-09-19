@@ -245,7 +245,7 @@ def fig_leakage_split(D):
     brier = [ps[s]["brier"] for s in schemes]
     auroc = [ps[s]["auroc"] for s in schemes]
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10.0, 4.0), constrained_layout=True)
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9.6, 4.0), constrained_layout=True)
     fig.set_constrained_layout_pads(wspace=0.08)
     x = list(range(3))
     colors = [CB["vermillion"], CB["orange"], CB["green"]]

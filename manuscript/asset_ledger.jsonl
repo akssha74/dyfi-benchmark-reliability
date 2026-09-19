@@ -1,5 +1,5 @@
 {"kind": "code", "path": "manuscript/code/asset_common.py", "record_type": "public_manuscript_asset", "sha256": "d63cf3c3a9c9c82b26967425897db362033bfd6b202e48debeb98fa45ceed46a"}
-{"kind": "code", "path": "manuscript/code/build_figures.py", "record_type": "public_manuscript_asset", "sha256": "d3aac57f8ec6a018a9c46d500b83ffadc19b839f9615399711320bb1217013b7"}
+{"kind": "code", "path": "manuscript/code/build_figures.py", "record_type": "public_manuscript_asset", "sha256": "2c1c282262440a9ffa848c287c9fca4e45fe2fcaea10dab865572a4ddba2d4e2"}
 {"kind": "code", "path": "manuscript/code/build_tables.py", "record_type": "public_manuscript_asset", "sha256": "10832ea96022378f1959205f2e9775b1bac2bbbdb82ab5caa2c86c2047e4895e"}
 {"kind": "code", "path": "manuscript/code/generate_all.sh", "record_type": "public_manuscript_asset", "sha256": "3e7a2e8b69cb46c1f65696105876e1a10e9a52d0e82588f5956bf3773137fa44"}
 {"kind": "code", "path": "manuscript/code/validate_assets.py", "record_type": "public_manuscript_asset", "sha256": "4bf182f31d0940e0d76c35c8221c901d3b37f9da359521e79793d32151c7a2ad"}
@@ -14,9 +14,9 @@
 {"kind": "figure", "path": "manuscript/figures/fig_cohort_flow.pdf", "record_type": "public_manuscript_asset", "sha256": "96d09ddb53617a70e0e491e0f095db3d0288e165d4c7d5f16c1a018a56601dac"}
 {"kind": "figure", "path": "manuscript/figures/fig_cohort_flow.png", "record_type": "public_manuscript_asset", "sha256": "9fd83a6828c9c9ee804c520201c18109a5511dbd166108b4f4cf07645d7c6cec"}
 {"kind": "figure", "path": "manuscript/figures/fig_cohort_flow.svg", "record_type": "public_manuscript_asset", "sha256": "5be7e8e2d5bfcbbaf00d50f0f4a53ceb6eab0a127e189db9614f9235c183d75b"}
-{"kind": "figure", "path": "manuscript/figures/fig_leakage_split.pdf", "record_type": "public_manuscript_asset", "sha256": "35fef9913d612aeb3095b6d62ec5a23897f8f3af7e1e31189ec1e09ea6b44699"}
-{"kind": "figure", "path": "manuscript/figures/fig_leakage_split.png", "record_type": "public_manuscript_asset", "sha256": "856fed75ee12365262adce0f353bad36e4e73251f8845872dc1329697c2fb8f9"}
-{"kind": "figure", "path": "manuscript/figures/fig_leakage_split.svg", "record_type": "public_manuscript_asset", "sha256": "0e7bc92c931b80363689c1a4f944e6e16c16d359de35bee64505bc5946cc1012"}
+{"kind": "figure", "path": "manuscript/figures/fig_leakage_split.pdf", "record_type": "public_manuscript_asset", "sha256": "ef49b393d61ac69a8cca15e46e94e78a6df8006b4a89d1dde37d808b1eeb03b7"}
+{"kind": "figure", "path": "manuscript/figures/fig_leakage_split.png", "record_type": "public_manuscript_asset", "sha256": "c549aab57045ccd340d28d9d5bca5064c340b64ae247bfb178035183eec30efc"}
+{"kind": "figure", "path": "manuscript/figures/fig_leakage_split.svg", "record_type": "public_manuscript_asset", "sha256": "f1dbae622db479cd8f236e0532ddc8c3eb005af31564842d7b6057048a310ae5"}
 {"kind": "figure", "path": "manuscript/figures/fig_threshold_slice.pdf", "record_type": "public_manuscript_asset", "sha256": "70b523e011ec3867aec84550e73ed58385606ecbbced1f9a14bfe801d6d55354"}
 {"kind": "figure", "path": "manuscript/figures/fig_threshold_slice.png", "record_type": "public_manuscript_asset", "sha256": "a6a87fdc728a3c355a3ac691348acac5d2edd777534a879fa00f9aa46ddc52f5"}
 {"kind": "figure", "path": "manuscript/figures/fig_threshold_slice.svg", "record_type": "public_manuscript_asset", "sha256": "83833609123338390d9bf9a4c25ced23c91626022d259a24a099008d86bc5263"}

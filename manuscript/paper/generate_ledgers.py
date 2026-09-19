@@ -275,7 +275,13 @@ def build_build_ledger() -> dict:
     return {
         "record_type": "manuscript_build_ledger",
         "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
-        "engine": "tectonic (auto bibtex + reruns)",
+        "engine": "Tectonic 0.17.0 (auto BibTeX + reruns)",
+        "engine_reference_binary_sha256": "568dea0a81f4ceed859e33734bbbea85d54a25f14b12665a48c98b536a887986",
+        "pdf_determinism_scope": (
+            "Byte-identical under Tectonic 0.17.0 with the same cached resource "
+            "bundle and SOURCE_DATE_EPOCH. Other Tectonic versions may serialize "
+            "different PDF bytes while preserving identical text and pixels."
+        ),
         "entrypoint": "manuscript/paper/build.sh",
         "ordered_steps": [
             "python3 format_tables.py  (layout-only venue table copies)",
@@ -285,7 +291,7 @@ def build_build_ledger() -> dict:
         "inputs_are_immutable": True,
         "network_writes": False,
         "public_repository": "https://github.com/akssha74/dyfi-benchmark-reliability",
-        "public_release_tag": "v1.0.10",
+        "public_release_tag": "v1.0.11",
         "doi": None,
         "submitted": False,
         "main_tex_sha256": sha256(HERE / "main.tex"),

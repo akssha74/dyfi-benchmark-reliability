@@ -78,6 +78,12 @@ bash manuscript/paper/build.sh
 
 The expected output is a 13-page PDF with no undefined references and no
 overfull boxes.
+The reference PDF was generated with Tectonic 0.17.0 (reference binary SHA-256
+`568dea0a81f4ceed859e33734bbbea85d54a25f14b12665a48c98b536a887986`)
+and the fixed `SOURCE_DATE_EPOCH` in `build.sh`. Byte identity is expected with
+that engine and the same cached resource bundle. Other Tectonic versions can
+serialize different PDF bytes despite identical extracted text and rendered
+pixels; such a difference is toolchain drift, not a result difference.
 
 ## Environment
 
@@ -87,6 +93,7 @@ overfull boxes.
 - scikit-learn 1.5.2
 - XGBoost 2.1.4
 - Matplotlib 3.11.1 (separate figure environment)
+- Tectonic 0.17.0 (reference manuscript build)
 
 The published result files and protected holdout are immutable. Verification
 uses the released frozen outputs; it does not reopen the protected evaluation.
