@@ -1,7 +1,7 @@
 {
   "record_type": "manuscript_paper_validation_report",
   "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
-  "n_checks": 94,
+  "n_checks": 95,
   "n_failed": 0,
   "overall_pass": true,
   "checks": [
@@ -127,6 +127,11 @@
     },
     {
       "check": "metric_uncertainty_coverage_disclosed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "fdsn_inclusive_endtime_disclosed",
       "ok": true,
       "detail": ""
     },
@@ -408,17 +413,17 @@
     {
       "check": "build_ledger_main_tex_is_current",
       "ok": true,
-      "detail": "05b52d0ff8038742171c12a0d80f9af245b9094683749e64c6efc199469ba201"
+      "detail": "3c10b34c225eee7b1306a5317539a5d9e12b55139cf8197138441ec159c35a40"
     },
     {
       "check": "build_ledger_main_pdf_is_current",
       "ok": true,
-      "detail": "cbdc28121342d8ac4b171abf83434c54c541189959b1abe6d64f1ab976dc960b"
+      "detail": "ee6a87b8a4f992a54eed848c7c973298cfb26d7b2a42e1f8fd671a5494c741c3"
     },
     {
       "check": "build_ledger_release_tag_matches_manuscript",
       "ok": true,
-      "detail": "v1.0.12"
+      "detail": "v1.0.13"
     },
     {
       "check": "figure_byte_identical_fig_threshold_slice.pdf",

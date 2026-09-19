@@ -13,11 +13,11 @@
   "inputs_are_immutable": true,
   "network_writes": false,
   "public_repository": "https://github.com/akssha74/dyfi-benchmark-reliability",
-  "public_release_tag": "v1.0.12",
+  "public_release_tag": "v1.0.13",
   "doi": null,
   "submitted": false,
-  "main_tex_sha256": "05b52d0ff8038742171c12a0d80f9af245b9094683749e64c6efc199469ba201",
-  "references_bib_sha256": "f6cbe3e6aa8bd7dfc04c3cc7863de734d5673451a4c3b598fe23604b34321f69",
-  "main_pdf_sha256": "cbdc28121342d8ac4b171abf83434c54c541189959b1abe6d64f1ab976dc960b",
-  "main_pdf_bytes": 277179
+  "main_tex_sha256": "3c10b34c225eee7b1306a5317539a5d9e12b55139cf8197138441ec159c35a40",
+  "references_bib_sha256": "fb3e74a9069d10154afc65887a30f298cb6c7aab86bd15c8a6b28ab968ea6dcf",
+  "main_pdf_sha256": "ee6a87b8a4f992a54eed848c7c973298cfb26d7b2a42e1f8fd671a5494c741c3",
+  "main_pdf_bytes": 277253
 }

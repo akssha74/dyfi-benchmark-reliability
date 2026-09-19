@@ -118,6 +118,9 @@ def main() -> int:
     check("metric_uncertainty_coverage_disclosed",
           "only Brier-based intervals" in main_tex
           and "other metrics are descriptive point estimates" in main_tex, "")
+    check("fdsn_inclusive_endtime_disclosed",
+          "FDSN defines the end bound as inclusive" in main_tex
+          and "realized snapshot spans 2015--2024" in main_tex, "")
 
     # per-baseline holdout values must appear in the baseline table
     bt = tables["baseline_performance.tex"]
@@ -219,7 +222,8 @@ def main() -> int:
           and "year         = {2005}" in bibtext
           and "author       = {Wald, David J. and Dewey, James W.}" in bibtext
           and "@article{wald2012dyfi" in bibtext
-          and "year    = {2012}" in bibtext,
+          and "year    = {2012}" in bibtext
+          and "pages   = {688--707}" in bibtext,
           "")
 
     # ---- 3. file integrity ----

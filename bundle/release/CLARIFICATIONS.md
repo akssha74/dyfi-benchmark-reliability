@@ -74,3 +74,6 @@ the activated manifest in this release directory is canonical for version 1.
 `activation/materialize_release.py` stamps that template from the immutable
 acquisition record, and its summary records `ACTIVATED_FROZEN`, so rerunning
 materialization cannot restore the pending template to the public bundle.
+The FDSN event service defines `endtime` as inclusive. No frozen event occurs at
+the 2025-01-01T00:00:00Z boundary, so the realized records span 2015--2024 even
+though the query envelope includes the boundary instant.

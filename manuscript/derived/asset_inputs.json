@@ -84,7 +84,7 @@
     "F1_self_reference": {
       "disclosure": "manuscript/disclosures/F1_phase_f_self_reference_disclosure.json",
       "n_expected_stale_self_referential": 3,
-      "n_load_bearing_matched": 70
+      "n_load_bearing_matched": 73
     },
     "F3_split_contrast_framing": "The split contrast is small and slightly reversed on this M>=5 one-row-per-event corpus; it is reported descriptively without equivalence, zero-effect, leakage, or winning-method inference.",
     "IPE_excluded": "Atkinson-Wald (2007) DYFI IPE cannot be applied to the SOURCE_ONLY schema + tectonically heterogeneous population without inventing a site-distance covariate, a per-event ACR/SCR regime, and a probability link (see code/ipe_exclusion.json).",
@@ -670,7 +670,7 @@
       "data": "CC0-1.0",
       "source": "USGS public domain"
     },
-    "n_load_bearing_files_matched": 70,
+    "n_load_bearing_files_matched": 73,
     "n_self_referential_stale": 3,
     "predictions_digest": "58519b1ae48c949890ab3cddc3c2fcfdcbc680fc9fc71402b09f324be2d1138a",
     "python": "3.11.15",

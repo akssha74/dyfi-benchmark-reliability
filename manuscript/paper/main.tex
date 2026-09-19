@@ -245,7 +245,8 @@ through the International Federation of Digital Seismograph Networks (FDSN)
 event web service~\citep{usgs_dyfi_data,usgs_comcat}. The
 acquisition envelope is outcome-independent: $M\geq5$, product type
 \texttt{dyfi}, event type \texttt{earthquake}, starttime 2015-01-01 to endtime
-2025-01-01 (the fixed 2015--2024 decade, with the end bound exclusive), ordered
+2025-01-01. FDSN defines the end bound as inclusive; no frozen record occurs
+at that boundary, so the realized snapshot spans 2015--2024. Results are ordered
 by time. The preliminary count request and the final data request use this same
 envelope. Because the catalogue evolves, the downloaded data were frozen at one
 access instant (2026-09-01T06:33:30Z) and assigned a SHA-256 digital
@@ -680,7 +681,7 @@ human-subject collection, animals, or respondent-level identifying information.
 \item \textbf{Consent for publication.} Not applicable.
 \item \textbf{Data availability.} Version~1 data, results, manifests, and
 instructions are available under CC0~1.0 at
-\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.12}.
+\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.13}.
 Source data are USGS DYFI and ANSS ComCat (public domain;
 \href{https://doi.org/10.5066/F7J101C8}{10.5066/F7J101C8} and
 \href{https://doi.org/10.5066/F7MS3QZH}{10.5066/F7MS3QZH}) and are reconstructable
