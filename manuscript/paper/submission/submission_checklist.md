@@ -41,6 +41,8 @@ submitted. `[x]` = completed locally; `[ ]` = external/pre-submission action.
 
 ## Journal format
 - [x] Official Springer Nature `sn-jnl` LaTeX class with `[iicol]`
+- [x] Single-anonymous review confirmed on the live Ethics & Disclosures page;
+      author identities retained
 - [x] Author--year `sn-basic` citation style; bibliography alphabetized
 - [x] Decimal heading system with no more than three visible levels
 - [x] Seven Arabic-numbered tables cited consecutively with explanatory captions
@@ -66,12 +68,12 @@ submitted. `[x]` = completed locally; `[ ]` = external/pre-submission action.
 - [x] `claim_ledger.jsonl` maps 103 result claims to source pointers
 - [x] Citation ledger covers every cited bibliography entry
 - [x] Artifact and build ledgers record hashes and toolchain scope
-- [x] Standard-library manuscript validator passes 114/114 checks
+- [x] Standard-library manuscript validator passes 116/116 checks
 - [x] Pinned benchmark tests pass 110/110
 - [x] Clean-clone 15-page Tectonic reference build passes
 - [x] Public release manifest and canonical manuscript assets hash-verify
 - [x] Frozen result/code bytes were not changed during venue retargeting
-- [ ] Policy-audited GitHub release v1.0.21 published and clean-clone verified
+- [ ] Policy-audited GitHub release v1.0.22 published and clean-clone verified
 - [x] Isolated `manuscript_source.zip` build reproduces the canonical 15-page PDF
 
 ## Author-side submission files
@@ -87,6 +89,7 @@ submitted. `[x]` = completed locally; `[ ]` = external/pre-submission action.
       interface (interface entries are authoritative)
 - [ ] Enter suggested reviewers with institutional email or identity evidence,
       if the authors choose to suggest reviewers
+- [ ] Enter concise figure alt-text if requested by the Snapp/production interface
 - [ ] Select the traditional subscription route after acceptance if avoiding APC
 - [ ] Author final read-through and sign-off
 

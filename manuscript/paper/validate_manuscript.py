@@ -124,6 +124,11 @@ def main() -> int:
     check("public_manuscript_disclosed_as_preprint",
           "preprint" in cover_text.lower()
           and "update the public record" in cover_text.lower(), "")
+    cover_normalized = re.sub(r"\s+", " ", cover_text)
+    check("submission_documents_use_current_validation_count",
+          cover_normalized.count("116 manuscript checks") == 2
+          and "116 manuscript checks" in (SUBMISSION / "cover_letter.tex").read_text(),
+          "")
     compliance_text = (SUBMISSION / "journal_of_seismology_compliance.md").read_text()
     required_policy_urls = {
         "journal/10950/submission-guidelines",
@@ -137,6 +142,10 @@ def main() -> int:
     check("all_policy_pages_in_compliance_matrix",
           all(url in compliance_text for url in required_policy_urls),
           str(sorted(url for url in required_policy_urls if url not in compliance_text)))
+    check("peer_model_and_alt_text_actions_recorded",
+          "explicitly states single-anonymous peer review" in compliance_text
+          and "Figure alt-text in submission/production interface" in compliance_text,
+          "")
 
     # ---- 1. arithmetic / consistency ----
     cf = ai["cohort_flow"]

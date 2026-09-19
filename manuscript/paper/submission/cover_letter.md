@@ -52,14 +52,14 @@ documented dataset, software tools, and a reusable evaluation contract. This
 directly aligns with the journal's stated interest in machine learning,
 seismological datasets, software tools, and public resources that support
 transparent, reproducible earthquake science. Every numerical result is
-generated from frozen analysis outputs and checked automatically; all 102
+generated from frozen analysis outputs and checked automatically; all 116
 manuscript checks pass, and two clean reconstruction runs reproduce the recorded
 results and holdout predictions exactly.
 
 The versioned data, code, frozen results, and reproduction instructions are
 available in the public release at
 <https://github.com/akssha74/dyfi-benchmark-reliability>. A fresh public clone
-reproduced the 15-page manuscript, passed all 114 manuscript checks, and passed
+reproduced the 15-page manuscript, passed all 116 manuscript checks, and passed
 all 110 benchmark tests in a newly created pinned environment. The authors
 received no specific funding.
 

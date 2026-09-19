@@ -291,7 +291,7 @@ def build_build_ledger() -> dict:
         "inputs_are_immutable": True,
         "network_writes": False,
         "public_repository": "https://github.com/akssha74/dyfi-benchmark-reliability",
-        "public_release_tag": "v1.0.21",
+        "public_release_tag": "v1.0.22",
         "doi": None,
         "submitted": False,
         "main_tex_sha256": sha256(HERE / "main.tex"),

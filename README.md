@@ -41,7 +41,7 @@ python3 manuscript/paper/validate_manuscript.py
 Expected result:
 
 ```text
-validate_manuscript: 114 checks, 0 failed -> PASS
+validate_manuscript: 116 checks, 0 failed -> PASS
 ```
 
 To run the benchmark test suite:
