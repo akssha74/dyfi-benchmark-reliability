@@ -67,12 +67,12 @@ submitted. `[x]` = completed locally; `[ ]` = external/pre-submission action.
 - [x] `claim_ledger.jsonl` maps 103 result claims to source pointers
 - [x] Citation ledger covers every cited bibliography entry
 - [x] Artifact and build ledgers record hashes and toolchain scope
-- [x] Standard-library manuscript validator passes 104/104 checks
+- [x] Standard-library manuscript validator passes 106/106 checks
 - [x] Pinned benchmark tests pass 110/110
 - [x] Clean-clone 15-page Tectonic reference build passes
 - [x] Public release manifest and canonical manuscript assets hash-verify
 - [x] Frozen result/code bytes were not changed during venue retargeting
-- [ ] Venue-retargeted GitHub release v1.0.18 published and clean-clone verified
+- [ ] Venue-retargeted GitHub release v1.0.19 published and clean-clone verified
 - [x] Isolated `manuscript_source.zip` build reproduces the canonical 15-page PDF
 
 ## Author-side submission files

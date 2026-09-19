@@ -1,7 +1,7 @@
 {
   "record_type": "manuscript_paper_validation_report",
   "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
-  "n_checks": 104,
+  "n_checks": 106,
   "n_failed": 0,
   "overall_pass": true,
   "checks": [
@@ -361,6 +361,16 @@
       "detail": "[]"
     },
     {
+      "check": "relevant_editor_in_chief_work_engaged",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "bibliography_contains_recent_work",
+      "ok": true,
+      "detail": "[2025, 2025, 2025, 2025, 2025, 2025, 2026, 2026, 2026]"
+    },
+    {
       "check": "only_expected_entry_has_no_doi",
       "ok": true,
       "detail": "['pedregosa2011sklearn']"
@@ -458,17 +468,17 @@
     {
       "check": "build_ledger_main_tex_is_current",
       "ok": true,
-      "detail": "bcd9b778ce6d33aa82f5ec96644045cb59c77760e84aa5cba2652bba234e2cff"
+      "detail": "282d9a8b3d1f7b558008c0fc18dee183d7adc322334a5ce4c10e22fe5a09a33b"
     },
     {
       "check": "build_ledger_main_pdf_is_current",
       "ok": true,
-      "detail": "1a1b21dd4587f96e84c859a364f88ffed669b2f46204c9db7050b6aa534b89ff"
+      "detail": "d60e2c528e24ecd4e34d018b9c6038a28fa4df9ab8f7db648196570030f3be27"
     },
     {
       "check": "build_ledger_release_tag_matches_manuscript",
       "ok": true,
-      "detail": "v1.0.18"
+      "detail": "v1.0.19"
     },
     {
       "check": "figure_byte_identical_fig_threshold_slice.pdf",

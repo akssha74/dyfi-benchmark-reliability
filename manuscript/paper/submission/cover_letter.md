@@ -60,7 +60,7 @@ results and holdout predictions exactly.
 The versioned data, code, frozen results, and reproduction instructions are
 available in the public release at
 <https://github.com/akssha74/dyfi-benchmark-reliability>. A fresh public clone
-reproduced the 15-page manuscript, passed all 104 manuscript checks, and passed
+reproduced the 15-page manuscript, passed all 106 manuscript checks, and passed
 all 110 benchmark tests in a newly created pinned environment. The authors
 received no specific funding.
 

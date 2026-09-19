@@ -237,6 +237,12 @@ def main() -> int:
           jos_keys <= cited, str(sorted(jos_keys - cited)))
     # DOI presence (pedregosa is the one DOI-less JMLR entry)
     bibtext = BIB.read_text()
+    check("relevant_editor_in_chief_work_engaged",
+          "sarao2023crowdsourcing" in cited, "")
+    bib_years = [int(x) for x in re.findall(r"year\s*=\s*\{(\d{4})\}", bibtext)]
+    check("bibliography_contains_recent_work",
+          sum(y >= 2024 for y in bib_years) >= 9,
+          str(sorted(y for y in bib_years if y >= 2024)))
     entries = re.split(r"@\w+\{", bibtext)[1:]
     no_doi = []
     for e in entries:

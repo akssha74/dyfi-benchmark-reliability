@@ -9,5 +9,5 @@ Journal of Seismology upload files
 Requested article type: Data or Software Paper; use Original Paper if Snapp does not expose that label.
 The source ZIP compiles with the Springer Nature sn-jnl [iicol] template.
 
-main.pdf SHA-256: 1a1b21dd4587f96e84c859a364f88ffed669b2f46204c9db7050b6aa534b89ff
-source ZIP SHA-256: 359e68fc319b60f425a6a3e602935956b7472e41193356f2ad18343784e0e675
+main.pdf SHA-256: d60e2c528e24ecd4e34d018b9c6038a28fa4df9ab8f7db648196570030f3be27
+source ZIP SHA-256: ad6301d703b668cb56c1f1144d3179e132e87ceead2d5ba5e9198eb5d4d6d42f

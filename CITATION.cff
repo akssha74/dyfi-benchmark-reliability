@@ -2,10 +2,10 @@ cff-version: 1.2.0
 message: "If you use this benchmark, please cite the accompanying article and this release."
 title: "A versioned, leakage-audited USGS Did You Feel It? benchmark for machine-learning evaluation of severe felt intensity"
 type: dataset
-version: "1.0.18"
+version: "1.0.19"
 date-released: "2026-09-19"
 repository-code: "https://github.com/akssha74/dyfi-benchmark-reliability"
-url: "https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.18"
+url: "https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.19"
 license: CC0-1.0
 authors:
   - family-names: Sharma
