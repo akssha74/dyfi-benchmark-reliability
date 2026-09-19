@@ -21,7 +21,7 @@
     "baselines.assert_fit_allowed(spec, axis)": "raises LeakageError if the baseline's schema leaks the evaluation axis (e.g. B3_expanded_metadata_logit on temporal/geographic).",
     "baselines.tune_and_fit(spec, construction_rows, construction_groups, ledger, axis)": "fit ONLY on the construction role.",
     "baselines.predict_proba(fitted, protected_rows)": "score the protected role features (source-only, no leaking axis proxy).",
-    "metrics.summary(y, p, groups, threshold)": "Brier (primary), log-loss, AUROC, calibration, confusion at the development-fixed threshold.",
+    "metrics.summary(y, p, groups, threshold)": "Brier (primary), log-loss, AUROC, calibration, confusion at the protocol-fixed threshold; no threshold-selection procedure is executed.",
     "metrics.cluster_bootstrap(y, p, groups, metric, n_boot>=2000, seed)": "sequence-cluster CI with the minimum-valid-replicate rule.",
     "metrics.paired_cluster_bootstrap_difference(y, pa, pb, groups, metric, resolution_floor)": "paired ranking with tie probability and a resolution rule.",
     "metrics.slice_metrics / metrics.threshold_sensitivity": "temporal/geographic slices and cdi>=5.5/6/6.5 endpoint-threshold sensitivity."

@@ -3,7 +3,7 @@
 {"kind": "code", "path": "manuscript/code/build_tables.py", "record_type": "public_manuscript_asset", "sha256": "10832ea96022378f1959205f2e9775b1bac2bbbdb82ab5caa2c86c2047e4895e"}
 {"kind": "code", "path": "manuscript/code/generate_all.sh", "record_type": "public_manuscript_asset", "sha256": "3e7a2e8b69cb46c1f65696105876e1a10e9a52d0e82588f5956bf3773137fa44"}
 {"kind": "code", "path": "manuscript/code/validate_assets.py", "record_type": "public_manuscript_asset", "sha256": "4bf182f31d0940e0d76c35c8221c901d3b37f9da359521e79793d32151c7a2ad"}
-{"kind": "other", "path": "manuscript/derived/asset_inputs.json", "record_type": "public_manuscript_asset", "sha256": "b7f7dea60c7421b0b75870d45421c094e3cd4b5e325702c94b498ebc7926ace9"}
+{"kind": "other", "path": "manuscript/derived/asset_inputs.json", "record_type": "public_manuscript_asset", "sha256": "12d7e2bdf47ac5ddee0a32f64c354cd1bc1d7266387d512181fcdd8d2916f1b6"}
 {"kind": "other", "path": "manuscript/derived/pairwise_ranking_stability.csv", "record_type": "public_manuscript_asset", "sha256": "acb218ee176982bc86b876d5f25fc107f09d7e16e5653efd66d91589529b3456"}
 {"kind": "other", "path": "manuscript/derived/pairwise_ranking_stability.json", "record_type": "public_manuscript_asset", "sha256": "88ebdd04c5e687623c3ff9d9a4f63fd6ec30b5270bf9cbb9636b87deab6bcff8"}
 {"kind": "other", "path": "manuscript/derived/reconstruction_verification.json", "record_type": "public_manuscript_asset", "sha256": "512482193eb4a0861a03ab6247a9c9833618405ad2566d2be5fe246a62f735f2"}

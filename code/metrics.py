@@ -196,9 +196,10 @@ def calibration_intercept_slope(
 def classification_at_threshold(y, p, threshold: float) -> Dict[str, object]:
     """Confusion matrix + precision/recall/F1/accuracy at a FIXED threshold.
 
-    The threshold is a development-fixed decision cut (>= threshold -> positive),
-    supplied by the caller from the frozen development configuration; it is never
-    tuned on the data being scored here.
+    The threshold is a protocol-fixed decision cut (>= threshold -> positive);
+    no threshold-selection procedure is performed here. It is supplied by the
+    caller from the frozen protocol configuration and is never tuned on the data
+    being scored.
     """
     y, p = _as_arrays(y, p)
     if y.size == 0:

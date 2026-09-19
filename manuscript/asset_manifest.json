@@ -5,7 +5,7 @@
     "manuscript/code/build_tables.py": "10832ea96022378f1959205f2e9775b1bac2bbbdb82ab5caa2c86c2047e4895e",
     "manuscript/code/generate_all.sh": "3e7a2e8b69cb46c1f65696105876e1a10e9a52d0e82588f5956bf3773137fa44",
     "manuscript/code/validate_assets.py": "4bf182f31d0940e0d76c35c8221c901d3b37f9da359521e79793d32151c7a2ad",
-    "manuscript/derived/asset_inputs.json": "b7f7dea60c7421b0b75870d45421c094e3cd4b5e325702c94b498ebc7926ace9",
+    "manuscript/derived/asset_inputs.json": "12d7e2bdf47ac5ddee0a32f64c354cd1bc1d7266387d512181fcdd8d2916f1b6",
     "manuscript/derived/pairwise_ranking_stability.csv": "acb218ee176982bc86b876d5f25fc107f09d7e16e5653efd66d91589529b3456",
     "manuscript/derived/pairwise_ranking_stability.json": "88ebdd04c5e687623c3ff9d9a4f63fd6ec30b5270bf9cbb9636b87deab6bcff8",
     "manuscript/derived/reconstruction_verification.json": "512482193eb4a0861a03ab6247a9c9833618405ad2566d2be5fe246a62f735f2",
@@ -41,7 +41,7 @@
   },
   "asset_ledger": {
     "path": "manuscript/asset_ledger.jsonl",
-    "sha256": "4637b5c3568fe6f4f8f269064237e4003c7f2d8dfa11387b0cb474f7ec6b2850"
+    "sha256": "a9d58191effe7dd69a6c078d596013919e2d7c277441203a42dff7516b57f697"
   },
   "counts_by_type": {
     "code": 5,
@@ -53,6 +53,6 @@
   "n_artifacts": 38,
   "note": "Release-specific manifest. Shipped generators rebuild the seven reader-facing tables and four figures from committed verified asset inputs; they do not refit models or reopen the protected role.",
   "record_type": "public_release_manuscript_asset_manifest",
-  "release": "v1.0.9",
+  "release": "v1.0.10",
   "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1"
 }

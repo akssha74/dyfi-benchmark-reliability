@@ -33,6 +33,10 @@ The threshold analysis relabels and rescores the fixed B2 probabilities; it does
 not refit or recalibrate B2 for the alternate cutoffs. The protocol-required
 aggregation-grid sensitivity was not executed. Version 1 therefore makes no
 aggregation-robustness claim.
+The historical protocol record calls the 0.5 classification cutoff
+“development-fixed,” but no threshold-selection procedure was executed; the
+released analysis uses the protocol-fixed constant 0.5. The historical record
+is preserved rather than silently rewritten.
 
 ## Protocol chronology and uncertainty
 

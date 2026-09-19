@@ -217,7 +217,9 @@ def main() -> int:
           and "volume  = {65}" in bibtext
           and "@misc{usgs_dyfi_data" in bibtext
           and "year         = {2005}" in bibtext
-          and "author       = {Wald, David J. and Dewey, James W.}" in bibtext,
+          and "author       = {Wald, David J. and Dewey, James W.}" in bibtext
+          and "@article{wald2012dyfi" in bibtext
+          and "year    = {2012}" in bibtext,
           "")
 
     # ---- 3. file integrity ----

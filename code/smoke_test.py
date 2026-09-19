@@ -31,7 +31,7 @@ import environment
 import metrics
 import synthetic_fixtures as fx
 
-DEV_THRESHOLD = 0.5          # development-fixed decision threshold
+DEV_THRESHOLD = 0.5          # protocol-fixed; no threshold-selection procedure
 BOOTSTRAP_DRAWS = 2000
 BOOTSTRAP_SEED = 20260901
 HERE = os.path.dirname(os.path.abspath(__file__))

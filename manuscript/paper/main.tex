@@ -31,8 +31,8 @@
 \setlength{\intextsep}{8pt plus 2pt minus 2pt}
 \AtBeginDocument{%
   \hypersetup{bookmarksdepth=2}%
-  \setlength{\bibsep}{0.5pt plus 0.3pt minus 0.2pt}%
-  \def\bibfont{\fontsize{8pt}{9.2pt}\selectfont}%
+  \setlength{\bibsep}{0pt plus 0.2pt}%
+  \def\bibfont{\fontsize{8pt}{9pt}\selectfont}%
 }
 
 \begin{document}
@@ -83,7 +83,7 @@ The U.S. Geological Survey ``Did You Feel It?'' (DYFI) system converts
 crowd-sourced felt reports into a numeric community-decimal intensity (CDI) for
 each earthquake, providing a dense, decades-long record of observed shaking that
 complements sparse instrumental networks~\citep{wald1999dyfi,atkinson2007dyfi,
-wald2011dyfi,quitoriano2020dyfi}. Because the felt-intensity outcome of an event
+wald2012dyfi,quitoriano2020dyfi}. Because the felt-intensity outcome of an event
 is only realised after responses accumulate, a natural retrospective question is
 how well the \emph{severe} outcome of an event---an event-maximum intensity in
 the damaging range ($\mathrm{maxCDI}\geq 6$)---can be anticipated from
@@ -163,7 +163,7 @@ exact reconstruction provide that foundation for felt-intensity modelling.
 \paragraph{DYFI and macroseismic intensity.} The DYFI system and its CDI
 construction, outlier handling, and post-event revision behaviour are documented
 in the foundational and review literature~\citep{wald1999dyfi,atkinson2007dyfi,
-wald2011dyfi,quitoriano2020dyfi}; these establish that CDI is an
+wald2012dyfi,quitoriano2020dyfi}; these establish that CDI is an
 after-the-event, response-driven quantity subject to ascertainment effects,
 which is precisely why our protocol uses response count only to determine
 eligibility and forbids it as a predictive feature (Section~\ref{sec:data}).
@@ -680,7 +680,7 @@ human-subject collection, animals, or respondent-level identifying information.
 \item \textbf{Consent for publication.} Not applicable.
 \item \textbf{Data availability.} Version~1 data, results, manifests, and
 instructions are available under CC0~1.0 at
-\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.9}.
+\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.10}.
 Source data are USGS DYFI and ANSS ComCat (public domain;
 \href{https://doi.org/10.5066/F7J101C8}{10.5066/F7J101C8} and
 \href{https://doi.org/10.5066/F7MS3QZH}{10.5066/F7MS3QZH}) and are reconstructable
@@ -695,6 +695,6 @@ and analysis and drafted the manuscript. L.~Prasad supervised and revised the
 work. Both authors approved the final manuscript.
 \end{itemize}
 
-{\fontsize{8pt}{9.2pt}\selectfont\setlength{\bibsep}{0.5pt plus 0.2pt}\bibliography{references}}
+{\fontsize{8pt}{9pt}\selectfont\setlength{\bibsep}{0pt plus 0.2pt}\bibliography{references}}
 
 \end{document}
