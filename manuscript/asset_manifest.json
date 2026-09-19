@@ -53,6 +53,6 @@
   "n_artifacts": 38,
   "note": "Release-specific manifest. Shipped generators rebuild the seven reader-facing tables and four figures from committed verified asset inputs; they do not refit models or reopen the protected role.",
   "record_type": "public_release_manuscript_asset_manifest",
-  "release": "v1.0.26",
+  "release": "v1.0.27",
   "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1"
 }

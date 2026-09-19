@@ -131,9 +131,13 @@ def main() -> int:
           and re.search(r"no separate\s+licence is granted",
                         (SUBMISSION / "cover_letter.tex").read_text(), re.I) is not None, "")
     cover_normalized = re.sub(r"\s+", " ", cover_text)
-    check("submission_documents_use_current_validation_count",
-          cover_normalized.count("116 manuscript checks") == 2
-          and "116 manuscript checks" in (SUBMISSION / "cover_letter.tex").read_text(),
+    cover_tex = (SUBMISSION / "cover_letter.tex").read_text()
+    check("submission_documents_describe_automated_validation",
+          "released manuscript validator and benchmark test suite" in cover_normalized
+          and "released manuscript validator and" in cover_tex
+          and "benchmark test suite" in cover_tex
+          and "116 manuscript checks" not in cover_text + cover_tex
+          and "110 benchmark tests" not in cover_text + cover_tex,
           "")
     compliance_text = (SUBMISSION / "journal_of_seismology_compliance.md").read_text()
     required_policy_urls = {
