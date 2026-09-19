@@ -6,8 +6,8 @@ Journal of Seismology upload files
 3. cover_letter.pdf — upload separately as the cover letter
 4. article_highlights.txt — three journal-required highlights
 
-Requested article type: Data or Software Paper; use Original Paper if Snapp does not expose that label.
+Article type: Research Article documenting a public data/software benchmark resource.
 The source ZIP compiles with the Springer Nature sn-jnl [iicol] template.
 
-main.pdf SHA-256: d60e2c528e24ecd4e34d018b9c6038a28fa4df9ab8f7db648196570030f3be27
-source ZIP SHA-256: ad6301d703b668cb56c1f1144d3179e132e87ceead2d5ba5e9198eb5d4d6d42f
+main.pdf SHA-256: 573b6d396d7b1c1bc78b7498ec98a99c3ad89e9710ce2186e470bbb45b5b17d4
+source ZIP SHA-256: 07cbdf629331e354f4d19c33ff10a939f50cba447333731af99bf961124489c6

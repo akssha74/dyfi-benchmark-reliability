@@ -33,6 +33,8 @@ MAIN = HERE / "main.tex"
 BIB = HERE / "references.bib"
 CITELEDGER = HERE / "citation_ledger.jsonl"
 BUILD_LEDGER = HERE / "build_ledger.json"
+SUBMISSION = HERE / "submission"
+FIGURE_GENERATOR = MAN / "code" / "build_figures.py"
 
 results: list[dict] = []
 
@@ -83,10 +85,56 @@ def main() -> int:
           str([(len(x), x) for x in highlights]))
     check("statements_and_declarations_heading",
           r"\section*{Statements and Declarations}" in main_tex, "")
+    ai_heading = r"\paragraph{Reproducible artwork and generative AI assistance.}"
     check("generative_ai_disclosed_in_methods",
-          r"\paragraph{Generative AI assistance.}" in main_tex
-          and main_tex.index(r"\paragraph{Generative AI assistance.}")
-          < main_tex.index(r"\section{Results}"), "")
+          ai_heading in main_tex
+          and main_tex.index(ai_heading) < main_tex.index(r"\section{Results}"),
+          "")
+    check("acknowledgements_in_front_matter",
+          r"\section*{Acknowledgements}" in main_tex
+          and main_tex.index(r"\section*{Acknowledgements}")
+          < main_tex.index(r"\section{Introduction}"), "")
+    check("separate_ethics_and_consent_headings",
+          r"\textbf{Ethics approval.}" in main_tex
+          and r"\textbf{Consent to participate.}" in main_tex
+          and r"\textbf{Consent for publication.}" in main_tex, "")
+    check("template_bibliography_defaults_preserved",
+          r"\def\bibfont" not in main_tex
+          and r"\fontsize{8pt}" not in main_tex
+          and r"\setlength{\bibsep}" not in main_tex, "")
+    captions = re.findall(r"\\caption\{(.*?)\}\s*\\label", main_tex, re.S)
+    check("figure_captions_have_no_terminal_punctuation",
+          len(captions) == 4
+          and all(not c.rstrip().endswith((".", ";", ":")) for c in captions),
+          str([c.rstrip()[-20:] for c in captions]))
+    figure_source = FIGURE_GENERATOR.read_text()
+    check("figure_descriptions_moved_out_of_artwork",
+          'set_title("Baseline performance' not in figure_source
+          and "Brier difference: sequence" not in figure_source
+          and "Sensitivity to the severe-intensity cutoff" not in figure_source
+          and "Performance by holdout year" not in figure_source, "")
+    cover_text = (SUBMISSION / "cover_letter.md").read_text()
+    inquiry_text = (SUBMISSION / "presubmission_inquiry.md").read_text()
+    check("research_article_type_consistent",
+          "**Research Article**" in cover_text
+          and "Research Article" in inquiry_text
+          and "Data or Software Paper" not in cover_text + inquiry_text, "")
+    check("public_manuscript_disclosed_as_preprint",
+          "preprint" in cover_text.lower()
+          and "update the public record" in cover_text.lower(), "")
+    compliance_text = (SUBMISSION / "journal_of_seismology_compliance.md").read_text()
+    required_policy_urls = {
+        "journal/10950/submission-guidelines",
+        "pre-submission?journalId=10950",
+        "journal/10950/aims-and-scope",
+        "journal/10950/editorial-board",
+        "brands/springer/journal-policies",
+        "journal/10950/ethics-and-disclosures",
+        "rights-permissions-third-party-distribution",
+    }
+    check("all_policy_pages_in_compliance_matrix",
+          all(url in compliance_text for url in required_policy_urls),
+          str(sorted(url for url in required_policy_urls if url not in compliance_text)))
 
     # ---- 1. arithmetic / consistency ----
     cf = ai["cohort_flow"]
@@ -243,6 +291,7 @@ def main() -> int:
     check("bibliography_contains_recent_work",
           sum(y >= 2024 for y in bib_years) >= 9,
           str(sorted(y for y in bib_years if y >= 2024)))
+
     entries = re.split(r"@\w+\{", bibtext)[1:]
     no_doi = []
     for e in entries:

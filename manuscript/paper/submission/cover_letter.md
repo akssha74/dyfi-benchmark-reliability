@@ -13,9 +13,8 @@ Dear Editors,
 
 We submit for your consideration our manuscript, *"A versioned, leakage-audited
 USGS Did You Feel It? benchmark for machine-learning evaluation of severe felt
-intensity."* We request handling as a **data or software paper** documenting a
-public seismological resource; if that label is unavailable in the submission
-system, we request consideration as an Original Paper.
+intensity."* We request handling as a **Research Article** documenting a public
+seismological data/software benchmark resource.
 
 Machine-learning studies of macroseismic felt intensity commonly use bespoke
 datasets and random record-level splits. Their results are therefore difficult to
@@ -60,9 +59,13 @@ results and holdout predictions exactly.
 The versioned data, code, frozen results, and reproduction instructions are
 available in the public release at
 <https://github.com/akssha74/dyfi-benchmark-reliability>. A fresh public clone
-reproduced the 15-page manuscript, passed all 106 manuscript checks, and passed
+reproduced the 15-page manuscript, passed all 114 manuscript checks, and passed
 all 110 benchmark tests in a newly created pinned environment. The authors
 received no specific funding.
+
+The same tagged release contains a non-peer-reviewed manuscript PDF and source;
+we disclose this as a preprint under Springer Nature's preprint policy. If
+published, we will update the public record with the article DOI and journal URL.
 
 The authors declare no competing interests. The study uses aggregate,
 public-domain event-level metadata, involves no human participants, and

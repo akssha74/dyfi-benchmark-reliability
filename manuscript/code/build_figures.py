@@ -226,8 +226,6 @@ def fig_baseline_scores(D):
     ax.set_xlabel("Brier score (lower is better)", fontsize=11.5)
     ax.set_xlim(min(ci_lo) - 0.012, max(ci_hi) + 0.047)
     ax.set_ylim(-0.6, len(order) - 0.4)
-    ax.set_title("Baseline performance on the temporal holdout (95% CI)",
-                 fontsize=11.5, pad=8)
     ax.grid(axis="x", linestyle=":", alpha=0.22)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
@@ -260,7 +258,7 @@ def fig_leakage_split(D):
     ax1.set_xticklabels(labels, fontsize=13.0, fontweight="normal")
     ax1.set_ylabel("Brier score (lower is better)", fontsize=13.5)
     ax1.set_ylim(min(brier) - 0.012, max(brier) + 0.016)
-    ax1.set_title(f"(a) Brier difference: sequence $-$ random = {lk['brier_inflation_seq_minus_random']:+.4f}", fontsize=13.0, pad=7)
+    ax1.set_title("(a)", loc="left", fontsize=13.0, pad=7)
     ax1.grid(axis="y", linestyle=":", alpha=0.22)
 
     bars2 = ax2.bar(x, auroc, color=colors, edgecolor=CB["rule"], linewidth=0.7, alpha=0.82)
@@ -273,7 +271,7 @@ def fig_leakage_split(D):
     ax2.set_xticklabels(labels, fontsize=13.0, fontweight="normal")
     ax2.set_ylabel("AUROC (higher is better)", fontsize=13.5)
     ax2.set_ylim(min(auroc) - 0.012, max(auroc) + 0.016)
-    ax2.set_title(f"(b) AUROC difference: random $-$ sequence = {lk['auroc_inflation_random_minus_seq']:+.4f}", fontsize=13.0, pad=7)
+    ax2.set_title("(b)", loc="left", fontsize=13.0, pad=7)
     ax2.grid(axis="y", linestyle=":", alpha=0.22)
 
     return _save(fig, "fig_leakage_split",
@@ -322,7 +320,7 @@ def fig_threshold_slice(D):
     ax1.set_ylabel("Metric value", fontsize=13.5)
     ax1.set_xticks(thr)
     ax1.set_xticklabels([f"{t:.1f}" for t in thr], fontsize=13.0)
-    ax1.set_title("(a) Sensitivity to the severe-intensity cutoff", fontsize=13.0, pad=7)
+    ax1.set_title("(a)", loc="left", fontsize=13.0, pad=7)
     ax1.legend(fontsize=13.0, loc="center right", framealpha=0.95, edgecolor="0.6")
     ax1.grid(True, linestyle=":", alpha=0.22)
 
@@ -339,7 +337,7 @@ def fig_threshold_slice(D):
     ax2.set_xticklabels([f"{y}\n({tslice[y]['n']} events)" for y in years], fontsize=13.0, fontweight="normal")
     ax2.set_ylabel("Metric value", fontsize=13.5)
     ax2.set_ylim(0, 1.08)
-    ax2.set_title("(b) Performance by holdout year", fontsize=13.0, pad=7)
+    ax2.set_title("(b)", loc="left", fontsize=13.0, pad=7)
     ax2.legend(fontsize=13.0, loc="upper center", framealpha=0.95, edgecolor="0.6")
     ax2.grid(axis="y", linestyle=":", alpha=0.22)
 

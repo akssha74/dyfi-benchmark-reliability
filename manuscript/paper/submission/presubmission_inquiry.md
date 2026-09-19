@@ -5,7 +5,7 @@ Dear Editors,
 We are preparing a manuscript entitled “A versioned, leakage-audited USGS
 Did You Feel It? benchmark for machine-learning evaluation of severe felt
 intensity” and would appreciate guidance on its suitability for the *Journal of
-Seismology* as a data or software paper (or, if preferred, an Original Paper).
+Seismology* as a Research Article documenting a public data/software benchmark.
 
 The manuscript releases a frozen event-level USGS DYFI benchmark, an executable
 six-category leakage audit, sequence-grouped analysis roles, reference
@@ -23,7 +23,7 @@ operational-forecasting benefit, or causal claim is made.
 The work appears aligned with the journal’s stated support for machine learning,
 citizen-science seismology, and well-documented public datasets and software
 resources. Could you advise whether the manuscript would be appropriate for
-submission and which article type should be selected in Snapp?
+submission to the journal?
 
 Sincerely,
 

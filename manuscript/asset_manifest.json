@@ -1,7 +1,7 @@
 {
   "artifacts": {
     "manuscript/code/asset_common.py": "d63cf3c3a9c9c82b26967425897db362033bfd6b202e48debeb98fa45ceed46a",
-    "manuscript/code/build_figures.py": "733eac0b00daa2f00ed8c45733ad63aedd74e87052a5a90fa9c1d06f93aa8e5a",
+    "manuscript/code/build_figures.py": "d43c3c7fa15e4889349946bcf9b7764f5b6265b423afca1822a2b3b3bce112c6",
     "manuscript/code/build_tables.py": "10832ea96022378f1959205f2e9775b1bac2bbbdb82ab5caa2c86c2047e4895e",
     "manuscript/code/generate_all.sh": "3e7a2e8b69cb46c1f65696105876e1a10e9a52d0e82588f5956bf3773137fa44",
     "manuscript/code/validate_assets.py": "4bf182f31d0940e0d76c35c8221c901d3b37f9da359521e79793d32151c7a2ad",
@@ -10,18 +10,18 @@
     "manuscript/derived/pairwise_ranking_stability.json": "88ebdd04c5e687623c3ff9d9a4f63fd6ec30b5270bf9cbb9636b87deab6bcff8",
     "manuscript/derived/reconstruction_verification.json": "512482193eb4a0861a03ab6247a9c9833618405ad2566d2be5fe246a62f735f2",
     "manuscript/derived/table_captions.json": "c89c3b90ee311a115cc7a0611336a2cfda7eefed4b21cc348fa7dff1196d0284",
-    "manuscript/figures/fig_baseline_scores.pdf": "65d8e41d1086b6b9cd27d28a4e79ff0ccd739334d9ec9e069254a98fc1fbfd64",
-    "manuscript/figures/fig_baseline_scores.png": "24fcc24512810de923900818897f6c6011fe3053403555658e4efe550db01b60",
-    "manuscript/figures/fig_baseline_scores.svg": "ce355fcadd20454bd24d38dc7cda682f33092b7c071882acc5fda0cb32233817",
+    "manuscript/figures/fig_baseline_scores.pdf": "17332aa64ec98a193665384a9973e91dc8a40dbd3bc5e27f8a13fc5738db410a",
+    "manuscript/figures/fig_baseline_scores.png": "c1dff02dce004aeea76543adffde87a52b34583fe7e42fc382c1e483cff79fbc",
+    "manuscript/figures/fig_baseline_scores.svg": "f24ddef4dccc82b91a423b3701fbb2853bcbfd7efd7a92e923a5d40252a88cd8",
     "manuscript/figures/fig_cohort_flow.pdf": "3c83e9937e0ba96f45e3454c1ca574b103f6d49361a60fc6bc075e9da2b82539",
     "manuscript/figures/fig_cohort_flow.png": "e02d6374386b3f27c5872edaff8629d3c2d4e5c3872f16581081e8d5a19c791a",
     "manuscript/figures/fig_cohort_flow.svg": "e1ec18f0f7abcaaf47073a80d75a4b5354c7e68a0ee910e6a5bd6142c1dbd8b9",
-    "manuscript/figures/fig_leakage_split.pdf": "ef49b393d61ac69a8cca15e46e94e78a6df8006b4a89d1dde37d808b1eeb03b7",
-    "manuscript/figures/fig_leakage_split.png": "c549aab57045ccd340d28d9d5bca5064c340b64ae247bfb178035183eec30efc",
-    "manuscript/figures/fig_leakage_split.svg": "f1dbae622db479cd8f236e0532ddc8c3eb005af31564842d7b6057048a310ae5",
-    "manuscript/figures/fig_threshold_slice.pdf": "339280721f9dc50918534cedef09dbabac65e1e51108105a3e7e53c0d254786d",
-    "manuscript/figures/fig_threshold_slice.png": "593d9a287899996049c0cc8d9d527002b625d6e29fc886db55395a3cff401a58",
-    "manuscript/figures/fig_threshold_slice.svg": "3d73258598ac13bf3ff4d82afad2a25c2bc292306c5653324911011a859963bd",
+    "manuscript/figures/fig_leakage_split.pdf": "1402fe5a2f562cb9cf57af6c9010a2deb6c928dbe6901c793618a39f9c636441",
+    "manuscript/figures/fig_leakage_split.png": "b05c7cc437c00667e6cba0ac96202d2bd3ce47de5da11285a3ceb410d438c086",
+    "manuscript/figures/fig_leakage_split.svg": "b589fed7a89b6ae054eefc7ab28f8a93e8a8ff89c7805ff9bb9995bdbf2375da",
+    "manuscript/figures/fig_threshold_slice.pdf": "2b780388f25c6088d50b72d4fe7b7edaa166effa6a68c8fd1c5eb5202ada9b4b",
+    "manuscript/figures/fig_threshold_slice.png": "688b4aea0e0399a1b3af306bbe5ea98495115155803dbabe85f98b262e7cd40c",
+    "manuscript/figures/fig_threshold_slice.svg": "65519db7b99379a46fc3fa6d72f0d1e520c0fc9c6eeaa1ad2788898c2d49cd78",
     "manuscript/requirements-assets.lock.txt": "0c3c10b33e23901fcedde9ac7b49dad9eccee9d2cc458ab67fbd926256bdfd3a",
     "manuscript/tables/baseline_performance.csv": "c1bf2520f2e092696423929cf36f053ed3b9ccd50ea53b204db1bdcc43bc32d6",
     "manuscript/tables/baseline_performance.tex": "b955fe7bd7024486650779876372700fef6ac3419256d18bd35b4a8a53cdd1e1",
@@ -41,7 +41,7 @@
   },
   "asset_ledger": {
     "path": "manuscript/asset_ledger.jsonl",
-    "sha256": "2cafeda191b6e49d2a457ab7f67c609a9279f8e5a3d9f7608f936749cda07631"
+    "sha256": "88884633af064cbd9f4402c7d77b7bcde1620b418fdcd592893a181df370cd93"
   },
   "counts_by_type": {
     "code": 5,
@@ -53,6 +53,6 @@
   "n_artifacts": 38,
   "note": "Release-specific manifest. Shipped generators rebuild the seven reader-facing tables and four figures from committed verified asset inputs; they do not refit models or reopen the protected role.",
   "record_type": "public_release_manuscript_asset_manifest",
-  "release": "v1.0.19",
+  "release": "v1.0.20",
   "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1"
 }

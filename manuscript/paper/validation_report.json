@@ -1,7 +1,7 @@
 {
   "record_type": "manuscript_paper_validation_report",
   "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
-  "n_checks": 106,
+  "n_checks": 114,
   "n_failed": 0,
   "overall_pass": true,
   "checks": [
@@ -44,6 +44,46 @@
       "check": "generative_ai_disclosed_in_methods",
       "ok": true,
       "detail": ""
+    },
+    {
+      "check": "acknowledgements_in_front_matter",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "separate_ethics_and_consent_headings",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "template_bibliography_defaults_preserved",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_captions_have_no_terminal_punctuation",
+      "ok": true,
+      "detail": "['from role assignment', 'her AUROC are better', ' score in each panel', 'ref{tab:exclusions})']"
+    },
+    {
+      "check": "figure_descriptions_moved_out_of_artwork",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "research_article_type_consistent",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "public_manuscript_disclosed_as_preprint",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "all_policy_pages_in_compliance_matrix",
+      "ok": true,
+      "detail": "[]"
     },
     {
       "check": "partition_sums_to_eligible",
@@ -468,17 +508,17 @@
     {
       "check": "build_ledger_main_tex_is_current",
       "ok": true,
-      "detail": "282d9a8b3d1f7b558008c0fc18dee183d7adc322334a5ce4c10e22fe5a09a33b"
+      "detail": "e12ea93eceb16d08566f8ee3e1ab8c0f3fddf6b1f60e2fd3b7d8272e9cb0f93b"
     },
     {
       "check": "build_ledger_main_pdf_is_current",
       "ok": true,
-      "detail": "d60e2c528e24ecd4e34d018b9c6038a28fa4df9ab8f7db648196570030f3be27"
+      "detail": "573b6d396d7b1c1bc78b7498ec98a99c3ad89e9710ce2186e470bbb45b5b17d4"
     },
     {
       "check": "build_ledger_release_tag_matches_manuscript",
       "ok": true,
-      "detail": "v1.0.19"
+      "detail": "v1.0.20"
     },
     {
       "check": "figure_byte_identical_fig_threshold_slice.pdf",

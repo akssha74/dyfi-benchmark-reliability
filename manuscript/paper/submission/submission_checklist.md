@@ -6,10 +6,9 @@ submitted. `[x]` = completed locally; `[ ]` = external/pre-submission action.
 ## Scope and article classification
 - [x] Direct seismological scope: DYFI macroseismology, citizen observations,
       seismic sequences, felt intensity, and earthquake-data evaluation
-- [x] Contribution type: public data/software benchmark resource with original
-      analyses; no new prediction model or operational-forecasting claim
-- [ ] Confirm in Snapp whether to select **Data or Software Paper** or
-      **Original Paper** (presubmission inquiry drafted)
+- [x] Article type: **Research Article** documenting a public data/software
+      benchmark resource with original analyses
+- [x] No new prediction-model or operational-forecasting claim
 - [x] Title is concise, informative, and non-superlative
 
 ## Journal-specific front matter
@@ -67,19 +66,21 @@ submitted. `[x]` = completed locally; `[ ]` = external/pre-submission action.
 - [x] `claim_ledger.jsonl` maps 103 result claims to source pointers
 - [x] Citation ledger covers every cited bibliography entry
 - [x] Artifact and build ledgers record hashes and toolchain scope
-- [x] Standard-library manuscript validator passes 106/106 checks
+- [x] Standard-library manuscript validator passes 114/114 checks
 - [x] Pinned benchmark tests pass 110/110
 - [x] Clean-clone 15-page Tectonic reference build passes
 - [x] Public release manifest and canonical manuscript assets hash-verify
 - [x] Frozen result/code bytes were not changed during venue retargeting
-- [ ] Venue-retargeted GitHub release v1.0.19 published and clean-clone verified
+- [ ] Policy-audited GitHub release v1.0.20 published and clean-clone verified
 - [x] Isolated `manuscript_source.zip` build reproduces the canonical 15-page PDF
 
 ## Author-side submission files
 - [x] Journal-specific cover letter drafted
 - [x] Presubmission inquiry drafted with abstract-level scope description and
       public resource URL
-- [ ] Send presubmission inquiry and confirm article type
+- [x] Public manuscript PDF/source disclosed in the cover letter as a preprint;
+      update the record with article DOI/URL after publication
+- [ ] Send presubmission inquiry to confirm scope suitability
 - [ ] Optionally archive the final tagged release on Zenodo and add its DOI
 - [ ] Register/confirm ORCID iDs in Snapp
 - [ ] Enter author contributions and competing interests in the submission

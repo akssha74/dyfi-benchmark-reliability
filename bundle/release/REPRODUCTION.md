@@ -13,7 +13,7 @@ split differences, baseline uncertainty intervals, pairwise comparisons,
 citations, figure/table presence, and canonical asset fingerprints. Expected:
 
 ```text
-validate_manuscript: 106 checks, 0 failed -> PASS
+validate_manuscript: 114 checks, 0 failed -> PASS
 ```
 
 ## 2. Verify the frozen source snapshot

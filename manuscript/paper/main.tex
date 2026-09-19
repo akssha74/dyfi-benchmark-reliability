@@ -4,7 +4,7 @@
 %% Single self-contained .tex per template rules; generated tables are \input
 %% from tables/ and figures are \includegraphics from figures/ (scripted, no
 %% hand-edited result cells). Reference style: sn-basic (author--year).
-%% Article type: data/software resource paper with original benchmark analyses.
+%% Article type: Research Article documenting a public data/software benchmark.
 %%
 %% Every result-bearing number is copied from a validated, immutable asset under
 %% manuscript/ (asset_inputs.json / tables/*.tex) and is auditable via
@@ -73,6 +73,9 @@ resource, sequence-grouped cross-validation, reproducibility}
 \item Earthquakes from the same seismic sequence remain together during model evaluation.
 \item Observed split differences were small, and no model was declared the winner.
 \end{itemize}
+
+\section*{Acknowledgements}
+We thank the USGS DYFI and ANSS Comprehensive Catalog programs.
 
 \section{Introduction}\label{sec:intro}
 
@@ -430,10 +433,14 @@ regardless of outcome; the only permitted omissions are the protocol-defined
 exclusions above.
 Computation is local-only under a pinned environment.
 
-\paragraph{Generative AI assistance.} ChatGPT was used for language editing,
-formatting assistance, and code review. It did not generate data, results, model
-fits, or figures. The authors reviewed and verified all assisted work and retain
-full responsibility for the manuscript and released artifacts.
+\paragraph{Reproducible artwork and generative AI assistance.} All figures were
+generated with Matplotlib~3.11.1 directly from the frozen analysis assets; no
+manual image manipulation or AI-generated artwork was used. ChatGPT assisted
+language editing, formatting, and syntax/consistency-oriented code review. It
+did not generate data, model fits, statistical results, scientific
+interpretations, or conclusions. The authors reviewed and verified every
+assisted change and retain full responsibility for the manuscript and released
+artifacts.
 
 \section{Results}\label{sec:results}
 
@@ -462,7 +469,7 @@ transport shift and is reported, not adjusted.
 frozen USGS DYFI $M\geq5$ snapshot. The 7{,}520 source records yield 2{,}362
 eligible events in 1{,}885 seismic sequences. Of these, 2{,}360 are assigned to
 train ($n=1{,}573$), development ($n=357$), or temporal holdout ($n=430$);
-two straddle events are excluded from role assignment.}
+two straddle events are excluded from role assignment}
 \label{fig:cohort}
 \end{figure*}
 
@@ -489,7 +496,7 @@ not executed and is disclosed as a deviation (Table~\ref{tab:exclusions}).
 (a) Performance as the severe-intensity cutoff varies. (b) Performance
 within the 2023 ($n=250$) and 2024 ($n=180$) portions of the temporal holdout.
 The cutoff analysis rescores fixed B2 probabilities without refitting. Lower
-Brier score and higher AUROC are better.}
+Brier score and higher AUROC are better}
 \label{fig:threshold}
 \end{figure*}
 
@@ -529,12 +536,13 @@ important leakage from random splitting nor establishes its absence.
 \centering
 \includegraphics[width=\textwidth]{fig_leakage_split.pdf}
 \caption{Five-fold performance of the fixed leakage diagnostic (random forest:
-300 trees, unrestricted depth) under
-random-event, event-grouped, and sequence-grouped fold assignment in the
-construction sample. It is distinct from tuned temporal-holdout baseline B4.
-The small, slightly reversed differences provide no
-evidence of performance inflation from random splitting in this sample. Dashed
-lines mark the corresponding random-event score in each panel.}
+300 trees, unrestricted depth) under random-event, event-grouped, and
+sequence-grouped fold assignment in the construction sample. (a) Brier-score
+difference, sequence minus random, $-0.0059$. (b) AUROC difference, random minus
+sequence, $-0.0124$. The diagnostic is distinct from tuned temporal-holdout
+baseline B4. The small, reversed differences provide no evidence of performance
+inflation from random splitting in this sample; dashed lines mark the
+corresponding random-event score in each panel}
 \label{fig:leakage}
 \end{figure*}
 
@@ -559,7 +567,7 @@ only.
 for the five baselines on the temporal holdout ($n=430$). Lower values are
 better; the vertical dashed line marks the no-skill B0 score. B3 is omitted
 because it contains event year, which would reveal the temporal holdout period
-(Table~\ref{tab:exclusions}).}
+(Table~\ref{tab:exclusions})}
 \label{fig:baselines}
 \end{figure*}
 
@@ -685,21 +693,22 @@ datasets containing more multi-event sequences.
 
 \backmatter
 
-\bmhead{Acknowledgements}
-We thank the USGS DYFI and ANSS Comprehensive Catalog programs.
-
 \section*{Statements and Declarations}
 
 \begin{itemize}\setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}\setlength{\parsep}{0pt}
 \item \textbf{Funding.} No specific funding was received.
-\item \textbf{Competing interests.} The authors declare none.
-\item \textbf{Ethics approval and consent to participate.} Not applicable; the
-study reuses aggregate public event metadata, with no participants, new
-human-subject collection, animals, or respondent-level identifying information.
+\item \textbf{Competing interests.} The authors have no relevant financial or
+non-financial interests to disclose.
+\item \textbf{Ethics approval.} Not applicable. The study analyzes public,
+aggregate event-level USGS products rather than individual questionnaire
+responses; it involved no interaction with participants, identifiable data,
+human-subject collection, animals, or biological material.
+\item \textbf{Consent to participate.} Not applicable; no participants were
+recruited.
 \item \textbf{Consent for publication.} Not applicable.
 \item \textbf{Data availability.} Version~1 data, results, manifests, and
 instructions are available under CC0~1.0 at
-\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.19}.
+\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.20}.
 Source data are USGS DYFI and ANSS ComCat (public domain;
 \href{https://doi.org/10.5066/F7J101C8}{10.5066/F7J101C8} and
 \href{https://doi.org/10.5066/F7MS3QZH}{10.5066/F7MS3QZH}) and are reconstructable
@@ -714,6 +723,6 @@ and analysis and drafted the manuscript. L.~Prasad supervised and revised the
 work. Both authors approved the final manuscript.
 \end{itemize}
 
-{\fontsize{8pt}{9pt}\selectfont\setlength{\bibsep}{0pt plus 0.2pt}\bibliography{references}}
+\bibliography{references}
 
 \end{document}
