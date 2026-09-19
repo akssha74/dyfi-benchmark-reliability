@@ -1,16 +1,19 @@
 """Phase F: post-execution immutable artifacts + hashes + validation inputs.
 
 Runs AFTER the one-shot protected run (activation/run_oneshot.py) has already
-opened the transport holdout exactly once and consumed the single global token.
+produced the official decision-bearing result and consumed the single global
+authorization token.
 
-This script performs ONLY construction-side, token-free, deterministic work:
+This script performs token-free, deterministic verification work:
   1. Regenerate the full fit ledger from the construction-role tuning pass and
      assert its digest equals the value recorded by the protected run
      (fit_ledger_digest). No holdout is scored here.
-  2. Registered W2 reproducibility gate: recompute the analytic core twice and
-     confirm both reproduce the recorded protected result_core hash exactly
-     (point summaries) and the recorded predictions/reconstruction/role digests.
-     run_analysis does NOT consume a token and does NOT touch the global ledger.
+  2. Registered W2 reproducibility gate: replay the full analytic core twice,
+     including fixed holdout scoring, and confirm both reproduce the recorded
+     protected result_core hash exactly (point summaries) and the recorded
+     predictions/reconstruction/role digests. These are post-result verification
+     replays, not new decision-bearing runs. run_analysis does NOT consume a
+     token and does NOT touch the global ledger.
   3. Emit the derived fit ledger, a run log, and a post-execution artifact/source
      SHA-256 manifest over every load-bearing file.
 

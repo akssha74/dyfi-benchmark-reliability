@@ -123,7 +123,13 @@ def main() -> int:
           and "Data or Software Paper" not in cover_text + inquiry_text, "")
     check("public_manuscript_disclosed_as_preprint",
           "preprint" in cover_text.lower()
-          and "update the public record" in cover_text.lower(), "")
+          and re.search(r"preprint\s+has\s+no\s+doi", cover_text, re.I) is not None
+          and re.search(r"no separate\s+licence is granted", cover_text, re.I) is not None
+          and "article doi and journal url" in cover_text.lower()
+          and re.search(r"preprint\s+has\s+no\s+DOI",
+                        (SUBMISSION / "cover_letter.tex").read_text()) is not None
+          and re.search(r"no separate\s+licence is granted",
+                        (SUBMISSION / "cover_letter.tex").read_text(), re.I) is not None, "")
     cover_normalized = re.sub(r"\s+", " ", cover_text)
     check("submission_documents_use_current_validation_count",
           cover_normalized.count("116 manuscript checks") == 2
@@ -141,7 +147,7 @@ def main() -> int:
     }
     check("all_policy_pages_in_compliance_matrix",
           all(url in compliance_text for url in required_policy_urls)
-          and "Validator count: 195 words" in compliance_text
+          and "Validator count: 202 words" in compliance_text
           and "87/72/67 characters" in compliance_text,
           str(sorted(url for url in required_policy_urls if url not in compliance_text)))
     check("peer_model_and_alt_text_actions_recorded",
@@ -197,8 +203,10 @@ def main() -> int:
     check("leakage_brier_gap_recompute", abs(rb - bgap) < 1e-9, f"{rb} vs {bgap}")
     check("leakage_auroc_gap_recompute", abs(ra - agap) < 1e-9, f"{ra} vs {agap}")
     lt = tables["leakage_gap.tex"]
-    check("leakage_brier_gap_-0.0059_in_table", "-0.0059" in lt, f"{bgap}")
-    check("leakage_auroc_gap_-0.0124_in_table", "-0.0124" in lt, f"{agap}")
+    check("leakage_brier_sequence_advantage_0.0059_in_table",
+          "Brier score 0.0059 lower" in lt, f"{-bgap}")
+    check("leakage_auroc_sequence_advantage_0.0124_in_table",
+          "AUROC 0.0124 higher" in lt, f"{-agap}")
     # Headline is descriptive only: no post-hoc equivalence or zero-effect claim.
     check("split_contrast_framed_descriptively",
           "report the contrast descriptively" in main_tex
@@ -282,7 +290,12 @@ def main() -> int:
           and "cannot contain their own final fingerprints" in main_tex, "")
     check("held_out_not_untouched",
           "held out from model development" in main_tex
-          and "untouched" in main_tex, "phrasing present (with explicit not-untouched)")
+          and "untouched" in main_tex
+          and "including holdout scoring" in main_tex
+          and re.search(r"not to the\s+total number of post-result computations",
+                        main_tex) is not None
+          and "evaluated exactly once" not in main_tex,
+          "holdout and replay boundary stated")
 
     # ---- 2. citation coverage ----
     cited = set(re.findall(r"\\cite[a-z]*\{([^}]*)\}", main_tex))
@@ -302,7 +315,8 @@ def main() -> int:
           "sarao2023crowdsourcing" in cited, "")
     bib_years = [int(x) for x in re.findall(r"year\s*=\s*\{(\d{4})\}", bibtext)]
     check("bibliography_contains_recent_work",
-          sum(y >= 2024 for y in bib_years) >= 9,
+          sum(y >= 2024 for y in bib_years) >= 9
+          and {"rosler2022documentation", "stockman2026earthquakenpp"} <= cited,
           str(sorted(y for y in bib_years if y >= 2024)))
 
     entries = re.split(r"@\w+\{", bibtext)[1:]
@@ -311,7 +325,8 @@ def main() -> int:
         key = e.split(",", 1)[0].strip()
         if "doi" not in e.lower():
             no_doi.append(key)
-    check("only_expected_entry_has_no_doi", set(no_doi) <= {"pedregosa2011sklearn"},
+    check("only_expected_entries_have_no_doi",
+          set(no_doi) <= {"pedregosa2011sklearn", "stockman2026earthquakenpp"},
           str(no_doi))
     # citation ledger covers every bib key
     led_keys = set()

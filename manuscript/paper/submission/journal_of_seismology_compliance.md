@@ -42,7 +42,7 @@ Status key: **PASS**, **N/A**, **EXTERNAL** (author/portal action), **OPTIONAL**
 | LLM not listed as author | PASS | Only human authors listed |
 | LLM use documented in Methods where applicable | PASS | “Reproducible artwork and generative AI assistance” paragraph |
 | Human accountability for AI-assisted text/code | PASS | Explicit author verification and responsibility |
-| Abstract 150–250 words | PASS | Validator count: 195 words |
+| Abstract 150–250 words | PASS | Validator count: 202 words |
 | No undefined abbreviations/references in abstract | PASS | DYFI and AUROC defined; no citations |
 | 4–6 keywords | PASS | Six keywords |
 | Three non-technical highlights, each ≤120 characters | PASS | 87/72/67 characters; included below abstract and as upload text |
@@ -111,7 +111,7 @@ Status key: **PASS**, **N/A**, **EXTERNAL** (author/portal action), **OPTIONAL**
 |---|---|---|
 | Original, honest reporting; no fabrication/manipulation/salami slicing | PASS | Frozen outputs, claim ledger, independent checks; authors reconfirm at submission |
 | Permissions for software/questionnaires/scales | PASS | MIT/CC0/public-domain inputs; no individual questionnaires redistributed |
-| Relevant, non-manipulative citations | PASS | Citation ledger; diverse sources; editor’s work cited only for direct scientific relevance |
+| Relevant, non-manipulative citations | PASS | Citation ledger; diverse sources; nearest DYFI-versioning and leakage-aware earthquake-benchmark precedents explicitly differentiated; editor’s work cited only for direct scientific relevance |
 | Correct author group/order and accountability | EXTERNAL | Both authors must explicitly approve final submission |
 | Corresponding author manages communication/integrity | PASS/EXTERNAL | Akshay Sharma identified; reconfirm duties in Snapp |
 | Funding disclosed | PASS | No specific funding |
@@ -182,7 +182,7 @@ Status key: **PASS**, **N/A**, **EXTERNAL** (author/portal action), **OPTIONAL**
 | Competing interests/funding | PASS | Complete declarations |
 | Ethical responsibilities/originality/no duplicate submission | PASS/EXTERNAL | Cover letter states originality; reconfirm no simultaneous submission |
 | Citation integrity | PASS | All sources checked; no hallucinated/retracted/irrelevant citation; no excessive self-citation |
-| Preprints allowed and must be disclosed | PASS | Public manuscript copy disclosed in cover letter; update record after publication |
+| Preprints allowed and must be disclosed | PASS | Public manuscript copy disclosed in cover letter with explicit no-DOI and manuscript-licensing status; update record after publication |
 | Fundamental errors must be corrected | ACKNOWLEDGED | Versioned release and correction workflow |
 | Appeals/complaints process | ACKNOWLEDGED | External post-decision process |
 | Predatory references should be scrutinized | PASS | Primary/publisher sources and DOI registry checks used |

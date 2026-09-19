@@ -17,8 +17,13 @@ Their fold allocations are different, so their reported scores can differ.
 inherited from the synthetic reporting interface. The authoritative execution
 fields are `data=PROTECTED`, `mode=protected`, `holdout_opens=1`,
 `report.protected_role_opened=true`, and the consumed-token record. Together
-they establish that the temporal holdout was opened exactly once. The stale
-field does not affect any prediction or metric.
+they establish that the official decision-bearing result consumed one
+authorization token. They do not mean that holdout scores were computed only
+once: after that result was fixed, `phase_f_artifacts.py` replayed the token-free
+analytic core twice, including fixed holdout scoring, solely to verify the
+recorded fingerprint. Those replays consumed no token and informed no model,
+threshold, or reporting choice. The stale field does not affect any prediction
+or metric.
 
 ## Geographic result
 
@@ -69,8 +74,10 @@ B4, whose maximum depth is 3.
 string describing the expected positive-gap direction of the estimand. It is a
 template, not a description of the observed values. The authoritative numeric
 fields are negative/reversed (sequence-minus-random Brier `-0.0059`;
-random-minus-sequence AUROC `-0.0124`), as reported in the manuscript, generated
-table, and figure. No observed leakage inflation or winning-model claim is made.
+random-minus-sequence AUROC `-0.0124`). In one consistent direction, sequence
+grouping produced a Brier score `0.0059` lower and an AUROC `0.0124` higher than
+random-event splitting, as reported in the manuscript, generated table, and
+figure. No observed leakage inflation or winning-model claim is made.
 
 ## Quarantine and provenance
 

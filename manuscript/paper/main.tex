@@ -51,9 +51,10 @@ outcome-independent analysis roles, endpoint sensitivity analysis, fixed
 baselines, calibration-aware scoring, Brier-score sequence-cluster bootstrap uncertainty,
 and a protected temporal evaluation. The frozen $M\geq5$ snapshot contains
 7{,}520 records, 2{,}362 eligible events, and a 430-event temporal holdout. The
-cross-validation comparison yielded small differences favoring sequence-grouped
-over random folds (sequence minus random: Brier $-0.006$; area under the
-receiver-operating-characteristic curve [AUROC] $+0.012$). Because the executed
+cross-validation comparison yielded small differences favoring sequence
+grouping: its Brier score was 0.006 lower and its area under the
+receiver-operating-characteristic curve (AUROC) was 0.012 higher than under
+random folds. Because the executed
 analysis retained only point estimates for this contrast, we interpret it
 descriptively. All learned baselines outperformed the no-skill reference, but
 the paired 95\% interval between the two lowest-Brier models included zero;
@@ -137,9 +138,10 @@ membership never uses the label
 (Section~\ref{sec:roles}).
 \item \textbf{A fixed, non-selective baseline suite} with calibration-aware
 proper scoring, Brier-score sequence-cluster bootstrap uncertainty, explicit handling of
-ties and unavailable calibration estimates, and a single-use protected evaluation
+ties and unavailable calibration estimates, and single-use authorization of the
+decision-bearing protected evaluation
 (Sections~\ref{sec:metrics}--\ref{sec:oneshot}).
-\item \textbf{A quantified leakage-inflation diagnostic} (naive random versus
+\item \textbf{A quantified split-sensitivity diagnostic} (naive random versus
 sequence-grouped splitting) reported as a descriptive point estimate, together with a fully
 reproducible release bundle and machine-readable verification record
 (Section~\ref{sec:results}).
@@ -166,7 +168,11 @@ wald2012dyfi,quitoriano2020dyfi}; these establish that CDI is an
 after-the-event, response-driven quantity subject to ascertainment effects,
 which is precisely why our protocol uses response count only to determine
 eligibility and forbids it as a predictive feature (Section~\ref{sec:data}).
-We reuse these provenance facts rather than re-deriving them.
+\citet{rosler2022documentation} further show specifically for DYFI that
+interpreted products can change and should be preserved with timestamps for
+reproducible analysis. The dated, hashed snapshot released here implements that
+preservation principle. We reuse these provenance facts rather than re-deriving
+them.
 
 \paragraph{Domain benchmark resources.} The INGe resource links Italian
 macroseismic intensities to colocated strong-motion records for benchmarking
@@ -179,6 +185,14 @@ site-level macroseismic observations from about 5{,}600 earthquakes and is
 predominantly DYFI~\citep{fathiansabet2026western}. It is a larger observational
 resource, but does not define this event-maximum binary task, executable leakage
 audit, or frozen temporal evaluation.
+\citet{stockman2026earthquakenpp} provide the nearest broader
+leakage-aware seismological benchmark precedent: EarthquakeNPP standardizes
+public catalogues, repairs an improper earthquake-forecasting split, compares
+neural point processes with ETAS, and finds no consistent neural-model
+advantage. Its target is occurrence forecasting with chronological
+likelihood/CSEP evaluation, rather than source metadata predicting a later
+citizen-reported felt-intensity endpoint; the resources are therefore
+methodologically adjacent but task-distinct.
 An adjacent event-level binary study used post-event LastQuake felt reports to
 classify high- versus low-impact earthquakes and evaluated later 2022
 events~\citep{lilienkamp2023feltreports}. Its crowdsourced predictors,
@@ -224,7 +238,7 @@ with a random-forest regressor on Indian events under a single naive train/test
 split (reported $R^2=0.829$); our resource does not fit a competing regressor but
 instead supplies a versioned, digitally fingerprinted, event- and
 sequence-grouped benchmark with an executable leakage audit and a protected
-single-use evaluation, in place of
+decision-bearing evaluation authorized once, in place of
 the naive split that setup uses. Concurrently, \citet{li2025llmworldmodels}
 release a DYFI-grounded benchmark that simulates Modified Mercalli Intensity
 (MMI) for
@@ -248,7 +262,7 @@ sequence-grouped role assignment with a
 temporal external holdout, a documented severe endpoint with threshold and
 threshold sensitivity, a fixed non-selective baseline suite with a no-skill
 comparator, a calibration/uncertainty/tie contract, an exact-reproduction
-guarantee, and a quantified naive-versus-grouped leakage-inflation headline. A
+verification, and a quantified naive-versus-grouped split diagnostic. A
 current-year search located no released resource occupying this exact
 combination; novelty is stated as a concrete delta to located work, with no
 first/only superlative asserted.
@@ -420,12 +434,15 @@ were retained, so other metrics are descriptive point estimates
 
 \subsection{Protected evaluation and reproducibility}\label{sec:oneshot}
 
-The protected temporal holdout is evaluated exactly once under an automated
-single-use lock; a second evaluation is refused. After evaluation, two clean
-reconstruction runs reproduced the recorded result fingerprint exactly, and the
-frozen holdout predictions were recovered bit-for-bit from the released rows and
-frozen best parameters (reported in Section~\ref{sec:repro-results}), under a
-pinned scientific-Python
+The official decision-bearing protected evaluation was authorized once by an
+automated, globally consumed token; the one-shot wrapper refuses a second
+authorized run. After the result was fixed, the token-free deterministic
+analytic core---including holdout scoring---was replayed twice for verification,
+and both replays reproduced the recorded result fingerprint exactly. Thus,
+single-use refers to result authorization and decision-bearing use, not to the
+total number of post-result computations. The frozen holdout predictions were
+also recovered bit-for-bit from the released rows and frozen best parameters
+(reported in Section~\ref{sec:repro-results}), under a pinned scientific-Python
 environment (NumPy, SciPy, scikit-learn, XGBoost;
 \citealp{harris2020numpy,virtanen2020scipy,pedregosa2011sklearn,chen2016xgboost}).
 All fits, exclusions, subsets, cutoffs, and pairwise comparisons are reported
@@ -514,8 +531,8 @@ This diagnostic is distinct from the tuned temporal-holdout baseline B4, whose
 maximum depth is 3.
 On this $M\geq5$
 one-row-per-event universe the point estimates are small and slightly reversed:
-the sequence-minus-random Brier difference is $-0.0059$ and the
-random-minus-sequence AUROC difference is $-0.0124$, calculated from unrounded
+sequence grouping produced a Brier score 0.0059 lower and an AUROC 0.0124
+higher than random-event splitting, calculated from unrounded
 scores. The sequence-grouped split therefore scores marginally \emph{better}
 than the naive random split, not worse. The frozen internal protocol required
 uncertainty reporting for this contrast but did not define a paired interval
@@ -538,9 +555,9 @@ important leakage from random splitting nor establishes its absence.
 \includegraphics[width=\textwidth]{fig_leakage_split.pdf}
 \caption{Five-fold performance of the fixed leakage diagnostic (random forest:
 300 trees, unrestricted depth) under random-event, event-grouped, and
-sequence-grouped fold assignment in the construction sample. (a) Brier-score
-difference, sequence minus random, $-0.0059$. (b) AUROC difference, random minus
-sequence, $-0.0124$. The diagnostic is distinct from tuned temporal-holdout
+sequence-grouped fold assignment in the construction sample. Relative to
+random-event splitting, sequence grouping produced (a) a Brier score 0.0059
+lower and (b) an AUROC 0.0124 higher. The diagnostic is distinct from tuned temporal-holdout
 baseline B4. The small, reversed differences provide no evidence of performance
 inflation from random splitting in this sample; dashed lines mark the
 corresponding random-event score in each panel}
@@ -631,7 +648,7 @@ executable leakage audit that rejects seeded contamination and accepts only the
 approved feature set; internally specified outcome-independent roles that a third party
 can reproduce; calibrated, uncertainty-bearing baselines with a genuine no-skill
 comparator; and exact reconstruction anchored by recorded digital
-fingerprints and a single-use evaluation safeguard. A later study can evaluate a
+fingerprints and a single-use authorization safeguard. A later study can evaluate a
 new method against
 this fixed contract without reconstructing a contaminated split, which is the
 practical benefit the field currently lacks~\citep{patelli2026macroseismic,
@@ -709,7 +726,7 @@ recruited.
 \item \textbf{Consent for publication.} Not applicable.
 \item \textbf{Data availability.} Version~1 data, results, manifests, and
 instructions are available under CC0~1.0 at
-\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.23}.
+\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.24}.
 Source data are USGS DYFI and ANSS ComCat (public domain;
 \href{https://doi.org/10.5066/F7J101C8}{10.5066/F7J101C8} and
 \href{https://doi.org/10.5066/F7MS3QZH}{10.5066/F7MS3QZH}) and are reconstructable

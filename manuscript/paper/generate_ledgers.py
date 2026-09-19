@@ -121,8 +121,8 @@ def build_claim_ledger(ai: dict) -> list[dict]:
         r3(lh["brier_inflation_seq_minus_random"]),
         "/leakage_inflation_headline/brier_inflation_seq_minus_random",
         ["abstract", "prose", "tab:leakage", "fig:leakage"])
-    add("L2", "AUROC split contrast (random minus sequence), reported descriptively",
-        r3(lh["auroc_inflation_random_minus_seq"]),
+    add("L2", "AUROC under sequence grouping is higher than under random folds; reported descriptively (the source field stores random minus sequence)",
+        r3(-lh["auroc_inflation_random_minus_seq"]),
         "/leakage_inflation_headline/auroc_inflation_random_minus_seq",
         ["abstract", "prose", "tab:leakage", "fig:leakage"])
     for scheme in ("random_event", "event_grouped", "sequence_grouped"):
@@ -291,7 +291,7 @@ def build_build_ledger() -> dict:
         "inputs_are_immutable": True,
         "network_writes": False,
         "public_repository": "https://github.com/akssha74/dyfi-benchmark-reliability",
-        "public_release_tag": "v1.0.23",
+        "public_release_tag": "v1.0.24",
         "doi": None,
         "submitted": False,
         "main_tex_sha256": sha256(HERE / "main.tex"),
