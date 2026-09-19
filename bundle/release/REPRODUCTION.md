@@ -13,7 +13,7 @@ split differences, baseline uncertainty intervals, pairwise comparisons,
 citations, figure/table presence, and canonical asset fingerprints. Expected:
 
 ```text
-validate_manuscript: 95 checks, 0 failed -> PASS
+validate_manuscript: 104 checks, 0 failed -> PASS
 ```
 
 ## 2. Verify the frozen source snapshot
@@ -76,7 +76,7 @@ With Tectonic and `pdfinfo` installed:
 bash manuscript/paper/build.sh
 ```
 
-The expected output is a 13-page PDF with no undefined references and no
+The expected output is a 15-page PDF with no undefined references and no
 overfull boxes.
 The reference PDF was generated with Tectonic 0.17.0 (reference binary SHA-256
 `568dea0a81f4ceed859e33734bbbea85d54a25f14b12665a48c98b536a887986`)

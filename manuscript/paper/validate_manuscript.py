@@ -55,6 +55,39 @@ def main() -> int:
     tables = {p.name: p.read_text() for p in (HERE / "tables").glob("*.tex")}
     all_tex = main_tex + "\n" + "\n".join(tables.values())
 
+    # ---- 0. Journal of Seismology front matter / venue fit ----
+    check("journal_of_seismology_target",
+          "Journal of Seismology (Springer Nature) submission" in main_tex
+          and "Discover Applied Sciences" not in main_tex, "")
+    check("author_year_sn_basic_style",
+          r"\documentclass[pdflatex,sn-basic,iicol]{sn-jnl}" in main_tex
+          and "Numbered" not in main_tex.split(r"\begin{document}", 1)[0], "")
+    abstract_match = re.search(r"\\abstract\{(.*?)\}\s*\\keywords", main_tex, re.S)
+    abstract_words = (re.findall(r"\b[\w'-]+\b", abstract_match.group(1))
+                      if abstract_match else [])
+    check("abstract_150_to_250_words",
+          150 <= len(abstract_words) <= 250, str(len(abstract_words)))
+    check("title_page_author_information_complete",
+          r"\author*" in main_tex and main_tex.count(r"\email{") == 2
+          and r"\affil*" in main_tex and r"\city{Indore}" in main_tex
+          and r"\country{India}" in main_tex, "")
+    keyword_match = re.search(r"\\keywords\{([^}]+)\}", main_tex, re.S)
+    keywords = [x.strip() for x in keyword_match.group(1).split(",")] if keyword_match else []
+    check("four_to_six_keywords", 4 <= len(keywords) <= 6, str(keywords))
+    highlights_match = re.search(
+        r"\\section\*\{Article Highlights\}(.*?)\\end\{itemize\}", main_tex, re.S)
+    highlights = (re.findall(r"\\item\s+([^\n]+)", highlights_match.group(1))
+                  if highlights_match else [])
+    check("three_highlights_under_120_characters",
+          len(highlights) == 3 and all(len(x) <= 120 for x in highlights),
+          str([(len(x), x) for x in highlights]))
+    check("statements_and_declarations_heading",
+          r"\section*{Statements and Declarations}" in main_tex, "")
+    check("generative_ai_disclosed_in_methods",
+          r"\paragraph{Generative AI assistance.}" in main_tex
+          and main_tex.index(r"\paragraph{Generative AI assistance.}")
+          < main_tex.index(r"\section{Results}"), "")
+
     # ---- 1. arithmetic / consistency ----
     cf = ai["cohort_flow"]
     roles = cf["roles"]
@@ -196,6 +229,12 @@ def main() -> int:
     bib_keys = set(re.findall(r"@\w+\{([^,]+),", BIB.read_text()))
     check("all_cited_keys_in_bib", cited <= bib_keys, str(sorted(cited - bib_keys)))
     check("all_bib_entries_cited", bib_keys <= cited, str(sorted(bib_keys - cited)))
+    jos_keys = {
+        "kouskouna2021athens", "neefs2025btm", "sira2025macrosisdata",
+        "ozupak2026alert", "ertuncay2025detection",
+    }
+    check("journal_of_seismology_literature_engaged",
+          jos_keys <= cited, str(sorted(jos_keys - cited)))
     # DOI presence (pedregosa is the one DOI-less JMLR entry)
     bibtext = BIB.read_text()
     entries = re.split(r"@\w+\{", bibtext)[1:]

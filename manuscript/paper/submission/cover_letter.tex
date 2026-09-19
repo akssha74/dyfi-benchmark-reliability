@@ -1,0 +1,73 @@
+\documentclass[10pt]{article}
+\usepackage[a4paper,margin=22mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlength{\emergencystretch}{2em}
+\pagestyle{empty}
+
+\begin{document}
+\raggedright
+
+\begin{flushright}
+Department of Computer Science and Engineering\\
+SAGE University\\
+Indore 452020, Madhya Pradesh, India
+\end{flushright}
+
+The Editors\\
+\emph{Journal of Seismology}\\
+Springer Nature
+
+\medskip
+Dear Editors,
+
+We submit for your consideration our manuscript, ``A versioned,
+leakage-audited USGS \emph{Did You Feel It?} benchmark for machine-learning
+evaluation of severe felt intensity.'' We request handling as a data or software
+paper documenting a public seismological resource; if that label is unavailable
+in Snapp, we request consideration as an Original Paper.
+
+Machine-learning studies of macroseismic felt intensity commonly use bespoke
+datasets and random record-level splits. Their results can be difficult to
+reproduce and vulnerable to leakage between related earthquake events. Our
+manuscript addresses this problem by releasing a frozen, single-source USGS
+DYFI benchmark, a six-category leakage audit, outcome-independent
+sequence-grouped roles, fixed baselines, calibration-aware scoring, and a
+protected temporal evaluation.
+
+The frozen \(M\geq5\) snapshot contains 7,520 source records, 2,362 eligible
+events, and a 430-event temporal holdout. The observed random-versus-sequence
+split differences are small and reported descriptively; no winning model,
+operational forecasting benefit, causal effect, or cross-system generalization
+is claimed. All deviations and unexecuted branches are disclosed.
+
+The work fits the \emph{Journal of Seismology} as an observational
+macroseismology and citizen-science data/software resource. It directly aligns
+with the journal's stated interest in machine learning, seismological datasets,
+software tools, and publicly available resources supporting transparent,
+reproducible earthquake science.
+
+Data, code, frozen results, and reproduction instructions are available at
+\url{https://github.com/akssha74/dyfi-benchmark-reliability}. A clean clone
+reproduces the 15-page manuscript, passes all 104 manuscript checks and 110
+benchmark tests, and reconstructs the recorded results and holdout predictions.
+
+The manuscript is original, is not under consideration elsewhere, and has not
+been published previously. The authors declare no competing interests. The
+study uses aggregate public-domain event metadata, involves no human
+participants, and redistributes no respondent-level identifying information.
+Generative-AI assistance is disclosed in Methods and all assisted work was
+verified by the authors.
+
+\medskip
+Sincerely,
+
+Akshay Sharma (corresponding author) and Lalji Prasad\\
+Department of Computer Science and Engineering\\
+SAGE University, Indore, India\\
+\href{mailto:akssha74@gmail.com}{akssha74@gmail.com}
+
+\end{document}

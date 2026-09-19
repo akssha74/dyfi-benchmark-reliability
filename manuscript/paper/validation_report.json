@@ -1,10 +1,50 @@
 {
   "record_type": "manuscript_paper_validation_report",
   "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
-  "n_checks": 95,
+  "n_checks": 104,
   "n_failed": 0,
   "overall_pass": true,
   "checks": [
+    {
+      "check": "journal_of_seismology_target",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "author_year_sn_basic_style",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "abstract_150_to_250_words",
+      "ok": true,
+      "detail": "195"
+    },
+    {
+      "check": "title_page_author_information_complete",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "four_to_six_keywords",
+      "ok": true,
+      "detail": "['Did You Feel It?', 'macroseismology', 'machine learning', 'benchmark\\nresource', 'sequence-grouped cross-validation', 'reproducibility']"
+    },
+    {
+      "check": "three_highlights_under_120_characters",
+      "ok": true,
+      "detail": "[(85, 'A frozen USGS DYFI resource enables reproducible comparison of felt-intensity models.'), (83, 'Earthquakes from the same seismic sequence remain together during model evaluation.'), (76, 'Observed split differences were small, and no model was declared the winner.')]"
+    },
+    {
+      "check": "statements_and_declarations_heading",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "generative_ai_disclosed_in_methods",
+      "ok": true,
+      "detail": ""
+    },
     {
       "check": "partition_sums_to_eligible",
       "ok": true,
@@ -316,6 +356,11 @@
       "detail": "[]"
     },
     {
+      "check": "journal_of_seismology_literature_engaged",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
       "check": "only_expected_entry_has_no_doi",
       "ok": true,
       "detail": "['pedregosa2011sklearn']"
@@ -413,17 +458,17 @@
     {
       "check": "build_ledger_main_tex_is_current",
       "ok": true,
-      "detail": "8e08d46654dcbf1e7ea4f413608a19f505c4a1735f0c560d80800783de3e4de2"
+      "detail": "85df0b6a0ef41bc2a63f7c7a87cf664834ed5712684fcc9041a755e8837cf196"
     },
     {
       "check": "build_ledger_main_pdf_is_current",
       "ok": true,
-      "detail": "c3b444f46752e8d8c187cc794137cc6e845d82fe3ccc9b3a27c62c81d8b07e1e"
+      "detail": "3be5710e9e0bc9ef52c5762086e4e130328cb33a1de050483f963b340ac789fe"
     },
     {
       "check": "build_ledger_release_tag_matches_manuscript",
       "ok": true,
-      "detail": "v1.0.16"
+      "detail": "v1.0.17"
     },
     {
       "check": "figure_byte_identical_fig_threshold_slice.pdf",

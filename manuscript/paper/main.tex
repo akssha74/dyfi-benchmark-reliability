@@ -1,17 +1,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Discover Applied Sciences (Springer Nature) submission.
+%% Journal of Seismology (Springer Nature) submission.
 %% Built on the official Springer Nature template (sn-jnl.cls).
 %% Single self-contained .tex per template rules; generated tables are \input
 %% from tables/ and figures are \includegraphics from figures/ (scripted, no
-%% hand-edited result cells). Reference style: sn-basic (numbered).
-%% Article type: Research. Contribution type: benchmark-resource.
+%% hand-edited result cells). Reference style: sn-basic (author--year).
+%% Article type: data/software resource paper with original benchmark analyses.
 %%
 %% Every result-bearing number is copied from a validated, immutable asset under
 %% manuscript/ (asset_inputs.json / tables/*.tex) and is auditable via
 %% manuscript/paper/claim_ledger.jsonl + validate_manuscript.py. No model was
 %% refit, no result invented, no DOI minted, nothing submitted.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[pdflatex,sn-basic,Numbered,iicol]{sn-jnl}
+\documentclass[pdflatex,sn-basic,iicol]{sn-jnl}
 
 \usepackage{graphicx}%
 \usepackage{multirow}%
@@ -22,24 +22,15 @@
 \usepackage{url}%
 
 \graphicspath{{figures/}}
-\raggedbottom
-
-\setlength{\dbltextfloatsep}{10pt plus 2pt minus 2pt}
-\setlength{\dblfloatsep}{8pt plus 2pt minus 2pt}
-\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
-\setlength{\floatsep}{8pt plus 2pt minus 2pt}
-\setlength{\intextsep}{8pt plus 2pt minus 2pt}
 \AtBeginDocument{%
   \hypersetup{bookmarksdepth=2}%
-  \setlength{\bibsep}{0pt plus 0.2pt}%
-  \def\bibfont{\fontsize{8pt}{9pt}\selectfont}%
 }
 
 \begin{document}
 
-\title[A versioned, leakage-audited USGS DYFI severe-felt-intensity benchmark]{A
-versioned, leakage-audited USGS \emph{Did You Feel It?} benchmark for
-retrospective severe felt-intensity prediction}
+\title[A USGS DYFI benchmark for machine-learning evaluation]{A versioned,
+leakage-audited USGS \emph{Did You Feel It?} benchmark for machine-learning
+evaluation of severe felt intensity}
 
 \author*[1]{\fnm{Akshay} \sur{Sharma}}\email{akssha74@gmail.com}
 
@@ -71,11 +62,17 @@ benchmark provides a versioned, leakage-audited reference for future methods,
 and every reported value can be reconstructed exactly from the frozen analysis
 files.}
 
-\keywords{Did You Feel It?, macroseismic intensity, benchmark resource,
-leakage-safe evaluation, sequence-grouped cross-validation, calibration,
-reproducibility}
+\keywords{Did You Feel It?, macroseismology, machine learning, benchmark
+resource, sequence-grouped cross-validation, reproducibility}
 
 \maketitle
+
+\section*{Article Highlights}
+\begin{itemize}\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}
+\item A frozen USGS DYFI resource enables reproducible comparison of felt-intensity models.
+\item Earthquakes from the same seismic sequence remain together during model evaluation.
+\item Observed split differences were small, and no model was declared the winner.
+\end{itemize}
 
 \section{Introduction}\label{sec:intro}
 
@@ -152,11 +149,10 @@ real-time, lead-time, operational, or causal claim.
 \subsection{Significance}\label{sec:significance}
 
 The resource gives later studies a fixed, auditable contract instead of another
-bespoke split. Evaluation-resource articles are an established applied-science
-contribution type: \citet{urs2026benchmarking}, for example, benchmark existing
-prediction tools against gold-standard datasets in another domain. Here the
-version-frozen corpus, executable audit, grouped roles, reference baselines, and
-exact reconstruction provide that foundation for felt-intensity modelling.
+bespoke split. By combining a version-frozen macroseismic corpus, an executable
+leakage audit, sequence-grouped roles, reference baselines, and exact
+reconstruction, it turns citizen-reported felt intensity into a reusable
+seismological testbed rather than proposing another standalone prediction model.
 
 \section{Related work and novelty}\label{sec:related}
 
@@ -186,10 +182,24 @@ events~\citep{lilienkamp2023feltreports}. Its crowdsourced predictors,
 impact endpoint, and rapid-response objective differ from the source-only DYFI
 benchmark and reusable evaluation contract developed here.
 
+\paragraph{Macroseismic databases and citizen observations.} Event-specific
+analysis in the 2019 Athens earthquake combined online felt reports with ground
+motion and source modelling~\citep{kouskouna2021athens}. Curated macroseismic
+resources such as the Belgian traditional macroseismic database and
+MACROSISDATA preserve historical intensity observations for transparent reuse
+and later analysis~\citep{neefs2025btm,sira2025macrosisdata}. The present work
+extends this seismological resource tradition from data preservation to a
+versioned, executable contract for model evaluation.
+
 \paragraph{Machine learning on felt/macroseismic intensity.} Recent studies
 predict macroseismic intensity with random forests and gradient boosting from
 instrumental or catalogue features~\citep{patelli2026macroseismic,
-mori2025explainable}. Each is a single-system model application evaluated under a
+mori2025explainable}. Machine learning has also been applied to earthquake
+alert-level classification using intensity-related features and to waveform
+detection with openly released seismic datasets~\citep{ozupak2026alert,
+ertuncay2025detection}. Those tasks use post-event intensity descriptors or
+waveforms, rather than the source-only feature boundary studied here. Each
+felt-intensity model application is evaluated under a
 random or stratified partition and does not release a reusable, event-grouped,
 leakage-audited benchmark; \citet{mori2025explainable} moreover predict from
 instrumental ground-motion parameters rather than outcome-blind catalogue
@@ -416,6 +426,11 @@ All fits, exclusions, subsets, cutoffs, and pairwise comparisons are reported
 regardless of outcome; the only permitted omissions are the protocol-defined
 exclusions above.
 Computation is local-only under a pinned environment.
+
+\paragraph{Generative AI assistance.} ChatGPT was used for language editing,
+formatting assistance, and code review. It did not generate data, results, model
+fits, or figures. The authors reviewed and verified all assisted work and retain
+full responsibility for the manuscript and released artifacts.
 
 \section{Results}\label{sec:results}
 
@@ -668,11 +683,9 @@ datasets containing more multi-event sequences.
 \backmatter
 
 \bmhead{Acknowledgements}
-ChatGPT assisted language editing, formatting, and code review; the authors
-verified all outputs and accept responsibility. No figure was AI-generated. We
-thank the USGS DYFI and ANSS Comprehensive Catalog programs.
+We thank the USGS DYFI and ANSS Comprehensive Catalog programs.
 
-\section*{Declarations}
+\section*{Statements and Declarations}
 
 \begin{itemize}\setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}\setlength{\parsep}{0pt}
 \item \textbf{Funding.} No specific funding was received.
@@ -683,7 +696,7 @@ human-subject collection, animals, or respondent-level identifying information.
 \item \textbf{Consent for publication.} Not applicable.
 \item \textbf{Data availability.} Version~1 data, results, manifests, and
 instructions are available under CC0~1.0 at
-\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.16}.
+\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.0.17}.
 Source data are USGS DYFI and ANSS ComCat (public domain;
 \href{https://doi.org/10.5066/F7J101C8}{10.5066/F7J101C8} and
 \href{https://doi.org/10.5066/F7MS3QZH}{10.5066/F7MS3QZH}) and are reconstructable
