@@ -58,9 +58,9 @@ Status: **DRAFT — NOT SUBMITTED**
 - [x] JEAS validator passes
 - [x] Original benchmark tests remain passing
 - [x] Final independent goal/usefulness, peer-parity, and default-reject reviews pass
-- [x] Editor-readable JEAS manuscript release v1.2.1 prepared; metadata/manifest
+- [x] Editor-readable JEAS manuscript release v1.2.2 prepared; metadata/manifest
       hardening releases preserve the reviewed scientific identity
-- [x] v1.2.1 release candidate manifest 229/229, assets 38/38, validators
+- [x] v1.2.2 release candidate manifest 229/229, assets 38/38, validators
       116/116 and 38/38, tests 110/110, and exact main/supplement source builds pass
 - [x] Independent abstract-only domain, methods, and non-specialist reader test passes
 

@@ -22,7 +22,7 @@
     {
       "check": "concise_abstract",
       "ok": true,
-      "detail": "249"
+      "detail": "218"
     },
     {
       "check": "engineering_keywords",
@@ -172,12 +172,12 @@
     {
       "check": "build_ledger_main_current",
       "ok": true,
-      "detail": "153d1479970fe840fc947bc534fbedf557ecd1735fd5e744beaca1fd323f6d9b"
+      "detail": "3f908485ed124235e0a00b82fccdde7a1971a221f5cfb0146aa4e755889abc5c"
     },
     {
       "check": "build_ledger_pdf_current_or_source_only",
       "ok": true,
-      "detail": "73fdf6d638ae075421e2ca1f1fc32a1e440ad6e17d6268eacdc115b7acecfc59"
+      "detail": "8ea8370085e8c284017102d441ff9e3a3fc41b4664e4eb5adb9c7e6741d9f5d0"
     },
     {
       "check": "supplement_build_current_or_source_only",
@@ -192,7 +192,7 @@
     {
       "check": "editor_reviewer_readiness_current",
       "ok": true,
-      "detail": "73fdf6d638ae075421e2ca1f1fc32a1e440ad6e17d6268eacdc115b7acecfc59"
+      "detail": "8ea8370085e8c284017102d441ff9e3a3fc41b4664e4eb5adb9c7e6741d9f5d0"
     }
   ]
 }

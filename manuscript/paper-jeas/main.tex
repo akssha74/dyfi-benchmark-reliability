@@ -44,31 +44,28 @@ event data: a USGS DYFI benchmark}
 \orgname{SAGE University}, \orgaddress{\city{Indore}, \postcode{452020},
 \state{Madhya Pradesh}, \country{India}}}
 
-\abstract{Engineers comparing machine-learning classifiers on evolving event
-catalogues can reach false conclusions when dependent events cross data splits
-or small score differences are treated as wins. We ask whether candidate severe
-felt-intensity classifiers---which predict whether an earthquake's maximum
-community decimal intensity reaches 6 (intensity VI or greater)---comply with
-predefined rules for allowed inputs and evaluation, and whether their apparent
-improvements remain supported after catalogue version, event grouping, temporal
-evaluation, and paired uncertainty are fixed.
-Using a frozen USGS ``Did You Feel It?'' (DYFI) snapshot of 7{,}520
-$M\geq5$ records, we formed 2{,}362 eligible events, reserved 430 events from
-2023--2024 as a temporal holdout, and evaluated fixed baselines using Brier score
-and bootstrap intervals that resampled whole event sequences. All four learned
+\abstract{Engineers comparing classifiers on evolving event catalogues can reach
+false conclusions when related events cross data splits or small score gaps are
+treated as wins. We test whether classifiers of severe felt intensity
+(event-maximum community decimal intensity $\geq6$) follow fixed input and
+evaluation rules and whether their gains remain supported under a fixed
+catalogue, event grouping, temporal holdout, and paired uncertainty.
+From a frozen USGS ``Did You Feel It?'' (DYFI) snapshot of 7{,}520 $M\geq5$
+records, we formed 2{,}362 eligible events, held out 430 events from 2023--2024,
+and compared fixed baselines with Brier score and bootstrap intervals that
+resampled whole event sequences. All four learned
 models---magnitude-only and magnitude-plus-depth logistic regression, random
 forest, and XGBoost---improved on the constant-prevalence reference. Adding
 depth to the magnitude-only logistic model reduced Brier score by 0.018 (95\% CI
 0.010--0.025). The magnitude-plus-depth logistic model and XGBoost both had
 Brier 0.181 to three decimals, and their direct comparison remained unresolved.
-The source-only input rule excluded a candidate using event year.
-As a complementary diagnostic, folds that kept related events together gave
-similar point performance to random folds for a fixed random forest; we treat
-this comparison as descriptive because no uncertainty interval was retained.
+The source-only input rule excluded a candidate using event year. A complementary
+random-forest diagnostic gave similar point performance when related events were
+kept together or split randomly; without an interval, we report it
+descriptively.
 The benchmark helps engineers reject inadmissible comparisons and unsupported
-winner claims. It is intended for transparent retrospective comparison;
-confirmatory or operational use would require fresh hidden data and separate
-validation.}
+winner claims. It supports retrospective comparison; confirmation or operational
+use requires fresh hidden data and separate validation.}
 
 \keywords{model comparison, evaluation reliability, benchmark qualification,
 dependent-event data, reproducibility, USGS DYFI}
@@ -687,7 +684,7 @@ recruited.
 \item \textbf{Consent for publication.} Not applicable.
 \item \textbf{Availability of data and materials.} Version~1 data, results, manifests, and
 instructions are available under CC0~1.0 at
-\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.2.1}.
+\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.2.2}.
 Source data are USGS DYFI and ANSS ComCat (public domain;
 \href{https://doi.org/10.5066/F7J101C8}{10.5066/F7J101C8} and
 \href{https://doi.org/10.5066/F7MS3QZH}{10.5066/F7MS3QZH}) and are reconstructable
@@ -695,7 +692,7 @@ via the released fetch-and-verify source-locator manifest. No respondent-level
 personally identifying information is redistributed.
 \item \textbf{Availability of code.} Project: DYFI Benchmark Reliability.
 Homepage: \url{https://github.com/akssha74/dyfi-benchmark-reliability}.
-Archived version: release v1.2.1. Operating systems: platform independent.
+Archived version: release v1.2.2. Operating systems: platform independent.
 Programming language: Python. Licence: MIT. Restrictions on non-academic use:
 none. Full prediction reconstruction and model tests use the separately pinned
 scientific-Python environment.
