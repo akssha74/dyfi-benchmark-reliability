@@ -169,7 +169,7 @@ def write_workflow() -> None:
         x = upper[0] + upper[2] / 2
         ax.add_patch(FancyArrowPatch(
             (x, upper[1]), (x, lower[1] + lower[3]),
-            arrowstyle="->", mutation_scale=13
+            arrowstyle="->", mutation_scale=13, shrinkA=2, shrinkB=5
         ))
 
     reject = FancyBboxPatch(
@@ -184,7 +184,8 @@ def write_workflow() -> None:
     ax.add_patch(reject)
     ax.text(3.725, 2.46, "Fail closed:\nout of contract", ha="center", va="center")
     ax.add_patch(FancyArrowPatch(
-        (2.45, 2.46), (2.95, 2.46), arrowstyle="->", mutation_scale=13
+        (2.45, 2.46), (2.95, 2.46), arrowstyle="->", mutation_scale=13,
+        shrinkA=7, shrinkB=7
     ))
 
     decision = FancyBboxPatch(
@@ -207,7 +208,8 @@ def write_workflow() -> None:
         fontsize=8.2,
     )
     ax.add_patch(FancyArrowPatch(
-        (2.45, 0.76), (2.90, 0.76), arrowstyle="->", mutation_scale=13
+        (2.45, 0.76), (2.90, 0.76), arrowstyle="->", mutation_scale=13,
+        shrinkA=7, shrinkB=7
     ))
     FIGURES.mkdir(parents=True, exist_ok=True)
     metadata = {

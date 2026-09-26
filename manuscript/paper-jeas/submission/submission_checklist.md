@@ -56,9 +56,9 @@ Status: **DRAFT — NOT SUBMITTED**
 - [x] JEAS validator passes
 - [x] Original benchmark tests remain passing
 - [x] Final independent goal/usefulness, peer-parity, and default-reject reviews pass
-- [x] Compact-workflow JEAS manuscript release v1.1.8 prepared; metadata/manifest
+- [x] Arrow-clearance JEAS manuscript release v1.1.9 prepared; metadata/manifest
       hardening releases preserve the reviewed scientific identity
-- [x] v1.1.8 release candidate manifest 225/225, assets 38/38, validators
+- [x] v1.1.9 release candidate manifest 225/225, assets 38/38, validators
       116/116 and 35/35, tests 110/110, and exact source build pass
 - [x] Independent abstract-only domain, methods, and non-specialist reader test passes
 
