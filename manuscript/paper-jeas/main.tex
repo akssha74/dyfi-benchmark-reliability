@@ -119,8 +119,8 @@ to decide whether an improvement is supported
 (Sections~\ref{sec:leakage}--\ref{sec:qualification}).
 \item \textbf{A worked model-selection example} showing a clear gain from depth
 beyond magnitude alone, a competitive transparent logistic reference, and the
-point at which a more complex model remains unresolved. Data, predictions,
-tests, and reconstruction records are released with the benchmark
+point at which a more complex model remains unresolved. Data, frozen parameters,
+tests, and prediction-reconstruction records are released with the benchmark
 (Section~\ref{sec:results}).
 \end{enumerate}
 
@@ -439,15 +439,16 @@ Brier score and higher AUROC are better}
 
 \input{tables/endpoint_threshold_sensitivity.tex}
 
-\subsection{Observed split-performance differences}\label{sec:leakage-results}
+\subsection{Complementary split-assignment diagnostic}\label{sec:leakage-results}
 
-The resource's headline quantity is the optimism of naive random splitting
-relative to the sequence-grouped protocol, measured for a fixed leakage
-diagnostic---a random forest with 300 trees and unrestricted depth---under three
+As a secondary stress test, we compare naive random and sequence-grouped folds
+for a fixed random forest with 300 trees and unrestricted depth under three
 fold-assignment schemes on the construction corpus
 (Table~\ref{tab:leakage}, Fig.~\ref{fig:leakage}).
-This diagnostic is distinct from the tuned temporal-holdout baseline B4, whose
-maximum depth is 3.
+This diagnostic asks whether split assignment changes point performance in this
+corpus; it is not the qualification workflow's decision-bearing result. It is
+also distinct from the tuned temporal-holdout baseline B4, whose maximum depth
+is 3.
 On this $M\geq5$
 one-row-per-event universe the point estimates are small and slightly reversed:
 sequence grouping produced a Brier score 0.0059 lower and an AUROC 0.0124
@@ -532,7 +533,8 @@ intervals exclude zero). The source-only logistic model B2 also improves on the
 magnitude-only B1 by 0.0176 (95\% interval 0.0101--0.0249), showing that depth
 adds useful predictive information in this dataset. XGBoost B5 improves on the
 random forest B4, although the lower interval endpoint (0.0003) is near the
-Monte Carlo boundary. The B2--B4 and B2--B5 comparisons have intervals that
+Monte Carlo boundary. We treat this contrast cautiously and do not use it as a
+ranking certificate. The B2--B4 and B2--B5 comparisons have intervals that
 include zero. In the joint
 bootstrap ordering, B2 has the highest probability of being uniquely best
 (0.613), followed by B5 (0.387), but the direct B2--B5 comparison remains
@@ -684,7 +686,7 @@ recruited.
 \item \textbf{Consent for publication.} Not applicable.
 \item \textbf{Availability of data and materials.} Version~1 data, results, manifests, and
 instructions are available under CC0~1.0 at
-\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.2.2}.
+\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.2.3}.
 Source data are USGS DYFI and ANSS ComCat (public domain;
 \href{https://doi.org/10.5066/F7J101C8}{10.5066/F7J101C8} and
 \href{https://doi.org/10.5066/F7MS3QZH}{10.5066/F7MS3QZH}) and are reconstructable
@@ -692,7 +694,7 @@ via the released fetch-and-verify source-locator manifest. No respondent-level
 personally identifying information is redistributed.
 \item \textbf{Availability of code.} Project: DYFI Benchmark Reliability.
 Homepage: \url{https://github.com/akssha74/dyfi-benchmark-reliability}.
-Archived version: release v1.2.2. Operating systems: platform independent.
+Archived version: release v1.2.3. Operating systems: platform independent.
 Programming language: Python. Licence: MIT. Restrictions on non-academic use:
 none. Full prediction reconstruction and model tests use the separately pinned
 scientific-Python environment.

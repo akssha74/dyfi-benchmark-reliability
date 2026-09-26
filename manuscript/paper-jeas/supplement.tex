@@ -5,6 +5,7 @@
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{microtype}
+\usepackage{placeins}
 \usepackage{setspace}
 \usepackage{url}
 
@@ -33,6 +34,7 @@ determine its conclusions: every learned baseline improves over no-skill, while
 B2--B4 and B2--B5 remain unresolved.
 
 \input{tables/pairwise_matrix.tex}
+\FloatBarrier
 
 \section*{Protocol exclusions and deviations}
 
@@ -40,6 +42,7 @@ Supplementary Table~S2 lists all exclusions, unexecuted branches, and
 interpretation boundaries. These entries change no frozen result.
 
 \input{tables/exclusions_deviations.tex}
+\FloatBarrier
 
 \section*{Temporal and geographic subgroup summaries}
 
@@ -48,5 +51,6 @@ of the 430 fixed temporal-holdout predictions. Geographic cells are descriptive
 subgroups, not leave-region-out evidence.
 
 \input{tables/slices.tex}
+\FloatBarrier
 
 \end{document}

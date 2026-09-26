@@ -46,10 +46,10 @@ contribution identity to the reliability of the comparison contract itself.
 
 Data, code, frozen results, and reproduction instructions are available at
 <https://github.com/akssha74/dyfi-benchmark-reliability>. The scientific results
-are unchanged from immutable release v1.0.27; the JEAS manuscript adds only a
-generated engineering-use workflow and decision tables derived from the same
-frozen assets. A clean clone passes the released validators and benchmark test
-suite and reconstructs the reported results.
+come from the scientific core frozen in release v1.0.27; the current JEAS
+release packages that unchanged core with an engineering-use workflow and
+decision tables derived from the same assets. A clean clone passes the released
+validators and benchmark test suite and reconstructs the reported results.
 
 The manuscript is original and is not under consideration elsewhere. Both
 authors have approved this manuscript and its submission. The authors declare no competing

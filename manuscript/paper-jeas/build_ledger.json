@@ -16,14 +16,14 @@
   "inputs_are_immutable": true,
   "network_writes": false,
   "public_repository": "https://github.com/akssha74/dyfi-benchmark-reliability",
-  "public_release_tag": "v1.2.2",
+  "public_release_tag": "v1.2.3",
   "doi": null,
   "submitted": false,
-  "main_tex_sha256": "3f908485ed124235e0a00b82fccdde7a1971a221f5cfb0146aa4e755889abc5c",
+  "main_tex_sha256": "9b494085e585d1247d41f33faa2b39f1e03b78d4a9ca14af4dbe0a0abb86a879",
   "references_bib_sha256": "f22c0a26f7c33d68ce67cddf4b490ecda6cc364d06f1e9dc6c0e4bcab89d7ff7",
-  "main_pdf_sha256": "8ea8370085e8c284017102d441ff9e3a3fc41b4664e4eb5adb9c7e6741d9f5d0",
-  "main_pdf_bytes": 280623,
-  "supplement_tex_sha256": "1aa9d620e832c017a7ddad3da891b052bd696fc148cbdab62b4ed12148b3da19",
-  "supplement_pdf_sha256": "036388e5026544cf760fadc2cae859b65401b5b235650e9c6f6c69231fc74460",
-  "supplement_pdf_bytes": 50735
+  "main_pdf_sha256": "02dc7df67a6490a87474ee4d383941b2f5a2b46f9caee561f402b37d5f0fbb9a",
+  "main_pdf_bytes": 280619,
+  "supplement_tex_sha256": "19fc0cf0d3a07e32bc5850ee9691a826d1eab63aa55812c51e6095061eedbeef",
+  "supplement_pdf_sha256": "c47f603746488db0ae5f80e93c5a1d50041a7e9f430e7cde2b21eceef53a58e8",
+  "supplement_pdf_bytes": 51197
 }
