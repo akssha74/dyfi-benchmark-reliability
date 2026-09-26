@@ -56,10 +56,10 @@ Status: **DRAFT — NOT SUBMITTED**
 - [x] JEAS validator passes
 - [x] Original benchmark tests remain passing
 - [x] Final independent goal/usefulness, peer-parity, and default-reject reviews pass
-- [x] Immutable JEAS manuscript release v1.1.1 published; metadata/manifest
-      hardening releases v1.1.2 and v1.1.3 preserve identical manuscript bytes
-- [x] v1.1.3 cold-clone manifest 217/217, assets 38/38, validators 116/116 and
-      30/30, tests 110/110, exact source build, and public access pass
+- [x] Corrected JEAS manuscript release v1.1.4 published; metadata/manifest
+      hardening releases preserve the reviewed scientific identity
+- [x] v1.1.4 cold-clone manifest 221/221, assets 38/38, validators 116/116 and
+      34/34, tests 110/110, exact source build, and public access pass
 
 ## Submission package and portal
 

@@ -528,7 +528,7 @@
     {
       "check": "build_ledger_release_tag_matches_manuscript",
       "ok": true,
-      "detail": "paper=v1.0.27; repository=v1.1.4"
+      "detail": "paper=v1.0.27; repository=v1.1.5"
     },
     {
       "check": "figure_byte_identical_fig_threshold_slice.pdf",
