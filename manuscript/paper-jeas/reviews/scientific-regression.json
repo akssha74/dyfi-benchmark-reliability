@@ -6,8 +6,8 @@
   "original_main_pdf_sha256": "6ce8b8d8b07afb68eeb838e08b16f7832c4713e2d05ebc317826feb19ceebf75",
   "frozen_asset_inputs_sha256": "b7f7dea60c7421b0b75870d45421c094e3cd4b5e325702c94b498ebc7926ace9",
   "frozen_result_sha256": "b3ec45d587d6125da25890b7e91bfb140309c8645c7d8c365d80a2e0df73ae3b",
-  "jeas_main_tex_sha256_before_final_review": "b7e5a26a7c3db81a8d496d200ff78e5dad12b93a0cb907f45d083eb6d3924baf",
-  "jeas_main_pdf_sha256_before_final_review": "45708db9659776c0d11b645b21f1be40c2e09c4ee235d3318e17df5fcfd8e3e3",
+  "jeas_main_tex_sha256_before_final_review": "7f78ae52f27d6178017390a72d24d82ff2507740a6548601d672071a7980a55d",
+  "jeas_main_pdf_sha256_before_final_review": "190a6a4dcb44fcc3f3152a19d57fa56b286c835d2abf60d0cc7d9706ee1ad4ca",
   "gates": {
     "original_manuscript_validator": {
       "command": "python3 manuscript/paper/validate_manuscript.py",
@@ -24,7 +24,7 @@
     },
     "jeas_validator": {
       "command": "python3 manuscript/paper-jeas/validate_jeas.py",
-      "checks": 34,
+      "checks": 35,
       "failed": 0,
       "pass": true
     },
@@ -41,6 +41,7 @@
     "prospective-use claim narrowing",
     "endpoint-probe interpretation correction",
     "machine-readable semantic corrections overlay",
-    "zero-based split diagnostic and full-size workflow artwork"
+    "zero-based split diagnostic and full-size workflow artwork",
+    "human-readable abstract story revision"
   ]
 }

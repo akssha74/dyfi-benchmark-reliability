@@ -38,10 +38,10 @@
   "target_venue_publishes_this_identity": true,
   "editor_test_status": "pass",
   "independent_30_second_editor_test": {
-    "reviewer": "Claude Opus 4.8, independent frozen-snapshot review",
+    "reviewer": "GPT-5.6 Sol, independent abstract-only three-reader test",
     "goal_understood": true,
     "usefulness_understood": true,
     "abstract_story_pass": true,
-    "quoted_summary": "A frozen, hashed, single-source USGS DYFI benchmark plus an executable candidate-qualification contract that makes model-comparison decisions auditable across data version, split construction, uncertainty, and environment."
+    "quoted_summary": "The benchmark helps engineers avoid invalid retrospective comparisons and unsupported winners, while requiring hidden data for confirmation and excluding operational use."
   }
 }

@@ -1,0 +1,50 @@
+{
+  "record_type": "editor_reviewer_readiness",
+  "manuscript_sha256": "190a6a4dcb44fcc3f3152a19d57fa56b286c835d2abf60d0cc7d9706ee1ad4ca",
+  "venue": "Journal of Engineering and Applied Science",
+  "article_type": "Research Article",
+  "contribution_identity": "benchmark",
+  "editor_test": {
+    "pain_point": "Dependent events, evolving catalogue state, and unquantified score differences can produce invalid classifier comparisons.",
+    "goal": "Determine whether candidate severe felt-intensity classifiers comply with predefined comparison rules and whether apparent improvements remain supported.",
+    "intended_user": "Applied-ML engineers, benchmark maintainers, and reviewers.",
+    "decision_enabled": "Admit an in-contract candidate and decide whether its Brier improvement over a declared reference is supported or unresolved.",
+    "error_prevented": "Out-of-contract comparisons and false winner declarations.",
+    "substantive_result": "Four learned baselines improve over no-skill, B2 and B5 remain unresolved, one event-year candidate violates the allowed-input rule, and the split contrast is small and descriptive.",
+    "non_use_boundary": "Public labels preclude untouched confirmation; the work is not real-time warning or operational triage.",
+    "verbatim_paraphrase": "The benchmark helps engineers avoid invalid retrospective comparisons and unsupported winners, while requiring hidden data for confirmation and excluding operational use.",
+    "pass": true
+  },
+  "abstract_story": {
+    "pain_point": true,
+    "goal": true,
+    "approach": true,
+    "result": true,
+    "usefulness": true,
+    "boundary": true,
+    "independent_reader_paraphrases": [
+      "The benchmark helps engineers avoid invalid retrospective comparisons and unsupported winners, while requiring hidden data for confirmation and excluding operational use.",
+      "Four models beat no-skill, the leading pair remained unresolved, one candidate violated input rules, and the random-fold contrast is descriptive because it lacks an interval.",
+      "The study compares models under fair rules, finds improvement but no clear winner, rejects one unfair model, and cannot support real-time use."
+    ],
+    "pass": true
+  },
+  "venue_identity_fit": true,
+  "evidence_navigation_pass": true,
+  "visual_pass": true,
+  "scores": {
+    "goal_clarity": 5,
+    "usefulness": 5,
+    "identity_fit": 4,
+    "evidence_access": 5,
+    "reviewer_effort": 4,
+    "presentation": 5,
+    "total": 28
+  },
+  "editor_recommendation": "send_to_review",
+  "reviewer_recommendation": "accept",
+  "blocking_findings": [],
+  "venue_constraint_blocker": "JEAS is fully open access rather than hybrid; user must explicitly relax the hybrid requirement or select another venue.",
+  "overall_pass": true,
+  "submission_authorized": false
+}

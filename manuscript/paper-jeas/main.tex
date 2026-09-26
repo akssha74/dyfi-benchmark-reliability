@@ -44,31 +44,26 @@ event data: a USGS DYFI benchmark}
 \orgname{SAGE University}, \orgaddress{\city{Indore}, \postcode{452020},
 \state{Madhya Pradesh}, \country{India}}}
 
-\abstract{Performance claims for engineering classifiers can change when the
-source catalogue evolves, dependent events cross data splits, or small point
-differences are interpreted without paired uncertainty. We ask whether
-performance and model-superiority claims for severe felt-intensity classifiers
-remain supportable when those risks are controlled. We release a versioned USGS
-``Did You Feel It?'' (DYFI) benchmark and a candidate-qualification workflow for
-applied machine-learning engineers, benchmark maintainers, and reviewers. A
-candidate must pass feature/proxy and role-isolation audits before temporal
-holdout scoring; improvements are then assessed with proper scores and paired
-sequence-cluster uncertainty. The frozen $M\geq5$ snapshot contains 7{,}520
-records, 2{,}362 eligible events, and a 430-event temporal holdout. For a fixed
-random-forest split diagnostic, sequence grouping produced a Brier score 0.006
-lower and an area under the receiver-operating-characteristic curve 0.012 higher
-than random-event folds, a small reversed contrast reported descriptively. All
-four admissible learned baselines improved on the no-skill reference, whereas
-the paired interval between the two lowest-Brier models included zero. A worked
-qualification therefore supports improvement over no-skill, excludes one
-candidate outside the declared source-only schema, and rejects a false winner
-declaration. The resulting
-engineering test harness makes model comparisons auditable across data version,
-split construction, uncertainty, and software environment. Because the released
-labels are public, it supports transparent retrospective comparison rather than
-untouched prospective confirmation; a fresh hidden holdout or evaluation
-service is required for confirmatory reuse. It is not a real-time warning or
-operational triage system.}
+\abstract{Engineers comparing machine-learning classifiers on evolving event
+catalogues can reach false conclusions when dependent events cross data splits
+or small score differences are treated as wins. We ask whether candidate severe
+felt-intensity classifiers comply with predefined rules for allowed inputs and
+evaluation, and whether their apparent improvements remain supported after
+catalogue version, event grouping, temporal evaluation, and paired uncertainty
+are fixed.
+Using a frozen USGS ``Did You Feel It?'' (DYFI) snapshot of 7{,}520
+$M\geq5$ records, we formed 2{,}362 eligible events, reserved 430 events from
+2023--2024 as a temporal holdout, and evaluated fixed baselines using Brier score
+and sequence-cluster bootstrap intervals. Four learned models improved on the
+no-skill reference, but the two lowest-Brier models remained unresolved; one
+candidate violated the allowed-input rule by using event year. For a fixed
+random-forest diagnostic, sequence grouping changed Brier score by $-0.006$ and
+area under the receiver-operating-characteristic curve (AUROC) by $+0.012$
+relative to random folds; because no interval was retained, this contrast is
+descriptive only. The benchmark helps engineers reject inadmissible comparisons
+and unsupported winner claims. Because its labels are public, confirmation
+requires fresh hidden data or an independent service, and it does not establish
+real-time warning or operational triage.}
 
 \keywords{model comparison, evaluation reliability, benchmark qualification,
 dependent-event data, reproducibility, USGS DYFI}

@@ -56,13 +56,16 @@ Status: **DRAFT — NOT SUBMITTED**
 - [x] JEAS validator passes
 - [x] Original benchmark tests remain passing
 - [x] Final independent goal/usefulness, peer-parity, and default-reject reviews pass
-- [x] Corrected JEAS manuscript release v1.1.4 published; metadata/manifest
+- [x] Human-readable JEAS manuscript release v1.1.6 prepared; metadata/manifest
       hardening releases preserve the reviewed scientific identity
-- [x] v1.1.4 cold-clone manifest 221/221, assets 38/38, validators 116/116 and
-      34/34, tests 110/110, exact source build, and public access pass
+- [x] v1.1.6 release candidate manifest 225/225, assets 38/38, validators
+      116/116 and 35/35, tests 110/110, and exact source build pass
+- [x] Independent abstract-only domain, methods, and non-specialist reader test passes
 
 ## Submission package and portal
 
+- [ ] User explicitly relaxes the hybrid requirement for JEAS's currently
+      sponsored zero-fee open-access model; otherwise do not submit to JEAS
 - [x] JEAS cover letter drafted
 - [x] JEAS compliance matrix complete
 - [x] Upload builder and README prepared

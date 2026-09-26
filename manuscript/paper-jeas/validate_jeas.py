@@ -288,6 +288,22 @@ def main() -> int:
         (not pdf.exists()) or build.get("main_pdf_sha256") == sha256(pdf),
         "source-only package" if not pdf.exists() else str(build.get("main_pdf_sha256")),
     )
+    readiness_path = HERE / "reviews" / "editor-reviewer-readiness.json"
+    if readiness_path.exists() and pdf.exists():
+        readiness = json.loads(readiness_path.read_text())
+        check(
+            "editor_reviewer_readiness_current",
+            readiness.get("manuscript_sha256") == sha256(pdf)
+            and readiness.get("overall_pass") is True
+            and readiness.get("abstract_story", {}).get("pass") is True,
+            str(readiness.get("manuscript_sha256")),
+        )
+    else:
+        check(
+            "editor_reviewer_readiness_current",
+            True,
+            "readiness record is a release-level review artifact and is not required in editable source-only packages",
+        )
 
     failed = [c for c in checks if not c["ok"]]
     report = {

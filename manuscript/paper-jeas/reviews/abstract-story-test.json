@@ -1,0 +1,19 @@
+{
+  "record_type": "abstract_story_test",
+  "manuscript_pdf_sha256": "190a6a4dcb44fcc3f3152a19d57fa56b286c835d2abf60d0cc7d9706ee1ad4ca",
+  "tested_on": "2026-09-26",
+  "agent_id": "7e907cda-68ed-402e-afe3-f811f3647fd8",
+  "pain_point_present": true,
+  "goal_present": true,
+  "minimum_approach_present": true,
+  "principal_result_present": true,
+  "usefulness_present": true,
+  "non_use_boundary_present": true,
+  "reader_paraphrases": {
+    "engineering_editor": "The benchmark helps engineers avoid invalid retrospective comparisons and unsupported winners, while requiring hidden data for confirmation and excluding operational use.",
+    "methods_reviewer": "Four models beat no-skill, the leading pair remained unresolved, one candidate violated input rules, and the random-fold contrast is descriptive because it lacks an interval.",
+    "intelligent_non_specialist": "The study compares models under fair rules, finds improvement but no clear winner, rejects one unfair model, and cannot support real-time use."
+  },
+  "blocking_ambiguities": [],
+  "abstract_story_pass": true
+}
