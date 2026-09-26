@@ -16,6 +16,8 @@ This directory contains the materialized public release of the benchmark.
 - `REPRODUCTION.md` — verification and test instructions.
 - `CLARIFICATIONS.md` — non-numeric corrections to legacy metadata wording,
   geographic scope, and the split-contrast uncertainty commitment.
+- `CORRECTIONS_OVERLAY.json` — machine-readable deprecations and authoritative
+  semantic replacements for legacy fields; numerical results are unchanged.
 
 The primary feature set contains magnitude and depth. Response count is used
 only to establish eligibility and is forbidden as a model input. The severe

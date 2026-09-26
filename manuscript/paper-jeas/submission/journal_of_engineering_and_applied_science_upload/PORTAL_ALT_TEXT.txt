@@ -13,8 +13,8 @@ score, and AUROC at severe-intensity thresholds 5.5, 6.0, and 6.5. The right
 panel compares Brier score and AUROC for the 2023 and 2024 portions of the
 temporal holdout.
 
-Figure 4. Two-panel comparison of random-event, event-grouped, and
-sequence-grouped cross-validation for the fixed random-forest diagnostic.
+Figure 4. Two-panel zero-based bar comparison of random-event, event-grouped,
+and sequence-grouped cross-validation for the fixed random-forest diagnostic.
 Sequence grouping has slightly lower Brier score and slightly higher AUROC than
 random-event assignment; the contrast is descriptive and has no retained
 interval.

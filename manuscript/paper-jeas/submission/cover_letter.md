@@ -18,19 +18,20 @@ Engineering model selection can be invalidated by catalogue revision,
 outcome-derived inputs, dependent events crossing data splits, temporal
 contamination, or unresolved point-score differences. The manuscript asks
 whether performance and model-superiority claims remain supportable when these
-risks are controlled. It contributes a released candidate-qualification
+risks are controlled. It contributes a released retrospective qualification
 workflow for applied machine-learning engineers, benchmark maintainers, and
-reviewers: candidates first pass schema, proxy, role, and temporal audits, then
+reviewers: declared candidates first pass schema, proxy, role, and temporal audits, then
 are scored on a fixed temporal holdout and compared with paired
 sequence-cluster uncertainty.
 
 The frozen USGS Did You Feel It? snapshot contains 7,520 source records, 2,362
 eligible events, and a 430-event temporal holdout. The worked qualification
-rejects one temporal-proxy candidate before scoring, supports all four
+excludes one candidate outside the declared source-only schema, supports all four
 admissible learned baselines over the no-skill reference, and leaves the two
 lowest-Brier models unresolved. It therefore demonstrates two concrete
 engineering decisions: which candidates are admissible and when an apparent
-score advantage is insufficient to name a winner. The random-versus-sequence
+score advantage is insufficient to name a winner. Because the labels are public,
+confirmatory reuse requires a fresh hidden holdout or evaluation service. The random-versus-sequence
 diagnostic is small and reversed and is reported descriptively, not as evidence
 of leakage, equivalence, or a win.
 

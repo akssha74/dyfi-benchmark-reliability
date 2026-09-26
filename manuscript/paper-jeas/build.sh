@@ -22,6 +22,9 @@ fi
 if [[ -f ../paper/build_ledger.json ]]; then
   cp -f ../paper/build_ledger.json frozen_inputs/original_build_ledger.json
 fi
+if [[ -f ../../bundle/release/CORRECTIONS_OVERLAY.json ]]; then
+  cp -f ../../bundle/release/CORRECTIONS_OVERLAY.json frozen_inputs/corrections_overlay.json
+fi
 UTILITY_PYTHON="${DYFI_FIGURE_PYTHON:-}"
 if [[ -z "$UTILITY_PYTHON" && -x ../.venv-fig/bin/python ]]; then
   UTILITY_PYTHON="../.venv-fig/bin/python"

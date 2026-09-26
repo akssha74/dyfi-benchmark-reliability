@@ -1,0 +1,37 @@
+{
+  "record_type": "machine_readable_semantic_corrections_overlay",
+  "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
+  "applies_to_frozen_result_sha256": "b3ec45d587d6125da25890b7e91bfb140309c8645c7d8c365d80a2e0df73ae3b",
+  "changes_numeric_results": false,
+  "corrections": [
+    {
+      "json_pointer": "/result_core/real_protected_role_opened",
+      "deprecated_value": false,
+      "status": "deprecated_compatibility_field",
+      "authoritative_replacement": {
+        "data": "PROTECTED",
+        "mode": "protected",
+        "holdout_opens": 1,
+        "report_protected_role_opened": true,
+        "meaning": "The official decision-bearing run opened the protected role once. Two later token-free replays also rescored the holdout for deterministic verification."
+      }
+    },
+    {
+      "json_pointer": "/result_core/report/evaluation/leakage_inflation_headline/interpretation",
+      "status": "generic_estimand_template_not_observed_result",
+      "authoritative_replacement": {
+        "brier_sequence_minus_random": -0.005878207034,
+        "auroc_sequence_minus_random": 0.012396868243,
+        "meaning": "Observed differences are small and reversed relative to the expected optimistic-random-split direction. They are descriptive point estimates without a retained paired interval and do not establish leakage, equivalence, or a zero effect."
+      }
+    },
+    {
+      "json_pointer": "/result_core/report/evaluation/leakage_inflation_headline/event_grouped_note",
+      "status": "wording_correction",
+      "authoritative_replacement": {
+        "meaning": "With one row per event, event grouping imposes the same grouping constraint as random-event assignment, but deterministic fold allocations differ and therefore scores can differ."
+      }
+    }
+  ],
+  "human_readable_companion": "bundle/release/CLARIFICATIONS.md"
+}

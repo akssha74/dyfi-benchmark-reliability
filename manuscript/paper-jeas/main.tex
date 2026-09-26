@@ -60,11 +60,15 @@ lower and an area under the receiver-operating-characteristic curve 0.012 higher
 than random-event folds, a small reversed contrast reported descriptively. All
 four admissible learned baselines improved on the no-skill reference, whereas
 the paired interval between the two lowest-Brier models included zero. A worked
-qualification therefore supports improvement over no-skill but rejects both a
-temporal-proxy candidate and a false winner declaration. The resulting
+qualification therefore supports improvement over no-skill, excludes one
+candidate outside the declared source-only schema, and rejects a false winner
+declaration. The resulting
 engineering test harness makes model comparisons auditable across data version,
-split construction, uncertainty, and software environment; it is not a
-real-time warning or operational triage system.}
+split construction, uncertainty, and software environment. Because the released
+labels are public, it supports transparent retrospective comparison rather than
+untouched prospective confirmation; a fresh hidden holdout or evaluation
+service is required for confirmatory reuse. It is not a real-time warning or
+operational triage system.}
 
 \keywords{model comparison, evaluation reliability, benchmark qualification,
 dependent-event data, reproducibility, USGS DYFI}
@@ -139,20 +143,22 @@ machine-readable verification record (Section~\ref{sec:results}).
 
 The learned models are worked candidates, not proposed production systems. Their
 comparison demonstrates the decisions the contract permits: all admissible
-learned candidates improve over no-skill, one temporal-proxy candidate is
-rejected, and the two lowest-Brier models remain unresolved.
+learned candidates improve over no-skill, one candidate is outside the declared
+source-only schema, and the two lowest-Brier models remain unresolved.
 
 \subsection{Engineering significance and intended use}\label{sec:significance}
 
-The output is an engineering test harness for model comparison. A future
-candidate enters through the released schema, is rejected if it exposes
-outcome/axis information or violates role isolation, is scored on the locked
-temporal holdout, and is compared with paired sequence-cluster uncertainty. This
-workflow prevents an engineer or reviewer from declaring superiority from a
-different catalogue version, a contaminated split, or an unresolved point
-difference. Table~\ref{tab:engineering-failures} names the failure prevented by
-each control, and Fig.~\ref{fig:qualification-workflow} shows the resulting
-decision path.
+The output is an engineering test harness for transparent retrospective model
+comparison. A declared candidate enters through the released schema, is
+excluded if it uses forbidden outcome-derived fields or violates role
+isolation, is scored on the fixed temporal holdout, and is compared with paired
+sequence-cluster uncertainty. This workflow prevents an engineer or reviewer
+from declaring superiority from a different catalogue version, a contaminated
+split, or an unresolved point difference. Because holdout labels are public,
+the release is not an untouched prospective test: confirmatory evaluation of a
+new model requires a fresh benchmark version or hidden evaluation service.
+Table~\ref{tab:engineering-failures} names the failure prevented by each
+control, and Fig.~\ref{fig:qualification-workflow} shows the decision path.
 
 \input{tables/engineering_failure_modes.tex}
 
@@ -369,8 +375,9 @@ principles~\citep{wilkinson2016fair}.
 The primary \emph{source-only} feature set contains magnitude and depth. It is
 the only feature set evaluated on the temporal holdout. An
 \emph{expanded-metadata} sensitivity analysis (baseline B3) additionally uses
-latitude, longitude, and event year, so it is not evaluated where those
-variables would disclose the holdout axis. The audit accepts only an approved
+latitude, longitude, and event year. Event year is known at prediction time and
+is not intrinsically label leakage, but it is excluded by the declared
+source-only temporal-holdout contract. The audit accepts only an approved
 feature set with the expected fields in the expected order; any extra or unknown
 field is rejected.
 
@@ -378,11 +385,12 @@ The executable audit enforces six leakage families. Field-level: F1 direct
 label or its constituents; F2 post-outcome ascertainment or revision (including
 the response count, eligibility-only); F3 identifier or source proxy; F4
 downstream-product proxy. Split-level: F5 sequence cross-role straddle; F6
-temporal-cutoff violation. An axis-proxy check additionally rejects origin year
+temporal-cutoff violation. An axis-variable check additionally rejects origin year
 under a temporal holdout and, when a geographic holdout is configured,
 latitude/longitude/region. The latter audit branch is provided for reuse but was
-not executed as an external evaluation in this study. This enforces the B3
-restriction. The audit is useful independently of
+not executed as an external evaluation in this study. This enforces a
+conservative B3 scope restriction; it is not evidence that event year is a
+leaking label proxy. The audit is useful independently of
 model performance: it must reject every deliberately contaminated test case and
 accept only the approved clean feature set. It is exercised by 110 unit tests
 across four suites, all passing, and accepted the source-only feature set in the
@@ -426,9 +434,9 @@ evaluation, and carried unchanged to the protected holdout with frozen
 best parameters. A machine-readable fit log enforces a maximum of 120 model
 fits; the executed run used 91. Two comparators are excluded for protocol-defined,
 reproducible reasons recorded in the protocol-decision table
-(Section~\ref{sec:repro-results}): B3 is
-not evaluated on the temporal holdout because its feature set carries origin year, a
-temporal proxy; and the Atkinson--Wald (2007) DYFI intensity-prediction
+(Section~\ref{sec:repro-results}): B3 is not evaluated on the temporal holdout
+because origin year is outside the declared source-only feature contract; and
+the Atkinson--Wald (2007) DYFI intensity-prediction
 equation~\citep{atkinson2007dyfi} is excluded because it cannot be applied to
 the source-only feature set and tectonically heterogeneous population without
 inventing a site-distance covariate, a per-event tectonic-regime assignment, and
@@ -518,16 +526,17 @@ two straddle events are excluded from role assignment}
 
 \subsection{Difficulty and endpoint sensitivity}\label{sec:endpoint-results}
 
-Table~\ref{tab:threshold} and the left panel of Fig.~\ref{fig:threshold} show the
-endpoint is not an artifact of a single threshold: as the severe cut moves from
+Table~\ref{tab:threshold} and the left panel of Fig.~\ref{fig:threshold} report a
+descriptive fixed-prediction threshold probe. As the severe cut moves from
 5.5 to 6.5, holdout prevalence falls smoothly (0.458, 0.351, 0.260) and the
 source-only logistic-regression Brier score and AUROC move monotonically (Brier
 0.240, 0.181, 0.143;
 AUROC 0.734, 0.786, 0.815). On the construction corpus the near-threshold
 fraction ($|\mathrm{maxCDI}-6|<0.5$) is 0.164 and the no-skill Brier score is
-0.204, bounding the difficulty of the primary endpoint. This sensitivity check
-relabels and rescores the fixed B2 probabilities; it does not refit or
-recalibrate B2 at 5.5 or 6.5. The protocol-required aggregation-grid sensitivity was
+0.204, bounding the difficulty of the primary endpoint. This probe relabels and
+rescores probabilities fitted for the primary 6.0 endpoint; it does not refit
+or recalibrate B2 at 5.5 or 6.5 and therefore does not establish endpoint
+robustness. The protocol-required aggregation-grid sensitivity was
 not executed and is disclosed as a deviation (Table~\ref{tab:exclusions}).
 
 \begin{figure*}[t]
@@ -575,15 +584,14 @@ important leakage from random splitting nor establishes its absence.
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{fig_leakage_split.pdf}
+\includegraphics[width=\textwidth]{fig_split_diagnostic_jeas.pdf}
 \caption{\textbf{Split-assignment diagnostic.} Five-fold performance of the fixed diagnostic (random forest:
 300 trees, unrestricted depth) under random-event, event-grouped, and
 sequence-grouped fold assignment in the construction sample. Relative to
 random-event splitting, sequence grouping produced (a) a Brier score 0.0059
 lower and (b) an AUROC 0.0124 higher. The diagnostic is distinct from tuned temporal-holdout
 baseline B4. The small, reversed differences provide no evidence of performance
-inflation from random splitting in this sample; dashed lines mark the
-corresponding random-event score in each panel}
+inflation from random splitting in this sample. Both axes start at zero}
 \label{fig:leakage}
 \end{figure*}
 
@@ -607,7 +615,7 @@ only.
 \caption{\textbf{Temporal-holdout baseline performance.} Brier scores and 95\% sequence-cluster bootstrap confidence intervals
 for the five baselines on the temporal holdout ($n=430$). Lower values are
 better; the vertical dashed line marks the no-skill B0 score. B3 is omitted
-because it contains event year, which would reveal the temporal holdout period
+because event year is outside the declared source-only temporal-holdout contract
 (Table~\ref{tab:exclusions})}
 \label{fig:baselines}
 \end{figure*}
@@ -617,8 +625,9 @@ because it contains event year, which would reveal the temporal holdout period
 \subsection{Worked candidate qualification}\label{sec:qualification}
 
 Table~\ref{tab:qualification} applies the released engineering decision rule to
-the six fixed candidates. B3 fails before scoring because event year exposes the
-temporal evaluation axis. B1, B2, B4, and B5 pass the audit and each has a paired
+the six fixed candidates. B3 is outside the source-only contract because it
+contains event year; this is a conservative scope exclusion, not demonstrated
+label leakage. B1, B2, B4, and B5 pass the audit and each has a paired
 Brier interval below the no-skill B0 reference. The contract therefore supports
 their improvement over B0. It does not support naming B2 or B5 as the winner:
 their direct paired interval includes zero. This worked example demonstrates the
@@ -674,20 +683,25 @@ fingerprints, software environment, and machine-readable verification details.
 Its public-release manifest fingerprints every distributed file. Three original
 execution-bookkeeping records are self-referential---they
 cannot contain their own final fingerprints---and are therefore reported
-separately rather than treated as analysis-file mismatches.
+separately rather than treated as analysis-file mismatches. A machine-readable
+corrections overlay deprecates three legacy semantic fields (protected-role
+status, the generic split-interpretation template, and event-group wording) and
+provides authoritative replacements without changing any numerical result.
 
 \section{Discussion}\label{sec:discussion}
 
-\paragraph{Engineering use and decision consequence.} The resource is designed
-for an engineer or reviewer assessing a new event-level classifier. The user
-does not choose a convenient split or reconstruct a moving dataset; the
-candidate is evaluated against a released contract. The audit first rejects
-forbidden or axis-revealing inputs, the role manifest prevents linked events
-from crossing the declared boundary, and the paired Brier interval determines
-whether improvement over a reference is supported. The worked example changes
-two decisions: B3 is inadmissible before holdout scoring, while B2 and B5 are
-both supported over no-skill but cannot be ranked decisively. Without the
-contract, the same point scores invite an unsupported winner claim.
+\paragraph{Engineering use and decision consequence.} The resource supports a
+transparent retrospective audit of an event-level classifier. The user does not
+choose a convenient split or reconstruct a moving dataset; the declared
+candidate is evaluated against a released contract. The audit rejects forbidden
+outcome-derived inputs, the role manifest prevents events linked by the declared
+heuristic from crossing roles, and the paired Brier interval determines whether
+improvement over a reference is supported. The worked example changes two
+decisions: B3 is outside the source-only contract, while B2 and B5 are both
+supported over no-skill but cannot be ranked decisively. Without the contract,
+the same point scores invite an unsupported winner claim. Because all labels
+are public, a developer can tune to this release; prospective or confirmatory
+qualification requires a fresh hidden holdout or independent evaluation service.
 
 \paragraph{Interpreting the split contrast.} The observed point estimate is
 small and slightly reversed. In these folds the naive random split did not
@@ -707,8 +721,10 @@ operational, real-time, lead-time, cross-system, or causal benefit.
 \paragraph{Outcome and catalogue limitations.} The endpoint is
 magnitude-dominated, CDI remains sensitive to responder coverage, and magnitude
 and depth are frozen preferred catalogue values rather than guaranteed
-first-alert values. The ten-response rule mitigates ascertainment; response
-count is used only for eligibility. B1 provides the simple magnitude comparator.
+first-alert values. The ten-response rule sets an eligibility and reliability
+floor but selects on post-event participation and does not remove ascertainment;
+response count is used only for eligibility. B1 provides the simple magnitude
+comparator.
 
 \paragraph{Unexecuted sensitivity and transport branches.} The geographic
 values are temporal-holdout subgroups, not external transport evidence. The
@@ -739,14 +755,16 @@ Reliable engineering model selection requires more than reporting the lowest
 point score. The released DYFI benchmark makes a candidate pass an auditable
 schema and role contract, evaluates it on a fixed temporal holdout, and attaches
 paired uncertainty to the comparison decision. In the worked qualification,
-four learned candidates improve over no-skill, B3 is rejected as a temporal
-proxy, and the two lowest-Brier models remain unresolved; the contract therefore
-prevents an inadmissible comparison and a false winner declaration. The
+four learned candidates improve over no-skill, B3 is outside the declared
+source-only contract, and the two lowest-Brier models remain unresolved; the
+contract therefore prevents an out-of-scope comparison and a false winner
+declaration. The
 random-versus-sequence diagnostic is small and reversed in this sparse-sequence
 corpus, so it supplies no evidence of random-split optimism. All results
-reconstruct from the frozen release. The contribution is a reusable test harness
-for trustworthy model comparison, not a real-time warning, causal model, or
-operational decision system.
+reconstruct from the frozen release. The contribution is a reusable
+retrospective test harness for trustworthy model comparison. Confirmatory use
+requires a fresh hidden holdout or independent evaluation service; the release
+is not a real-time warning, causal model, or operational decision system.
 
 \backmatter
 

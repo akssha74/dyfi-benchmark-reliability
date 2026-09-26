@@ -112,8 +112,8 @@ def write_qualification(asset: dict) -> None:
             r"Supported vs B0 \\"
         )
     lines.append(
-        r"B3 expanded-metadata logistic & Fail & --- & --- & "
-        r"Inadmissible: event year reveals temporal axis \\"
+        r"B3 expanded-metadata logistic & Out of contract & --- & --- & "
+        r"Year excluded by source-only schema \\"
     )
     pair = asset["pairwise_ranking_stability"]["pairwise_matrix"][
         "B2_source_only_logit_vs_B5_xgboost"
@@ -136,18 +136,22 @@ def write_qualification(asset: dict) -> None:
 
 
 def write_workflow() -> None:
-    plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 10})
-    fig, ax = plt.subplots(figsize=(10.2, 4.1))
-    ax.set_xlim(0, 10)
-    ax.set_ylim(0, 4)
+    plt.rcParams.update({
+        "font.family": "DejaVu Sans",
+        "font.size": 10.5,
+        "pdf.fonttype": 42,
+        "ps.fonttype": 42,
+    })
+    fig, ax = plt.subplots(figsize=(6.2, 5.5))
+    ax.set_xlim(0, 6.2)
+    ax.set_ylim(0, 5.5)
     ax.axis("off")
 
     boxes = [
-        (0.25, 2.45, 1.45, 0.75, "Candidate\nmodel"),
-        (2.05, 2.45, 1.45, 0.75, "Schema +\nleakage audit"),
-        (3.85, 2.45, 1.45, 0.75, "Frozen roles +\ntemporal holdout"),
-        (5.65, 2.45, 1.45, 0.75, "Proper score +\npaired interval"),
-        (7.45, 2.45, 2.05, 0.75, "Supported improvement\nor unresolved result"),
+        (0.45, 4.55, 2.75, 0.65, "Declared candidate model"),
+        (0.45, 3.35, 2.75, 0.65, "Schema, proxy, and role audit"),
+        (0.45, 2.15, 2.75, 0.65, "Fixed temporal-holdout score"),
+        (0.45, 0.95, 2.75, 0.65, "Paired interval vs reference"),
     ]
     for x, y, w, h, text in boxes:
         patch = FancyBboxPatch(
@@ -161,34 +165,50 @@ def write_workflow() -> None:
         )
         ax.add_patch(patch)
         ax.text(x + w / 2, y + h / 2, text, ha="center", va="center")
-    for left, right in zip(boxes[:-1], boxes[1:]):
-        x1 = left[0] + left[2]
-        x2 = right[0]
-        y = left[1] + left[3] / 2
-        ax.add_patch(FancyArrowPatch((x1, y), (x2, y), arrowstyle="->", mutation_scale=13))
+    for upper, lower in zip(boxes[:-1], boxes[1:]):
+        x = upper[0] + upper[2] / 2
+        ax.add_patch(FancyArrowPatch(
+            (x, upper[1]), (x, lower[1] + lower[3]),
+            arrowstyle="->", mutation_scale=13
+        ))
 
     reject = FancyBboxPatch(
-        (1.55, 0.55),
-        2.9,
-        0.75,
+        (3.65, 3.35),
+        2.1,
+        0.65,
         boxstyle="round,pad=0.04,rounding_size=0.08",
         facecolor="#f8eeee",
         edgecolor="#884c4c",
         linewidth=1.2,
     )
     ax.add_patch(reject)
-    ax.text(3.0, 0.925, "Fail closed: inadmissible comparison", ha="center", va="center")
-    ax.add_patch(FancyArrowPatch((2.775, 2.45), (3.0, 1.3), arrowstyle="->", mutation_scale=13))
+    ax.text(4.70, 3.675, "Fail closed:\nout of contract", ha="center", va="center")
+    ax.add_patch(FancyArrowPatch(
+        (3.2, 3.675), (3.65, 3.675), arrowstyle="->", mutation_scale=13
+    ))
 
+    decision = FancyBboxPatch(
+        (3.55, 0.68),
+        2.3,
+        1.20,
+        boxstyle="round,pad=0.04,rounding_size=0.08",
+        facecolor="#eef6ee",
+        edgecolor="#4d7253",
+        linewidth=1.2,
+    )
+    ax.add_patch(decision)
     ax.text(
-        7.25,
-        1.0,
-        "Interval excludes zero: supported relative to reference\n"
-        "Interval includes zero: unresolved; do not name a winner",
+        4.70,
+        1.28,
+        "Interval excludes zero:\nsupported improvement\n"
+        "Interval includes zero:\nunresolved",
         ha="center",
         va="center",
         fontsize=9.0,
     )
+    ax.add_patch(FancyArrowPatch(
+        (3.2, 1.275), (3.55, 1.275), arrowstyle="->", mutation_scale=13
+    ))
     FIGURES.mkdir(parents=True, exist_ok=True)
     metadata = {
         "Creator": "build_utility_assets.py",
@@ -201,12 +221,63 @@ def write_workflow() -> None:
     plt.close(fig)
 
 
+def write_split_diagnostic(asset: dict) -> None:
+    """Render zero-based split-performance bars from frozen point estimates."""
+    plt.rcParams.update({
+        "font.family": "DejaVu Sans",
+        "font.size": 10.0,
+        "pdf.fonttype": 42,
+        "ps.fonttype": 42,
+    })
+    per = asset["leakage_inflation_headline"]["per_scheme"]
+    keys = ["random_event", "event_grouped", "sequence_grouped"]
+    labels = ["Random\nevent", "Event\ngrouped", "Sequence\ngrouped"]
+    brier = [per[key]["brier"] for key in keys]
+    auroc = [per[key]["auroc"] for key in keys]
+    colors = ["#b9c9d4", "#9ab7c8", "#729bb2"]
+    hatches = ["//", "..", "xx"]
+
+    fig, axes = plt.subplots(1, 2, figsize=(6.2, 3.25))
+    for ax, values, ylabel, panel in (
+        (axes[0], brier, "Brier score", "(a)"),
+        (axes[1], auroc, "AUROC", "(b)"),
+    ):
+        bars = ax.bar(range(3), values, color=colors, edgecolor="#304b5b", linewidth=0.9)
+        for bar, hatch, value in zip(bars, hatches, values):
+            bar.set_hatch(hatch)
+            ax.text(
+                bar.get_x() + bar.get_width() / 2,
+                value + max(values) * 0.025,
+                f"{value:.3f}",
+                ha="center",
+                va="bottom",
+                fontsize=8.5,
+            )
+        ax.set_xticks(range(3), labels)
+        ax.set_ylabel(ylabel)
+        ax.set_ylim(0, max(values) * 1.20)
+        ax.set_title(panel, loc="left", fontsize=10.5)
+        ax.grid(axis="y", color="#d9d9d9", linewidth=0.6)
+        ax.set_axisbelow(True)
+    fig.tight_layout()
+    metadata = {
+        "Creator": "build_utility_assets.py",
+        "Producer": "Matplotlib",
+        "CreationDate": dt.datetime(2010, 1, 1, tzinfo=dt.timezone.utc),
+        "ModDate": dt.datetime(2010, 1, 1, tzinfo=dt.timezone.utc),
+    }
+    fig.savefig(FIGURES / "fig_split_diagnostic_jeas.pdf", bbox_inches="tight", metadata=metadata)
+    fig.savefig(FIGURES / "fig_split_diagnostic_jeas.png", bbox_inches="tight", dpi=300)
+    plt.close(fig)
+
+
 def main() -> None:
     TABLES.mkdir(parents=True, exist_ok=True)
     asset = json.loads(INPUT.read_text())
     write_failure_modes()
     write_qualification(asset)
     write_workflow()
+    write_split_diagnostic(asset)
 
 
 if __name__ == "__main__":

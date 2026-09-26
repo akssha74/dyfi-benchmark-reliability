@@ -50,6 +50,9 @@ def main() -> int:
     asset = json.loads(ASSET.read_text())
     goal = json.loads(GOAL.read_text())
     precedents = json.loads(PRECEDENTS.read_text())
+    corrections = json.loads(
+        (HERE / "frozen_inputs" / "corrections_overlay.json").read_text()
+    )
 
     original_ledger_path = ORIGINAL / "build_ledger.json"
     if not original_ledger_path.exists():
@@ -122,11 +125,30 @@ def main() -> int:
         and r"\label{fig:qualification-workflow}" in text
         and r"\label{sec:qualification}" in text,
     )
+    table_captions = []
+    for table_path in sorted((HERE / "tables").glob("*.tex")):
+        match = re.search(r"\\caption\{(.*?)\}\s*\\label", table_path.read_text(), re.S)
+        if match:
+            plain = re.sub(r"\\[A-Za-z]+|[{}$~]", " ", match.group(1))
+            table_captions.append((table_path.name, len(re.findall(r"\b[\w'-]+\b", plain))))
+    check(
+        "table_titles_at_most_15_words",
+        len(table_captions) == 9 and all(count <= 15 for _, count in table_captions),
+        str(table_captions),
+    )
     check(
         "venue_precedents_complete",
         len(precedents["papers"]) >= 4
         and precedents["conclusion"]["target_venue_publishes_benchmark_identity"] is True,
         str(len(precedents["papers"])),
+    )
+    check(
+        "machine_readable_semantic_corrections",
+        corrections.get("changes_numeric_results") is False
+        and len(corrections.get("corrections", [])) == 3
+        and corrections.get("applies_to_frozen_result_sha256")
+        == "b3ec45d587d6125da25890b7e91bfb140309c8645c7d8c365d80a2e0df73ae3b",
+        str(corrections.get("corrections", [])),
     )
     jeas_keys = {"tian2024coco", "niu2024ucs", "alnaqbi2025pavement", "seleemah2022bridge"}
     cited_groups = re.findall(r"\\cite[a-z]*\{([^}]*)\}", text)
@@ -159,9 +181,11 @@ def main() -> int:
         and pair["resolved"] is False,
     )
     check(
-        "b3_rejection_demonstrated",
+        "b3_scope_exclusion_demonstrated",
         "B3 expanded-metadata logistic" in qualification
-        and "event year reveals temporal axis" in qualification,
+        and "Year excluded by source-only schema" in qualification
+        and "not demonstrated" in text
+        and "label leakage" in text,
     )
 
     # Utility assets are pinned to the declared Matplotlib environment. Avoid
@@ -216,7 +240,19 @@ def main() -> int:
         "non_use_boundaries_preserved",
         "not a real-time warning, causal model, or" in text
         and "operational decision system" in text
-        and "no geographic, aggregation, sequence-definition" in text,
+        and "no geographic, aggregation, sequence-definition" in text
+        and "fresh hidden holdout or independent evaluation service" in text,
+    )
+    check(
+        "threshold_probe_not_robustness_claim",
+        "descriptive fixed-prediction threshold probe" in text
+        and re.search(r"does not establish\s+endpoint\s+robustness", text) is not None
+        and "not an artifact of a single threshold" not in text,
+    )
+    check(
+        "ascertainment_boundary_honest",
+        "does not remove ascertainment" in text
+        and "mitigates ascertainment" not in text,
     )
     check(
         "null_and_no_winner_preserved",
@@ -238,7 +274,7 @@ def main() -> int:
         all((HERE / "figures" / f).is_file() for f in (
             "fig_cohort_flow.pdf",
             "fig_threshold_slice.pdf",
-            "fig_leakage_split.pdf",
+            "fig_split_diagnostic_jeas.pdf",
             "fig_baseline_scores.pdf",
             "fig_candidate_workflow.pdf",
         )),

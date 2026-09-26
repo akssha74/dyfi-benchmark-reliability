@@ -6,8 +6,8 @@
   "original_main_pdf_sha256": "6ce8b8d8b07afb68eeb838e08b16f7832c4713e2d05ebc317826feb19ceebf75",
   "frozen_asset_inputs_sha256": "b7f7dea60c7421b0b75870d45421c094e3cd4b5e325702c94b498ebc7926ace9",
   "frozen_result_sha256": "b3ec45d587d6125da25890b7e91bfb140309c8645c7d8c365d80a2e0df73ae3b",
-  "jeas_main_tex_sha256_before_final_review": "e108bff17ac66f7feed6f18c43bde721871fb0200fb92e47c3e3e88062daa2d8",
-  "jeas_main_pdf_sha256_before_final_review": "a3586ee60ca32fe3db039eae1e20a73bd50326b18b6dda879732b3a3146f9675",
+  "jeas_main_tex_sha256_before_final_review": "b7e5a26a7c3db81a8d496d200ff78e5dad12b93a0cb907f45d083eb6d3924baf",
+  "jeas_main_pdf_sha256_before_final_review": "45708db9659776c0d11b645b21f1be40c2e09c4ee235d3318e17df5fcfd8e3e3",
   "gates": {
     "original_manuscript_validator": {
       "command": "python3 manuscript/paper/validate_manuscript.py",
@@ -24,7 +24,7 @@
     },
     "jeas_validator": {
       "command": "python3 manuscript/paper-jeas/validate_jeas.py",
-      "checks": 30,
+      "checks": 34,
       "failed": 0,
       "pass": true
     },
@@ -37,6 +37,10 @@
     "engineering failure-mode mapping",
     "candidate qualification decision table",
     "candidate qualification workflow figure",
-    "JEAS accepted-paper positioning"
+    "JEAS accepted-paper positioning",
+    "prospective-use claim narrowing",
+    "endpoint-probe interpretation correction",
+    "machine-readable semantic corrections overlay",
+    "zero-based split diagnostic and full-size workflow artwork"
   ]
 }

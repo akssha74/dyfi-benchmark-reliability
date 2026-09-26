@@ -1,6 +1,6 @@
 {
   "record_type": "jeas_manuscript_validation_report",
-  "n_checks": 30,
+  "n_checks": 34,
   "n_failed": 0,
   "overall_pass": true,
   "checks": [
@@ -22,7 +22,7 @@
     {
       "check": "concise_abstract",
       "ok": true,
-      "detail": "211"
+      "detail": "242"
     },
     {
       "check": "engineering_keywords",
@@ -50,9 +50,19 @@
       "detail": ""
     },
     {
+      "check": "table_titles_at_most_15_words",
+      "ok": true,
+      "detail": "[('baseline_performance.tex', 6), ('candidate_qualification.tex', 8), ('cohort_roles.tex', 6), ('endpoint_threshold_sensitivity.tex', 6), ('engineering_failure_modes.tex', 9), ('exclusions_deviations.tex', 6), ('leakage_gap.tex', 6), ('pairwise_matrix.tex', 6), ('slices.tex', 8)]"
+    },
+    {
       "check": "venue_precedents_complete",
       "ok": true,
       "detail": "5"
+    },
+    {
+      "check": "machine_readable_semantic_corrections",
+      "ok": true,
+      "detail": "[{'json_pointer': '/result_core/real_protected_role_opened', 'deprecated_value': False, 'status': 'deprecated_compatibility_field', 'authoritative_replacement': {'data': 'PROTECTED', 'mode': 'protected', 'holdout_opens': 1, 'report_protected_role_opened': True, 'meaning': 'The official decision-bearing run opened the protected role once. Two later token-free replays also rescored the holdout for deterministic verification.'}}, {'json_pointer': '/result_core/report/evaluation/leakage_inflation_headline/interpretation', 'status': 'generic_estimand_template_not_observed_result', 'authoritative_replacement': {'brier_sequence_minus_random': -0.005878207034, 'auroc_sequence_minus_random': 0.012396868243, 'meaning': 'Observed differences are small and reversed relative to the expected optimistic-random-split direction. They are descriptive point estimates without a retained paired interval and do not establish leakage, equivalence, or a zero effect.'}}, {'json_pointer': '/result_core/report/evaluation/leakage_inflation_headline/event_grouped_note', 'status': 'wording_correction', 'authoritative_replacement': {'meaning': 'With one row per event, event grouping imposes the same grouping constraint as random-event assignment, but deterministic fold allocations differ and therefore scores can differ.'}}]"
     },
     {
       "check": "all_citations_resolve",
@@ -95,14 +105,14 @@
       "detail": ""
     },
     {
-      "check": "b3_rejection_demonstrated",
+      "check": "b3_scope_exclusion_demonstrated",
       "ok": true,
       "detail": ""
     },
     {
       "check": "utility_assets_match_pinned_manifest",
       "ok": true,
-      "detail": "{'engineering_failure_modes.tex': '83127f6b812e4222dadfabc6f35537d13f20c7eef8c0a80f9b33578346146df9', 'candidate_qualification.tex': '6651b269a91fa947e05f673cef996e70a8b41b910c244649eca3d2b11395aebd', 'fig_candidate_workflow.pdf': '734c009dbcdecf417bfb3b90ce95fd5d416da39d861abaf072442e3abc2f8e99', 'fig_candidate_workflow.png': 'c260be82146bf4cdf48f8cf2ddafdd806d2b32e910546fd1a6e361ca01bb207f'}"
+      "detail": "{'engineering_failure_modes.tex': '83127f6b812e4222dadfabc6f35537d13f20c7eef8c0a80f9b33578346146df9', 'candidate_qualification.tex': '7b18eef298c56b1fe3435c21d7ddb4ebd61d9b2aba6c38a990ef42ef9e25d639', 'fig_candidate_workflow.pdf': '73dc05242459a68132b5c25e1659993d01cea7172b412d32cff0c7c81badd538', 'fig_candidate_workflow.png': '01a1d1b709ccf9fe9df310c4e59b559ef1f7db1d26c255110b4c78c5884036f9', 'fig_split_diagnostic_jeas.pdf': '28d2cadc4a2242fb5be60aa81fb9151da2d58e90e2c285e4caa5299a23721cfa', 'fig_split_diagnostic_jeas.png': 'e33c942ae1e82eae31c0a3ee63709b67bd0756c15a5f789f597442c8ee6095b8'}"
     },
     {
       "check": "utility_regeneration_environment_explicit",
@@ -121,6 +131,16 @@
     },
     {
       "check": "non_use_boundaries_preserved",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "threshold_probe_not_robustness_claim",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "ascertainment_boundary_honest",
       "ok": true,
       "detail": ""
     },
@@ -147,12 +167,12 @@
     {
       "check": "build_ledger_main_current",
       "ok": true,
-      "detail": "e108bff17ac66f7feed6f18c43bde721871fb0200fb92e47c3e3e88062daa2d8"
+      "detail": "b7e5a26a7c3db81a8d496d200ff78e5dad12b93a0cb907f45d083eb6d3924baf"
     },
     {
       "check": "build_ledger_pdf_current_or_source_only",
       "ok": true,
-      "detail": "a3586ee60ca32fe3db039eae1e20a73bd50326b18b6dda879732b3a3146f9675"
+      "detail": "45708db9659776c0d11b645b21f1be40c2e09c4ee235d3318e17df5fcfd8e3e3"
     }
   ]
 }

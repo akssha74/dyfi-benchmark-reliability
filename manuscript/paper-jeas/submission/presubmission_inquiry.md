@@ -17,10 +17,12 @@ comparison. The public resource is:
 https://github.com/akssha74/dyfi-benchmark-reliability
 
 The frozen M≥5 case study contains 7,520 source records, 2,362 eligible events,
-and a 430-event temporal holdout. A worked qualification rejects one
-temporal-proxy candidate, supports four admissible learned baselines over
-no-skill, and leaves the two lowest-Brier models unresolved, thereby preventing
-an inadmissible comparison and a false winner declaration.
+and a 430-event temporal holdout. A worked qualification excludes one candidate
+outside the declared source-only schema, supports four admissible learned
+baselines over no-skill, and leaves the two lowest-Brier models unresolved,
+thereby preventing an out-of-scope comparison and a false winner declaration.
+Because labels are public, confirmatory reuse requires fresh hidden data or an
+independent evaluation service.
 
 The contribution appears aligned with the journal's scope in artificial and
 machine intelligence, computational methods, modelling and simulation, seismic

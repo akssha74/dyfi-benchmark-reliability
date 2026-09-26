@@ -9,12 +9,12 @@
     "benchmark maintainers",
     "reviewers and auditors evaluating model-comparison claims"
   ],
-  "task_enabled": "Evaluate a candidate classifier against fixed data, roles, baselines, metrics, uncertainty, and reproducibility gates without reconstructing a bespoke split.",
-  "decision_enabled": "Decide whether a candidate is admissible for comparison and whether its Brier-score improvement over a declared reference is supported rather than a point-score fluctuation.",
-  "error_prevented": "Prevents comparisons based on evolving catalogue versions, forbidden outcome-derived features, sequence-role overlap, temporal leakage, unquantified point rankings, or unreproducible environments.",
+  "task_enabled": "Perform a transparent retrospective audit of a declared classifier against fixed data, roles, baselines, metrics, uncertainty, and reproducibility gates without reconstructing a bespoke split.",
+  "decision_enabled": "Decide whether a candidate is within the declared comparison contract and whether its Brier-score improvement over a reference is supported rather than a point-score fluctuation.",
+  "error_prevented": "Prevents retrospective comparisons based on evolving catalogue versions, forbidden outcome-derived features, sequence-role overlap, temporal-cutoff violations, unquantified point rankings, or unreproducible environments.",
   "evidence_of_usefulness": [
     "the six-category audit rejects every seeded contamination case",
-    "B3 is rejected because event year reveals the temporal holdout axis",
+    "B3 is excluded because event year is outside the declared source-only contract",
     "all learned baselines separate from no-skill under paired Brier uncertainty",
     "B2 versus B5 remains unresolved, preventing a false winner declaration",
     "the frozen predictions and manuscript values reconstruct exactly"
@@ -25,7 +25,8 @@
     "not an operational triage rule",
     "not evidence of causality",
     "not cross-system or geographic generalization evidence",
-    "not proof that sequence grouping is unnecessary"
+    "not proof that sequence grouping is unnecessary",
+    "not an untouched prospective evaluation because labels are public"
   ],
   "target_venue_scope_basis": [
     "artificial and machine intelligence",

@@ -39,6 +39,7 @@ def build() -> None:
         (PAPER / "jeas_validation_report.json", pathlib.Path("jeas_validation_report.json")),
         (PAPER / "frozen_inputs" / "asset_inputs.json", pathlib.Path("frozen_inputs") / "asset_inputs.json"),
         (PAPER / "frozen_inputs" / "original_build_ledger.json", pathlib.Path("frozen_inputs") / "original_build_ledger.json"),
+        (PAPER / "frozen_inputs" / "corrections_overlay.json", pathlib.Path("frozen_inputs") / "corrections_overlay.json"),
     ]
     files += [
         (p, pathlib.Path("tables") / p.name)
@@ -48,7 +49,7 @@ def build() -> None:
         "fig_candidate_workflow.pdf": "Figure_1.pdf",
         "fig_cohort_flow.pdf": "Figure_2.pdf",
         "fig_threshold_slice.pdf": "Figure_3.pdf",
-        "fig_leakage_split.pdf": "Figure_4.pdf",
+        "fig_split_diagnostic_jeas.pdf": "Figure_4.pdf",
         "fig_baseline_scores.pdf": "Figure_5.pdf",
     }
     files += [
@@ -58,6 +59,10 @@ def build() -> None:
     files.append((
         PAPER / "figures" / "fig_candidate_workflow.png",
         pathlib.Path("figures") / "fig_candidate_workflow.png",
+    ))
+    files.append((
+        PAPER / "figures" / "fig_split_diagnostic_jeas.png",
+        pathlib.Path("figures") / "fig_split_diagnostic_jeas.png",
     ))
 
     with zipfile.ZipFile(SOURCE_ZIP, "w", zipfile.ZIP_DEFLATED) as zf:
