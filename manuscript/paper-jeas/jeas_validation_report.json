@@ -1,6 +1,6 @@
 {
   "record_type": "jeas_manuscript_validation_report",
-  "n_checks": 29,
+  "n_checks": 30,
   "n_failed": 0,
   "overall_pass": true,
   "checks": [
@@ -100,9 +100,14 @@
       "detail": ""
     },
     {
-      "check": "utility_assets_byte_deterministic",
+      "check": "utility_assets_match_pinned_manifest",
       "ok": true,
-      "detail": "{'engineering_failure_modes.tex': '83127f6b812e4222dadfabc6f35537d13f20c7eef8c0a80f9b33578346146df9', 'candidate_qualification.tex': '6651b269a91fa947e05f673cef996e70a8b41b910c244649eca3d2b11395aebd', 'fig_candidate_workflow.pdf': '734c009dbcdecf417bfb3b90ce95fd5d416da39d861abaf072442e3abc2f8e99', 'fig_candidate_workflow.png': '8cf9ccf22c35d27f170c36f393b91b2c1a8e00c3a0e89dd3c0dff8c93fe9db8f'}"
+      "detail": "{'engineering_failure_modes.tex': '83127f6b812e4222dadfabc6f35537d13f20c7eef8c0a80f9b33578346146df9', 'candidate_qualification.tex': '6651b269a91fa947e05f673cef996e70a8b41b910c244649eca3d2b11395aebd', 'fig_candidate_workflow.pdf': '734c009dbcdecf417bfb3b90ce95fd5d416da39d861abaf072442e3abc2f8e99', 'fig_candidate_workflow.png': 'c260be82146bf4cdf48f8cf2ddafdd806d2b32e910546fd1a6e361ca01bb207f'}"
+    },
+    {
+      "check": "utility_regeneration_environment_explicit",
+      "ok": true,
+      "detail": "host matplotlib=3.11.2; pinned=3.11.1; hashes verified without regeneration"
     },
     {
       "check": "declarations_complete",
@@ -142,12 +147,12 @@
     {
       "check": "build_ledger_main_current",
       "ok": true,
-      "detail": "f94ed30b3818c6c806c836f09f78b56f3e989a21a56539a1690f6dc7fb323b20"
+      "detail": "e108bff17ac66f7feed6f18c43bde721871fb0200fb92e47c3e3e88062daa2d8"
     },
     {
       "check": "build_ledger_pdf_current_or_source_only",
       "ok": true,
-      "detail": "6d61a7ac0068627d3c89140f0ee5f025c388bb39f9dda88f7b2d2b91a013e422"
+      "detail": "a3586ee60ca32fe3db039eae1e20a73bd50326b18b6dda879732b3a3146f9675"
     }
   ]
 }

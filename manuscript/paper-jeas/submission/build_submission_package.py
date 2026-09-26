@@ -32,6 +32,7 @@ def build() -> None:
         (PAPER / "validate_jeas.py", pathlib.Path("validate_jeas.py")),
         (PAPER / "goal_usefulness.json", pathlib.Path("goal_usefulness.json")),
         (PAPER / "accepted_precedents.json", pathlib.Path("accepted_precedents.json")),
+        (PAPER / "utility_asset_manifest.json", pathlib.Path("utility_asset_manifest.json")),
         (PAPER / "citation_ledger.jsonl", pathlib.Path("citation_ledger.jsonl")),
         (PAPER / "claim_ledger.jsonl", pathlib.Path("claim_ledger.jsonl")),
         (PAPER / "build_ledger.json", pathlib.Path("build_ledger.json")),

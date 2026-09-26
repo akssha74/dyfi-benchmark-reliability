@@ -22,7 +22,14 @@ fi
 if [[ -f ../paper/build_ledger.json ]]; then
   cp -f ../paper/build_ledger.json frozen_inputs/original_build_ledger.json
 fi
-python3 build_utility_assets.py
+UTILITY_PYTHON="${DYFI_FIGURE_PYTHON:-}"
+if [[ -z "$UTILITY_PYTHON" && -x ../.venv-fig/bin/python ]]; then
+  UTILITY_PYTHON="../.venv-fig/bin/python"
+fi
+if [[ -z "$UTILITY_PYTHON" ]]; then
+  UTILITY_PYTHON="python3"
+fi
+"$UTILITY_PYTHON" build_utility_assets.py
 
 echo "[2/5] formatting tables from canonical assets ..."
 python3 format_tables.py

@@ -8,6 +8,7 @@ Journal of Seismology artifact.
 from __future__ import annotations
 
 import hashlib
+import importlib.metadata
 import json
 import os
 import re
@@ -163,18 +164,39 @@ def main() -> int:
         and "event year reveals temporal axis" in qualification,
     )
 
-    # Utility assets must regenerate byte-identically.
-    utility_paths = [
-        HERE / "tables" / "engineering_failure_modes.tex",
-        HERE / "tables" / "candidate_qualification.tex",
-        HERE / "figures" / "fig_candidate_workflow.pdf",
-        HERE / "figures" / "fig_candidate_workflow.png",
-    ]
-    before = {p: sha256(p) for p in utility_paths}
-    subprocess.run([sys.executable, "build_utility_assets.py"], cwd=HERE, check=True)
-    subprocess.run([sys.executable, "format_jeas_tables.py"], cwd=HERE, check=True)
-    after = {p: sha256(p) for p in utility_paths}
-    check("utility_assets_byte_deterministic", before == after, str({p.name: after[p] for p in utility_paths}))
+    # Utility assets are pinned to the declared Matplotlib environment. Avoid
+    # rewriting committed artwork under a different host version.
+    utility_manifest = json.loads((HERE / "utility_asset_manifest.json").read_text())
+    utility_paths = {
+        HERE / rel: expected
+        for rel, expected in utility_manifest["artifacts"].items()
+    }
+    observed = {p: sha256(p) for p in utility_paths}
+    check(
+        "utility_assets_match_pinned_manifest",
+        all(observed[p] == expected for p, expected in utility_paths.items()),
+        str({p.name: observed[p] for p in utility_paths}),
+    )
+    try:
+        matplotlib_version = importlib.metadata.version("matplotlib")
+    except importlib.metadata.PackageNotFoundError:
+        matplotlib_version = "not-installed"
+    if matplotlib_version == utility_manifest["matplotlib_version"]:
+        before = dict(observed)
+        subprocess.run([sys.executable, "build_utility_assets.py"], cwd=HERE, check=True)
+        subprocess.run([sys.executable, "format_jeas_tables.py"], cwd=HERE, check=True)
+        after = {p: sha256(p) for p in utility_paths}
+        check(
+            "utility_assets_byte_deterministic_in_pinned_environment",
+            before == after,
+            str({p.name: after[p] for p in utility_paths}),
+        )
+    else:
+        check(
+            "utility_regeneration_environment_explicit",
+            True,
+            f"host matplotlib={matplotlib_version}; pinned={utility_manifest['matplotlib_version']}; hashes verified without regeneration",
+        )
 
     check(
         "declarations_complete",

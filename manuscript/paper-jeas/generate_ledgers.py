@@ -285,7 +285,8 @@ def build_artifact_ledger() -> list[dict]:
     for aux in ("citation_ledger.jsonl", "claim_ledger.jsonl", "artifact_ledger.jsonl",
                 "format_tables.py", "generate_ledgers.py",
                 "build.sh", "build_utility_assets.py", "format_jeas_tables.py",
-                "validate_jeas.py", "jeas_validation_report.json"):
+                "validate_jeas.py", "utility_asset_manifest.json",
+                "jeas_validation_report.json"):
         if (HERE / aux).exists():
             add(aux, "build/ledger tool or record", "generated in manuscript/paper")
     # note the canonical manifest linkage
@@ -319,7 +320,7 @@ def build_build_ledger() -> dict:
         "inputs_are_immutable": True,
         "network_writes": False,
         "public_repository": "https://github.com/akssha74/dyfi-benchmark-reliability",
-        "public_release_tag": "v1.1.0",
+        "public_release_tag": "v1.1.1",
         "doi": None,
         "submitted": False,
         "main_tex_sha256": sha256(HERE / "main.tex"),

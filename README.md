@@ -34,7 +34,10 @@ model.
 
 ## Quick verification
 
-The manuscript-level verifier uses only the Python standard library:
+The original v1.0.27 manuscript verifier uses only the Python standard library.
+The JEAS verifier also uses standard-library checks; it regenerates the new
+workflow artwork only when the pinned Matplotlib 3.11.1 environment is present,
+and otherwise verifies the committed asset hashes without rewriting artwork:
 
 ```bash
 python3 manuscript/paper/validate_manuscript.py
