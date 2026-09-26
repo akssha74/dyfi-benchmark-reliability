@@ -142,23 +142,23 @@ def write_workflow() -> None:
         "pdf.fonttype": 42,
         "ps.fonttype": 42,
     })
-    fig, ax = plt.subplots(figsize=(6.2, 5.5))
-    ax.set_xlim(0, 6.2)
-    ax.set_ylim(0, 5.5)
+    fig, ax = plt.subplots(figsize=(4.8, 3.8))
+    ax.set_xlim(0, 4.8)
+    ax.set_ylim(0, 3.8)
     ax.axis("off")
 
     boxes = [
-        (0.45, 4.55, 2.75, 0.65, "Declared candidate model"),
-        (0.45, 3.35, 2.75, 0.65, "Schema, proxy, and role audit"),
-        (0.45, 2.15, 2.75, 0.65, "Fixed temporal-holdout score"),
-        (0.45, 0.95, 2.75, 0.65, "Paired interval vs reference"),
+        (0.20, 3.05, 2.25, 0.52, "Declared\ncandidate model"),
+        (0.20, 2.20, 2.25, 0.52, "Input and\nrole audit"),
+        (0.20, 1.35, 2.25, 0.52, "Temporal-holdout\nscore"),
+        (0.20, 0.50, 2.25, 0.52, "Paired interval\nvs reference"),
     ]
     for x, y, w, h, text in boxes:
         patch = FancyBboxPatch(
             (x, y),
             w,
             h,
-            boxstyle="round,pad=0.04,rounding_size=0.08",
+            boxstyle="round,pad=0.08,rounding_size=0.08",
             facecolor="#edf4f8",
             edgecolor="#315b73",
             linewidth=1.2,
@@ -173,41 +173,41 @@ def write_workflow() -> None:
         ))
 
     reject = FancyBboxPatch(
-        (3.65, 3.35),
-        2.1,
-        0.65,
-        boxstyle="round,pad=0.04,rounding_size=0.08",
+        (2.95, 2.15),
+        1.55,
+        0.62,
+        boxstyle="round,pad=0.08,rounding_size=0.08",
         facecolor="#f8eeee",
         edgecolor="#884c4c",
         linewidth=1.2,
     )
     ax.add_patch(reject)
-    ax.text(4.70, 3.675, "Fail closed:\nout of contract", ha="center", va="center")
+    ax.text(3.725, 2.46, "Fail closed:\nout of contract", ha="center", va="center")
     ax.add_patch(FancyArrowPatch(
-        (3.2, 3.675), (3.65, 3.675), arrowstyle="->", mutation_scale=13
+        (2.45, 2.46), (2.95, 2.46), arrowstyle="->", mutation_scale=13
     ))
 
     decision = FancyBboxPatch(
-        (3.55, 0.68),
-        2.3,
-        1.20,
-        boxstyle="round,pad=0.04,rounding_size=0.08",
+        (2.90, 0.28),
+        1.70,
+        0.96,
+        boxstyle="round,pad=0.08,rounding_size=0.08",
         facecolor="#eef6ee",
         edgecolor="#4d7253",
         linewidth=1.2,
     )
     ax.add_patch(decision)
     ax.text(
-        4.70,
-        1.28,
-        "Interval excludes zero:\nsupported improvement\n"
-        "Interval includes zero:\nunresolved",
+        3.75,
+        0.76,
+        "Interval excludes zero:\nsupported\n"
+        "Includes zero:\nunresolved",
         ha="center",
         va="center",
-        fontsize=9.0,
+        fontsize=8.2,
     )
     ax.add_patch(FancyArrowPatch(
-        (3.2, 1.275), (3.55, 1.275), arrowstyle="->", mutation_scale=13
+        (2.45, 0.76), (2.90, 0.76), arrowstyle="->", mutation_scale=13
     ))
     FIGURES.mkdir(parents=True, exist_ok=True)
     metadata = {

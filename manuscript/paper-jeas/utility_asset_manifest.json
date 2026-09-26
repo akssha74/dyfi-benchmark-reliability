@@ -6,8 +6,8 @@
   "artifacts": {
     "tables/engineering_failure_modes.tex": "83127f6b812e4222dadfabc6f35537d13f20c7eef8c0a80f9b33578346146df9",
     "tables/candidate_qualification.tex": "7b18eef298c56b1fe3435c21d7ddb4ebd61d9b2aba6c38a990ef42ef9e25d639",
-    "figures/fig_candidate_workflow.pdf": "73dc05242459a68132b5c25e1659993d01cea7172b412d32cff0c7c81badd538",
-    "figures/fig_candidate_workflow.png": "01a1d1b709ccf9fe9df310c4e59b559ef1f7db1d26c255110b4c78c5884036f9",
+    "figures/fig_candidate_workflow.pdf": "ba1cdaf3cbd6c04c989e60a188e929a9cec386628ff72184ba4b870d854b1242",
+    "figures/fig_candidate_workflow.png": "1488945b99a7f58c04d62ffced97bacd310db2f897622843b14a7f125515b0c9",
     "figures/fig_split_diagnostic_jeas.pdf": "28d2cadc4a2242fb5be60aa81fb9151da2d58e90e2c285e4caa5299a23721cfa",
     "figures/fig_split_diagnostic_jeas.png": "e33c942ae1e82eae31c0a3ee63709b67bd0756c15a5f789f597442c8ee6095b8"
   }

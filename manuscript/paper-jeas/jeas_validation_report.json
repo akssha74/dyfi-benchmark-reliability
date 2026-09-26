@@ -112,7 +112,7 @@
     {
       "check": "utility_assets_match_pinned_manifest",
       "ok": true,
-      "detail": "{'engineering_failure_modes.tex': '83127f6b812e4222dadfabc6f35537d13f20c7eef8c0a80f9b33578346146df9', 'candidate_qualification.tex': '7b18eef298c56b1fe3435c21d7ddb4ebd61d9b2aba6c38a990ef42ef9e25d639', 'fig_candidate_workflow.pdf': '73dc05242459a68132b5c25e1659993d01cea7172b412d32cff0c7c81badd538', 'fig_candidate_workflow.png': '01a1d1b709ccf9fe9df310c4e59b559ef1f7db1d26c255110b4c78c5884036f9', 'fig_split_diagnostic_jeas.pdf': '28d2cadc4a2242fb5be60aa81fb9151da2d58e90e2c285e4caa5299a23721cfa', 'fig_split_diagnostic_jeas.png': 'e33c942ae1e82eae31c0a3ee63709b67bd0756c15a5f789f597442c8ee6095b8'}"
+      "detail": "{'engineering_failure_modes.tex': '83127f6b812e4222dadfabc6f35537d13f20c7eef8c0a80f9b33578346146df9', 'candidate_qualification.tex': '7b18eef298c56b1fe3435c21d7ddb4ebd61d9b2aba6c38a990ef42ef9e25d639', 'fig_candidate_workflow.pdf': 'ba1cdaf3cbd6c04c989e60a188e929a9cec386628ff72184ba4b870d854b1242', 'fig_candidate_workflow.png': '1488945b99a7f58c04d62ffced97bacd310db2f897622843b14a7f125515b0c9', 'fig_split_diagnostic_jeas.pdf': '28d2cadc4a2242fb5be60aa81fb9151da2d58e90e2c285e4caa5299a23721cfa', 'fig_split_diagnostic_jeas.png': 'e33c942ae1e82eae31c0a3ee63709b67bd0756c15a5f789f597442c8ee6095b8'}"
     },
     {
       "check": "utility_regeneration_environment_explicit",
@@ -167,17 +167,17 @@
     {
       "check": "build_ledger_main_current",
       "ok": true,
-      "detail": "46621db92a84c31a411a069b379507fe90377e420c41479694b62ec68df2a94e"
+      "detail": "26c4f9ded075f4a818a19fd34704878bcd9d8994b8bc75b38d2aba712f17de53"
     },
     {
       "check": "build_ledger_pdf_current_or_source_only",
       "ok": true,
-      "detail": "9ce25634eaa3d710aa04e409e3a65cb048ac6bad63353a129c49a3d76fa8ce93"
+      "detail": "dfd7901c70eb80826209ca4ed0e14eea639db6496058e2b6c8ed08e3f7880c44"
     },
     {
       "check": "editor_reviewer_readiness_current",
       "ok": true,
-      "detail": "9ce25634eaa3d710aa04e409e3a65cb048ac6bad63353a129c49a3d76fa8ce93"
+      "detail": "dfd7901c70eb80826209ca4ed0e14eea639db6496058e2b6c8ed08e3f7880c44"
     }
   ]
 }
