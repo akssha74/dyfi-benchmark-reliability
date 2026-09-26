@@ -18,8 +18,8 @@
   "public_release_tag": "v1.1.1",
   "doi": null,
   "submitted": false,
-  "main_tex_sha256": "7f78ae52f27d6178017390a72d24d82ff2507740a6548601d672071a7980a55d",
+  "main_tex_sha256": "46621db92a84c31a411a069b379507fe90377e420c41479694b62ec68df2a94e",
   "references_bib_sha256": "f22c0a26f7c33d68ce67cddf4b490ecda6cc364d06f1e9dc6c0e4bcab89d7ff7",
-  "main_pdf_sha256": "190a6a4dcb44fcc3f3152a19d57fa56b286c835d2abf60d0cc7d9706ee1ad4ca",
-  "main_pdf_bytes": 299251
+  "main_pdf_sha256": "9ce25634eaa3d710aa04e409e3a65cb048ac6bad63353a129c49a3d76fa8ce93",
+  "main_pdf_bytes": 298993
 }

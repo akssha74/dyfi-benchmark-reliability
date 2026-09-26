@@ -22,7 +22,7 @@
     {
       "check": "concise_abstract",
       "ok": true,
-      "detail": "200"
+      "detail": "191"
     },
     {
       "check": "engineering_keywords",
@@ -167,17 +167,17 @@
     {
       "check": "build_ledger_main_current",
       "ok": true,
-      "detail": "7f78ae52f27d6178017390a72d24d82ff2507740a6548601d672071a7980a55d"
+      "detail": "46621db92a84c31a411a069b379507fe90377e420c41479694b62ec68df2a94e"
     },
     {
       "check": "build_ledger_pdf_current_or_source_only",
       "ok": true,
-      "detail": "190a6a4dcb44fcc3f3152a19d57fa56b286c835d2abf60d0cc7d9706ee1ad4ca"
+      "detail": "9ce25634eaa3d710aa04e409e3a65cb048ac6bad63353a129c49a3d76fa8ce93"
     },
     {
       "check": "editor_reviewer_readiness_current",
       "ok": true,
-      "detail": "190a6a4dcb44fcc3f3152a19d57fa56b286c835d2abf60d0cc7d9706ee1ad4ca"
+      "detail": "9ce25634eaa3d710aa04e409e3a65cb048ac6bad63353a129c49a3d76fa8ce93"
     }
   ]
 }

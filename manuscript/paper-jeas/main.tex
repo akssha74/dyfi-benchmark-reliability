@@ -54,16 +54,16 @@ are fixed.
 Using a frozen USGS ``Did You Feel It?'' (DYFI) snapshot of 7{,}520
 $M\geq5$ records, we formed 2{,}362 eligible events, reserved 430 events from
 2023--2024 as a temporal holdout, and evaluated fixed baselines using Brier score
-and sequence-cluster bootstrap intervals. Four learned models improved on the
-no-skill reference, but the two lowest-Brier models remained unresolved; one
-candidate violated the allowed-input rule by using event year. For a fixed
-random-forest diagnostic, sequence grouping changed Brier score by $-0.006$ and
-area under the receiver-operating-characteristic curve (AUROC) by $+0.012$
-relative to random folds; because no interval was retained, this contrast is
-descriptive only. The benchmark helps engineers reject inadmissible comparisons
-and unsupported winner claims. Because its labels are public, confirmation
-requires fresh hidden data or an independent service, and it does not establish
-real-time warning or operational triage.}
+and sequence-cluster bootstrap intervals. All four learned models improved on
+the no-skill reference; paired uncertainty did not distinguish the two
+lowest-Brier models, and the input rules excluded a candidate using event year.
+For a fixed random-forest diagnostic, the observed differences between
+sequence-grouped and random folds were small (Brier $-0.006$; AUROC $+0.012$);
+this comparison is descriptive because no interval was retained.
+The benchmark helps engineers reject inadmissible comparisons and unsupported
+winner claims. It is intended for transparent retrospective comparison;
+confirmatory or operational use would require fresh hidden data and separate
+validation.}
 
 \keywords{model comparison, evaluation reliability, benchmark qualification,
 dependent-event data, reproducibility, USGS DYFI}
