@@ -8,7 +8,6 @@ TABLES = HERE / "tables"
 WIDE = {
     "cohort_roles.tex",
     "baseline_performance.tex",
-    "candidate_qualification.tex",
 }
 CAPTIONS = {
     "cohort_roles.tex": "Cohort accounting and outcome-independent role assignment",
@@ -31,6 +30,11 @@ def wrap(path: Path) -> None:
             text,
             count=1,
             flags=re.S,
+        )
+    if path.name == "baseline_performance.tex":
+        text = text.replace(
+            r"Table~\ref{tab:exclusions}",
+            r"Supplementary Table~S2",
         )
     if path.name not in WIDE:
         path.write_text(text)

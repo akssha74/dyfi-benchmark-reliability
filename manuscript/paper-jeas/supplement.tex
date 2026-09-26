@@ -1,0 +1,52 @@
+\documentclass[pdflatex,sn-basic,Numbered]{sn-jnl}
+
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{url}
+
+\doublespacing
+
+\begin{document}
+
+\title{Supplementary Information for ``Reliable comparison of severe
+felt-intensity classifiers with versioned and dependent event data''}
+
+\author*[1]{\fnm{Akshay} \sur{Sharma}}\email{akssha74@gmail.com}
+\author[1]{\fnm{Lalji} \sur{Prasad}}\email{lalji.research@gmail.com}
+\affil*[1]{\orgdiv{Department of Computer Science and Engineering},
+\orgname{SAGE University}, \orgaddress{\city{Indore}, \postcode{452020},
+\state{Madhya Pradesh}, \country{India}}}
+
+\maketitle
+
+\renewcommand{\thetable}{S\arabic{table}}
+
+\section*{Complete pairwise model comparisons}
+
+Supplementary Table~S1 reports every paired Brier-score comparison used to
+assess ranking stability. The main manuscript reports the comparisons that
+determine its conclusions: every learned baseline improves over no-skill, while
+B2--B4 and B2--B5 remain unresolved.
+
+\input{tables/pairwise_matrix.tex}
+
+\section*{Protocol exclusions and deviations}
+
+Supplementary Table~S2 lists all exclusions, unexecuted branches, and
+interpretation boundaries. These entries change no frozen result.
+
+\input{tables/exclusions_deviations.tex}
+
+\section*{Temporal and geographic subgroup summaries}
+
+Supplementary Table~S3 reports the complete temporal and geographic summaries
+of the 430 fixed temporal-holdout predictions. Geographic cells are descriptive
+subgroups, not leave-region-out evidence.
+
+\input{tables/slices.tex}
+
+\end{document}

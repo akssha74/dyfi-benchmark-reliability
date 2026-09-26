@@ -10,7 +10,8 @@
     "python3 format_tables.py  (layout-only venue table copies)",
     "python3 format_jeas_tables.py  (fit wide tables to review layout)",
     "cp ../figures/*.pdf figures/  (byte-identical vector figures)",
-    "tectonic --keep-logs main.tex  (compile -> main.pdf)"
+    "tectonic --keep-logs main.tex  (compile -> main.pdf)",
+    "tectonic --keep-logs supplement.tex  (compile -> supplement.pdf)"
   ],
   "inputs_are_immutable": true,
   "network_writes": false,
@@ -18,8 +19,11 @@
   "public_release_tag": "v1.1.1",
   "doi": null,
   "submitted": false,
-  "main_tex_sha256": "26c4f9ded075f4a818a19fd34704878bcd9d8994b8bc75b38d2aba712f17de53",
+  "main_tex_sha256": "3b972e795946b19834e4d0dbc0356d748340232406724242fa6c40779bad278d",
   "references_bib_sha256": "f22c0a26f7c33d68ce67cddf4b490ecda6cc364d06f1e9dc6c0e4bcab89d7ff7",
-  "main_pdf_sha256": "93780f0dc5951e4edd91eb74043ca111683d1628b574ce5382e63ec532c016c7",
-  "main_pdf_bytes": 298596
+  "main_pdf_sha256": "f33a1fda272ac69736ef38aa70d6a12a9262665b59b6bacdcf2166c2082e8528",
+  "main_pdf_bytes": 282976,
+  "supplement_tex_sha256": "1aa9d620e832c017a7ddad3da891b052bd696fc148cbdab62b4ed12148b3da19",
+  "supplement_pdf_sha256": "036388e5026544cf760fadc2cae859b65401b5b235650e9c6f6c69231fc74460",
+  "supplement_pdf_bytes": 50735
 }

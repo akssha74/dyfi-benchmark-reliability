@@ -125,6 +125,29 @@ def main() -> int:
         and r"\label{fig:qualification-workflow}" in text
         and r"\label{sec:qualification}" in text,
     )
+    supplement = (HERE / "supplement.tex").read_text()
+    check(
+        "technical_tables_moved_to_supplement",
+        all(
+            token not in text
+            for token in (
+                r"\input{tables/pairwise_matrix.tex}",
+                r"\input{tables/exclusions_deviations.tex}",
+                r"\input{tables/slices.tex}",
+            )
+        )
+        and all(
+            token in supplement
+            for token in (
+                r"\input{tables/pairwise_matrix.tex}",
+                r"\input{tables/exclusions_deviations.tex}",
+                r"\input{tables/slices.tex}",
+            )
+        )
+        and "Supplementary Table~S1" in text
+        and "Supplementary Table~S2" in text
+        and "Supplementary Table~S3" in text,
+    )
     table_captions = []
     for table_path in sorted((HERE / "tables").glob("*.tex")):
         match = re.search(r"\\caption\{(.*?)\}\s*\\label", table_path.read_text(), re.S)
@@ -183,7 +206,7 @@ def main() -> int:
     check(
         "b3_scope_exclusion_demonstrated",
         "B3 expanded-metadata logistic" in qualification
-        and "Year excluded by source-only schema" in qualification
+        and "Year excluded by schema" in qualification
         and "not demonstrated" in text
         and "label leakage" in text,
     )
@@ -288,6 +311,23 @@ def main() -> int:
         (not pdf.exists()) or build.get("main_pdf_sha256") == sha256(pdf),
         "source-only package" if not pdf.exists() else str(build.get("main_pdf_sha256")),
     )
+    supplement_pdf = HERE / "supplement.pdf"
+    check(
+        "supplement_build_current_or_source_only",
+        (not supplement_pdf.exists())
+        or (
+            build.get("supplement_tex_sha256") == sha256(HERE / "supplement.tex")
+            and build.get("supplement_pdf_sha256") == sha256(supplement_pdf)
+        ),
+        "source-only package" if not supplement_pdf.exists() else str(build.get("supplement_pdf_sha256")),
+    )
+    if pdf.exists():
+        pdfinfo = subprocess.check_output(["pdfinfo", str(pdf)], text=True)
+        pages_match = re.search(r"^Pages:\s+(\d+)", pdfinfo, re.M)
+        pages = int(pages_match.group(1)) if pages_match else 999
+        check("review_manuscript_page_target", pages <= 28, str(pages))
+    else:
+        check("review_manuscript_page_target", True, "source-only package")
     readiness_path = HERE / "reviews" / "editor-reviewer-readiness.json"
     if readiness_path.exists() and pdf.exists():
         readiness = json.loads(readiness_path.read_text())

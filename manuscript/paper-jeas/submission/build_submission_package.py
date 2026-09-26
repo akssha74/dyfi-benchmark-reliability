@@ -24,6 +24,7 @@ def build() -> None:
 
     files: list[tuple[pathlib.Path, pathlib.Path]] = [
         (PAPER / "references.bib", pathlib.Path("references.bib")),
+        (PAPER / "supplement.tex", pathlib.Path("supplement.tex")),
         (PAPER / "sn-jnl.cls", pathlib.Path("sn-jnl.cls")),
         (PAPER / "sn-basic.bst", pathlib.Path("sn-basic.bst")),
         (PAPER / "build_utility_assets.py", pathlib.Path("build_utility_assets.py")),
@@ -78,6 +79,7 @@ def build() -> None:
             zf.writestr(info, source.read_bytes())
 
     shutil.copy2(PAPER / "main.pdf", UPLOAD / "main.pdf")
+    shutil.copy2(PAPER / "supplement.pdf", UPLOAD / "Supplementary_Information.pdf")
     shutil.copy2(HERE / "cover_letter.pdf", UPLOAD / "cover_letter.pdf")
     shutil.copy2(HERE / "figure_alt_text.txt", UPLOAD / "PORTAL_ALT_TEXT.txt")
     for source, target in figure_map.items():
@@ -90,6 +92,7 @@ def build() -> None:
         "Upload Figure_1.pdf through Figure_5.pdf as separate figure files if "
         "the portal requests artwork separately.\n"
         "Upload cover_letter.pdf in the cover-letter slot.\n"
+        "Upload Supplementary_Information.pdf as supplementary material.\n"
         "PORTAL_ALT_TEXT.txt is copy/paste text for accessibility fields; upload "
         "it only if the portal explicitly requests an alt-text file.\n"
         "main.pdf is the author-verified reference proof; upload it only if the "

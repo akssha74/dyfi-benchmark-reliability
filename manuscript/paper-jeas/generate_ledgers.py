@@ -172,7 +172,7 @@ def build_claim_ledger(ai: dict) -> list[dict]:
 
     pm = ai["pairwise_ranking_stability"]["pairwise_matrix"]
     for pk, cell in pm.items():
-        appears = ["tab:pairwise"]
+        appears = ["supp:tab:pairwise"]
         if pk == "B2_source_only_logit_vs_B5_xgboost":
             appears.append("tab:qualification")
         add(f"P_{pk}", f"pairwise Brier comparison ({pk})",
@@ -187,27 +187,27 @@ def build_claim_ledger(ai: dict) -> list[dict]:
     add("P_unresolved", "two learned-baseline pairs unresolved (B2 vs B4; B2 vs B5)",
         ["B2_source_only_logit_vs_B4_random_forest",
          "B2_source_only_logit_vs_B5_xgboost"],
-        "/pairwise_ranking_stability/pairwise_matrix", ["abstract", "prose", "tab:pairwise"])
+        "/pairwise_ranking_stability/pairwise_matrix", ["abstract", "prose", "supp:tab:pairwise"])
 
     sl = ai["slices"]
     for yr in ("2023", "2024"):
         add(f"S_temporal_{yr}_brier", f"temporal slice {yr} Brier", r3(sl["temporal"][yr]["brier"]),
-            f"/slices/temporal/{yr}/brier", ["prose", "tab:slices", "fig:threshold"])
+            f"/slices/temporal/{yr}/brier", ["prose", "supp:tab:slices", "fig:threshold"])
         add(f"S_temporal_{yr}_auroc", f"temporal slice {yr} AUROC", r3(sl["temporal"][yr]["auroc"]),
-            f"/slices/temporal/{yr}/auroc", ["prose", "tab:slices", "fig:threshold"])
+            f"/slices/temporal/{yr}/auroc", ["prose", "supp:tab:slices", "fig:threshold"])
         add(f"S_temporal_{yr}_n", f"temporal slice {yr} n", sl["temporal"][yr]["n"],
-            f"/slices/temporal/{yr}/n", ["prose", "tab:slices", "fig:threshold"])
+            f"/slices/temporal/{yr}/n", ["prose", "supp:tab:slices", "fig:threshold"])
     gs = sl["geographic_summary"]
     add("S_geo_cells", "occupied 10-degree geographic cells within temporal holdout", gs["n_cells"],
-        "/slices/geographic_summary/n_cells", ["prose", "tab:slices"])
+        "/slices/geographic_summary/n_cells", ["prose", "supp:tab:slices"])
     add("S_geo_sum_n", "temporal-holdout events included in geographic subgroup summary", gs["sum_n"],
-        "/slices/geographic_summary/sum_n", ["tab:slices"])
+        "/slices/geographic_summary/sum_n", ["supp:tab:slices"])
     add("S_geo_median", "median cell-level Brier score in geographic subgroup summary",
         r3(gs["brier_median"]), "/slices/geographic_summary/brier_median",
-        ["prose", "tab:slices"])
+        ["prose", "supp:tab:slices"])
     add("S_geo_range", "range of cell-level Brier scores in geographic subgroup summary",
         [r3(gs["brier_min"]), r3(gs["brier_max"])],
-        "/slices/geographic_summary", ["prose", "tab:slices"])
+        "/slices/geographic_summary", ["prose", "supp:tab:slices"])
 
     rm = ai["reproducibility_manifest"]
     add("R_fit_count", "fit count consumed", rm["fit_count"],
@@ -233,7 +233,7 @@ def build_claim_ledger(ai: dict) -> list[dict]:
     add("Q_B3", "B3 is outside the declared source-only contract because expanded metadata includes event year; this is not asserted as label leakage",
         ai["exclusions_and_deviations"]["B3_axis_excluded"],
         "/exclusions_and_deviations/B3_axis_excluded",
-        ["prose", "tab:qualification", "tab:exclusions"])
+        ["prose", "tab:qualification", "supp:tab:exclusions"])
     return rows
 
 
@@ -263,6 +263,10 @@ def build_artifact_ledger() -> list[dict]:
         rows.append(entry)
 
     add("main.tex", "manuscript source", "hand-authored from validated assets")
+    add("supplement.tex", "supplementary manuscript source",
+        "hand-authored wrapper around generated frozen-result tables")
+    add("supplement.pdf", "supplementary review PDF",
+        "compiled deterministically from supplement.tex and generated tables")
     add("references.bib", "bibliography", "verified per citation_ledger.jsonl")
     add("sn-jnl.cls", "venue class file", "Springer Nature sn-jnl template")
     add("sn-basic.bst", "venue bibliography style", "Springer Nature sn-basic")
@@ -316,6 +320,7 @@ def build_build_ledger() -> dict:
             "python3 format_jeas_tables.py  (fit wide tables to review layout)",
             "cp ../figures/*.pdf figures/  (byte-identical vector figures)",
             "tectonic --keep-logs main.tex  (compile -> main.pdf)",
+            "tectonic --keep-logs supplement.tex  (compile -> supplement.pdf)",
         ],
         "inputs_are_immutable": True,
         "network_writes": False,
@@ -327,6 +332,9 @@ def build_build_ledger() -> dict:
         "references_bib_sha256": sha256(HERE / "references.bib"),
         "main_pdf_sha256": sha256(pdf) if pdf.exists() else None,
         "main_pdf_bytes": pdf.stat().st_size if pdf.exists() else None,
+        "supplement_tex_sha256": sha256(HERE / "supplement.tex"),
+        "supplement_pdf_sha256": sha256(HERE / "supplement.pdf") if (HERE / "supplement.pdf").exists() else None,
+        "supplement_pdf_bytes": (HERE / "supplement.pdf").stat().st_size if (HERE / "supplement.pdf").exists() else None,
     }
 
 

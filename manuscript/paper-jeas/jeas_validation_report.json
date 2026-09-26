@@ -1,6 +1,6 @@
 {
   "record_type": "jeas_manuscript_validation_report",
-  "n_checks": 35,
+  "n_checks": 38,
   "n_failed": 0,
   "overall_pass": true,
   "checks": [
@@ -22,7 +22,7 @@
     {
       "check": "concise_abstract",
       "ok": true,
-      "detail": "191"
+      "detail": "196"
     },
     {
       "check": "engineering_keywords",
@@ -46,6 +46,11 @@
     },
     {
       "check": "usefulness_is_demonstrated",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "technical_tables_moved_to_supplement",
       "ok": true,
       "detail": ""
     },
@@ -112,7 +117,7 @@
     {
       "check": "utility_assets_match_pinned_manifest",
       "ok": true,
-      "detail": "{'engineering_failure_modes.tex': '83127f6b812e4222dadfabc6f35537d13f20c7eef8c0a80f9b33578346146df9', 'candidate_qualification.tex': '7b18eef298c56b1fe3435c21d7ddb4ebd61d9b2aba6c38a990ef42ef9e25d639', 'fig_candidate_workflow.pdf': 'c4a12cd44a52d72eb5f39959daff607c41b8c79a215721755d036ccd2f437ec7', 'fig_candidate_workflow.png': 'cf298ffd31ee6a646a5f36a4f07e8243b31e13e6e4ffe21055938e38957b4e03', 'fig_split_diagnostic_jeas.pdf': '28d2cadc4a2242fb5be60aa81fb9151da2d58e90e2c285e4caa5299a23721cfa', 'fig_split_diagnostic_jeas.png': 'e33c942ae1e82eae31c0a3ee63709b67bd0756c15a5f789f597442c8ee6095b8'}"
+      "detail": "{'engineering_failure_modes.tex': '83127f6b812e4222dadfabc6f35537d13f20c7eef8c0a80f9b33578346146df9', 'candidate_qualification.tex': 'd5a846ae6eaaba2f02ba5a3828ed31db7e5116bbd633f35f69e91b3d53e29164', 'fig_candidate_workflow.pdf': 'c4a12cd44a52d72eb5f39959daff607c41b8c79a215721755d036ccd2f437ec7', 'fig_candidate_workflow.png': 'cf298ffd31ee6a646a5f36a4f07e8243b31e13e6e4ffe21055938e38957b4e03', 'fig_split_diagnostic_jeas.pdf': '28d2cadc4a2242fb5be60aa81fb9151da2d58e90e2c285e4caa5299a23721cfa', 'fig_split_diagnostic_jeas.png': 'e33c942ae1e82eae31c0a3ee63709b67bd0756c15a5f789f597442c8ee6095b8'}"
     },
     {
       "check": "utility_regeneration_environment_explicit",
@@ -167,17 +172,27 @@
     {
       "check": "build_ledger_main_current",
       "ok": true,
-      "detail": "26c4f9ded075f4a818a19fd34704878bcd9d8994b8bc75b38d2aba712f17de53"
+      "detail": "3b972e795946b19834e4d0dbc0356d748340232406724242fa6c40779bad278d"
     },
     {
       "check": "build_ledger_pdf_current_or_source_only",
       "ok": true,
-      "detail": "93780f0dc5951e4edd91eb74043ca111683d1628b574ce5382e63ec532c016c7"
+      "detail": "f33a1fda272ac69736ef38aa70d6a12a9262665b59b6bacdcf2166c2082e8528"
+    },
+    {
+      "check": "supplement_build_current_or_source_only",
+      "ok": true,
+      "detail": "036388e5026544cf760fadc2cae859b65401b5b235650e9c6f6c69231fc74460"
+    },
+    {
+      "check": "review_manuscript_page_target",
+      "ok": true,
+      "detail": "28"
     },
     {
       "check": "editor_reviewer_readiness_current",
       "ok": true,
-      "detail": "93780f0dc5951e4edd91eb74043ca111683d1628b574ce5382e63ec532c016c7"
+      "detail": "f33a1fda272ac69736ef38aa70d6a12a9262665b59b6bacdcf2166c2082e8528"
     }
   ]
 }

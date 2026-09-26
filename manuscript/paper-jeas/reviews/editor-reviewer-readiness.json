@@ -1,6 +1,6 @@
 {
   "record_type": "editor_reviewer_readiness",
-  "manuscript_sha256": "93780f0dc5951e4edd91eb74043ca111683d1628b574ce5382e63ec532c016c7",
+  "manuscript_sha256": "f33a1fda272ac69736ef38aa70d6a12a9262665b59b6bacdcf2166c2082e8528",
   "venue": "Journal of Engineering and Applied Science",
   "article_type": "Research Article",
   "contribution_identity": "benchmark",
@@ -37,9 +37,9 @@
     "usefulness": 5,
     "identity_fit": 4,
     "evidence_access": 5,
-    "reviewer_effort": 4,
+    "reviewer_effort": 5,
     "presentation": 5,
-    "total": 28
+    "total": 30
   },
   "editor_recommendation": "send_to_review",
   "reviewer_recommendation": "accept",

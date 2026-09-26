@@ -88,32 +88,32 @@ def write_qualification(asset: dict) -> None:
         r"\small",
         r"\caption{Worked candidate-model qualification using the frozen temporal holdout}",
         r"\label{tab:qualification}",
-        r"\begin{tabular}{p{0.25\textwidth}p{0.12\textwidth}p{0.17\textwidth}p{0.23\textwidth}p{0.16\textwidth}}",
+        r"\begin{tabular}{p{0.20\textwidth}p{0.12\textwidth}p{0.35\textwidth}p{0.15\textwidth}}",
         r"\toprule",
-        r"Candidate & Audit gate & Holdout Brier [95\% CI] & Brier difference vs B0 [95\% CI] & Contract decision \\",
+        r"Candidate & Gate & Holdout evidence & Decision \\",
         r"\midrule",
     ]
     baseline = asset["per_baseline"]
     ranking = asset["ranking_vs_reference"]
     b0 = baseline["B0_no_skill"]
     lines.append(
-        f"{labels['B0_no_skill']} & Pass (reference) & "
-        f"{f3(b0['brier'])} [{f3(b0['brier_ci'][0])}, {f3(b0['brier_ci'][1])}]"
-        r" & --- & Reference only \\"
+        f"{labels['B0_no_skill']} & Pass & "
+        f"Brier {f3(b0['brier'])} [{f3(b0['brier_ci'][0])}, {f3(b0['brier_ci'][1])}]"
+        r"; declared reference & Reference \\"
     )
     for key in ("B1_magnitude_only_logit", "B2_source_only_logit", "B4_random_forest", "B5_xgboost"):
         perf = baseline[key]
         comp = ranking[f"{key}_vs_B0_no_skill"]
         lines.append(
             f"{labels[key]} & Pass & "
-            f"{f3(perf['brier'])} [{f3(perf['brier_ci'][0])}, {f3(perf['brier_ci'][1])}] & "
-            f"{f4(comp['point_diff_a_minus_b'])} "
+            f"Brier {f3(perf['brier'])} [{f3(perf['brier_ci'][0])}, {f3(perf['brier_ci'][1])}]; "
+            f"$\\Delta$ vs B0 {f4(comp['point_diff_a_minus_b'])} "
             f"[{f4(comp['ci'][0])}, {f4(comp['ci'][1])}] & "
-            r"Supported vs B0 \\"
+            r"Supported \\"
         )
     lines.append(
-        r"B3 expanded-metadata logistic & Out of contract & --- & --- & "
-        r"Year excluded by source-only schema \\"
+        r"B3 expanded-metadata logistic & Out of contract & --- & "
+        r"Year excluded by schema \\"
     )
     pair = asset["pairwise_ranking_stability"]["pairwise_matrix"][
         "B2_source_only_logit_vs_B5_xgboost"
