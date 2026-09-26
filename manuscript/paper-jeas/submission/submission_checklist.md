@@ -58,10 +58,12 @@ Status: **DRAFT — NOT SUBMITTED**
 - [x] JEAS validator passes
 - [x] Original benchmark tests remain passing
 - [x] Final independent goal/usefulness, peer-parity, and default-reject reviews pass
-- [x] Editor-readable JEAS manuscript release v1.2.3 prepared; metadata/manifest
+- [x] Editor-readable JEAS manuscript release v1.2.4 prepared; metadata/manifest
       hardening releases preserve the reviewed scientific identity
-- [x] v1.2.3 release candidate manifest 229/229, assets 38/38, validators
+- [x] v1.2.4 release candidate manifest 229/229, assets 38/38, validators
       116/116 and 38/38, tests 110/110, and exact main/supplement source builds pass
+- [x] Exact v1.2.4 reviewer-language parity: Opus 30/30, GPT 29/30,
+      GLM 29.5/30; no veto
 - [x] Independent abstract-only domain, methods, and non-specialist reader test passes
 
 ## Submission package and portal
@@ -72,7 +74,7 @@ Status: **DRAFT — NOT SUBMITTED**
 - [x] JEAS compliance matrix complete
 - [x] Upload builder and README prepared
 - [x] Final source ZIP, review PDF, cover letter, and separate figures hash-verified
-- [x] Three-page supplementary information package hash-verified
+- [x] Four-page supplementary information package hash-verified
 - [ ] Portal title/abstract/authors/declarations match manuscript
 - [ ] Portal-generated proof semantically and visually matches canonical manuscript
 - [ ] Re-check zero-APC sponsorship immediately before submission

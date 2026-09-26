@@ -46,8 +46,8 @@ contribution identity to the reliability of the comparison contract itself.
 
 Data, code, frozen results, and reproduction instructions are available at
 <https://github.com/akssha74/dyfi-benchmark-reliability>. The scientific results
-come from the scientific core frozen in release v1.0.27; the current JEAS
-release packages that unchanged core with an engineering-use workflow and
+come from the scientific core frozen in release v1.0.27; JEAS release v1.2.4
+packages that unchanged core with an engineering-use workflow and
 decision tables derived from the same assets. A clean clone passes the released
 validators and benchmark test suite and reconstructs the reported results.
 

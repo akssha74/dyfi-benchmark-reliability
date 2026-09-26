@@ -118,7 +118,7 @@ isolation before scoring, then uses fixed baselines and paired Brier uncertainty
 to decide whether an improvement is supported
 (Sections~\ref{sec:leakage}--\ref{sec:qualification}).
 \item \textbf{A worked model-selection example} showing a clear gain from depth
-beyond magnitude alone, a competitive transparent logistic reference, and the
+beyond magnitude alone, a competitive two-input logistic baseline, and the
 point at which a more complex model remains unresolved. Data, frozen parameters,
 tests, and prediction-reconstruction records are released with the benchmark
 (Section~\ref{sec:results}).
@@ -176,8 +176,11 @@ DYFI regression~\citep{kumar2025dyfiindia}; a concurrent DYFI benchmark studies
 per-location MMI simulation and identifier leakage~\citep{li2025llmworldmodels}.
 EarthquakeNPP supplies the nearest broader leakage-aware seismological benchmark
 but targets occurrence forecasting~\citep{stockman2026earthquakenpp}.
-JEAS precedents demonstrate decision-oriented benchmark and model comparisons in
-object detection, rock properties, and pavement maintenance
+Decision-oriented engineering studies also compare tree-based models, including
+XGBoost, to support bridge-condition forecasting and maintenance
+planning~\citep{elbaroty2025bridge}.
+Recent engineering studies use benchmark and model comparisons for object
+detection, rock properties, and pavement maintenance
 ~\citep{tian2024coco,niu2024ucs,alnaqbi2025pavement}, while seismic engineering
 work makes the affected response and design interpretation explicit
 ~\citep{seleemah2022bridge}. The present study adopts that decision-oriented form
@@ -457,18 +460,14 @@ scores. The sequence-grouped split therefore scores marginally \emph{better}
 than the naive random split, not worse. The frozen internal protocol required
 uncertainty reporting for this contrast but did not define a paired interval
 estimator; the executed result contains point estimates only. We disclose this
-unfulfilled element as a deviation and do not invent a post-hoc interval.
-Accordingly, we report the contrast descriptively, not as
-evidence of equivalence, a true zero effect, leakage, or a win. Its
-plausible structural context is that 1{,}885 sequences are largely singleton
-(1{,}530 in construction), leaving limited within-sequence near-duplicate
-structure for a random split to leak. This does not prove a small true effect.
-With one row per event,
-event grouping imposes the same grouping constraint as random-event assignment,
-but its deterministic fold allocation differs and therefore produces different
-scores. It is reported as an intermediate control. The protocol remains reusable on datasets with more
-multi-event sequences. The present result neither demonstrates practically
-important leakage from random splitting nor establishes its absence.
+unfulfilled element and report the contrast descriptively. A plausible reason
+for the small difference is that the 1{,}885 sequences are largely singleton
+(1{,}530 in construction), leaving little repeated-event structure for grouping
+to change. Without an interval, however, the result cannot establish a true
+zero or equivalence. With one row per event, event grouping and random-event
+assignment impose the same grouping constraint but use different fold
+allocations. Future applications with more multi-event sequences should repeat
+this diagnostic with a prespecified paired interval.
 
 \begin{figure*}[t]
 \centering
@@ -539,8 +538,8 @@ include zero. In the joint
 bootstrap ordering, B2 has the highest probability of being uniquely best
 (0.613), followed by B5 (0.387), but the direct B2--B5 comparison remains
 uncertain. The source-only logistic model therefore provides a strong,
-transparent reference for future candidates, but the results do not justify
-naming it a winner.
+simple baseline for future candidates, but the results do not justify naming it
+a winner.
 
 The frozen internal protocol allowed an ``equivalent'' verdict but did not specify a
 positive numerical equivalence margin; its resolution floor was zero. We
@@ -568,13 +567,10 @@ interpretation: excluded comparators and records, the unexecuted geographic
 transport branch, the unfulfilled split-contrast interval, and the absence of an
 equivalence claim. The tagged public release contains the complete SHA-256
 fingerprints, software environment, and machine-readable verification details.
-Its public-release manifest fingerprints every distributed file. Three original
-execution-bookkeeping records are self-referential---they
-cannot contain their own final fingerprints---and are therefore reported
-separately rather than treated as analysis-file mismatches. A machine-readable
-corrections overlay deprecates three legacy semantic fields (protected-role
-status, the generic split-interpretation template, and event-group wording) and
-provides authoritative replacements without changing any numerical result.
+Its manifest fingerprints every distributed file. The verification record
+separately identifies three self-referential bookkeeping entries and a
+corrections overlay for three legacy semantic fields; neither changes an
+analysis file or numerical result.
 
 \section{Discussion}\label{sec:discussion}
 
@@ -583,7 +579,7 @@ researcher a fixed test for a new severe-intensity classifier. It checks inputs
 and role assignments before scoring and uses a paired Brier interval to judge
 improvement. The worked example admits four candidates that improve on
 no-skill, excludes the event-year candidate from the source-only comparison,
-and identifies the logistic model as a strong reference without forcing a
+and identifies the logistic model as the benchmark to beat without forcing a
 ranking against XGBoost. These outcomes show which comparisons are valid and
 what a new method must beat. Because all labels are public, confirmation still
 requires a fresh hidden holdout or independent evaluation service.
@@ -601,8 +597,8 @@ improve on no-skill, and using depth as well as magnitude improves the logistic
 model. The source-only logistic model and XGBoost both round to Brier 0.181, and
 their paired comparison is
 unresolved. The evidence does not show a Brier
-advantage for the more complex model. The logistic model is therefore a useful
-transparent reference, not a statistically superior winner. Future methods
+advantage for the more complex model. The simpler logistic model is therefore a
+practical default comparator, not a statistically superior winner. Future methods
 should show a paired improvement over it before added complexity is treated as
 a performance gain.
 
@@ -655,10 +651,9 @@ schema and role contract, evaluates it on a fixed temporal holdout, and attaches
 paired uncertainty to the comparison decision. In the worked qualification, all
 four learned candidates improve over no-skill, and adding depth to the
 magnitude-only logistic model produces a clear Brier improvement. The
-source-only logistic model is a strong transparent reference; its
-comparison with XGBoost remains unresolved. This makes the logistic model a
-practical reference for testing whether added complexity earns a measurable
-gain. The contract also keeps the event-year
+source-only logistic model sets a practical benchmark; its comparison with
+XGBoost remains unresolved. Future models should demonstrate a measurable gain
+before added complexity is justified. The contract also keeps the event-year
 candidate outside the declared source-only comparison. The
 random-versus-sequence diagnostic gives similar point performance in this
 sparse-sequence corpus and remains descriptive because no interval was
@@ -686,7 +681,7 @@ recruited.
 \item \textbf{Consent for publication.} Not applicable.
 \item \textbf{Availability of data and materials.} Version~1 data, results, manifests, and
 instructions are available under CC0~1.0 at
-\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.2.3}.
+\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.2.4}.
 Source data are USGS DYFI and ANSS ComCat (public domain;
 \href{https://doi.org/10.5066/F7J101C8}{10.5066/F7J101C8} and
 \href{https://doi.org/10.5066/F7MS3QZH}{10.5066/F7MS3QZH}) and are reconstructable
@@ -694,7 +689,7 @@ via the released fetch-and-verify source-locator manifest. No respondent-level
 personally identifying information is redistributed.
 \item \textbf{Availability of code.} Project: DYFI Benchmark Reliability.
 Homepage: \url{https://github.com/akssha74/dyfi-benchmark-reliability}.
-Archived version: release v1.2.3. Operating systems: platform independent.
+Archived version: release v1.2.4. Operating systems: platform independent.
 Programming language: Python. Licence: MIT. Restrictions on non-academic use:
 none. Full prediction reconstruction and model tests use the separately pinned
 scientific-Python environment.

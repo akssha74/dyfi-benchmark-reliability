@@ -172,12 +172,12 @@
     {
       "check": "build_ledger_main_current",
       "ok": true,
-      "detail": "9b494085e585d1247d41f33faa2b39f1e03b78d4a9ca14af4dbe0a0abb86a879"
+      "detail": "782a35ef107777720ac813f5e4f9e1c30ebc7ffc54a9135ecfb0c1be462e8e87"
     },
     {
       "check": "build_ledger_pdf_current_or_source_only",
       "ok": true,
-      "detail": "02dc7df67a6490a87474ee4d383941b2f5a2b46f9caee561f402b37d5f0fbb9a"
+      "detail": "9979038d3c846d1a667bffc083b03204a2ad2209597de5c8c09a4245560e7c1f"
     },
     {
       "check": "supplement_build_current_or_source_only",
@@ -192,7 +192,7 @@
     {
       "check": "editor_reviewer_readiness_current",
       "ok": true,
-      "detail": "02dc7df67a6490a87474ee4d383941b2f5a2b46f9caee561f402b37d5f0fbb9a"
+      "detail": "9979038d3c846d1a667bffc083b03204a2ad2209597de5c8c09a4245560e7c1f"
     }
   ]
 }

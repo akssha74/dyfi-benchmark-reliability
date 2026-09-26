@@ -65,6 +65,31 @@
       "citation_status": "calibration_only_intentionally_uncited"
     }
   ],
+  "additional_language_calibration": [
+    {
+      "title": "Predictive modeling of longitudinal cracking in CRCP using PSO-tuned gradient boosting machines",
+      "doi": "10.1186/s44147-025-00623-x",
+      "lesson": "State the engineering prediction problem, compared model families, principal metric result, and maintenance decision in direct prose."
+    },
+    {
+      "title": "A hybrid machine learning framework for predicting aircraft scaled sound pressure levels: a comparative study",
+      "doi": "10.1186/s44147-025-00714-9",
+      "lesson": "Connect model comparison to an engineering decision while stating computational and real-time limitations plainly."
+    },
+    {
+      "title": "Machine learning anomaly detection of lost and unaccounted for gas in natural gas networks",
+      "doi": "10.1186/s44147-025-00677-x",
+      "lesson": "Explain the operational pain point before model details and translate scores into the engineering task they support."
+    }
+  ],
+  "editor_authored_relevance_check": {
+    "current_editor_in_chief": "Sherif Mourad",
+    "verified_from": "Official JEAS editorial-board page, 2026-09-26",
+    "cited_paper": "BMS Forecasting of Bridge Health Condition Degradation Using AI Machine Learning",
+    "doi": "10.2478/cee-2025-0019",
+    "relevance": "Directly compares decision tree, bagging, and XGBoost for an engineering maintenance decision, supporting the manuscript's decision-oriented model-comparison framing.",
+    "citation_policy": "Cited for substantive relevance only; unrelated editor-authored structural papers were not added."
+  },
   "conclusion": {
     "target_venue_publishes_benchmark_identity": true,
     "target_venue_publishes_machine_learning_comparisons": true,

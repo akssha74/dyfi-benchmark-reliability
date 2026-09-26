@@ -6,8 +6,8 @@
   "original_main_pdf_sha256": "6ce8b8d8b07afb68eeb838e08b16f7832c4713e2d05ebc317826feb19ceebf75",
   "frozen_asset_inputs_sha256": "b7f7dea60c7421b0b75870d45421c094e3cd4b5e325702c94b498ebc7926ace9",
   "frozen_result_sha256": "b3ec45d587d6125da25890b7e91bfb140309c8645c7d8c365d80a2e0df73ae3b",
-  "jeas_main_tex_sha256_before_final_review": "9b494085e585d1247d41f33faa2b39f1e03b78d4a9ca14af4dbe0a0abb86a879",
-  "jeas_main_pdf_sha256_before_final_review": "02dc7df67a6490a87474ee4d383941b2f5a2b46f9caee561f402b37d5f0fbb9a",
+  "jeas_main_tex_sha256_before_final_review": "782a35ef107777720ac813f5e4f9e1c30ebc7ffc54a9135ecfb0c1be462e8e87",
+  "jeas_main_pdf_sha256_before_final_review": "9979038d3c846d1a667bffc083b03204a2ad2209597de5c8c09a4245560e7c1f",
   "gates": {
     "original_manuscript_validator": {
       "command": "python3 manuscript/paper/validate_manuscript.py",

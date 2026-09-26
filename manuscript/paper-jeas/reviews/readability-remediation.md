@@ -1,4 +1,4 @@
-# Readability remediation — JEAS v1.2.3
+# Readability remediation — JEAS v1.2.4
 
 Scope: editorial framing only. Frozen data, models, predictions, scores,
 intervals, and scientific boundaries are unchanged.
