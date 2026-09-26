@@ -1,0 +1,23 @@
+{
+  "record_type": "manuscript_build_ledger",
+  "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1",
+  "engine": "Tectonic 0.17.0 (auto BibTeX + reruns)",
+  "engine_reference_binary_sha256": "568dea0a81f4ceed859e33734bbbea85d54a25f14b12665a48c98b536a887986",
+  "pdf_determinism_scope": "Byte-identical under Tectonic 0.17.0 with the same cached resource bundle and SOURCE_DATE_EPOCH. Other Tectonic versions may serialize different PDF bytes while preserving identical text and pixels.",
+  "entrypoint": "manuscript/paper/build.sh",
+  "ordered_steps": [
+    "python3 format_tables.py  (layout-only venue table copies)",
+    "cp ../figures/*.pdf figures/  (byte-identical vector figures)",
+    "tectonic --keep-logs main.tex  (compile -> main.pdf)"
+  ],
+  "inputs_are_immutable": true,
+  "network_writes": false,
+  "public_repository": "https://github.com/akssha74/dyfi-benchmark-reliability",
+  "public_release_tag": "v1.0.27",
+  "doi": null,
+  "submitted": false,
+  "main_tex_sha256": "ffd35072b0589d9bb956e163e0847e0d7d047cb2f7509e1fa4b546099e8b9716",
+  "references_bib_sha256": "88fb30be4a5aec3ca976b2a85d08c65463fd1fa7e623dd5c4c7838f2a2eb741a",
+  "main_pdf_sha256": "6ce8b8d8b07afb68eeb838e08b16f7832c4713e2d05ebc317826feb19ceebf75",
+  "main_pdf_bytes": 278343
+}

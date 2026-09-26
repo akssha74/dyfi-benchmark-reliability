@@ -1,0 +1,24 @@
+Figure 1. Flow diagram for qualifying a candidate model. A candidate passes
+through schema and leakage checks, frozen role and temporal-holdout checks, and
+proper-score comparison with a paired interval. Failed audits make a candidate
+inadmissible; admitted candidates end as either a supported improvement or an
+unresolved comparison.
+
+Figure 2. Cohort flow from 7,520 frozen USGS DYFI records to 2,362 eligible
+events. Eligible events are assigned to 1,573 training, 357 development, and
+430 temporal-holdout roles, with two temporal-straddle exclusions.
+
+Figure 3. Two-panel sensitivity figure. The left panel shows prevalence, Brier
+score, and AUROC at severe-intensity thresholds 5.5, 6.0, and 6.5. The right
+panel compares Brier score and AUROC for the 2023 and 2024 portions of the
+temporal holdout.
+
+Figure 4. Two-panel comparison of random-event, event-grouped, and
+sequence-grouped cross-validation for the fixed random-forest diagnostic.
+Sequence grouping has slightly lower Brier score and slightly higher AUROC than
+random-event assignment; the contrast is descriptive and has no retained
+interval.
+
+Figure 5. Forest plot of temporal-holdout Brier scores and 95% sequence-cluster
+bootstrap intervals for B0, B1, B2, B4, and B5. Every learned baseline is below
+the no-skill B0 score, while the leading learned-model intervals overlap.

@@ -1,0 +1,794 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Journal of Engineering and Applied Science (Springer Nature) submission.
+%% Built on the official Springer Nature template (sn-jnl.cls).
+%% Single self-contained manuscript source; generated tables are \input
+%% from tables/ and figures are \includegraphics from figures/ (scripted, no
+%% hand-edited result cells). Reference style: sn-basic (numbered, per JEAS).
+%% Article type: Research Article in engineering model-evaluation reliability.
+%%
+%% Every result-bearing number is copied from a validated, immutable asset under
+%% manuscript/ (asset_inputs.json / tables/*.tex) and is auditable via
+%% manuscript/paper-jeas/claim_ledger.jsonl + validate_jeas.py. No model was
+%% refit, no result invented, no DOI minted, nothing submitted.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[pdflatex,sn-basic,Numbered]{sn-jnl}
+
+\usepackage{graphicx}%
+\usepackage{multirow}%
+\usepackage{array}%
+\usepackage{microtype}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{booktabs}%
+\usepackage{url}%
+\usepackage{setspace}%
+\usepackage{lineno}%
+
+\graphicspath{{figures/}}
+\doublespacing
+\linenumbers
+\AtBeginDocument{%
+  \hypersetup{bookmarksdepth=2}%
+}
+
+\begin{document}
+
+\title[Reliable comparison of severe felt-intensity classifiers]{Reliable
+comparison of severe felt-intensity classifiers with versioned and dependent
+event data: a USGS DYFI benchmark}
+
+\author*[1]{\fnm{Akshay} \sur{Sharma}}\email{akssha74@gmail.com}
+
+\author[1]{\fnm{Lalji} \sur{Prasad}}\email{lalji.research@gmail.com}
+
+\affil*[1]{\orgdiv{Department of Computer Science and Engineering},
+\orgname{SAGE University}, \orgaddress{\city{Indore}, \postcode{452020},
+\state{Madhya Pradesh}, \country{India}}}
+
+\abstract{Performance claims for engineering classifiers can change when the
+source catalogue evolves, dependent events cross data splits, or small point
+differences are interpreted without paired uncertainty. We ask whether
+performance and model-superiority claims for severe felt-intensity classifiers
+remain supportable when those risks are controlled. We release a versioned USGS
+``Did You Feel It?'' (DYFI) benchmark and a candidate-qualification workflow for
+applied machine-learning engineers, benchmark maintainers, and reviewers. A
+candidate must pass feature/proxy and role-isolation audits before temporal
+holdout scoring; improvements are then assessed with proper scores and paired
+sequence-cluster uncertainty. The frozen $M\geq5$ snapshot contains 7{,}520
+records, 2{,}362 eligible events, and a 430-event temporal holdout. For a fixed
+random-forest split diagnostic, sequence grouping produced a Brier score 0.006
+lower and an area under the receiver-operating-characteristic curve 0.012 higher
+than random-event folds, a small reversed contrast reported descriptively. All
+four admissible learned baselines improved on the no-skill reference, whereas
+the paired interval between the two lowest-Brier models included zero. A worked
+qualification therefore supports improvement over no-skill but rejects both a
+temporal-proxy candidate and a false winner declaration. The resulting
+engineering test harness makes model comparisons auditable across data version,
+split construction, uncertainty, and software environment; it is not a
+real-time warning or operational triage system.}
+
+\keywords{model comparison, evaluation reliability, benchmark qualification,
+dependent-event data, reproducibility, USGS DYFI}
+
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+Engineering model selection depends on comparisons that remain valid when a
+dataset is updated, observations are dependent, and leading scores are close.
+Without those controls, an apparent improvement can be caused by a changed
+population, a proxy for the outcome or evaluation axis, cross-split dependence,
+or unquantified sampling variation rather than by a better model. Standard
+benchmarking is valuable precisely because it fixes a common task and metrics;
+recent work in this journal, for example, compares object detectors on COCO to
+support model selection for engineering applications~\citep{tian2024coco}.
+The reliability problem is harder for event catalogues because both the
+catalogue and the dependence structure can evolve.
+
+The U.S. Geological Survey ``Did You Feel It?'' (DYFI) system is a useful
+engineering case study. It converts crowdsourced felt reports into a
+community-decimal intensity (CDI) for each earthquake and is widely reused as
+an interpreted data product~\citep{wald1999dyfi,atkinson2007dyfi,wald2012dyfi,
+quitoriano2020dyfi}. The target studied here is retrospective classification of
+whether event-maximum CDI reaches 6 from outcome-blind source metadata. It is
+not a real-time alert, causal model, or operational triage rule.
+
+Our engineering question is: \emph{do performance and model-superiority claims
+remain supportable when catalogue version, dependent-event splitting, temporal
+evaluation, paired uncertainty, and reconstruction are controlled?} The
+intended users are applied machine-learning engineers evaluating a candidate
+classifier, maintainers publishing a stable benchmark, and reviewers auditing a
+claimed improvement. They need two decisions: whether a candidate is admissible
+for comparison and whether its improvement over a declared reference is
+supported rather than a point-score fluctuation. Existing felt-intensity studies
+use random or stratified partitions and do not provide that reusable decision
+contract~\citep{patelli2026macroseismic,mori2025explainable}.
+
+\subsection{Contributions}\label{sec:contrib}
+
+We address unreliable model comparison by releasing a versioned benchmark and
+an executable candidate-qualification contract. Concretely, the work provides:
+
+\begin{enumerate}
+\item \textbf{A single-source, version-frozen DYFI benchmark} for the task
+``outcome-blind source metadata $\rightarrow$ later event-maximum
+$\mathrm{maxCDI}\geq 6$'', frozen to one dated access instant so that any later
+catalogue revision defines a new version rather than a silent overwrite
+(Section~\ref{sec:data}).
+\item \textbf{An executable six-category leakage audit} that rejects direct-label,
+post-outcome-ascertainment, identifier-proxy, and downstream-product features,
+and rejects cross-role sequence straddles and temporal-cutoff violations,
+accepting \emph{only} the exact source-only feature set; it is exercised by 110
+unit tests and rejects every deliberately contaminated test case
+(Section~\ref{sec:leakage}).
+\item \textbf{Internally specified, outcome-independent roles} built on order-stable
+space--time sequence grouping and a temporal external holdout, so that split
+membership never uses the label
+(Section~\ref{sec:roles}).
+\item \textbf{A fixed, non-selective baseline suite} with calibration-aware
+proper scoring, Brier-score sequence-cluster bootstrap uncertainty, explicit handling of
+ties and unavailable calibration estimates, and single-use authorization of the
+decision-bearing protected evaluation
+(Sections~\ref{sec:metrics}--\ref{sec:oneshot}).
+\item \textbf{A candidate-qualification workflow} that fails closed on forbidden
+features or invalid roles and supports an improvement only when paired
+Brier-score uncertainty excludes zero (Section~\ref{sec:qualification}).
+\item \textbf{A quantified split-sensitivity diagnostic} (naive random versus
+sequence-grouped splitting), together with a reproducible release bundle and
+machine-readable verification record (Section~\ref{sec:results}).
+\end{enumerate}
+
+The learned models are worked candidates, not proposed production systems. Their
+comparison demonstrates the decisions the contract permits: all admissible
+learned candidates improve over no-skill, one temporal-proxy candidate is
+rejected, and the two lowest-Brier models remain unresolved.
+
+\subsection{Engineering significance and intended use}\label{sec:significance}
+
+The output is an engineering test harness for model comparison. A future
+candidate enters through the released schema, is rejected if it exposes
+outcome/axis information or violates role isolation, is scored on the locked
+temporal holdout, and is compared with paired sequence-cluster uncertainty. This
+workflow prevents an engineer or reviewer from declaring superiority from a
+different catalogue version, a contaminated split, or an unresolved point
+difference. Table~\ref{tab:engineering-failures} names the failure prevented by
+each control, and Fig.~\ref{fig:qualification-workflow} shows the resulting
+decision path.
+
+\input{tables/engineering_failure_modes.tex}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{fig_candidate_workflow.pdf}
+\caption{\textbf{Candidate-model qualification.} A candidate that fails the
+schema, proxy, role, or temporal audit is inadmissible. An admitted candidate is
+scored on the fixed holdout and compared with paired uncertainty; an interval
+including zero remains unresolved rather than becoming a winner claim}
+\label{fig:qualification-workflow}
+\end{figure*}
+
+\section{Related work and novelty}\label{sec:related}
+
+\paragraph{DYFI and macroseismic intensity.} The DYFI system and its CDI
+construction, outlier handling, and post-event revision behaviour are documented
+in the foundational and review literature~\citep{wald1999dyfi,atkinson2007dyfi,
+wald2012dyfi,quitoriano2020dyfi}; these establish that CDI is an
+after-the-event, response-driven quantity subject to ascertainment effects,
+which is precisely why our protocol uses response count only to determine
+eligibility and forbids it as a predictive feature (Section~\ref{sec:data}).
+\citet{rosler2022documentation} further show specifically for DYFI that
+interpreted products can change and should be preserved with timestamps for
+reproducible analysis. The dated, hashed snapshot released here implements that
+preservation principle. We reuse these provenance facts rather than re-deriving
+them.
+
+\paragraph{Domain benchmark resources.} The INGe resource links Italian
+macroseismic intensities to colocated strong-motion records for benchmarking
+intensity--ground-motion relationships~\citep{oliveti2022inge}. It is a
+domain-near resource precedent, but differs from the present event-level USGS
+DYFI classification task, source-only feature boundary, leakage audit, and
+protected temporal evaluation.
+The 2026 USGS Western North America resource contains about 696{,}000
+site-level macroseismic observations from about 5{,}600 earthquakes and is
+predominantly DYFI~\citep{fathiansabet2026western}. It is a larger observational
+resource, but does not define this event-maximum binary task, executable leakage
+audit, or frozen temporal evaluation.
+\citet{stockman2026earthquakenpp} provide the nearest broader
+leakage-aware seismological benchmark precedent: EarthquakeNPP standardizes
+public catalogues, repairs an improper earthquake-forecasting split, compares
+neural point processes with ETAS, and finds no consistent neural-model
+advantage. Its target is occurrence forecasting with chronological
+likelihood/CSEP evaluation, rather than source metadata predicting a later
+citizen-reported felt-intensity endpoint; the resources are therefore
+methodologically adjacent but task-distinct.
+
+\paragraph{Engineering benchmark and model-comparison precedents.}
+Comparative engineering studies use a fixed task and common metrics to turn
+model outputs into selection evidence. \citet{tian2024coco}, for example,
+compare object detectors on COCO to support model choice for smart-city
+applications. In this journal, machine-learning comparisons have also been tied
+to explicit engineering decisions in rock-property estimation and pavement
+maintenance~\citep{niu2024ucs,alnaqbi2025pavement}, while seismic engineering
+studies state the response quantity and design interpretation affected by the
+analysis~\citep{seleemah2022bridge}. The present contribution follows that
+decision-oriented form but evaluates the reliability of the comparison itself:
+whether a candidate is admissible, whether it improves over a reference, and
+whether the evidence supports naming a winner.
+
+An adjacent event-level binary study used post-event LastQuake felt reports to
+classify high- versus low-impact earthquakes and evaluated later 2022
+events~\citep{lilienkamp2023feltreports}. Its crowdsourced predictors,
+impact endpoint, and rapid-response objective differ from the source-only DYFI
+benchmark and reusable evaluation contract developed here.
+
+\paragraph{Macroseismic databases and citizen observations.} Event-specific
+analysis in the 2019 Athens earthquake combined online felt reports with ground
+motion and source modelling~\citep{kouskouna2021athens}. Crowdsourced
+macroseismic observations have also been used to characterize geological
+settings and spatial variations in shaking response~\citep{sarao2023crowdsourcing}.
+Curated macroseismic
+resources such as the Belgian traditional macroseismic database and
+MACROSISDATA preserve historical intensity observations for transparent reuse
+and later analysis~\citep{neefs2025btm,sira2025macrosisdata}. The present work
+extends this seismological resource tradition from data preservation to a
+versioned, executable contract for model evaluation.
+
+\paragraph{Machine learning on felt/macroseismic intensity.} Recent studies
+predict macroseismic intensity with random forests and gradient boosting from
+instrumental or catalogue features~\citep{patelli2026macroseismic,
+mori2025explainable}. Machine learning has also been applied to earthquake
+alert-level classification using intensity-related features and to waveform
+detection with openly released seismic datasets~\citep{ozupak2026alert,
+ertuncay2025detection}. Those tasks use post-event intensity descriptors or
+waveforms, rather than the source-only feature boundary studied here. Each
+felt-intensity model application is evaluated under a
+random or stratified partition and does not release a reusable, event-grouped,
+leakage-audited benchmark; \citet{mori2025explainable} moreover predict from
+instrumental ground-motion parameters rather than outcome-blind catalogue
+metadata, and \citet{patelli2026macroseismic} evaluate a single-system
+train/test split on seismometric inputs. Their concrete drawback for our purpose
+is the evaluation contract: a random or stratified split does not remove
+within-sequence near-duplicate contamination, and none ships an executable
+leakage audit or a version-frozen resource that a third party can rerun.
+Our protocol addresses that specific drawback with internally specified sequence-grouped
+roles and an executable six-category audit.
+
+\paragraph{DYFI-based intensity models and concurrent leakage-aware work.}
+Closest to our exact data source, \citet{kumar2025dyfiindia} predict DYFI
+community intensity from the same catalogue metadata (magnitude, depth, location)
+with a random-forest regressor on Indian events under a single naive train/test
+split (reported $R^2=0.829$); our resource does not fit a competing regressor but
+instead supplies a versioned, digitally fingerprinted, event- and
+sequence-grouped benchmark with an executable leakage audit and a protected
+decision-bearing evaluation authorized once, in place of
+the naive split that setup uses. Concurrently, \citet{li2025llmworldmodels}
+release a DYFI-grounded benchmark that simulates Modified Mercalli Intensity
+(MMI) for
+two earthquakes (2014 Napa and 2019 Ridgecrest) with large language models and
+includes an explicit location-identifier leakage test; our resource differs in
+task and construction---an outcome-blind source-metadata$\rightarrow$later-severe
+binary classification over a decade-scale $M\geq5$ corpus with internally specified
+sequence-grouped roles, rather than multimodal per-zip-code MMI simulation for two
+events---so the two are complementary rather than duplicative.
+
+\paragraph{Cross-validation for dependent data.} That grouped or blocked
+cross-validation is the correct evaluation strategy for temporally, spatially,
+or hierarchically structured data is established
+practice~\citep{roberts2017cv,kaufman2012leakage}; we do not claim this as novel.
+
+\paragraph{Novelty delta.} Conceding the above, the delta this resource supplies
+that prior work does not is the \emph{released, versioned, hashed, single-source
+DYFI benchmark} itself: an executable six-category audit covering forbidden
+fields, proxy variables, and split contamination; an internally specified,
+sequence-grouped role assignment with a
+temporal external holdout, a documented severe endpoint with threshold and
+threshold sensitivity, a fixed non-selective baseline suite with a no-skill
+comparator, a calibration/uncertainty/tie contract, an exact-reproduction
+verification, and a quantified naive-versus-grouped split diagnostic. A
+current-year search located no released resource occupying this exact
+combination; novelty is stated as a concrete delta to located work, with no
+first/only superlative asserted.
+
+\section{Data, provenance, and outcome-boundary disclosure}\label{sec:data}
+
+\paragraph{Source and single-instant pinning.} The corpus is derived entirely
+from USGS DYFI and its parent ANSS Comprehensive Catalog (ComCat), retrieved
+through the International Federation of Digital Seismograph Networks (FDSN)
+event web service~\citep{usgs_dyfi_data,usgs_comcat}. The
+acquisition envelope is outcome-independent: $M\geq5$, product type
+\texttt{dyfi}, event type \texttt{earthquake}, starttime 2015-01-01 to endtime
+2025-01-01. FDSN defines the end bound as inclusive; no frozen record occurs
+at that boundary, so the realized snapshot spans 2015--2024. Results are ordered
+by time. The preliminary count request and the final data request use this same
+envelope. Because the catalogue evolves, the downloaded data were frozen at one
+access instant (2026-09-01T06:33:30Z) and assigned a SHA-256 digital
+fingerprint. A preliminary count changed from 7{,}575 to 7{,}576 during the
+acquisition session, documenting one live-catalogue revision. The final
+downloaded snapshot contained 7{,}520 DYFI records, and a count requested
+50 seconds later in the same acquisition session also returned 7{,}520. Thus,
+the one-record change belongs only to
+the earlier preliminary checks; it is not a discrepancy in the frozen analysis
+snapshot. Likewise, the 56-record difference between the last preliminary count
+and the final 7{,}520-record snapshot is not an analysis exclusion: the
+preliminary count had no paired payload, so its membership difference cannot be
+decomposed and is retained only as catalogue-version provenance. The
+near-contemporaneous final query and count agree exactly. The digital
+fingerprint of the downloaded bytes, rather than a
+preliminary count, defines this resource version. The frozen snapshot
+contains 7{,}520 DYFI records (Table~\ref{tab:cohort}, Fig.~\ref{fig:cohort}).
+
+\paragraph{Protocol chronology.} The file records an internal 2026-09-01 freeze
+but was first publicly timestamped on 2026-09-19. We therefore describe it as an
+internally frozen protocol, not an externally registered preregistration.
+
+\paragraph{Retrospective eligibility and post-report ascertainment.} DYFI
+intensity is an after-the-event quantity whose reliability grows with the number
+of felt reports~\citep{quitoriano2020dyfi}. To keep the label meaningful we apply
+a data-informed eligibility filter of at least ten responses per event. The
+response count is used \emph{only} for eligibility and is explicitly forbidden as
+a predictive feature, because it is a post-outcome ascertainment proxy; this
+forbiddance is enforced by the leakage audit (family F2,
+Section~\ref{sec:leakage}). Eligibility yields 2{,}362 events with severe
+prevalence 0.298 (703 severe events). Of these, 2{,}360 events are assigned to
+the internally specified analysis roles (Section~\ref{sec:roles}) and contain 702 severe
+events; the remaining two are temporal-straddle exclusions, one of which is
+severe. That single severe straddle event accounts for the difference between the
+eligible cohort (703 severe) and the analysis-assigned set (702 severe), so
+eligibility is not the same as analysis-role assignment (Table~\ref{tab:cohort}).
+
+\paragraph{Endpoint.} We label an event severe when its event-maximum CDI is at
+least 6.0 (intensity VI or greater). We use 6.0 as the primary threshold and
+report sensitivity at 5.5, 6.0, and 6.5. We also examine a near-threshold band
+of $\pm0.5$ (Section~\ref{sec:endpoint-results}).
+
+\paragraph{Outcome-boundary disclosure and held-out semantics.} Only corpus-level
+outcome-blind counts and inherited aggregate feasibility statistics were exposed
+before construction; no per-event label informed the endpoint, split, or
+tuning choices, and role membership is assigned by an internally specified,
+outcome-independent rule that never uses the label. We therefore describe the
+external holdout as \emph{held out from model development with aggregate
+feasibility previously known}, and we deliberately do \emph{not} call it
+``untouched'' or ``confirmatory.'' Two event identifiers were prelisted for
+quarantine because their aggregate counts had been seen during source
+verification; neither identifier occurs in the frozen snapshot, so the rule is
+non-operative in version~1 and excludes no record. The complete list of protocol decisions is reported in
+Section~\ref{sec:repro-results}. No
+respondent-level personally identifying information is redistributed; only
+event-level source metadata, the severe label, the eligibility-only response
+count, identifiers, and role assignments are released. Snapshot-level
+provenance is supplied by the activated source-locator manifest and source
+payload SHA-256; version~1 does not claim per-event product-version hashes. The
+release bundle follows datasheet-for-datasets
+documentation~\citep{gebru2021datasheets} and findable, accessible,
+interoperable, and reusable (FAIR) data
+principles~\citep{wilkinson2016fair}.
+
+\section{Benchmark design}\label{sec:design}
+
+\subsection{Feature sets and the six-category leakage audit}\label{sec:leakage}
+
+The primary \emph{source-only} feature set contains magnitude and depth. It is
+the only feature set evaluated on the temporal holdout. An
+\emph{expanded-metadata} sensitivity analysis (baseline B3) additionally uses
+latitude, longitude, and event year, so it is not evaluated where those
+variables would disclose the holdout axis. The audit accepts only an approved
+feature set with the expected fields in the expected order; any extra or unknown
+field is rejected.
+
+The executable audit enforces six leakage families. Field-level: F1 direct
+label or its constituents; F2 post-outcome ascertainment or revision (including
+the response count, eligibility-only); F3 identifier or source proxy; F4
+downstream-product proxy. Split-level: F5 sequence cross-role straddle; F6
+temporal-cutoff violation. An axis-proxy check additionally rejects origin year
+under a temporal holdout and, when a geographic holdout is configured,
+latitude/longitude/region. The latter audit branch is provided for reuse but was
+not executed as an external evaluation in this study. This enforces the B3
+restriction. The audit is useful independently of
+model performance: it must reject every deliberately contaminated test case and
+accept only the approved clean feature set. It is exercised by 110 unit tests
+across four suites, all passing, and accepted the source-only feature set in the
+frozen snapshot.
+
+\subsection{Sequence grouping and outcome-independent roles}\label{sec:roles}
+
+Events are grouped into seismic \emph{sequences} by order-stable single-link
+space--time connected components (100~km, 30~days); the sequence, not the event,
+is the unit of role assignment, so events linked by this fixed rule cannot
+straddle roles. This rule is a deterministic grouping heuristic, not a validated
+catalogue of all physical mainshock--aftershock relationships; unlinked true
+aftershocks may therefore remain in different roles. Roles are
+assigned by an internally specified, outcome-independent rule (fixed assignment key,
+temporal cutoff year 2023, development fraction 0.2, five cross-validation
+folds); the rule provably never reads the label. The external holdout contains
+events on or after 2023. The frozen internal protocol also named a secondary
+leave-region-out geographic evaluation, but that branch was not executed and no
+geographic role manifest is claimed. The reported geographic result instead
+summarizes the temporal-holdout predictions by 10$^\circ$ cell
+(Table~\ref{tab:slices}); Table~\ref{tab:exclusions} records this deviation.
+Digital fingerprints of the completed temporal role assignments are published
+so that third parties can verify them. The
+partition is exhaustive and disjoint:
+$1{,}573+357+430+2=2{,}362$ events, comprising 1{,}573 train, 357 development,
+430 external temporal holdout, and 2 temporal-straddle exclusions
+(Table~\ref{tab:cohort}, Fig.~\ref{fig:cohort}). Construction (train plus
+development) is 1{,}930 events across 1{,}530 sequences; the holdout is 430
+events across 354 sequences.
+
+\subsection{Baseline suite and exclusions}\label{sec:baselines}
+
+The fixed suite is B0 no-skill (constant prevalence), B1 magnitude-only logistic
+regression, B2 source-only logistic regression, B3 expanded-metadata logistic
+regression (used only in compatible sensitivity analyses), B4 random forest
+(scikit-learn;
+\citealp{pedregosa2011sklearn}), and B5 XGBoost~\citep{chen2016xgboost}. Each learned
+baseline is tuned \emph{only} by the protocol-defined deterministic grouped
+cross-validation on the construction corpus over a fixed grid, named before
+evaluation, and carried unchanged to the protected holdout with frozen
+best parameters. A machine-readable fit log enforces a maximum of 120 model
+fits; the executed run used 91. Two comparators are excluded for protocol-defined,
+reproducible reasons recorded in the protocol-decision table
+(Section~\ref{sec:repro-results}): B3 is
+not evaluated on the temporal holdout because its feature set carries origin year, a
+temporal proxy; and the Atkinson--Wald (2007) DYFI intensity-prediction
+equation~\citep{atkinson2007dyfi} is excluded because it cannot be applied to
+the source-only feature set and tectonically heterogeneous population without
+inventing a site-distance covariate, a per-event tectonic-regime assignment, and
+a probability link.
+
+\subsection{Metrics, calibration, uncertainty, and ranking}\label{sec:metrics}
+
+The primary score is the Brier score~\citep{brier1950}; secondary scores are
+log-loss, AUROC, and calibration intercept/slope~\citep{vancalster2019calibration}.
+For numerical stability, log-loss clips predicted probabilities symmetrically
+to $[10^{-15},1-10^{-15}]$ before taking logarithms.
+Brier-score uncertainty is quantified by a sequence-cluster bootstrap
+($n_{\text{boot}}=2000$, 95\% intervals) that resamples whole sequences rather
+than events~\citep{field2007bootstrap}, with a minimum-valid-replicate rule.
+Calibration and feasibility states are \emph{derived}, not hard-coded: a
+constant-prevalence predictor has no identifiable calibration slope, so the
+table reports that value as unavailable. Pairwise ranking uses a paired
+sequence-cluster bootstrap Brier difference with an explicit tie probability;
+the table reports whether each 95\% interval includes zero, together with a
+tie-aware joint ordering (Section~\ref{sec:pairwise-results}). Because the
+intervals use 2{,}000 Monte Carlo draws, near-zero endpoints are interpreted
+cautiously rather than as stable ranking guarantees.
+The protocol requested intervals for every metric; only Brier-based intervals
+were retained, so other metrics are descriptive point estimates
+(Table~\ref{tab:exclusions}).
+
+\subsection{Protected evaluation and reproducibility}\label{sec:oneshot}
+
+The official decision-bearing protected evaluation was authorized once by an
+automated, globally consumed token; the one-shot wrapper refuses a second
+authorized run. After the result was fixed, the token-free deterministic
+analytic core---including holdout scoring---was replayed twice for verification,
+and both replays reproduced the recorded result fingerprint exactly. Thus,
+single-use refers to result authorization and decision-bearing use, not to the
+total number of post-result computations. The frozen holdout predictions were
+also recovered bit-for-bit from the released rows and frozen best parameters
+(reported in Section~\ref{sec:repro-results}), under a pinned scientific-Python
+environment (NumPy, SciPy, scikit-learn, XGBoost;
+\citealp{harris2020numpy,virtanen2020scipy,pedregosa2011sklearn,chen2016xgboost}).
+All fits, exclusions, subsets, cutoffs, and pairwise comparisons are reported
+regardless of outcome; the only permitted omissions are the protocol-defined
+exclusions above.
+Computation is local-only under a pinned environment.
+
+\paragraph{Reproducible artwork and generative AI assistance.} All figures were
+generated with Matplotlib~3.11.1 directly from the frozen analysis assets; no
+manual image manipulation or AI-generated artwork was used. ChatGPT assisted
+language editing, formatting, code review, literature discovery, critical
+consistency review, and revision suggestions. It did not generate data, execute
+model fits, or create the reported numerical results. The authors independently
+verified every cited source, computation, interpretation, and assisted change;
+all scientific judgements and final decisions remained with the authors, who
+retain full responsibility for the manuscript and released artifacts.
+
+\section{Results}\label{sec:results}
+
+All result-bearing values below are generated from the frozen analysis outputs
+and checked automatically against their source records; no result cell was
+hand-edited.
+
+\subsection{Cohort and roles}\label{sec:cohort-results}
+
+Table~\ref{tab:cohort} and Fig.~\ref{fig:cohort} give the cohort accounting. Of
+7{,}520 frozen DYFI records, 2{,}362 events pass the ten-response eligibility
+filter (severe prevalence 0.298; 703 severe events), partitioned into 1{,}573
+train, 357 development, and a 430-event temporal holdout, with two
+temporal-straddle exclusions. Thus 2{,}360 of the 2{,}362 eligible events receive
+analysis roles; they contain 702 severe events, and the 703rd severe event is one
+of the two straddle exclusions. Two identifiers prelisted for quarantine are
+absent from the frozen snapshot, so that safeguard removes no version~1 record.
+Construction severe prevalence is 0.285 and
+holdout prevalence is 0.351; the higher holdout prevalence reflects the temporal
+transport shift and is reported, not adjusted.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{fig_cohort_flow.pdf}
+\caption{\textbf{Cohort construction and role assignment.} On the
+frozen USGS DYFI $M\geq5$ snapshot. The 7{,}520 source records yield 2{,}362
+eligible events in 1{,}885 seismic sequences. Of these, 2{,}360 are assigned to
+train ($n=1{,}573$), development ($n=357$), or temporal holdout ($n=430$);
+two straddle events are excluded from role assignment}
+\label{fig:cohort}
+\end{figure*}
+
+\input{tables/cohort_roles.tex}
+
+\subsection{Difficulty and endpoint sensitivity}\label{sec:endpoint-results}
+
+Table~\ref{tab:threshold} and the left panel of Fig.~\ref{fig:threshold} show the
+endpoint is not an artifact of a single threshold: as the severe cut moves from
+5.5 to 6.5, holdout prevalence falls smoothly (0.458, 0.351, 0.260) and the
+source-only logistic-regression Brier score and AUROC move monotonically (Brier
+0.240, 0.181, 0.143;
+AUROC 0.734, 0.786, 0.815). On the construction corpus the near-threshold
+fraction ($|\mathrm{maxCDI}-6|<0.5$) is 0.164 and the no-skill Brier score is
+0.204, bounding the difficulty of the primary endpoint. This sensitivity check
+relabels and rescores the fixed B2 probabilities; it does not refit or
+recalibrate B2 at 5.5 or 6.5. The protocol-required aggregation-grid sensitivity was
+not executed and is disclosed as a deviation (Table~\ref{tab:exclusions}).
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{fig_threshold_slice.pdf}
+\caption{\textbf{Endpoint and temporal sensitivity.} Results for the source-only logistic regression (B2).
+(a) Performance as the severe-intensity cutoff varies. (b) Performance
+within the 2023 ($n=250$) and 2024 ($n=180$) portions of the temporal holdout.
+The cutoff analysis rescores fixed B2 probabilities without refitting. Lower
+Brier score and higher AUROC are better}
+\label{fig:threshold}
+\end{figure*}
+
+\input{tables/endpoint_threshold_sensitivity.tex}
+
+\subsection{Observed split-performance differences}\label{sec:leakage-results}
+
+The resource's headline quantity is the optimism of naive random splitting
+relative to the sequence-grouped protocol, measured for a fixed leakage
+diagnostic---a random forest with 300 trees and unrestricted depth---under three
+fold-assignment schemes on the construction corpus
+(Table~\ref{tab:leakage}, Fig.~\ref{fig:leakage}).
+This diagnostic is distinct from the tuned temporal-holdout baseline B4, whose
+maximum depth is 3.
+On this $M\geq5$
+one-row-per-event universe the point estimates are small and slightly reversed:
+sequence grouping produced a Brier score 0.0059 lower and an AUROC 0.0124
+higher than random-event splitting, calculated from unrounded
+scores. The sequence-grouped split therefore scores marginally \emph{better}
+than the naive random split, not worse. The frozen internal protocol required
+uncertainty reporting for this contrast but did not define a paired interval
+estimator; the executed result contains point estimates only. We disclose this
+unfulfilled element as a deviation and do not invent a post-hoc interval.
+Accordingly, we report the contrast descriptively, not as
+evidence of equivalence, a true zero effect, leakage, or a win. Its
+plausible structural context is that 1{,}885 sequences are largely singleton
+(1{,}530 in construction), leaving limited within-sequence near-duplicate
+structure for a random split to leak. This does not prove a small true effect.
+With one row per event,
+event grouping imposes the same grouping constraint as random-event assignment,
+but its deterministic fold allocation differs and therefore produces different
+scores. It is reported as an intermediate control. The protocol remains reusable on datasets with more
+multi-event sequences. The present result neither demonstrates practically
+important leakage from random splitting nor establishes its absence.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{fig_leakage_split.pdf}
+\caption{\textbf{Split-assignment diagnostic.} Five-fold performance of the fixed diagnostic (random forest:
+300 trees, unrestricted depth) under random-event, event-grouped, and
+sequence-grouped fold assignment in the construction sample. Relative to
+random-event splitting, sequence grouping produced (a) a Brier score 0.0059
+lower and (b) an AUROC 0.0124 higher. The diagnostic is distinct from tuned temporal-holdout
+baseline B4. The small, reversed differences provide no evidence of performance
+inflation from random splitting in this sample; dashed lines mark the
+corresponding random-event score in each panel}
+\label{fig:leakage}
+\end{figure*}
+
+\input{tables/leakage_gap.tex}
+
+\subsection{Baseline performance and calibration}\label{sec:baseline-results}
+
+Table~\ref{tab:baselines} and Fig.~\ref{fig:baselines} give per-baseline holdout
+performance ($n=430$) with sequence-cluster bootstrap 95\% intervals. The
+no-skill B0 has Brier 0.232 ($[0.212,0.253]$); its calibration slope cannot be
+estimated because it assigns the same probability to every event. The learned
+baselines have lower Brier (B1 0.198,
+B2 0.181, B4 0.187, B5 0.181) with overlapping intervals; calibration
+intercept/slope pairs are finite and positive. No baseline is claimed to win;
+the table reports proper scores, uncertainty, and derived calibration states
+only.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{fig_baseline_scores.pdf}
+\caption{\textbf{Temporal-holdout baseline performance.} Brier scores and 95\% sequence-cluster bootstrap confidence intervals
+for the five baselines on the temporal holdout ($n=430$). Lower values are
+better; the vertical dashed line marks the no-skill B0 score. B3 is omitted
+because it contains event year, which would reveal the temporal holdout period
+(Table~\ref{tab:exclusions})}
+\label{fig:baselines}
+\end{figure*}
+
+\input{tables/baseline_performance.tex}
+
+\subsection{Worked candidate qualification}\label{sec:qualification}
+
+Table~\ref{tab:qualification} applies the released engineering decision rule to
+the six fixed candidates. B3 fails before scoring because event year exposes the
+temporal evaluation axis. B1, B2, B4, and B5 pass the audit and each has a paired
+Brier interval below the no-skill B0 reference. The contract therefore supports
+their improvement over B0. It does not support naming B2 or B5 as the winner:
+their direct paired interval includes zero. This worked example demonstrates the
+benchmark's intended use---admit only valid candidates, support improvements
+with uncertainty, and leave an unresolved comparison unresolved.
+
+\input{tables/candidate_qualification.tex}
+
+\subsection{Pairwise ranking stability}\label{sec:pairwise-results}
+
+Table~\ref{tab:pairwise} reports all ten pairwise Brier-score comparisons. Every
+learned baseline performs better than the no-skill reference B0 (all four
+intervals exclude zero). Among the learned models, the B2--B4 and B2--B5
+comparisons have intervals that include zero. The remaining learned-model
+intervals exclude zero, although the B4--B5 lower endpoint (0.0003) is
+near the Monte Carlo boundary. In the joint
+bootstrap ordering, B2 has the highest probability of being uniquely best
+(0.613), followed by B5 (0.387), but the direct B2--B5 comparison remains
+uncertain. These results therefore do not justify naming a winning model.
+
+The frozen internal protocol allowed an ``equivalent'' verdict but did not specify a
+positive numerical equivalence margin; its resolution floor was zero. We
+therefore do not invent a post-hoc margin or label any models equivalent.
+Instead, we report each point difference, 95\% interval, and
+whether that interval includes zero. Table~\ref{tab:exclusions} records this
+interpretive restriction, which changes no result.
+
+\input{tables/pairwise_matrix.tex}
+
+\input{tables/exclusions_deviations.tex}
+
+\subsection{Temporal and geographic subgroup summaries}\label{sec:slices-results}
+
+Table~\ref{tab:slices} and the right panel of Fig.~\ref{fig:threshold} report the
+temporal and geographic subgroup summaries for the source-only logistic
+regression within the temporal holdout. The two
+holdout years are internally consistent (2023: $n=250$, Brier 0.185, AUROC 0.797;
+2024: $n=180$, Brier 0.174, AUROC 0.777). The geographic subgroup summary spans
+82 occupied $10^\circ$ cells (per-cell Brier 0.002--0.825, median 0.151).
+These values stratify the same 430 temporal-holdout predictions; they are not a
+leave-region-out evaluation and support no geographic or cross-system
+generalization claim.
+
+\input{tables/slices.tex}
+
+\subsection{Exclusions, deviations, and reproducibility}\label{sec:repro-results}
+
+Table~\ref{tab:exclusions} explains the protocol decisions most relevant to
+interpretation: excluded comparators and records, the unexecuted geographic
+transport branch, the unfulfilled split-contrast interval, and the absence of an
+equivalence claim. The tagged public release contains the complete SHA-256
+fingerprints, software environment, and machine-readable verification details.
+Its public-release manifest fingerprints every distributed file. Three original
+execution-bookkeeping records are self-referential---they
+cannot contain their own final fingerprints---and are therefore reported
+separately rather than treated as analysis-file mismatches.
+
+\section{Discussion}\label{sec:discussion}
+
+\paragraph{Engineering use and decision consequence.} The resource is designed
+for an engineer or reviewer assessing a new event-level classifier. The user
+does not choose a convenient split or reconstruct a moving dataset; the
+candidate is evaluated against a released contract. The audit first rejects
+forbidden or axis-revealing inputs, the role manifest prevents linked events
+from crossing the declared boundary, and the paired Brier interval determines
+whether improvement over a reference is supported. The worked example changes
+two decisions: B3 is inadmissible before holdout scoring, while B2 and B5 are
+both supported over no-skill but cannot be ranked decisively. Without the
+contract, the same point scores invite an unsupported winner claim.
+
+\paragraph{Interpreting the split contrast.} The observed point estimate is
+small and slightly reversed. In these folds the naive random split did not
+inflate the diagnostic score, but the missing interval prevents an equivalence,
+zero-effect, or ``little practical effect'' inference. The protocol remains
+useful for datasets containing more multi-event sequences; this result neither
+demonstrates leakage nor supports a win.
+
+\paragraph{No winning model.} Every learned baseline separates from the no-skill
+reference. However, the direct B2--B5 comparison between the two lowest-Brier
+models is unresolved, as is B2--B4, so the results do not establish a decisive
+winner. Consistent with the resource's scope, we claim no winning model and no
+operational, real-time, lead-time, cross-system, or causal benefit.
+
+\section{Limitations and threats to validity}\label{sec:limitations}
+
+\paragraph{Outcome and catalogue limitations.} The endpoint is
+magnitude-dominated, CDI remains sensitive to responder coverage, and magnitude
+and depth are frozen preferred catalogue values rather than guaranteed
+first-alert values. The ten-response rule mitigates ascertainment; response
+count is used only for eligibility. B1 provides the simple magnitude comparator.
+
+\paragraph{Unexecuted sensitivity and transport branches.} The geographic
+values are temporal-holdout subgroups, not external transport evidence. The
+protocol-defined geographic evaluation and aggregation-grid sensitivity were not
+executed, and no alternative to the fixed 100-km/30-day sequence definition was
+tested. The rule guarantees co-assignment only for events it links; it does not
+guarantee identification of every physical aftershock relationship.
+Consequently, no geographic, aggregation, sequence-definition, or complete
+aftershock-isolation robustness claim is made.
+
+\paragraph{Inference and held-out semantics.} The protocol-required split-contrast
+uncertainty interval was not retained, so that result remains descriptive with
+no equivalence or zero-effect inference. Non-Brier scores remain descriptive
+point estimates. Pairwise intervals use 2{,}000 Monte
+Carlo draws and near-zero endpoints are interpreted cautiously. The temporal
+holdout was excluded from model development, but aggregate feasibility was
+previously known; it is neither ``untouched'' nor confirmatory.
+
+\paragraph{Public release.} Version~1 of the data, code, frozen results, and
+reproduction instructions is available in a tagged public repository at
+\url{https://github.com/akssha74/dyfi-benchmark-reliability}. The release retains
+complete digital fingerprints so that later revisions remain distinguishable
+from the version evaluated here.
+
+\section{Conclusion}\label{sec:conclusion}
+
+Reliable engineering model selection requires more than reporting the lowest
+point score. The released DYFI benchmark makes a candidate pass an auditable
+schema and role contract, evaluates it on a fixed temporal holdout, and attaches
+paired uncertainty to the comparison decision. In the worked qualification,
+four learned candidates improve over no-skill, B3 is rejected as a temporal
+proxy, and the two lowest-Brier models remain unresolved; the contract therefore
+prevents an inadmissible comparison and a false winner declaration. The
+random-versus-sequence diagnostic is small and reversed in this sparse-sequence
+corpus, so it supplies no evidence of random-split optimism. All results
+reconstruct from the frozen release. The contribution is a reusable test harness
+for trustworthy model comparison, not a real-time warning, causal model, or
+operational decision system.
+
+\backmatter
+
+\section*{Declarations}
+
+\begin{itemize}\setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}\setlength{\parsep}{0pt}
+\item \textbf{Funding.} This research did not receive any specific grant from
+funding agencies in the public, commercial, or not-for-profit sectors.
+\item \textbf{Competing interests.} The authors have no relevant financial or
+non-financial interests to disclose.
+\item \textbf{Ethics approval.} Not applicable. The study analyzes public,
+aggregate event-level USGS products rather than individual questionnaire
+responses; it involved no interaction with participants, identifiable data,
+human-subject collection, animals, or biological material.
+\item \textbf{Consent to participate.} Not applicable; no participants were
+recruited.
+\item \textbf{Consent for publication.} Not applicable.
+\item \textbf{Availability of data and materials.} Version~1 data, results, manifests, and
+instructions are available under CC0~1.0 at
+\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.1.0}.
+Source data are USGS DYFI and ANSS ComCat (public domain;
+\href{https://doi.org/10.5066/F7J101C8}{10.5066/F7J101C8} and
+\href{https://doi.org/10.5066/F7MS3QZH}{10.5066/F7MS3QZH}) and are reconstructable
+via the released fetch-and-verify source-locator manifest. No respondent-level
+personally identifying information is redistributed.
+\item \textbf{Availability of code.} Project: DYFI Benchmark Reliability.
+Homepage: \url{https://github.com/akssha74/dyfi-benchmark-reliability}.
+Archived version: release v1.1.0. Operating systems: platform independent.
+Programming language: Python. Licence: MIT. Restrictions on non-academic use:
+none. Full prediction reconstruction and model tests use the separately pinned
+scientific-Python environment.
+\item \textbf{Author contributions.} A.S. conceived and designed the benchmark
+protocol, developed the software, curated the data, performed the analyses,
+validated the results, and drafted the manuscript. L.P. contributed to study
+design and interpretation, supervised the work, and critically revised the
+manuscript for important intellectual content. Both authors reviewed and
+approved the final manuscript and agree to be accountable for all aspects of the
+work.
+\item \textbf{Acknowledgements.} We thank the USGS DYFI and ANSS Comprehensive
+Catalog programs.
+\end{itemize}
+
+\bibliography{references}
+
+\end{document}

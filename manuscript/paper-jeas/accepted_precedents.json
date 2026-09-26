@@ -1,0 +1,75 @@
+{
+  "record_type": "accepted_venue_precedent_matrix",
+  "target_venue": "Journal of Engineering and Applied Science",
+  "verified_on": "2026-09-26",
+  "papers": [
+    {
+      "id": "jeas_coco_benchmark_2024",
+      "title": "Performance analysis of deep learning-based object detection algorithms on COCO benchmark: a comparative study",
+      "doi": "10.1186/s44147-024-00411-z",
+      "url": "https://jeas.springeropen.com/articles/10.1186/s44147-024-00411-z",
+      "contribution_identity": "benchmark",
+      "goal": "Compare object-detection algorithms on a standard benchmark using a common family of performance metrics.",
+      "intended_users": "engineers selecting object detectors for smart-city applications",
+      "decision_enabled": "select a model using accuracy, object-size, and real-time performance criteria",
+      "evidence_shape": "comparative analysis on a public benchmark",
+      "relevance_to_dyfi": "Direct venue precedent for a performance-analysis paper whose contribution is the reliability and interpretation of a common evaluation setting rather than a new physical discovery."
+    },
+    {
+      "id": "jeas_rock_ucs_ml_2024",
+      "title": "Unconfined compressive strength prediction of rock materials based on machine learning",
+      "doi": "10.1186/s44147-024-00472-0",
+      "url": "https://jeas.springeropen.com/articles/10.1186/s44147-024-00472-0",
+      "contribution_identity": "engineering machine-learning application",
+      "goal": "Evaluate predictors of rock unconfined compressive strength when direct measurement is costly.",
+      "intended_users": "rock and geotechnical engineers",
+      "decision_enabled": "choose a predictive model for an expensive engineering property",
+      "evidence_shape": "multiple models evaluated on a documented engineering dataset",
+      "relevance_to_dyfi": "Demonstrates that the venue accepts geoscience-adjacent machine-learning comparison when the engineering task and user are explicit."
+    },
+    {
+      "id": "jeas_pavement_svr_2025",
+      "title": "A hybrid machine learning method of support vector regression with particle swarm optimization for predicting IRI in continuously reinforced concrete pavement",
+      "doi": "10.1186/s44147-025-00706-9",
+      "url": "https://jeas.springeropen.com/articles/10.1186/s44147-025-00706-9",
+      "contribution_identity": "method comparison",
+      "goal": "Predict pavement roughness for maintenance planning and compare the proposed model with declared baselines.",
+      "intended_users": "pavement engineers and maintenance planners",
+      "decision_enabled": "select a model for pavement-condition prediction",
+      "evidence_shape": "common-fold comparison of four machine-learning models",
+      "relevance_to_dyfi": "Shows the venue expects the model-selection decision and engineering use to be stated directly."
+    },
+    {
+      "id": "jeas_aswan_seismic_2022",
+      "title": "Response of Aswan cable-stayed bridge to spatial non-synchronous seismic excitations",
+      "doi": "10.1186/s44147-022-00124-1",
+      "url": "https://jeas.springeropen.com/articles/10.1186/s44147-022-00124-1",
+      "contribution_identity": "seismic engineering analysis",
+      "goal": "Quantify how spatially non-synchronous earthquake excitation changes bridge-response parameters.",
+      "intended_users": "bridge and seismic engineers",
+      "decision_enabled": "interpret spatial-variability effects in seismic design assessment",
+      "evidence_shape": "nonlinear time-history analysis using multiple earthquake records",
+      "relevance_to_dyfi": "Establishes an earthquake-related readership, while also showing that domain papers are expected to state the engineering quantity and decision affected."
+    },
+    {
+      "id": "jeas_retaining_wall_2024",
+      "title": "Pseudo-static analytical formulation for seismic thrust on cantilever retaining walls in C-Φ soils considering double failure planes",
+      "doi": "10.1186/s44147-024-00554-z",
+      "url": "https://jeas.springeropen.com/articles/10.1186/s44147-024-00554-z",
+      "contribution_identity": "engineering method",
+      "goal": "Improve estimation of active seismic thrust for retaining-wall configurations omitted by classical formulations.",
+      "intended_users": "geotechnical and structural engineers",
+      "decision_enabled": "estimate seismic design thrust over a wider valid range",
+      "evidence_shape": "analytical derivation validated against numerical modelling",
+      "relevance_to_dyfi": "Calibrates the venue's expectation that a method paper names the invalid decision it corrects and validates the correction.",
+      "citation_status": "calibration_only_intentionally_uncited"
+    }
+  ],
+  "conclusion": {
+    "target_venue_publishes_benchmark_identity": true,
+    "target_venue_publishes_machine_learning_comparisons": true,
+    "target_venue_publishes_seismic_engineering": true,
+    "exact_dyfi_precedent_found": false,
+    "binding_lesson": "The retarget must combine the benchmark precedent's explicit comparison task with the seismic papers' explicit engineering decision; topical overlap alone is insufficient."
+  }
+}

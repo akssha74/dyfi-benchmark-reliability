@@ -1,0 +1,46 @@
+{
+  "record_type": "goal_usefulness_contract",
+  "target_venue": "Journal of Engineering and Applied Science",
+  "article_type": "Research Article",
+  "scientific_question": "Do performance and model-superiority claims for severe felt-intensity classifiers remain supportable when data versioning, dependent-event splitting, temporal evaluation, paired uncertainty, and exact reconstruction are controlled?",
+  "contribution_identity": "benchmark",
+  "intended_users": [
+    "applied machine-learning engineers developing event-level classifiers",
+    "benchmark maintainers",
+    "reviewers and auditors evaluating model-comparison claims"
+  ],
+  "task_enabled": "Evaluate a candidate classifier against fixed data, roles, baselines, metrics, uncertainty, and reproducibility gates without reconstructing a bespoke split.",
+  "decision_enabled": "Decide whether a candidate is admissible for comparison and whether its Brier-score improvement over a declared reference is supported rather than a point-score fluctuation.",
+  "error_prevented": "Prevents comparisons based on evolving catalogue versions, forbidden outcome-derived features, sequence-role overlap, temporal leakage, unquantified point rankings, or unreproducible environments.",
+  "evidence_of_usefulness": [
+    "the six-category audit rejects every seeded contamination case",
+    "B3 is rejected because event year reveals the temporal holdout axis",
+    "all learned baselines separate from no-skill under paired Brier uncertainty",
+    "B2 versus B5 remains unresolved, preventing a false winner declaration",
+    "the frozen predictions and manuscript values reconstruct exactly"
+  ],
+  "substantive_result": "Under the locked contract, every learned baseline improves over no-skill, the leading B2 and B5 models remain statistically unresolved, and the random-versus-sequence split diagnostic is small and reversed rather than evidence of optimistic random-split performance.",
+  "non_use_boundary": [
+    "not a real-time warning system",
+    "not an operational triage rule",
+    "not evidence of causality",
+    "not cross-system or geographic generalization evidence",
+    "not proof that sequence grouping is unnecessary"
+  ],
+  "target_venue_scope_basis": [
+    "artificial and machine intelligence",
+    "computer science and computational methods",
+    "modelling and simulation",
+    "seismic evaluation",
+    "engineering research methods"
+  ],
+  "target_venue_publishes_this_identity": true,
+  "editor_test_status": "pass",
+  "independent_30_second_editor_test": {
+    "reviewer": "Claude Opus 4.8, independent frozen-snapshot review",
+    "goal_understood": true,
+    "usefulness_understood": true,
+    "abstract_story_pass": true,
+    "quoted_summary": "A frozen, hashed, single-source USGS DYFI benchmark plus an executable candidate-qualification contract that makes model-comparison decisions auditable across data version, split construction, uncertainty, and environment."
+  }
+}

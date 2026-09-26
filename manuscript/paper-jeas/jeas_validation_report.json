@@ -1,0 +1,153 @@
+{
+  "record_type": "jeas_manuscript_validation_report",
+  "n_checks": 29,
+  "n_failed": 0,
+  "overall_pass": true,
+  "checks": [
+    {
+      "check": "jeas_target_and_original_preserved",
+      "ok": true,
+      "detail": "ffd35072b0589d9bb956e163e0847e0d7d047cb2f7509e1fa4b546099e8b9716"
+    },
+    {
+      "check": "single_column_double_spaced_line_numbered",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "engineering_reliability_title",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "concise_abstract",
+      "ok": true,
+      "detail": "211"
+    },
+    {
+      "check": "engineering_keywords",
+      "ok": true,
+      "detail": "['model comparison', 'evaluation reliability', 'benchmark qualification', 'dependent-event data', 'reproducibility', 'USGS DYFI']"
+    },
+    {
+      "check": "goal_contract_complete",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "check": "independent_abstract_story_gate",
+      "ok": true,
+      "detail": "{'reviewer': 'Claude Opus 4.8, independent frozen-snapshot review', 'goal_understood': True, 'usefulness_understood': True, 'abstract_story_pass': True, 'quoted_summary': 'A frozen, hashed, single-source USGS DYFI benchmark plus an executable candidate-qualification contract that makes model-comparison decisions auditable across data version, split construction, uncertainty, and environment.'}"
+    },
+    {
+      "check": "goal_and_users_visible_before_methods",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "usefulness_is_demonstrated",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "venue_precedents_complete",
+      "ok": true,
+      "detail": "5"
+    },
+    {
+      "check": "all_citations_resolve",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "check": "all_bibliography_entries_cited",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "check": "jeas_precedents_engaged",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "check": "citation_ledger_covers_bibliography",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "check": "qualification_b0_exact",
+      "ok": true,
+      "detail": "0.232"
+    },
+    {
+      "check": "qualification_b2_exact",
+      "ok": true,
+      "detail": "0.181"
+    },
+    {
+      "check": "qualification_b5_exact",
+      "ok": true,
+      "detail": "0.181"
+    },
+    {
+      "check": "qualification_unresolved_pair_exact",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "b3_rejection_demonstrated",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "utility_assets_byte_deterministic",
+      "ok": true,
+      "detail": "{'engineering_failure_modes.tex': '83127f6b812e4222dadfabc6f35537d13f20c7eef8c0a80f9b33578346146df9', 'candidate_qualification.tex': '6651b269a91fa947e05f673cef996e70a8b41b910c244649eca3d2b11395aebd', 'fig_candidate_workflow.pdf': '734c009dbcdecf417bfb3b90ce95fd5d416da39d861abaf072442e3abc2f8e99', 'fig_candidate_workflow.png': '8cf9ccf22c35d27f170c36f393b91b2c1a8e00c3a0e89dd3c0dff8c93fe9db8f'}"
+    },
+    {
+      "check": "declarations_complete",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "ai_use_disclosed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "non_use_boundaries_preserved",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "null_and_no_winner_preserved",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "five_figures_captioned",
+      "ok": true,
+      "detail": "5"
+    },
+    {
+      "check": "figure_titles_outside_artwork",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "separate_vector_figures_present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "build_ledger_main_current",
+      "ok": true,
+      "detail": "f94ed30b3818c6c806c836f09f78b56f3e989a21a56539a1690f6dc7fb323b20"
+    },
+    {
+      "check": "build_ledger_pdf_current_or_source_only",
+      "ok": true,
+      "detail": "6d61a7ac0068627d3c89140f0ee5f025c388bb39f9dda88f7b2d2b91a013e422"
+    }
+  ]
+}

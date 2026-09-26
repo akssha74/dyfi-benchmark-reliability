@@ -1,0 +1,42 @@
+{
+  "record_type": "jeas_retarget_scientific_regression",
+  "verified_on": "2026-09-26",
+  "original_release": "v1.0.27",
+  "original_main_tex_sha256": "ffd35072b0589d9bb956e163e0847e0d7d047cb2f7509e1fa4b546099e8b9716",
+  "original_main_pdf_sha256": "6ce8b8d8b07afb68eeb838e08b16f7832c4713e2d05ebc317826feb19ceebf75",
+  "frozen_asset_inputs_sha256": "b7f7dea60c7421b0b75870d45421c094e3cd4b5e325702c94b498ebc7926ace9",
+  "frozen_result_sha256": "b3ec45d587d6125da25890b7e91bfb140309c8645c7d8c365d80a2e0df73ae3b",
+  "jeas_main_tex_sha256_before_final_review": "f94ed30b3818c6c806c836f09f78b56f3e989a21a56539a1690f6dc7fb323b20",
+  "jeas_main_pdf_sha256_before_final_review": "6d61a7ac0068627d3c89140f0ee5f025c388bb39f9dda88f7b2d2b91a013e422",
+  "gates": {
+    "original_manuscript_validator": {
+      "command": "python3 manuscript/paper/validate_manuscript.py",
+      "checks": 116,
+      "failed": 0,
+      "pass": true
+    },
+    "benchmark_tests": {
+      "command": "code/.venv/bin/python -m unittest discover -s code -p 'test_*.py'",
+      "tests": 110,
+      "failures": 0,
+      "errors": 0,
+      "pass": true
+    },
+    "jeas_validator": {
+      "command": "python3 manuscript/paper-jeas/validate_jeas.py",
+      "checks": 29,
+      "failed": 0,
+      "pass": true
+    },
+    "isolated_source_build_byte_identical": true
+  },
+  "scientific_change": false,
+  "new_outcome_bearing_analysis": false,
+  "added_material": [
+    "goal/usefulness framing",
+    "engineering failure-mode mapping",
+    "candidate qualification decision table",
+    "candidate qualification workflow figure",
+    "JEAS accepted-paper positioning"
+  ]
+}

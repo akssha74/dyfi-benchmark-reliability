@@ -391,12 +391,18 @@ def main() -> int:
     release_tag = build_ledger["public_release_tag"]
     root_citation = (MAN.parent / "CITATION.cff").read_text()
     bundle_citation = (MAN.parent / "bundle" / "release" / "CITATION.cff").read_text()
+    citation_version_match = re.search(r'^version:\s*"(\d+\.\d+\.\d+)"',
+                                       root_citation, re.M)
+    citation_version = citation_version_match.group(1) if citation_version_match else ""
+    release_version = release_tag.removeprefix("v")
+    def version_tuple(value: str) -> tuple[int, ...]:
+        return tuple(int(part) for part in value.split(".")) if value else ()
     check("build_ledger_release_tag_matches_manuscript",
           f"/releases/tag/{release_tag}" in main_tex
-          and f'version: "{release_tag.removeprefix("v")}"' in root_citation
-          and f"/releases/tag/{release_tag}" in root_citation
+          and version_tuple(citation_version) >= version_tuple(release_version)
+          and f"/releases/tag/v{citation_version}" in root_citation
           and root_citation == bundle_citation,
-          release_tag)
+          f"paper={release_tag}; repository=v{citation_version}")
 
     # ---- 5. asset hash identity ----
     for fig in (HERE / "figures").glob("*.pdf"):

@@ -28,7 +28,9 @@ model.
 | `code/` | Leakage audit, grouping, baselines, metrics, tests, and validators |
 | `preregistration/` | Frozen internal protocol record (first publicly timestamped with the repository release) |
 | `results/` | Protected-run result and construction-side fit record |
-| `manuscript/` | Paper source, PDF, tables, vector figures, ledgers, and manuscript validator |
+| `manuscript/paper/` | Immutable Journal of Seismology v1.0.27 submission artifact |
+| `manuscript/paper-jeas/` | Current Journal of Engineering and Applied Science Research Article, engineering-use assets, ledgers, reviews, and submission package |
+| `manuscript/derived/`, `manuscript/tables/`, `manuscript/figures/` | Frozen scientific inputs shared by both manuscript presentations |
 
 ## Quick verification
 
@@ -36,12 +38,14 @@ The manuscript-level verifier uses only the Python standard library:
 
 ```bash
 python3 manuscript/paper/validate_manuscript.py
+python3 manuscript/paper-jeas/validate_jeas.py
 ```
 
 Expected result:
 
 ```text
 validate_manuscript: 116 checks, 0 failed -> PASS
+validate_jeas: 29 checks, 0 failed -> PASS
 ```
 
 To run the benchmark test suite:

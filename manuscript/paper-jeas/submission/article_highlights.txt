@@ -1,0 +1,5 @@
+Candidate models pass leakage and role-isolation gates before scoring.
+
+All admissible learned baselines improve on no-skill under paired uncertainty.
+
+The two lowest-Brier models remain unresolved, preventing a false winner.
