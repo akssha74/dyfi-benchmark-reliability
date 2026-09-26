@@ -41,7 +41,7 @@
   },
   "asset_ledger": {
     "path": "manuscript/asset_ledger.jsonl",
-    "sha256": "88884633af064cbd9f4402c7d77b7bcde1620b418fdcd592893a181df370cd93"
+    "sha256": "cc10a00da76e1ff53bda71c7c061f0e0d9df9a49d647ceb2ea9efc33df90b808"
   },
   "counts_by_type": {
     "code": 5,
@@ -53,6 +53,6 @@
   "n_artifacts": 38,
   "note": "Release-specific manifest. Shipped generators rebuild the seven reader-facing tables and four figures from committed verified asset inputs; they do not refit models or reopen the protected role.",
   "record_type": "public_release_manuscript_asset_manifest",
-  "release": "v1.1.2",
+  "release": "v1.1.3",
   "resource_id": "DYFI_USGS_SINGLE_SOURCE_SEVERE_FELT_INTENSITY_V1"
 }

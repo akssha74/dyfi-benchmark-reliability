@@ -48,7 +48,7 @@ Expected result:
 
 ```text
 validate_manuscript: 116 checks, 0 failed -> PASS
-validate_jeas: 29 checks, 0 failed -> PASS
+validate_jeas: 30 checks, 0 failed -> PASS
 ```
 
 To run the benchmark test suite:
