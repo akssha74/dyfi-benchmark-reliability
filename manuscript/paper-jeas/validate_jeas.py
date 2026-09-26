@@ -257,12 +257,13 @@ def main() -> int:
     check(
         "ai_use_disclosed",
         "generative AI assistance" in text
-        and "all scientific judgements and final decisions remained with the authors" in text,
+        and "It did not generate data, run model fits, or create the reported" in text
+        and "retain full responsibility" in text,
     )
     check(
         "non_use_boundaries_preserved",
-        "not a real-time warning, causal model, or" in text
-        and "operational decision system" in text
+        "not a real-time alert, causal model, or operational triage rule" in text
+        and "not a real-time warning or operational decision system" in text
         and "no geographic, aggregation, sequence-definition" in text
         and "fresh hidden holdout or independent evaluation service" in text,
     )
@@ -278,11 +279,12 @@ def main() -> int:
         and "mitigates ascertainment" not in text,
     )
     check(
-        "null_and_no_winner_preserved",
-        "small and reversed" in text
-        and "no evidence of random-split optimism" in text
-        and "remain unresolved" in text
-        and "prevents" in text,
+        "uncertainty_and_ranking_boundaries_preserved",
+        "small and slightly reversed" in text
+        and "similar point performance" in text
+        and re.search(r"remains?\s+unresolved", text) is not None
+        and re.search(r"does not show a Brier\s+advantage", text) is not None
+        and "models equivalent" in text,
     )
     captions = re.findall(r"\\caption\{(.*?)\}\s*\\label", text, re.S)
     check("five_figures_captioned", len(captions) == 5, str(len(captions)))

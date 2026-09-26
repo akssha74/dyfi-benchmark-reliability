@@ -22,7 +22,7 @@
     {
       "check": "concise_abstract",
       "ok": true,
-      "detail": "196"
+      "detail": "249"
     },
     {
       "check": "engineering_keywords",
@@ -37,7 +37,7 @@
     {
       "check": "independent_abstract_story_gate",
       "ok": true,
-      "detail": "{'reviewer': 'GPT-5.6 Sol, independent abstract-only three-reader test', 'goal_understood': True, 'usefulness_understood': True, 'abstract_story_pass': True, 'quoted_summary': 'The benchmark helps engineers avoid invalid retrospective comparisons and unsupported winners, while requiring hidden data for confirmation and excluding operational use.'}"
+      "detail": "{'reviewer': 'GPT-5.6 Sol, independent abstract-only three-reader test', 'goal_understood': True, 'usefulness_understood': True, 'abstract_story_pass': True, 'quoted_summary': 'The benchmark gives engineers a fair test for severe-intensity classifiers and a transparent logistic reference that new, more complex methods must improve on; confirmation still requires fresh hidden data.'}"
     },
     {
       "check": "goal_and_users_visible_before_methods",
@@ -150,7 +150,7 @@
       "detail": ""
     },
     {
-      "check": "null_and_no_winner_preserved",
+      "check": "uncertainty_and_ranking_boundaries_preserved",
       "ok": true,
       "detail": ""
     },
@@ -172,12 +172,12 @@
     {
       "check": "build_ledger_main_current",
       "ok": true,
-      "detail": "3b972e795946b19834e4d0dbc0356d748340232406724242fa6c40779bad278d"
+      "detail": "153d1479970fe840fc947bc534fbedf557ecd1735fd5e744beaca1fd323f6d9b"
     },
     {
       "check": "build_ledger_pdf_current_or_source_only",
       "ok": true,
-      "detail": "f33a1fda272ac69736ef38aa70d6a12a9262665b59b6bacdcf2166c2082e8528"
+      "detail": "73fdf6d638ae075421e2ca1f1fc32a1e440ad6e17d6268eacdc115b7acecfc59"
     },
     {
       "check": "supplement_build_current_or_source_only",
@@ -187,12 +187,12 @@
     {
       "check": "review_manuscript_page_target",
       "ok": true,
-      "detail": "28"
+      "detail": "27"
     },
     {
       "check": "editor_reviewer_readiness_current",
       "ok": true,
-      "detail": "f33a1fda272ac69736ef38aa70d6a12a9262665b59b6bacdcf2166c2082e8528"
+      "detail": "73fdf6d638ae075421e2ca1f1fc32a1e440ad6e17d6268eacdc115b7acecfc59"
     }
   ]
 }

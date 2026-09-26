@@ -126,11 +126,11 @@ def build_claim_ledger(ai: dict) -> list[dict]:
     add("L1", "Brier split contrast (sequence minus random), reported descriptively",
         r3(lh["brier_inflation_seq_minus_random"]),
         "/leakage_inflation_headline/brier_inflation_seq_minus_random",
-        ["abstract", "prose", "tab:leakage", "fig:leakage"])
+        ["prose", "tab:leakage", "fig:leakage"])
     add("L2", "AUROC under sequence grouping is higher than under random folds; reported descriptively (the source field stores random minus sequence)",
         r3(-lh["auroc_inflation_random_minus_seq"]),
         "/leakage_inflation_headline/auroc_inflation_random_minus_seq",
-        ["abstract", "prose", "tab:leakage", "fig:leakage"])
+        ["prose", "tab:leakage", "fig:leakage"])
     for scheme in ("random_event", "event_grouped", "sequence_grouped"):
         ps = lh["per_scheme"][scheme]
         add(f"L_{scheme}_brier", f"{scheme} mean Brier", r3(ps["brier"]),
@@ -174,7 +174,7 @@ def build_claim_ledger(ai: dict) -> list[dict]:
     for pk, cell in pm.items():
         appears = ["supp:tab:pairwise"]
         if pk == "B2_source_only_logit_vs_B5_xgboost":
-            appears.append("tab:qualification")
+            appears.extend(["abstract", "prose", "tab:qualification"])
         add(f"P_{pk}", f"pairwise Brier comparison ({pk})",
             {
                 "point_diff_a_minus_b": f"{cell['point_diff_a_minus_b']:.4f}",
@@ -187,7 +187,7 @@ def build_claim_ledger(ai: dict) -> list[dict]:
     add("P_unresolved", "two learned-baseline pairs unresolved (B2 vs B4; B2 vs B5)",
         ["B2_source_only_logit_vs_B4_random_forest",
          "B2_source_only_logit_vs_B5_xgboost"],
-        "/pairwise_ranking_stability/pairwise_matrix", ["abstract", "prose", "supp:tab:pairwise"])
+        "/pairwise_ranking_stability/pairwise_matrix", ["prose", "supp:tab:pairwise"])
 
     sl = ai["slices"]
     for yr in ("2023", "2024"):
@@ -325,7 +325,7 @@ def build_build_ledger() -> dict:
         "inputs_are_immutable": True,
         "network_writes": False,
         "public_repository": "https://github.com/akssha74/dyfi-benchmark-reliability",
-        "public_release_tag": "v1.1.1",
+        "public_release_tag": "v1.2.1",
         "doi": None,
         "submitted": False,
         "main_tex_sha256": sha256(HERE / "main.tex"),

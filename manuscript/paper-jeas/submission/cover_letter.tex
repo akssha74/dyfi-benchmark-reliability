@@ -39,11 +39,14 @@ on a fixed holdout and compared with paired sequence-cluster uncertainty.
 The frozen \(M\geq5\) snapshot contains 7,520 source records, 2,362 eligible
 events, and a 430-event temporal holdout. The worked qualification excludes one
 candidate outside the declared source-only schema, supports all four admissible learned baselines over
-no-skill, and leaves the two lowest-Brier models unresolved. It therefore shows
-when a candidate is within contract and when an apparent advantage is insufficient
-to name a winner. Because labels are public, confirmatory reuse requires fresh
-hidden data or an evaluation service. The random-versus-sequence contrast is small and reversed and
-is reported descriptively.
+no-skill, and shows that adding depth improves on a magnitude-only logistic
+model. The source-only logistic model and XGBoost both round to Brier 0.181,
+and their paired comparison remains
+unresolved. The simpler logistic model therefore provides a strong, transparent
+reference for future methods without being declared superior. These results
+show which candidates are valid to compare, whether added complexity has
+produced a measurable improvement, and what performance bar future
+severe-intensity models should meet.
 
 The article fits the journal's explicit scope in artificial and machine
 intelligence, computer science, computational methods, modelling and simulation,

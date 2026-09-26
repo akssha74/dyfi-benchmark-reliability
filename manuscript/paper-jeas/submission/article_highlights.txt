@@ -1,5 +1,7 @@
-Candidate models pass leakage and role-isolation gates before scoring.
-
 All admissible learned baselines improve on no-skill under paired uncertainty.
 
-The two lowest-Brier models remain unresolved, preventing a false winner.
+Depth adds predictive value beyond magnitude in the simple logistic baseline.
+
+A transparent logistic model sets a clear performance bar for future methods.
+
+The audit pattern adapts to other versioned, dependent event datasets.

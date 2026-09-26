@@ -1,8 +1,8 @@
 {
   "record_type": "abstract_story_test",
-  "manuscript_pdf_sha256": "f33a1fda272ac69736ef38aa70d6a12a9262665b59b6bacdcf2166c2082e8528",
+  "manuscript_pdf_sha256": "73fdf6d638ae075421e2ca1f1fc32a1e440ad6e17d6268eacdc115b7acecfc59",
   "tested_on": "2026-09-26",
-  "agent_id": "7e907cda-68ed-402e-afe3-f811f3647fd8",
+  "agent_id": "1933a7d0-f8f9-42f6-b808-f9163463d165",
   "pain_point_present": true,
   "goal_present": true,
   "minimum_approach_present": true,
@@ -10,9 +10,9 @@
   "usefulness_present": true,
   "non_use_boundary_present": true,
   "reader_paraphrases": {
-    "engineering_editor": "The benchmark helps engineers avoid invalid retrospective comparisons and unsupported winners, while requiring hidden data for confirmation and excluding operational use.",
-    "methods_reviewer": "Four models beat no-skill, the leading pair remained unresolved, one candidate violated input rules, and the random-fold contrast is descriptive because it lacks an interval.",
-    "intelligent_non_specialist": "The study compares models under fair rules, finds improvement but no clear winner, rejects one unfair model, and cannot support real-time use."
+    "engineering_editor": "The benchmark gives engineers a fixed test for severe felt-intensity classifiers and a transparent logistic reference that added model complexity must improve on.",
+    "methods_reviewer": "All four learned models beat constant prevalence, depth improves on magnitude alone, and logistic regression and XGBoost both round to Brier 0.181 while their paired comparison remains unresolved.",
+    "intelligent_non_specialist": "The study checks earthquake classifiers under fair rules, finds that depth helps, and shows that a simple model performs competitively with XGBoost without claiming a winner."
   },
   "blocking_ambiguities": [],
   "abstract_story_pass": true

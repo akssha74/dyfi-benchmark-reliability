@@ -29,9 +29,11 @@ and false winner declarations.
 ## Substantive result
 
 Four learned baselines improve over no-skill under paired Brier uncertainty, the
-two lowest-Brier models remain unresolved, one event-year candidate lies outside
-the declared source-only contract, and the random-versus-sequence contrast is
-small, reversed, and descriptive only.
+source-only logistic model clearly improves on magnitude alone, and it has the
+same rounded Brier score as XGBoost. Their paired comparison remains unresolved,
+making the simpler model a strong transparent reference rather than a declared winner.
+One event-year candidate lies outside the source-only contract, and the
+random-versus-sequence contrast remains descriptive.
 
 ## Venue fit
 
@@ -48,8 +50,8 @@ operational triage, causal, or geographic-transfer study.
 
 ## Strongest potential desk objection
 
-The benchmark's scientific methods are established and the empirical split
-contrast is null/reversed. The manuscript addresses this by claiming a
-defensible engineering reliability artifact, not methodological novelty or
-seismological discovery, and by demonstrating concrete admission and
-model-comparison decisions.
+The benchmark uses established statistical tools and is not a new seismological
+model. Its contribution is the tested engineering comparison process and the
+decision it supports: future severe-intensity methods must pass the same input
+and split checks and show a paired improvement over the transparent logistic
+reference before added complexity is treated as useful.

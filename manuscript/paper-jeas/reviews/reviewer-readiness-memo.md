@@ -8,7 +8,7 @@
 
 Frozen cohort, threshold, split, baseline, pairwise, subgroup, and
 reconstruction values pass the original 116-check manuscript validator, the
-34-check JEAS validator, and 110 benchmark tests. No outcome-bearing analysis
+38-check JEAS validator, and 110 benchmark tests. No outcome-bearing analysis
 was added during retargeting.
 
 ## Claims versus evidence
@@ -21,7 +21,10 @@ was added during retargeting.
 - The public-label benchmark supports retrospective comparison; prospective
   confirmation requires fresh hidden data/service.
 - The split contrast remains descriptive without an interval.
-- No winning model is claimed.
+- The source-only logistic model is presented as a practical transparent
+  reference, not as statistically superior to XGBoost.
+- The design may be adapted to other event datasets, but transfer of the present
+  DYFI model is not claimed.
 
 ## Navigation
 

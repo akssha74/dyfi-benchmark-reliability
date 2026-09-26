@@ -47,20 +47,24 @@ event data: a USGS DYFI benchmark}
 \abstract{Engineers comparing machine-learning classifiers on evolving event
 catalogues can reach false conclusions when dependent events cross data splits
 or small score differences are treated as wins. We ask whether candidate severe
-felt-intensity classifiers comply with predefined rules for allowed inputs and
-evaluation, and whether their apparent improvements remain supported after
-catalogue version, event grouping, temporal evaluation, and paired uncertainty
-are fixed.
+felt-intensity classifiers---which predict whether an earthquake's maximum
+community decimal intensity reaches 6 (intensity VI or greater)---comply with
+predefined rules for allowed inputs and evaluation, and whether their apparent
+improvements remain supported after catalogue version, event grouping, temporal
+evaluation, and paired uncertainty are fixed.
 Using a frozen USGS ``Did You Feel It?'' (DYFI) snapshot of 7{,}520
 $M\geq5$ records, we formed 2{,}362 eligible events, reserved 430 events from
 2023--2024 as a temporal holdout, and evaluated fixed baselines using Brier score
-and sequence-cluster bootstrap intervals. All four learned models improved on
-the no-skill reference; paired uncertainty did not distinguish the two
-lowest-Brier models, and the input rules excluded a candidate using event year.
-For a fixed random-forest diagnostic, the observed differences between
-sequence-grouped and random folds were small (Brier $-0.006$; area under the
-receiver-operating-characteristic curve [AUROC] $+0.012$); this comparison is
-descriptive because no interval was retained.
+and bootstrap intervals that resampled whole event sequences. All four learned
+models---magnitude-only and magnitude-plus-depth logistic regression, random
+forest, and XGBoost---improved on the constant-prevalence reference. Adding
+depth to the magnitude-only logistic model reduced Brier score by 0.018 (95\% CI
+0.010--0.025). The magnitude-plus-depth logistic model and XGBoost both had
+Brier 0.181 to three decimals, and their direct comparison remained unresolved.
+The source-only input rule excluded a candidate using event year.
+As a complementary diagnostic, folds that kept related events together gave
+similar point performance to random folds for a fixed random forest; we treat
+this comparison as descriptive because no uncertainty interval was retained.
 The benchmark helps engineers reject inadmissible comparisons and unsupported
 winner claims. It is intended for transparent retrospective comparison;
 confirmatory or operational use would require fresh hidden data and separate
@@ -109,38 +113,22 @@ We address unreliable model comparison by releasing a versioned benchmark and
 an executable candidate-qualification contract. Concretely, the work provides:
 
 \begin{enumerate}
-\item \textbf{A single-source, version-frozen DYFI benchmark} for the task
-``outcome-blind source metadata $\rightarrow$ later event-maximum
-$\mathrm{maxCDI}\geq 6$'', frozen to one dated access instant so that any later
-catalogue revision defines a new version rather than a silent overwrite
-(Section~\ref{sec:data}).
-\item \textbf{An executable six-category leakage audit} that rejects direct-label,
-post-outcome-ascertainment, identifier-proxy, and downstream-product features,
-and rejects cross-role sequence straddles and temporal-cutoff violations,
-accepting \emph{only} the exact source-only feature set; it is exercised by 110
-unit tests and rejects every deliberately contaminated test case
-(Section~\ref{sec:leakage}).
-\item \textbf{Internally specified, outcome-independent roles} built on order-stable
-space--time sequence grouping and a temporal external holdout, so that split
-membership never uses the label
-(Section~\ref{sec:roles}).
-\item \textbf{A fixed, non-selective baseline suite} with calibration-aware
-proper scoring, Brier-score sequence-cluster bootstrap uncertainty, explicit handling of
-ties and unavailable calibration estimates, and single-use authorization of the
-decision-bearing protected evaluation
-(Sections~\ref{sec:metrics}--\ref{sec:oneshot}).
-\item \textbf{A candidate-qualification workflow} that fails closed on forbidden
-features or invalid roles and supports an improvement only when paired
-Brier-score uncertainty excludes zero (Section~\ref{sec:qualification}).
-\item \textbf{A quantified split-sensitivity diagnostic} (naive random versus
-sequence-grouped splitting), together with a reproducible release bundle and
-machine-readable verification record (Section~\ref{sec:results}).
+\item \textbf{A versioned DYFI benchmark} with a dated, fingerprinted catalogue
+snapshot, outcome-independent sequence grouping, and a fixed temporal holdout
+(Sections~\ref{sec:data}--\ref{sec:roles}).
+\item \textbf{An auditable candidate test} that checks allowed inputs and role
+isolation before scoring, then uses fixed baselines and paired Brier uncertainty
+to decide whether an improvement is supported
+(Sections~\ref{sec:leakage}--\ref{sec:qualification}).
+\item \textbf{A worked model-selection example} showing a clear gain from depth
+beyond magnitude alone, a competitive transparent logistic reference, and the
+point at which a more complex model remains unresolved. Data, predictions,
+tests, and reconstruction records are released with the benchmark
+(Section~\ref{sec:results}).
 \end{enumerate}
 
-The learned models are worked candidates, not proposed production systems. Their
-comparison demonstrates the decisions the contract permits: all admissible
-learned candidates improve over no-skill, one candidate is outside the declared
-source-only schema, and the two lowest-Brier models remain unresolved.
+The primary contribution is the benchmark and its comparison process, not a new
+production classifier.
 
 \subsection{Engineering significance and intended use}\label{sec:significance}
 
@@ -218,23 +206,15 @@ acquisition envelope is outcome-independent: $M\geq5$, product type
 \texttt{dyfi}, event type \texttt{earthquake}, starttime 2015-01-01 to endtime
 2025-01-01. FDSN defines the end bound as inclusive; no frozen record occurs
 at that boundary, so the realized snapshot spans 2015--2024. Results are ordered
-by time. The preliminary count request and the final data request use this same
-envelope. Because the catalogue evolves, the downloaded data were frozen at one
-access instant (2026-09-01T06:33:30Z) and assigned a SHA-256 digital
-fingerprint. A preliminary count changed from 7{,}575 to 7{,}576 during the
-acquisition session, documenting one live-catalogue revision. The final
-downloaded snapshot contained 7{,}520 DYFI records, and a count requested
-50 seconds later in the same acquisition session also returned 7{,}520. Thus,
-the one-record change belongs only to
-the earlier preliminary checks; it is not a discrepancy in the frozen analysis
-snapshot. Likewise, the 56-record difference between the last preliminary count
-and the final 7{,}520-record snapshot is not an analysis exclusion: the
-preliminary count had no paired payload, so its membership difference cannot be
-decomposed and is retained only as catalogue-version provenance. The
-near-contemporaneous final query and count agree exactly. The digital
-fingerprint of the downloaded bytes, rather than a
-preliminary count, defines this resource version. The frozen snapshot
-contains 7{,}520 DYFI records (Table~\ref{tab:cohort}, Fig.~\ref{fig:cohort}).
+by time. Because the catalogue evolves, the data were frozen at one access
+instant (2026-09-01T06:33:30Z) and assigned a SHA-256 fingerprint. Preliminary
+counts changed from 7{,}575 to 7{,}576 during acquisition, documenting a live
+catalogue revision. The final payload contained 7{,}520 records, and a count
+requested 50 seconds later also returned 7{,}520. The earlier counts had no
+paired payload, so their membership differences cannot be decomposed and are
+recorded as provenance, not analysis exclusions. The downloaded bytes and their
+fingerprint define this resource version
+(Table~\ref{tab:cohort}, Fig.~\ref{fig:cohort}).
 
 \paragraph{Protocol chronology.} The file records an internal 2026-09-01 freeze
 but was first publicly timestamped on 2026-09-19. We therefore describe it as an
@@ -382,13 +362,11 @@ were retained, so other metrics are descriptive point estimates
 The official decision-bearing protected evaluation was authorized once by an
 automated, globally consumed token; the one-shot wrapper refuses a second
 authorized run. After the result was fixed, the token-free deterministic
-analytic core---including holdout scoring---was replayed twice for verification,
-and both replays reproduced the recorded result fingerprint exactly. Thus,
-single-use refers to result authorization and decision-bearing use, not to the
-total number of post-result computations. The frozen holdout predictions were
-also recovered bit-for-bit from the released rows and frozen best parameters
-(reported in Section~\ref{sec:repro-results}), under a pinned scientific-Python
-environment (NumPy, SciPy, scikit-learn, XGBoost;
+analytic core was replayed twice, reproducing the recorded result fingerprint
+exactly. Thus, single-use refers to result authorization, not later verification.
+The frozen holdout predictions were also recovered bit-for-bit from the released
+rows and best parameters under a pinned scientific-Python environment (NumPy,
+SciPy, scikit-learn, XGBoost;
 \citealp{harris2020numpy,virtanen2020scipy,pedregosa2011sklearn,chen2016xgboost}).
 All fits, exclusions, subsets, cutoffs, and pairwise comparisons are reported
 regardless of outcome; the only permitted omissions are the protocol-defined
@@ -398,12 +376,10 @@ Computation is local-only under a pinned environment.
 \paragraph{Reproducible artwork and generative AI assistance.} All figures were
 generated with Matplotlib~3.11.1 directly from the frozen analysis assets; no
 manual image manipulation or AI-generated artwork was used. ChatGPT assisted
-language editing, formatting, code review, literature discovery, critical
-consistency review, and revision suggestions. It did not generate data, execute
-model fits, or create the reported numerical results. The authors independently
-verified every cited source, computation, interpretation, and assisted change;
-all scientific judgements and final decisions remained with the authors, who
-retain full responsibility for the manuscript and released artifacts.
+language editing, formatting, code review, literature discovery, and revision
+suggestions. It did not generate data, run model fits, or create the reported
+results. The authors verified all sources, computations, interpretations, and
+assisted changes and retain full responsibility.
 
 \section{Results}\label{sec:results}
 
@@ -519,9 +495,9 @@ no-skill B0 has Brier 0.232 ($[0.212,0.253]$); its calibration slope cannot be
 estimated because it assigns the same probability to every event. The learned
 baselines have lower Brier (B1 0.198,
 B2 0.181, B4 0.187, B5 0.181) with overlapping intervals; calibration
-intercept/slope pairs are finite and positive. No baseline is claimed to win;
-the table reports proper scores, uncertainty, and derived calibration states
-only.
+intercept/slope pairs are finite and positive. B2 and B5 both round to the
+lowest Brier score, 0.181; their paired comparison is reported in
+Section~\ref{sec:pairwise-results}.
 
 \begin{figure*}[t]
 \centering
@@ -543,10 +519,11 @@ the six fixed candidates. B3 is outside the source-only contract because it
 contains event year; this is a conservative scope exclusion, not demonstrated
 label leakage. B1, B2, B4, and B5 pass the audit and each has a paired
 Brier interval below the no-skill B0 reference. The contract therefore supports
-their improvement over B0. It does not support naming B2 or B5 as the winner:
-their direct paired interval includes zero. This worked example demonstrates the
-benchmark's intended use---admit only valid candidates, support improvements
-with uncertainty, and leave an unresolved comparison unresolved.
+their improvement over B0. The direct B2--B5 interval includes zero, so the
+small point difference is not enough to prefer one model on Brier score. This
+worked example demonstrates the benchmark's intended use: admit valid
+candidates, identify supported improvements, and provide a clear reference
+against which future methods can be tested.
 
 \input{tables/candidate_qualification.tex}
 
@@ -554,13 +531,17 @@ with uncertainty, and leave an unresolved comparison unresolved.
 
 Supplementary Table~S1 reports all ten pairwise Brier-score comparisons. Every
 learned baseline performs better than the no-skill reference B0 (all four
-intervals exclude zero). Among the learned models, the B2--B4 and B2--B5
-comparisons have intervals that include zero. The remaining learned-model
-intervals exclude zero, although the B4--B5 lower endpoint (0.0003) is
-near the Monte Carlo boundary. In the joint
+intervals exclude zero). The source-only logistic model B2 also improves on the
+magnitude-only B1 by 0.0176 (95\% interval 0.0101--0.0249), showing that depth
+adds useful predictive information in this dataset. XGBoost B5 improves on the
+random forest B4, although the lower interval endpoint (0.0003) is near the
+Monte Carlo boundary. The B2--B4 and B2--B5 comparisons have intervals that
+include zero. In the joint
 bootstrap ordering, B2 has the highest probability of being uniquely best
 (0.613), followed by B5 (0.387), but the direct B2--B5 comparison remains
-uncertain. These results therefore do not justify naming a winning model.
+uncertain. The source-only logistic model therefore provides a strong,
+transparent reference for future candidates, but the results do not justify
+naming it a winner.
 
 The frozen internal protocol allowed an ``equivalent'' verdict but did not specify a
 positive numerical equivalence margin; its resolution floor was zero. We
@@ -598,31 +579,41 @@ provides authoritative replacements without changing any numerical result.
 
 \section{Discussion}\label{sec:discussion}
 
-\paragraph{Engineering use and decision consequence.} The resource supports a
-transparent retrospective audit of an event-level classifier. The user does not
-choose a convenient split or reconstruct a moving dataset; the declared
-candidate is evaluated against a released contract. The audit rejects forbidden
-outcome-derived inputs, the role manifest prevents events linked by the declared
-heuristic from crossing roles, and the paired Brier interval determines whether
-improvement over a reference is supported. The worked example changes two
-decisions: B3 is outside the source-only contract, while B2 and B5 are both
-supported over no-skill but cannot be ranked decisively. Without the contract,
-the same point scores invite an unsupported winner claim. Because all labels
-are public, a developer can tune to this release; prospective or confirmatory
-qualification requires a fresh hidden holdout or independent evaluation service.
+\paragraph{Engineering use and decision consequence.} The benchmark gives a
+researcher a fixed test for a new severe-intensity classifier. It checks inputs
+and role assignments before scoring and uses a paired Brier interval to judge
+improvement. The worked example admits four candidates that improve on
+no-skill, excludes the event-year candidate from the source-only comparison,
+and identifies the logistic model as a strong reference without forcing a
+ranking against XGBoost. These outcomes show which comparisons are valid and
+what a new method must beat. Because all labels are public, confirmation still
+requires a fresh hidden holdout or independent evaluation service.
 
 \paragraph{Interpreting the split contrast.} The observed point estimate is
-small and slightly reversed. In these folds the naive random split did not
-inflate the diagnostic score, but the missing interval prevents an equivalence,
-zero-effect, or ``little practical effect'' inference. The protocol remains
-useful for datasets containing more multi-event sequences; this result neither
-demonstrates leakage nor supports a win.
+small and slightly reversed: sequence-grouped folds scored marginally better
+than random folds. The catalogue contains mostly single-event sequences, so
+there is little repeated-event structure for grouping to change. Because no
+interval was retained, the size of this difference remains uncertain. Future
+applications with more multi-event sequences can use the same diagnostic with a
+prespecified paired interval.
 
-\paragraph{No winning model.} Every learned baseline separates from the no-skill
-reference. However, the direct B2--B5 comparison between the two lowest-Brier
-models is unresolved, as is B2--B4, so the results do not establish a decisive
-winner. Consistent with the resource's scope, we claim no winning model and no
-operational, real-time, lead-time, cross-system, or causal benefit.
+\paragraph{A practical model-selection result.} All four learned baselines
+improve on no-skill, and using depth as well as magnitude improves the logistic
+model. The source-only logistic model and XGBoost both round to Brier 0.181, and
+their paired comparison is
+unresolved. The evidence does not show a Brier
+advantage for the more complex model. The logistic model is therefore a useful
+transparent reference, not a statistically superior winner. Future methods
+should show a paired improvement over it before added complexity is treated as
+a performance gain.
+
+\paragraph{Reuse beyond the case study.} The same evaluation pattern can be
+adapted to other event-based engineering datasets in which related records,
+changing catalogue versions, or small score differences can make model rankings
+unreliable. Each application must define its inputs, grouping, holdout,
+reference, and uncertainty procedure before seeing test results. The comparison
+design is reusable; the present DYFI model is not claimed to transfer to another
+region, catalogue, or engineering task.
 
 \section{Limitations and threats to validity}\label{sec:limitations}
 
@@ -662,17 +653,21 @@ from the version evaluated here.
 Reliable engineering model selection requires more than reporting the lowest
 point score. The released DYFI benchmark makes a candidate pass an auditable
 schema and role contract, evaluates it on a fixed temporal holdout, and attaches
-paired uncertainty to the comparison decision. In the worked qualification,
-four learned candidates improve over no-skill, B3 is outside the declared
-source-only contract, and the two lowest-Brier models remain unresolved; the
-contract therefore prevents an out-of-scope comparison and a false winner
-declaration. The
-random-versus-sequence diagnostic is small and reversed in this sparse-sequence
-corpus, so it supplies no evidence of random-split optimism. All results
-reconstruct from the frozen release. The contribution is a reusable
-retrospective test harness for trustworthy model comparison. Confirmatory use
+paired uncertainty to the comparison decision. In the worked qualification, all
+four learned candidates improve over no-skill, and adding depth to the
+magnitude-only logistic model produces a clear Brier improvement. The
+source-only logistic model is a strong transparent reference; its
+comparison with XGBoost remains unresolved. This makes the logistic model a
+practical reference for testing whether added complexity earns a measurable
+gain. The contract also keeps the event-year
+candidate outside the declared source-only comparison. The
+random-versus-sequence diagnostic gives similar point performance in this
+sparse-sequence corpus and remains descriptive because no interval was
+retained. All results reconstruct from the frozen release. The contribution is a reusable
+retrospective test harness for trustworthy model comparison, together with a
+clear performance bar for future severe-intensity models. Confirmatory use
 requires a fresh hidden holdout or independent evaluation service; the release
-is not a real-time warning, causal model, or operational decision system.
+is not a real-time warning or operational decision system.
 
 \backmatter
 
@@ -692,7 +687,7 @@ recruited.
 \item \textbf{Consent for publication.} Not applicable.
 \item \textbf{Availability of data and materials.} Version~1 data, results, manifests, and
 instructions are available under CC0~1.0 at
-\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.1.1}.
+\url{https://github.com/akssha74/dyfi-benchmark-reliability/releases/tag/v1.2.1}.
 Source data are USGS DYFI and ANSS ComCat (public domain;
 \href{https://doi.org/10.5066/F7J101C8}{10.5066/F7J101C8} and
 \href{https://doi.org/10.5066/F7MS3QZH}{10.5066/F7MS3QZH}) and are reconstructable
@@ -700,7 +695,7 @@ via the released fetch-and-verify source-locator manifest. No respondent-level
 personally identifying information is redistributed.
 \item \textbf{Availability of code.} Project: DYFI Benchmark Reliability.
 Homepage: \url{https://github.com/akssha74/dyfi-benchmark-reliability}.
-Archived version: release v1.1.1. Operating systems: platform independent.
+Archived version: release v1.2.1. Operating systems: platform independent.
 Programming language: Python. Licence: MIT. Restrictions on non-academic use:
 none. Full prediction reconstruction and model tests use the separately pinned
 scientific-Python environment.
@@ -715,6 +710,8 @@ work.
 Catalog programs.
 \end{itemize}
 
+\begin{spacing}{1.5}
 \bibliography{references}
+\end{spacing}
 
 \end{document}

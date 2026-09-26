@@ -11,6 +11,6 @@ main.pdf is the author-verified reference proof; upload it only if the portal ex
 Article type: Research Article on engineering model-evaluation reliability.
 The source ZIP uses the Springer Nature sn-jnl template, double spacing, continuous line numbering, editable tables, and vector figures.
 
-main.pdf SHA-256: f33a1fda272ac69736ef38aa70d6a12a9262665b59b6bacdcf2166c2082e8528
-cover_letter.pdf SHA-256: 6d5aa5979be3c96032b8d600990b5b512d2cc0725f292922265a4eafca93434e
-source ZIP SHA-256: a7cefd3539ee079c7d5619e7d42825a63aa893f58ae9c1e14f9f6aa0812d56fa
+main.pdf SHA-256: 73fdf6d638ae075421e2ca1f1fc32a1e440ad6e17d6268eacdc115b7acecfc59
+cover_letter.pdf SHA-256: ff6453a5f1ed629d44c760bd25eafdf276217efac348993a651bfc72ff1d0a35
+source ZIP SHA-256: 62e4de35d80bfab68771ffaae4d07cfb184e8094b0ca5f785228c99101c9e58b

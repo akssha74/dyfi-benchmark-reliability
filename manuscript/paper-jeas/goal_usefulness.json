@@ -16,10 +16,11 @@
     "the six-category audit rejects every seeded contamination case",
     "B3 is excluded because event year is outside the declared source-only contract",
     "all learned baselines separate from no-skill under paired Brier uncertainty",
-    "B2 versus B5 remains unresolved, preventing a false winner declaration",
+    "adding depth to magnitude-only logistic regression improves Brier score by 0.0176 with a paired interval that excludes zero",
+    "the source-only logistic model and XGBoost both round to Brier 0.181, while their paired comparison remains unresolved; the simpler model therefore provides a transparent reference without a superiority claim",
     "the frozen predictions and manuscript values reconstruct exactly"
   ],
-  "substantive_result": "Under the locked contract, every learned baseline improves over no-skill, the leading B2 and B5 models remain statistically unresolved, and the random-versus-sequence split diagnostic is small and reversed rather than evidence of optimistic random-split performance.",
+  "substantive_result": "Under the locked contract, every learned baseline improves over no-skill, depth adds predictive value beyond magnitude alone, and a simple source-only logistic model provides a strong transparent reference because no paired Brier advantage for XGBoost was demonstrated. The random-versus-sequence split diagnostic gives similar point performance and remains descriptive.",
   "non_use_boundary": [
     "not a real-time warning system",
     "not an operational triage rule",
@@ -42,6 +43,6 @@
     "goal_understood": true,
     "usefulness_understood": true,
     "abstract_story_pass": true,
-    "quoted_summary": "The benchmark helps engineers avoid invalid retrospective comparisons and unsupported winners, while requiring hidden data for confirmation and excluding operational use."
+    "quoted_summary": "The benchmark gives engineers a fair test for severe-intensity classifiers and a transparent logistic reference that new, more complex methods must improve on; confirmation still requires fresh hidden data."
   }
 }

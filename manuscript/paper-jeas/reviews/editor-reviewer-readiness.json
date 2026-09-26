@@ -1,6 +1,6 @@
 {
   "record_type": "editor_reviewer_readiness",
-  "manuscript_sha256": "f33a1fda272ac69736ef38aa70d6a12a9262665b59b6bacdcf2166c2082e8528",
+  "manuscript_sha256": "73fdf6d638ae075421e2ca1f1fc32a1e440ad6e17d6268eacdc115b7acecfc59",
   "venue": "Journal of Engineering and Applied Science",
   "article_type": "Research Article",
   "contribution_identity": "benchmark",
@@ -10,9 +10,9 @@
     "intended_user": "Applied-ML engineers, benchmark maintainers, and reviewers.",
     "decision_enabled": "Admit an in-contract candidate and decide whether its Brier improvement over a declared reference is supported or unresolved.",
     "error_prevented": "Out-of-contract comparisons and false winner declarations.",
-    "substantive_result": "Four learned baselines improve over no-skill, B2 and B5 remain unresolved, one event-year candidate violates the allowed-input rule, and the split contrast is small and descriptive.",
+    "substantive_result": "Four learned baselines improve over no-skill; adding depth clearly improves on magnitude alone; logistic regression and XGBoost both round to Brier 0.181 and remain unresolved in their paired comparison.",
     "non_use_boundary": "Public labels preclude untouched confirmation; the work is not real-time warning or operational triage.",
-    "verbatim_paraphrase": "The benchmark helps engineers avoid invalid retrospective comparisons and unsupported winners, while requiring hidden data for confirmation and excluding operational use.",
+    "verbatim_paraphrase": "The benchmark gives engineers a fair retrospective test and a transparent logistic reference that more complex methods must improve on; confirmation still requires fresh hidden data.",
     "pass": true
   },
   "abstract_story": {
@@ -23,9 +23,9 @@
     "usefulness": true,
     "boundary": true,
     "independent_reader_paraphrases": [
-      "The benchmark helps engineers avoid invalid retrospective comparisons and unsupported winners, while requiring hidden data for confirmation and excluding operational use.",
-      "Four models beat no-skill, the leading pair remained unresolved, one candidate violated input rules, and the random-fold contrast is descriptive because it lacks an interval.",
-      "The study compares models under fair rules, finds improvement but no clear winner, rejects one unfair model, and cannot support real-time use."
+      "A fixed DYFI benchmark admits candidates by schema and role rules and supports superiority only with paired Brier uncertainty.",
+      "All four learned models beat constant prevalence, depth improves on magnitude alone, and logistic regression and XGBoost remain unresolved at the leading rounded score.",
+      "Engineers can use the benchmark to reject invalid comparisons and test whether a more complex method really improves on a simple transparent reference."
     ],
     "pass": true
   },
@@ -42,8 +42,34 @@
     "total": 30
   },
   "editor_recommendation": "send_to_review",
-  "reviewer_recommendation": "accept",
+  "reviewer_recommendation": "review_ready",
   "blocking_findings": [],
+  "post_revision_reviews": [
+    {
+      "agent_id": "ab5614d9-0ab5-4863-9fc3-ebb51ed82390",
+      "role": "skeptical JEAS editor",
+      "verdict": "send_to_review",
+      "blocking_findings": 0,
+      "major_findings": 0,
+      "minor_findings": 0
+    },
+    {
+      "agent_id": "124b3a98-1b21-4fc7-b392-926d9c9b4dba",
+      "role": "claims and evidence reviewer",
+      "verdict": "scientifically_review_ready",
+      "blocking_findings": 0,
+      "major_findings": 0,
+      "minor_findings": 0
+    },
+    {
+      "agent_id": "1933a7d0-f8f9-42f6-b808-f9163463d165",
+      "role": "abstract-only reader",
+      "verdict": "pass",
+      "blocking_findings": 0,
+      "major_findings": 0,
+      "minor_findings": 0
+    }
+  ],
   "venue_constraint_blocker": "JEAS is fully open access rather than hybrid; user must explicitly relax the hybrid requirement or select another venue.",
   "overall_pass": true,
   "submission_authorized": false

@@ -27,13 +27,15 @@ sequence-cluster uncertainty.
 The frozen USGS Did You Feel It? snapshot contains 7,520 source records, 2,362
 eligible events, and a 430-event temporal holdout. The worked qualification
 excludes one candidate outside the declared source-only schema, supports all four
-admissible learned baselines over the no-skill reference, and leaves the two
-lowest-Brier models unresolved. It therefore demonstrates two concrete
-engineering decisions: which candidates are admissible and when an apparent
-score advantage is insufficient to name a winner. Because the labels are public,
-confirmatory reuse requires a fresh hidden holdout or evaluation service. The random-versus-sequence
-diagnostic is small and reversed and is reported descriptively, not as evidence
-of leakage, equivalence, or a win.
+admissible learned baselines over the no-skill reference, and shows that adding
+depth improves on a magnitude-only logistic model. The source-only logistic
+model and XGBoost both round to Brier 0.181, and their paired comparison remains
+unresolved. The simpler logistic model therefore provides a strong, transparent
+reference for future methods without being declared superior.
+These results give engineers two concrete decisions: which candidates are valid
+to compare and whether added complexity has shown a measurable improvement.
+They also set a clear bar that future severe-intensity models can be tested
+against.
 
 The article fits the journal's explicit scope in artificial and machine
 intelligence, computer science, computational and stochastic methods, modelling

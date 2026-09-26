@@ -6,8 +6,8 @@
   "original_main_pdf_sha256": "6ce8b8d8b07afb68eeb838e08b16f7832c4713e2d05ebc317826feb19ceebf75",
   "frozen_asset_inputs_sha256": "b7f7dea60c7421b0b75870d45421c094e3cd4b5e325702c94b498ebc7926ace9",
   "frozen_result_sha256": "b3ec45d587d6125da25890b7e91bfb140309c8645c7d8c365d80a2e0df73ae3b",
-  "jeas_main_tex_sha256_before_final_review": "3b972e795946b19834e4d0dbc0356d748340232406724242fa6c40779bad278d",
-  "jeas_main_pdf_sha256_before_final_review": "f33a1fda272ac69736ef38aa70d6a12a9262665b59b6bacdcf2166c2082e8528",
+  "jeas_main_tex_sha256_before_final_review": "153d1479970fe840fc947bc534fbedf557ecd1735fd5e744beaca1fd323f6d9b",
+  "jeas_main_pdf_sha256_before_final_review": "73fdf6d638ae075421e2ca1f1fc32a1e440ad6e17d6268eacdc115b7acecfc59",
   "gates": {
     "original_manuscript_validator": {
       "command": "python3 manuscript/paper/validate_manuscript.py",
@@ -44,6 +44,9 @@
     "zero-based split diagnostic and full-size workflow artwork",
     "human-readable abstract story revision",
     "condensed related-work narrative",
-    "three detailed result tables moved to supplementary information"
+    "three detailed result tables moved to supplementary information",
+    "editor-focused positive model-selection framing",
+    "plain-language abstract outcome and model definitions",
+    "conditional reuse guidance for other dependent event datasets"
   ]
 }
